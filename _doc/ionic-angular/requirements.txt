@@ -1,0 +1,21 @@
+# https://ionicframework.com/docs/angular/your-first-app
+npm install -g @ionic/cli native-run cordova-res
+# https://stackoverflow.com/questions/64984560/ionic-file-c-users-admin-appdata-roaming-npm-ionic-ps1-cannot-be-loaded-becau
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+ionic start photo-gallery tabs --type=angular --capacitor
+cd photo-gallery
+npm install @capacitor/camera @capacitor/storage @capacitor/filesystem
+npm install @ionic/pwa-elements
+ionic g service services/photo
+ionic build
+ionic cap add ios
+ionic cap add android
+ionic cap copy
+ionic cap sync
+# inainte sa rulezi comand urmatoare trebe instalat Android Studio
+ionic cap open android
+
+
+
+
+
