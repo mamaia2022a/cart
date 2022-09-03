@@ -1,0 +1,115 @@
+{
+  "requests":
+  [
+    {
+        "username": "alexm",
+        "password": "turda",
+        "nume": "pop",
+        "prenume": "mihai",
+        "telefon": "3227222",
+        "sex": "m",
+        "email": "pop.mihai9012@gmail.com",
+        "domZonataraid": "1",
+        "domZonataracod": "TR",
+        "domJudetid": "1",
+        "domJudetcod": "AB",
+        "domLocalitateid": "322122",
+        "domLocalitatecod": "322122",
+        "domCodpostal": "344555",
+        "domAdresa": "Calea Moților nr. 33 Bl V5 ap. 3",
+        "rezdifdedom": "n",
+        "rezZonataraid": null,
+        "rezZonataracod": null,
+        "rezJudetid": null,
+        "rezJudetcod": null,
+        "rezLocalitateid": null,
+        "rezLocalitatecod": null,
+        "rezCodpostal": null,
+        "rezAdresa": null
+    },
+    {
+        "username": "superadm",
+        "password": "partid2020#"
+    },
+    {
+        "username": "alexm",
+        "password": "turda"
+    },
+    {
+        "id": 7,
+        "roles": [],
+        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI3IiwiaWF0IjoxNjYyMTQ3OTA2LCJleHAiOjE2NjIxNTE1MDZ9.cmJ6cYJlFG8om1ll8VvIDl87NTSTGJCiA83cxhiEJl2lcOYT7mf6le2-Qrd87mvgsHGc8iwE0phN2gBepciB-Q",
+        "tokenType": "Bearer",
+        "userName": "alexm"
+    },
+    {
+        "success": true,
+        "message": "User registered successfully"
+    },
+    {
+        "id": 4,
+        "roles": [
+            "SIMPATIZ"
+        ],
+        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyMTU0MDI5LCJleHAiOjE2NjIxNTc2Mjl9.0byzHoSCShhPdbA9CBK0Lwcb-jHqcOpw1CH9o0kWG2F3J67sbdDbEA0Z0T9FzukJGTP0ExJWDFayhEq-5Te0Og",
+        "tokenType": "Bearer",
+        "userName": "alexm"
+    },
+    {
+        "id": 4,
+        "roles": [
+            "SIMPATIZ"
+        ],
+        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyMTU1MTU2LCJleHAiOjE2NjIxNTg3NTZ9.aIhrE_4ywpDBXGZ_gH0o5_M_xBXIq9yQ71-gbJL6CmME63NlKwfJTSFEjjqA8By-CBeo85W32BDhYDSYHsx6Qw",
+        "tokenType": "Bearer",
+        "autUser": {
+            "autUserId": 4,
+            "autUserNume": "alexm",
+            "autUserParola": "$2a$10$7IH54k956fueuSv2prT67OOrxeJKBlINzBzCwN5FDYKpmb4BwlmYu",
+            "autUserActivyn": "y",
+            "autUserStartdt": "2022-09-02 17:20:55",
+            "autUserEnddt": null,
+            "roles": [
+                {
+                    "autUserrolId": 1,
+                    "autUserrolRolid": 14,
+                    "autUserrolRolcod": "SIMPATIZ",
+                    "autUserrolUserid": 4,
+                    "autUserrolActivyn": "y",
+                    "autUserrolStartdt": "2022-09-02 17:21:06",
+                    "autUserrolEnddt": null
+                }
+            ]
+        },
+        "userName": "alexm"
+    },
+    {
+        "id": 4,
+        "roles": [
+            "SIMPATIZ"
+        ],
+        "tokenType": "Bearer",
+        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyMTU2NTAxLCJleHAiOjE2NjIxNjAxMDF9.yDQb1DYBu_uNSaymKdTBZUjduOb7hcO6mQOxKBw2y8OVqG3PHN6plpR4vT3uoLoui913AsjxyrOxPxQsY-9E0A",
+        "autUser": {
+            "autUserId": 4,
+            "autUserNume": "alexm",
+            "autUserParola": "",
+            "autUserActivyn": "y",
+            "autUserStartdt": "2022-09-02 17:20:55",
+            "autUserEnddt": null,
+            "roles": [
+                {
+                    "autUserrolId": 1,
+                    "autUserrolRolid": 14,
+                    "autUserrolRolcod": "SIMPATIZ",
+                    "autUserrolUserid": 4,
+                    "autUserrolActivyn": "y",
+                    "autUserrolStartdt": "2022-09-02 17:21:06",
+                    "autUserrolEnddt": null
+                }
+            ]
+        },
+        "userName": "alexm"
+    }
+  ]
+}

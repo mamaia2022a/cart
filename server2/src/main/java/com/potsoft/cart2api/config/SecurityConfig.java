@@ -1,6 +1,6 @@
 package com.potsoft.cart2api.config;
 
-import com.potsoft.cart2api.repository.AutRepository;
+import com.potsoft.cart2api.repository.aut.AutUserRepository;
 import com.potsoft.cart2api.security.JwtAuthenticationEntryPoint;
 import com.potsoft.cart2api.security.JwtAuthenticationFilter;
 import com.potsoft.cart2api.security.UserDetailsServiceImpl;
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
 	@Autowired
-	public SecurityConfig(AutRepository userRepository, UserDetailsServiceImpl customUserDetailsService,
+	public SecurityConfig(AutUserRepository userRepository, UserDetailsServiceImpl customUserDetailsService,
 			JwtAuthenticationEntryPoint unauthorizedHandler, JwtAuthenticationFilter jwtAuthenticationFilter) {
 		this.customUserDetailsService = customUserDetailsService;
 		this.unauthorizedHandler = unauthorizedHandler;

@@ -7,14 +7,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.potsoft.cart2api.model.aut.user.AutUser;
-import com.potsoft.cart2api.repository.AutRepository;
+import com.potsoft.cart2api.model.aut.AutUser;
+import com.potsoft.cart2api.repository.aut.AutUserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService 
 {
   @Autowired
-  AutRepository autRepository;
+  AutUserRepository autRepository;
 
   @Override
   @Transactional
@@ -26,6 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
     return UserDetailsImpl.build(user);
   }
 
+  
   //@Override
   @Transactional
   public UserDetails loadUserById(Long id) throws UsernameNotFoundException 

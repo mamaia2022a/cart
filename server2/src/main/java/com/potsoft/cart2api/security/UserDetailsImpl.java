@@ -10,7 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.potsoft.cart2api.model.aut.user.AutUser;
+import com.potsoft.cart2api.model.aut.AutUser;
 
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;

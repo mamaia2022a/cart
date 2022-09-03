@@ -1,6 +1,6 @@
 package com.potsoft.cart2api.exception;
 
-import com.potsoft.cart2api.payload.response.ApiResponse;
+import com.potsoft.cart2api.payload.response.general.ApiResponse;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseEntityErrorException extends RuntimeException {

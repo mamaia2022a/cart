@@ -1,7 +1,7 @@
 package com.potsoft.cart2api.exception;
 
-import com.potsoft.cart2api.payload.response.ApiResponse;
-import com.potsoft.cart2api.payload.response.ExceptionResponse;
+import com.potsoft.cart2api.payload.response.general.ApiResponse;
+import com.potsoft.cart2api.payload.response.general.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
