@@ -20,7 +20,7 @@ import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors
 export class AuthHandler {
 
 
-  private ApiURL: string = "http://localhost:8080/api/aut/user/login";
+  private ApiURL: string = "http://fluierul.ro:8080/api/aut/user/login";//"http://localhost:8080/api/aut/user/login";
 
     /**
     constructor(private actions$: Actions, private navController: NavController, 
