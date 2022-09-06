@@ -13,7 +13,7 @@ import com.potsoft.cart2api.model.aut.AutRol;
 
 //import com.potsoft.cart2api.model.aut.rol.AutRoleName;
 import com.potsoft.cart2api.payload.response.general.ApiResponse;
-import com.potsoft.cart2api.payload.response.aut.JwtAuthenticationResponse;
+//import com.potsoft.cart2api.payload.response.aut.JwtAuthenticationResponse;
 import com.potsoft.cart2api.payload.request.aut.LoginRequest;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
 
@@ -34,6 +34,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,6 +76,7 @@ public class AutUserController {
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
 
+	/** 
 	@PostMapping("/login2")
 	public ResponseEntity<JwtAuthenticationResponse> authenticateUser2(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(
@@ -85,7 +87,9 @@ public class AutUserController {
 		String jwt = jwtTokenProvider.generateToken(authentication);
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	}
-
+    */
+	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
   
@@ -110,7 +114,7 @@ public class AutUserController {
 						   crtUser));
 	}
   
-
+	@CrossOrigin(origins = "*")
 	@PostMapping("/register")
 	@Transactional(rollbackFor = { SQLException.class })
 	public ResponseEntity<ApiResponse> registerUser(@Valid @RequestBody RegisterRequest registerRequest) 

@@ -25,6 +25,6 @@ public interface AutRolRepository extends JpaRepository<AutRol, Long>
     .orElseThrow(() ->
     new ResourceNotFoundException("AutRol", 
                                   "aut_rol_cod", aut_rol_cod));
-}
+  }
 
 }

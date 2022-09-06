@@ -111,53 +111,62 @@ CREATE TABLE `aut_userinfo` (
 
 
 CREATE TABLE `adm_superadmin` (
-  `adm_superadmin_id`	int NOT NULL AUTO_INCREMENT,
-  `adm_superadmin_userid`	int,
-  `adm_superadmin_activ_yn`	char(1),
-  `adm_superadmin_startdt`	datetime,
-  `adm_superadmin_enddt`	datetime,
-  PRIMARY KEY (`aut_superadmin_id`)
+  `adm_superadmin_id` int NOT NULL AUTO_INCREMENT,
+  `adm_superadmin_userid` int NOT NULL,
+  `adm_superadmin_activ_yn` char(1) NOT NULL,
+  `adm_superadmin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `adm_superadmin_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`adm_superadmin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE `adm_admin` (
-  `adm_admin_id`	int NOT NULL AUTO_INCREMENT,
-  `adm_admin_userid`	int,
-  `adm_admin_activ_yn`	char(1),
-  `adm_admin_startdt`	datetime,
-  `adm_admin_enddt`	datetime,
-  PRIMARY KEY (`aut_admin_id`)
+  `adm_admin_id` int NOT NULL AUTO_INCREMENT,
+  `adm_admin_userid` int NOT NULL,
+  `adm_admin_activ_yn` char(1) NOT NULL,
+  `adm_admin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `adm_admin_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`adm_admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 
 CREATE TABLE `geo_zonatara` (
   `geo_zonatara_id`	int NOT NULL AUTO_INCREMENT,
-  `geo_zonatara_cod`	varchar(2),
-  `geo_zonatara_nume`	varchar(10),
+  `geo_zonatara_cod`	varchar(2) NOT NULL,
+  `geo_zonatara_nume`	varchar(10) NOT NULL,
   primary key (`geo_zonatara_id`),
   UNIQUE KEY `geo_zonatara_cod_unique` (`geo_zonatara_cod`),
   UNIQUE KEY `geo_zonatara_nume_unique` (`geo_zonatara_nume`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
 
 
-INSERT INTO `geo_zonatara` (`geo_zonatara_id`, `geo_zonatara_cod`,`geo_zonatara_nume`)
-       VALUES              (                1,               `TR`,             `Țară`),
-                           (                2,               `DS`,         `Diaspora`);
 
+INSERT INTO  cart2.geo_zonatara (geo_zonatara_id, geo_zonatara_cod, geo_zonatara_nume)
+       VALUES              (                1,               "TR",             "Țară"),
+                           (                2,               "DS",         "Diaspora");
 
 CREATE TABLE `geo_judet` (
   `geo_judet_id`	  int NOT NULL AUTO_INCREMENT,
-  `geo_judet_zonataraid`	int,
-  `geo_judet_zonataracod`   varchar(2),
-  `geo_judet_zonataranume`	varchar(10),
-  `geo_judet_cod`	varchar(2),
-  `geo_judet_nume`	varchar(32),
+  `geo_judet_zonataraid`	int NOT NULL,
+  `geo_judet_zonataracod`   varchar(2) NOT NULL,
+  `geo_judet_zonataranume`	varchar(10) NOT NULL,
+  `geo_judet_cod`	varchar(2) NOT NULL,
+  `geo_judet_nume`	varchar(32) NOT NULL,
   primary key (`geo_judet_id`),
   UNIQUE KEY `geo_judet_cod_unique` (`geo_judet_cod`),
   UNIQUE KEY `geo_judet_nume_unique` (`geo_judet_nume`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
 
+INSERT INTO cart2.geo_judet (
+    geo_judet_id,
+    geo_judet_zonataraid,
+    geo_judet_zonataracod,
+    geo_judet_zonataranume,
+    geo_judet_cod,
+    geo_judet_nume)
+  SELECT id, 1, "TR", "Țară", code, name 
+         FROM localitati.account_county;
 
 CREATE TABLE `geo_localitate` (
   `geo_localitate_id` int not null AUTO_INCREMENT,	
@@ -168,16 +177,46 @@ CREATE TABLE `geo_localitate` (
   `geo_localitate_judetcod`	varchar(2)	not null,
   `geo_localitate_judetnume`	varchar(32)	not null,
   `geo_localitate_cod`	int	not null,
-  `geo_localitate_nume`	varchar(32)	idx, not null	
-  `geo_localitate_longitudine`	decimal(18,16)	not null	
-  `geo_localitate_latitudine`	decimal(18,16)	not null	
-  `geo_localitate_regiune`	varchar(64)	not null	
-  primary key (`geo_localitate_id`)
+  `geo_localitate_nume`	varchar(32) not null,
+  `geo_localitate_longitudine`	decimal(18,16)	not null,
+  `geo_localitate_latitudine`	decimal(18,16)	not null,
+  `geo_localitate_regiune`	varchar(64)	not null,
+  primary key (`geo_localitate_id`),
   UNIQUE KEY `geo_localitate_cod_unique` (`geo_localitate_cod`),
   UNIQUE KEY `geo_localitate_nume_unique` (`geo_localitate_nume`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
 
 
+INSERT INTO cart2.geo_localitate(
+  geo_localitate_id,	
+  geo_localitate_zonataraid,
+  geo_localitate_zonataracod,
+  geo_localitate_zonataranume,
+  geo_localitate_judetid,
+  geo_localitate_judetcod,
+  geo_localitate_judetnume,
+  geo_localitate_cod,
+  geo_localitate_nume,
+  geo_localitate_longitudine,
+  geo_localitate_latitudine,
+  geo_localitate_regiune
+  )
+  SELECT loc.id, 1, "TR", "Țară", jud.id, jud.code, jud.name, 
+         loc.siruta, loc.name, loc.longitude, loc.latitude, loc.region
+	FROM 
+         localitati.account_county as jud,
+         localitati.account_city as loc
+       WHERE loc.county_id = jud.id       ;
+
+'''
+id	int	NO	PRI		auto_increment
+county_id	int	NO	MUL		
+siruta	bigint	NO			
+longitude	decimal(18,16)	NO			
+latitude	decimal(18,16)	NO			
+name	varchar(64)	NO	MUL		
+region	varchar(64)	NO			
+'''
 
 CREATE TABLE `geo_zonajudet` (
     `geo_zonajudet_id`	int not null AUTO_INCREMENT,
@@ -223,53 +262,52 @@ CREATE TABLE `geo_sectievotare` (
    `geo_sectievotare_zonataracod`	varchar(2) not null, 
    `geo_sectievotare_zonataranume`	varchar(10)	not null, 
    `geo_sectievotare_judetid`	int	not null, 
-   `geo_sectievotare_judetcod`	varchar(2)	(redundant)	
-   `geo_sectievotare_judetnume`	varchar(32)	(redundant)	
-   `geo_sectievotare_zonajudetid`	int	fk, idx	
-   `geo_sectievotare_zonajudetcod`	varchar(9)	(redundant)	
-   `geo_sectievotare_zonajudetnume`	varchar(32)	(redundant)	
-   `geo_sectievotare_localitateid`	int	fk, idx	
-   `geo_sectievotare_localitatecod`	int	(redundant)	siruta
-   `geo_sectievotare_localitatenume`	varchar(32)	(redundant)	
-   `geo_sectievotare_zonalocalitateid`	int	fk, idx	
-   `geo_sectievotare_zonalocalitatecod`	varchar(9)	(redundant)	
-   `geo_sectievotare_zonalocalitatenume`	varchar(32)	(redundant)	
-   `geo_sectievotare_nr`	int	idx, not null	
-   `geo_sectievotare_sediu`	varchar(128)	idx, not null	
-   `geo_sectievotare_nrbe`	int	not null	
-   `geo_sectievotare_codsiruta`	int	not null	
-   `geo_sectievotare_uatcod`	varchar(2)		
-   `geo_sectievotare_uatnume`	varchar(128)		
+   `geo_sectievotare_judetcod`	varchar(2),
+   `geo_sectievotare_judetnume`	varchar(32),	
+   `geo_sectievotare_zonajudetid`	int,
+   `geo_sectievotare_zonajudetcod`	varchar(9),
+   `geo_sectievotare_zonajudetnume`	varchar(32),
+   `geo_sectievotare_localitateid`	int,
+   `geo_sectievotare_localitatecod`	int,
+   `geo_sectievotare_localitatenume`	varchar(32),
+   `geo_sectievotare_zonalocalitateid`	int,
+   `geo_sectievotare_zonalocalitatecod`	varchar(9),
+   `geo_sectievotare_zonalocalitatenume`	varchar(32),
+   `geo_sectievotare_nr`	int not null,
+   `geo_sectievotare_sediu`	varchar(128) not null,	
+   `geo_sectievotare_nrbe`	int	not null,
+   `geo_sectievotare_codsiruta`	int	not null,
+   `geo_sectievotare_uatcod`	varchar(2),
+   `geo_sectievotare_uatnume`	varchar(128),	
   primary key (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
 
 
- 
 CREATE TABLE `geo_codpostal` (
-  `geo_codpostal_id`	int	pk	
-  `geo_codpostal_zonataraid`	int	not null, 	
-  `geo_codpostal_zonataracod`	varchar(2) not null, 
-  `geo_codpostal_zonataranume`	varchar(10)	not null, 
-  `geo_codpostal_judetid`	int	not null, 
-  `geo_codpostal_judetcod`	varchar(2) not null, 
-  `geo_codpostal_judetnume`	varchar(32)	not null, 
-  `geo_codpostal_zonajudetid`	int	not null, 
-  `geo_codpostal_zonajudetcod`	varchar(9) not null, 
-  `geo_codpostal_zonajudetnume`	varchar(32)	not null, 
-  `geo_codpostal_localitateid`	int	not null, 
-  `geo_codpostal_localitatecod`	int	not null, 
-  `geo_codpostal_localitatenume`	varchar(32)	not null, 
-  `geo_codpostal_zonalocalitateid`	int	not null, 
-  `geo_codpostal_zonalocalitatecod`	varchar(9)	not null, 
-  `geo_codpostal_zonalocalitatenume`	varchar(32)	not null, 
-  `geo_codpostal_sectievotareid`	int	 not null, 
-  `geo_codpostal_sectievotarenr`	int	 not null, 
-  `geo_codpostal_sectievotaresediu`	varchar(128) not null, 
-  `geo_codpostal_cod` 	varchar(16)	not null, 
-  `geo_codpostal_tipstrada` int	idx, not null	
-  `geo_codpostal_strada`	varchar(128)	not null	
-  `geo_codpostal_numerebloc`	varchar(128)	not null	
+  `geo_codpostal_id` int not null AUTO_INCREMENT,  
+  `geo_codpostal_zonataraid` int	not null, 	
+  `geo_codpostal_zonataracod` varchar(2) not null, 
+  `geo_codpostal_zonataranume` varchar(10)	not null, 
+  `geo_codpostal_judetid` int	not null, 
+  `geo_codpostal_judetcod` varchar(2) not null, 
+  `geo_codpostal_judetnume` varchar(32)	not null, 
+  `geo_codpostal_zonajudetid` int	not null, 
+  `geo_codpostal_zonajudetcod` varchar(9) not null, 
+  `geo_codpostal_zonajudetnume` varchar(32)	not null, 
+  `geo_codpostal_localitateid` int not null, 
+  `geo_codpostal_localitatecod` int	not null, 
+  `geo_codpostal_localitatenume` varchar(32) not null, 
+  `geo_codpostal_zonalocalitateid` int not null, 
+  `geo_codpostal_zonalocalitatecod` varchar(9) not null, 
+  `geo_codpostal_zonalocalitatenume` varchar(32)	not null, 
+  `geo_codpostal_sectievotareid` int not null, 
+  `geo_codpostal_sectievotarenr` int not null, 
+  `geo_codpostal_sectievotaresediu` varchar(128) not null, 
+  `geo_codpostal_cod` varchar(16)	not null, 
+  `geo_codpostal_tipstrada` int not null,	
+  `geo_codpostal_strada` varchar(128)	not null,	
+  `geo_codpostal_numerebloc` varchar(128)	not null,
   primary key (`geo_codpostal_id`),
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
