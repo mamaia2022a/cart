@@ -21,7 +21,7 @@ import { promise } from 'protractor';
 export class AuthHandler {
 
 
-  private ApiURL: string = "http://localhost:8080/api/aut/user/login";//"http://localhost:8080/api/aut/user/login";
+  private ApiURL: string = "http://fluierul.ro:8080/api/aut/user/login";//"http://localhost:8080/api/aut/user/login";
 
     /**
     constructor(private actions$: Actions, private navController: NavController, 
@@ -63,8 +63,8 @@ export class AuthHandler {
               private http: HttpClient, private toastService: ToastService, 
               private apiService: ApiService, private store: Store, private storage: Storage) {
     //var token = storage.get("token");
-    storage.create().then((value) => 
-    {
+    //storage.create().then((value) => 
+    //{
       //console.log(value);
       // expected output: "Success!"
     
@@ -269,7 +269,7 @@ export class AuthHandler {
       })
     });
 
-  });
+  //});
 
   }
 }
