@@ -31,7 +31,7 @@ INSERT INTO cart2.aut_user (`aut_user_id`, `aut_user_nume`, `aut_user_parola`,
 
 CREATE TABLE `aut_rol` (
   `aut_rol_id` int NOT NULL AUTO_INCREMENT,
-  `aut_rol_cod` varchar(9) NOT NULL,
+  `aut_rol_cod` varchar(10) NOT NULL,
   `aut_rol_nume` varchar(32) NOT NULL,
   `aut_rol_activ_yn` varchar(1) NOT NULL,
   `aut_rol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,31 +41,91 @@ CREATE TABLE `aut_rol` (
   UNIQUE KEY `aut_rol_nume_unique` (`aut_rol_nume`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-TRUNCATE TABLE cart2.aut_rol;
-INSERT INTO cart2.aut_rol (`aut_rol_id`, `aut_rol_cod`, `aut_rol_nume`, 
-                      `aut_rol_activ_yn`) 
-        VALUES  (1,	'SUPERADM', 'Superadministrator','y'),
-                (2, 'ADMIN', 'Administrator','y'),
-                (3, 'COORDPRI', 'Coordonator principal','y'),
-                (4, 'ORGVOT', 'Organizator votare','n'),
-                (5, 'CREVOT', 'Creator votare','n'),
-                (6, 'EVLVOT', 'Evaluator rezultate votare','n'),
-                (7, 'VALVOT', 'Validator evaluare votare','n'),
-                (8, 'VOTANT', 'Votant','n'),
-                (9, 'CREACT', 'Creator acțiune','n'),
-                (11, 'EXEACT', 'Executant (/Organizator) acțiune','y'),
-                (12, 'EVLREZ', 'Evaluator rezultate acțiune','y'),
-                (13, 'VALEVAL', 'Validator evaluare acțiune','y'),
-                (14, 'SIMPATIZ', 'Simpatizant','y'),
-                (15, 'MEMINCAFL', 'Membru începător afiliat','y'),
-                (16, 'MBRINCNFL', 'Membru începător neafiliat','y'),
-                (17, 'MEMACTAFL', 'Membru activ afiliat','y'),
-                (18, 'MEMACTNFL', 'Membru activ neafiliat','y'),
-                (19, 'MEMEXPAFL', 'Membru experimentat afiliat','y'),
-                (20, 'MEMEXPNFL', 'Membru experimentat neafiliat','y'),
-                (21, 'SEFGRUP', 'Șef de grup','y');
+DROP TABLE `aut_rol`;
+CREATE TABLE `aut_rol` (
+  `aut_rol_id` int NOT NULL AUTO_INCREMENT,
+  `aut_rol_cod` varchar(10) NOT NULL,
+  `aut_rol_nume` varchar(64) NOT NULL,
+  `aut_rol_descriere` varchar(256),
+  `aut_rol_activ_yn` varchar(1) NOT NULL,
+  `aut_rol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `aut_rol_enddt` datetime DEFAULT NULL,
+  `aut_rol_displaynume` varchar(64) NOT NULL,
+  `aut_rol_displaydescriere` varchar(256),
+  PRIMARY KEY (`aut_rol_id`),
+  UNIQUE KEY `aut_rol_cod_unique` (`aut_rol_cod`),
+  UNIQUE KEY `aut_rol_nume_unique` (`aut_rol_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
+TRUNCATE TABLE aut_rol;
+INSERT INTO aut_rol ( `aut_rol_id`, `aut_rol_cod`, `aut_rol_nume`, `aut_rol_descriere`,
+                      `aut_rol_activ_yn`, `aut_rol_displaynume`, `aut_rol_displaydescriere`) 
+        VALUES  (1,	'SUPERADMIN', 'Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...'
+                            ,'y', 'Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...'),
+
+                (2, 'ADMIN',      'Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...'
+                            ,'y', 'Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...'),
+
+                (3, 'COORDPRINC', 'Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...'
+                            ,'y', 'Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...'),
+
+                (4, 'ORGANIZVOT', 'Organizator votare',           '','n', 'Organizator votare',''),
+                (5, 'CREATORVOT', 'Creator votare',               '','n', 'Creator votare',''),
+                (6, 'EVALUATVOT', 'Evaluator rezultate votare',   '','n', 'Evaluator rezultate votare',''),
+                (7, 'VALIDATVOT', 'Validator evaluare votare',    '','n', 'Validator evaluare votare',''),
+                (8, 'VOTANT',     'Votant',                       '','n', 'Votant',''),
+                (9, 'CREATORACT', 'Creator acțiune',              '','n', 'Creator acțiune',''),
+
+                (11, 'EXECUTACT', 'Executant acțiune',            '','n', 'Executant acțiune',''),
+
+                (12, 'EVALUATREZ','Evaluator rezultate acțiune', 'Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...'
+                             ,'y', 'Evaluator rezultate acțiune','Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...'),
+
+                (13, 'VALIDATEVL','Validator evaluare acțiune', 'Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...'
+                             ,'y', 'Validator evaluare acțiune','Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...'),
+
+                (14, 'SIMPATIZ',  'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'
+                            ,'y', 'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'),
+
+                (15, 'MEMINCAFL', 'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'
+                            ,'y', 'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'),
+
+                (16, 'MEMINCNFL', 'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător Neafiliat...'
+                            ,'y', 'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător neafiliat...'),
+
+                (17, 'MEMACTAFL', 'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'
+                            ,'y', 'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'),
+
+                (18, 'MEMACTNFL', 'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'
+                            ,'y', 'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'),
+
+                (19, 'MEMEXPAFL', 'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'
+                            ,'y', 'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'),
+
+                (20, 'MEMEXPNFL', 'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'
+                            ,'y', 'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'),
+
+                (21, 'SEFGRUP',  'Șef de Grup', 'Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'                 
+                           ,'y', 'Șef de Grup', 'Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'),
+
+                (22, 'ORGANIZACT','Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'
+                            ,'y', 'Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'),
+
+                (23, 'SIMPATPEND','Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...'
+                            ,'y', 'Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...'),
+
+                (24, 'ORGANIPEND','Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'
+                             ,'y','Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),
+
+                (25, 'EVALUAPEND','Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'
+                             ,'y','Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),
+
+                (26, 'VALIDAPEND','Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'  
+                           '','y','Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),
+
+                (27, 'COORPRPEND','Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'  
+                             ,'y','Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.');
 
 CREATE TABLE `aut_userrol` (
   `aut_userrol_id` int NOT NULL AUTO_INCREMENT,
@@ -77,6 +137,360 @@ CREATE TABLE `aut_userrol` (
   `aut_userrol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_userrol_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `aut_grupactiuni` (
+  `aut_grupactiuni_id` int NOT NULL AUTO_INCREMENT,
+  `aut_grupactiuni_cod` varchar(10)	not null,
+  `aut_grupactiuni_nume` varchar(128)	not null,
+  `aut_grupactiuni_descriere` varchar(256)	not null,
+  `aut_grupactiuni_displaynume` varchar(128)	not null,
+  `aut_grupactiuni_displaydescriere` varchar(256)	not null,
+  PRIMARY KEY (`aut_grupactiuni_id`),
+  UNIQUE KEY `aut_grupactiuni_cod_unique` (`aut_grupactiuni_cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+TRUNCATE TABLE aut_grupactiuni;
+INSERT INTO aut_grupactiuni (`aut_grupactiuni_id`, `aut_grupactiuni_cod`,`aut_grupactiuni_nume`, 
+                             `aut_grupactiuni_descriere`, `aut_grupactiuni_displaynume`, `aut_grupactiuni_displaydescriere`) 
+VALUES
+(10, 'GESTADMIN', 'Gestiune Administratori IT', 'Gestionează Administratorii IT ai Sistemului',
+                 'Gestiune Administratori IT', 'Gestionează Administratorii IT ai Sistemului'),
+			
+(20, 'GESTCOOPRI', 'Gestiune Coordonatori Principali', 'Gestionează Coordonatorii Principali ai Partidului',	
+                 'Gestiune Coordonatori Principali', 'Gestionează Coordonatorii Principali ai Partidului'),
+
+(25, 'CONFIRMCOO', 'Confirmare Coordonator Principal', 'Confirmă Invitația de a Deveni Coordonator Principal',
+                   'Confirmare Coordonator Principal', 'Confirmă Invitația de a Deveni Coordonator Principal'),	
+(30, 'GESTORGNZ',  'Gestiune Organizatori Activități', 'Gestionează Organizatorii de Activități ai Partidului',	
+                 'Gestiune Organizatori Activități', 'Gestionează Organizatorii de Activități ai Partidului'),
+(40, 'GESTEVALTR', 'Gestiune Evaluatori Rezultate', 'Gestionează Evaluatorii Partidului - persoanele care vor evalua rezultatele activităților',
+                 'Gestiune Evaluatori Rezultate', 'Gestionează Evaluatorii Partidului - persoanele care vor evalua rezultatele activităților'),
+(50, 'GESTVALDTR', 'Gestiune Validatori Evaluări', 'Gestionează Validatorii Partidului - persoanele care vor valida evaluările făcute de evaluator',
+                 'Gestiune Validatori Evaluări', 'Gestionează Validatorii Partidului - persoanele care vor valida evaluările făcute de evaluator'),
+(60, 'GESTACTIV',  'Gestiunea Activităților', 'Inițiază și Gestionează Activitățile făcute de Membri și Simpatizanții Partidului',
+                 'Gestiunea Activităților', 'Inițiază și Gestionează Activitățile făcute de Membri și Simpatizanții Partidului'),
+(70, 'GESTVOTĂRI', 'Gestiunea Votărilor', 'Inițiază și Gestionează Votările interne ale Partidului',
+                 'Gestiunea Votărilor', 'Inițiază și Gestionează Votările interne ale Partidului'),
+(80, 'VIZGRUPURI', 'Vizualizarea Grupurilor', 'Vizualizează Grupurile de Membri existente in Partid',
+                 'Vizualizarea Grupurilor', 'Vizualizează Grupurile de Membri existente in Partid'),
+(90, 'VIZMEMBRI', 'Vizualizarea Membrilor', 'Vizualizează Membri Partidului	Vizualizarea Membrilor',
+                'Vizualizarea Membrilor', 'Vizualizează Membri Partidului	Vizualizarea Membrilor'),
+(100, 'VIZSIMPAT', 'Vizualizarea Simpatizanților', 'Vizualizează Simpatizanților Partidului',
+                 'Vizualizarea Simpatizanților', 'Vizualizează Simpatizanților Partidului'),
+(110, 'GESTMESAJE', 'Gestionarea Mesajelor', 'Vizualizează și Gestionează Mesajele și Notificările',	
+                  'Gestionarea Mesajelor', 'Vizualizează și Gestionează Mesajele și Notificările'),
+			
+(120, 'CONFIRMORG', 'Confirmare Organizator', 'Confirmă Invitația de a Deveni Organizator de Activități',
+                	  'Confirmare Organizator', 'Confirmă Invitația de a Deveni Organizator de Activități'),
+(130, 'GESTORGACT', 'Gestiune Organizări Activități', 'Gestionează Organizărilor Alocate',
+                    'Gestiune Organizări Activități', 'Gestionează Organizărilor Alocate'),
+(135,	'CONFINVORG', 'Noi Invitații primite pentru a Organiza Activități', 'Confirmă invitațiile primite de a fi organizator pentru Activități noi',
+                    'Noi Invitații primite pentru a Organiza Activități', 'Confirmă invitațiile primite de a fi organizator pentru Activități noi'),
+
+(140, 'CONFIRMEVL', 'Confirmare Evaluator', 'Confirmă Invitația de a Deveni Evaluator de Rezultate al Activităților Partidului',
+                 	  'Confirmare Evaluator', 'Confirmă Invitația de a Deveni Evaluator de Rezultate al Activităților Partidului'),
+(150, 'GESTEVLREZ', 'Gestiune Evaluări Rezultate', 'Evaluează Rezultatelor Activităților din Partid',
+                    'Gestiune Evaluări Rezultate', 'Evaluează Rezultatelor Activităților din Partid'),
+(155, 'CONFINVEVL', 'Noi Invitații primite pentru a fi Evalua Rezultate', 'Confirmă invitațiile primite de a fi Evaluator pentru Rezultatele unor Activități noi',
+                    'Noi Invitații primite pentru a fi Evalua Rezultate', 'Confirmă invitațiile primite de a fi Evaluator pentru Rezultatele unor Activități noi'),
+
+(160, 'CONFIRMVAL', 'Confirmare Validator', 'Confirmă Invitația de a Deveni Validator de Evaluări ale Activităților Partidului',
+                    'Confirmare Validator', 'Confirmă Invitația de a Deveni Validator de Evaluări ale Activităților Partidului'),
+(170, 'GESTVALEVL', 'Gestiune Validare Evaluări', 'Validează Evaluarea Rezultatelor Activităților efectuate',
+                    'Gestiune Validare Evaluări', 'Validează Evaluarea Rezultatelor Activităților efectuate'),
+(175, 'CONFINVVAL', 'Noi Invitații primite pentru a fi Valida Evaluări', 'Confirmă invitațiile primite de a fi Validator pentru Evaluările Rezultatelor unor Activități noi',
+                    'Noi Invitații primite pentru a fi Valida Evaluări', 'Confirmă invitațiile primite de a fi Validator pentru Evaluările Rezultatelor unor Activități noi'),
+
+
+(180, 'CONFIRMSIM', 'Confirmă Înregistrarea ca Simpatizant', 'Confirmă Inregistrarea ca Simpatizant al Partidului',
+                   'Confirmă Înregistrare ca Simpatizant', 'Confirmă Inregistrarea ca Simpatizant al Partidului'),
+(190, 'INDRUMMEM',  'Cum Poți Deveni Membru?', 'Îndrumător pentru a deveni Membru al Partidului',
+                   'Cum Poți Deveni Membru?', 'Îndrumător pentru a deveni Membru al Partidului'),
+(200, 'CEREREMEM',  'Cerere Membru', 'Gestionează Cererea și Condițiile pentru a Deveni Membru	Cerere Membru',
+                   'Cerere Membru', 'Gestionează Cererea și Condițiile pentru a Deveni Membru	Cerere Membru'),
+			
+(220, 'INDRMEMACT', 'Cum Poți Deveni Membru Activ?', 'Îndrumător pentru a deveni Membru Activ al Partidului',
+                    'Cum Poți Deveni Membru Activ?', 'Îndrumător pentru a deveni Membru Activ al Partidului'),
+(230, 'AFILGRPMEM', 'Afiliază-te la un Grup', 'Afiliază-te la un Grup de Membri',
+                    'Afiliază-te la un Grup', 'Afiliază-te la un Grup de Membri'),
+(240, 'GESTEXEACT', 'Participă la Activități', 'Înscrie-te și Participă la la Activitățile Partidului',
+                    'Participă la Activități', 'Înscrie-te și Participă la la Activitățile Partidului'),
+(250, 'GESTEXEVOT', 'Participă la Votări', 'Înscrie-te și Participă la la Votările Partidului',
+                    'Participă la Votări', 'Înscrie-te și Participă la la Votările Partidului'),
+
+(260, 'INDRMEMEXP', 'Cum Poți Deveni Membru Experimentat?', 'Îndrumător pentru a deveni Membru Experimentat al Partidului',
+                    'Cum Poți Deveni Membru Experimentat?', 'Îndrumător pentru a deveni Membru Experimentat al Partidului'),
+
+(270, 'DAFLGRPMEM', 'Dezafiliază-te de la Grup', 'Dezafiliază-te de la Grupul Tău',
+                   'Dezafiliază-te de la Grup', 'Dezafiliază-te de la Grupul Tău'),
+(280, 'VIZGRUPMEM', 'Grupul Meu', 'Vizualizează și Participă la Activitatea Grupului din care faci parte',
+                   'Grupul Meu', 'Vizualizează și Participă la Activitatea Grupului din care faci parte'),
+			
+(290, 'CREAREGRUP', 'Creare Grup', 'Crează-ți Propriul Tău Grup',
+                   	 'Creare Grup', 'Crează-ți Propriul Tău Grup'),
+			
+(300, 'GESTGRUP', 'Gestiune Grup', 'Gestionează Grupul pe care l-ai înființat',
+                  'Gestiune Grup', 'Gestionează Grupul pe care l-ai înființat'),
+(310, 'VIZACTGRUP','Activitățile din Grup', 'Vizualizează Activitățile Membrilor din Grupul Tău',
+                   'Activitățile din Grup', 'Vizualizează Activitățile Membrilor din Grupul Tău'),
+(320, 'VIZVOTGRUP','Votările din Grup', 'Vizualizează Participarea la Votări a Membrilor din Grupul Tău',
+                   'Votările din Grup', 'Vizualizează Participarea la Votări a Membrilor din Grupul Tău'),
+(330, 'DAFLGRPSEF','Dezafiliază-te ca Șef de Grup', 'Dezafiliază-te de la Grupul Înființat de Tine',
+                   'Dezafiliază-te ca Șef de Grup', 'Dezafiliază-te de la Grupul Înființat de Tine'
+);
+
+#(210, 'GESTACTSIM','Gestiune Activități', 'Gestionează Activitățile la care participi ca Simpatizant al Partidului',
+#                   'Gestiune Activități', 'Gestionează Activitățile la care participi ca Simpatizant al Partidului'),
+
+
+CREATE TABLE `aut_rolgrupact` (
+  `aut_rolgrupact_id` int not null AUTO_INCREMENT,
+  `aut_rolgrupact_rolid` int not null,
+  `aut_rolgrupact_rolcod` varchar(10)	not null,
+  `aut_rolgrupact_grupactid` int not null,
+  `aut_rolgrupact_grupactcod` varchar(10)	not null,
+  `aut_rolgrupact_importanta` int	not null,
+  PRIMARY KEY (`aut_rolgrupact_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+TRUNCATE TABLE aut_rolgrupact;
+INSERT INTO aut_rolgrupact  (`aut_rolgrupact_id`, `aut_rolgrupact_rolid`, `aut_rolgrupact_rolcod`,
+                             `aut_rolgrupact_grupactid`, `aut_rolgrupact_grupactcod`,`aut_rolgrupact_importanta` ) 
+VALUES
+(10,   1, 'SUPERADMIN',  10, 'GESTADMIN',  1),
+(20,   1, 'SUPERADMIN', 110, 'GESTMESAJE', 2),
+				
+(30,   2, 'ADMIN',  20, 'GESTCOOPRI', 1),
+(40,   2, 'ADMIN', 110, 'GESTMESAJE', 2),
+
+(45,  27, 'COORPRPEND',  25, 'CONFIRMCOO', 1),  
+(50,   3, 'COORDPRINC',  30, 'GESTORGACT', 5),
+(60,   3, 'COORDPRINC',  40, 'GESTEVLREZ', 3),
+(70,   3, 'COORDPRINC',  50, 'GESTVALREZ', 4),
+(80,   3, 'COORDPRINC',  60, 'GESTACTIV',  1),
+(90,   3, 'COORDPRINC',  70, 'GESTVOTĂRI', 2),
+(100,  3, 'COORDPRINC',  80, 'VIZGRUPURI', 7),
+(110,  3, 'COORDPRINC',  90, 'VIZMEMBRI',  6),
+(120,  3, 'COORDPRINC', 100, 'VIZSIMPAT',  8),
+(130,  3, 'COORDPRINC', 110, 'GESTMESAJE', 9),
+				
+(140,  24, 'ORGANIPEND', 120, 'CONFIRMORG', 1),
+(150,  22, 'ORGANIZACT', 130, 'GESTORGACT', 1),
+(160,  22, 'ORGANIZACT', 135, 'CONFINVACT', 2),
+(170,  22, 'ORGANIZACT', 110, 'GESTMESAJE', 3),
+				
+(180,  25, 'EVALUAPEND', 140, 'CONFIRMEVL', 1),
+(190,  12, 'EVALUATREZ', 150, 'GESTEVLREZ', 1),
+(200,  12, 'EVALUATREZ', 155, 'CONFINVEVL', 2),
+(210,  12, 'EVALUATREZ', 110, 'GESTMESAJE', 3),
+				
+(220,  26, 'VALIDAPEND', 160, 'CONFIRMVAL', 1),
+(230,  13, 'VALIDATEVL', 170, 'GESTVALEVL', 1),
+(240,  13, 'VALIDATEVL', 175, 'CONFINVVAL', 2),
+(250,  13, 'VALIDATEVL', 110, 'GESTMESAJE', 3),
+				
+(260,  23, 'SIMPATPEND', 180, 'CONFIRMSIM', 1),
+(270,  14, 'SIMPATIZ',   190, 'INDRUMMEM',  1),
+(280,  14, 'SIMPATIZ',   200, 'CEREREMEM',  2),
+(290,  14, 'SIMPATIZ',   240, 'GESTEXEACT', 3),
+(300,  14, 'SIMPATIZ',   110, 'GESTMESAJE', 4),
+				
+(310,  16, 'MEMINCNFL', 220, 'INDRMEMACT', 1),
+(320,  16, 'MEMINCNFL', 230, 'AFILGRPMEM', 4),
+(330,  16, 'MEMINCNFL', 240, 'GESTEXEACT', 2),
+(340,  16, 'MEMINCNFL', 250, 'GESTEXEVOT', 3),
+(350,  16, 'MEMINCNFL', 110, 'GESTMESAJE', 5),
+				
+(360,  15, 'MEMINCAFL', 220, 'INDRMEMACT', 1),
+(370,  15, 'MEMINCAFL', 240, 'GESTEXEACT', 2),
+(380,  15, 'MEMINCAFL', 250, 'GESTEXEVOT', 3),
+(390,  15, 'MEMINCAFL', 280, 'VIZGRUPMEM', 4),
+(400,  15, 'MEMINCAFL', 270, 'DAFLGRPMEM', 5),
+(410,  15, 'MEMINCAFL', 110, 'GESTMESAJE', 6),
+				
+(420,  18, 'MEMACTNFL', 260, 'INDRMEMEXP', 1),
+(430,  18, 'MEMACTNFL', 290, 'CREAREGRUP', 4),
+(440,  18, 'MEMACTNFL', 230, 'AFILMEMGRP', 5),
+(450,  18, 'MEMACTNFL', 240, 'GESTEXEACT', 2),
+(460,  18, 'MEMACTNFL', 250, 'GESTEXEVOT', 3),
+(470,  18, 'MEMACTNFL', 110, 'GESTMESAJE', 6),
+				
+(480,  17, 'MEMACTAFL', 260, 'INDRMEMEXP', 1),
+(490,  17, 'MEMACTAFL', 240, 'GESTEXEACT', 2),
+(500,  17, 'MEMACTAFL', 250, 'GESTEXEVOT', 3),
+(510,  17, 'MEMACTAFL', 280, 'VIZGRUPMEM', 4),
+(520,  17, 'MEMACTAFL', 270, 'DAFLGRPMEM', 5),
+(530,  17, 'MEMACTAFL', 110, 'GESTMESAJE', 6),
+				
+(550,  20, 'MEMEXPNFL', 290, 'CREAREGRUP', 3),
+(560,  20, 'MEMEXPNFL', 230, 'AFILMEMGRP', 4),
+(570,  20, 'MEMEXPNFL', 240, 'GESTEXEACT', 1),
+(580,  20, 'MEMEXPNFL', 250, 'GESTEXEVOT', 2),
+(590,  20, 'MEMEXPNFL', 110, 'GESTMESAJE', 5),
+				
+(610,  19, 'MEMEXPAFL', 240, 'GESTEXEACT', 1),
+(620,  19, 'MEMEXPAFL', 250, 'GESTEXEVOT', 2),
+(630,  19, 'MEMEXPAFL', 280, 'VIZGRUPMEM', 3),
+(640,  19, 'MEMEXPAFL', 270, 'DAFLGRPMEM', 4),
+(650,  19, 'MEMEXPAFL', 110, 'GESTMESAJE', 5),
+				
+(660,  21, 'SEFGRUP', 300, 'GESTGRUP',   1),
+(670,  21, 'SEFGRUP', 310, 'VIZACTGRUP', 2),
+(680,  21, 'SEFGRUP', 320, 'VIZVOTGRUP', 3),
+(690,  21, 'SEFGRUP', 240, 'GESTEXEACT', 4),
+(700,  21, 'SEFGRUP', 250, 'GESTEXEVOT', 5),
+(710,  21, 'SEFGRUP', 330, 'DAFLGRPSEF', 6),
+(720,  21, 'SEFGRUP', 110, 'GESTMESAJE', 7
+);
+
+
+CREATE TABLE `aut_actiune` (
+  `aut_actiune_id` int not null AUTO_INCREMENT,
+  `aut_actiune_cod` varchar(25)	not null,
+  `aut_actiune_nume` varchar(128)	not null,
+  `aut_actiune_descriere` varchar(256)	not null,
+  `aut_actiune_displaynume` varchar(128)	not null,
+  `aut_actiune_displaydescriere` varchar(256)	not null,
+  PRIMARY KEY (`aut_actiune_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+TRUNCATE TABLE aut_actiune;
+INSERT INTO aut_actiune (`aut_actiune_id`, `aut_actiune_cod`,`aut_actiune_nume`, 
+                         `aut_actiune_descriere`, `aut_actiune_displaynume`, `aut_actiune_displaydescriere`) 
+VALUES
+(110910, 'GESTMESAJENOTIFAPP', 'Notificări Aplicație', 'Vizualizează și Gestionează Notificările Aplicației',
+                               'Notificări Aplicație', 'Vizualizează și Gestionează Notificările Aplicației'),
+
+(180910, 'CONFIRMSIMACT', 'Validare Înregistrare', 'Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit', 
+			                    'Validare Înregistrare', 'Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit'), 
+(190910, 'INDRUMMEMACT', 'Îndrumător cum Poți Deveni Membru', 'Îndrumător pentru a deveni Membru al Partidului',
+                         'Îndrumător cum Poți Deveni Membru', 'Îndrumător pentru a deveni Membru al Partidului'),
+(200920, 'CEREREMEMCOMPLETCNP', 'Completează CNP, Nr. și Seria CI', 'Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI',
+                                'Completează CNP, Nr. și Seria CI', 'Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI'),
+(200930, 'CEREREMEMCOMPLETADR', 'Completează Adresa de Domiciliu', 'Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență',
+                                'Completează Adresa de Domiciliu', 'Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență'),
+(200940, 'CEREREMEMDOVADACOT', 'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent',
+                               'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent'),
+(200950, 'CEREREMEMTRIMITECER', 'Trimite Cererea de Membru', 'Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)',
+                                'Trimite Cererea de Membru', 'Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)'),
+			
+(210905, 'GESTACTEXELISTACTC', 'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris',
+                               'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris'),
+(210910, 'GESTACTEXELISTACTV', 'Lista activități viitoare', 'Lista de Activități  noi la care vă puteți înscrie',
+                               'Lista activități viitoare', 'Lista de Activități  noi la care vă puteți înscrie'),
+(210915, 'GESTACTEXELISTACTT', 'Listă activități trecute', 'Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate',
+                               'Listă activități trecute', 'Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate'),
+(210920, 'GESTACTEXEVIZACTC', 'Vizualizare Activitate Curentă', 'Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați',
+                              'Vizualizare Activitate Curentă', 'Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați'),
+(210925, 'GESTACTEXEVIZACTV', 'Vizualizare Activitate Viitoare', 'Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie',
+                              'Vizualizare Activitate Viitoare', 'Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie'),
+(210930, 'GESTACTEXEVIZACTT', 'Vizualizare Activitate Trecute', 'Vizualizarea unei Activități Trecute la care ați participat',
+                              'Vizualizare Activitate Trecute', 'Vizualizarea unei Activități Trecute la care ați participat'),
+(210935, 'GESTACTEXEINSCACTV', 'Înscrierea la o Activitate Nouă', 'Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare',
+                               'Înscrierea la o Activitate Nouă', 'Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare'),
+(210940, 'GESTACTEXERENUACTV', 'Renunțați la o Activitate Nouă', 'Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare',
+                               'Renunțați la o Activitate Nouă', 'Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare'),
+(210945, 'GESTACTEXEADDREZACTC', 'Adăugare Rezultat Activitate', 'Adăugarea unui Rezultat pentru o Activitate la care participați',
+                                 'Adăugare Rezultat Activitate', 'Adăugarea unui Rezultat pentru o Activitate la care participați'),
+
+(210950, 'GESTACTEXEMODREZACTC', 'Modificare Rezultat Activitate', 'Modificare unui Rezultat pentru o Activitate la care participați',
+                                 'Modificare Rezultat Activitate', 'Modificare unui Rezultat pentru o Activitate la care participați'),
+(210955, 'GESTACTEXEDELREZACTC', 'Ștergere Rezultat Activitate', 'Ștergerea unui Rezultat pentru o Activitate la care participați',
+                                 'Ștergere Rezultat Activitate', 'Ștergerea unui Rezultat pentru o Activitate la care participați'),
+(210960, 'GESTACTEXEVIZREZACTT', 'Vizualizare Rezultat Activitate', 'Vizualizați Rezultatul pentru o Activitate la care ați participat',
+                                 'Vizualizare Rezultat Activitate', 'Vizualizați Rezultatul pentru o Activitate la care ați participat'),
+(210965, 'GESTACTEXELISTFAZVACTV', 'Listă Faze Activitate Viitoare', 'Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)',
+                                   'Listă Faze Activitate Viitoare', 'Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)'),
+(210970, 'GESTACTEXEVIZFAZVACTV', 'Vizualizare Fază Viitoare', 'Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)',
+                                  'Vizualizare Fază Viitoare', 'Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)'),
+(210972, 'GESTACTEXEINSCFAZVACTV', 'Înscrierea Participare Fază Activitate', 'Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare',
+                                   'Înscrierea Participare Fază Activitate', 'Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare'),
+(210974, 'GESTACTEXERENUFAZVACTV', 'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare',
+                                   'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare'),
+(210976, 'GESTACTEXELISTFAZACTC', 'Listă Faze Activitate CurentăVi', 'zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
+                                  'Listă Faze Activitate CurentăVi', 'zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)'),
+(210978, 'GESTACTEXEVIZFAZACTC', 'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)',
+                                 'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)'),
+(210980, 'GESTACTEXEADDREZFAZC', 'Adăugare Rezultat Fază în Desfășurare', 'Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
+                                 'Adăugare Rezultat Fază în Desfășurare', 'Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),
+(210982, 'GESTACTEXEMODREZFAZC', 'Modificare Rezultat Fază în Desfășurare', 'Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
+                                 'Modificare Rezultat Fază în Desfășurare', 'Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),
+(210984, 'GESTACTEXEDELREZFAZC', 'Ștergere Rezultat Fază în Desfășurare', 'Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
+                                 'Ștergere Rezultat Fază în Desfășurare', 'Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),
+(210986, 'GESTACTEXEVIZREZFAZTACTC', 'Vizualizare Rezultat Fază Trecută Activitate Curentă', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente',
+                                     'Vizualizare Rezultat Fază Trecută Activitate Curentă', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente'),
+(210988, 'GESTACTEXELISTFAZACTT', 'Listă Faze Activitate Trecută', 'Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)',
+                                  'Listă Faze Activitate Trecută', 'Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)'),
+(210990, 'GESTACTEXEVIZFAZTACTT', 'Vizualizare Fază Trecută Activitate Trecută', 'Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)',
+                                  'Vizualizare Fază Trecută Activitate Trecută', 'Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)'),
+(210992, 'GESTACTEXEVIZREZFAZTACTT', 'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute',
+                                     'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute'
+);
+
+CREATE TABLE `aut_grupactactiune` (
+  `aut_grupactactiune_id` int NOT NULL AUTO_INCREMENT,
+  `aut_grupactactiune_grupactid` int NOT NULL,
+  `aut_grupactactiune_grupactcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactactiune_actid` int NOT NULL,
+  `aut_grupactactiune_actcod` varchar(25) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactactiune_importanta` int NOT NULL,
+  `aut_grupactactiune_parentactid` int DEFAULT NULL,
+  `aut_grupactactiune_parentactcod` varchar(25) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`aut_grupactactiune_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+TRUNCATE TABLE aut_grupactactiune;
+INSERT INTO aut_grupactactiune (`aut_grupactactiune_id`,    `aut_grupactactiune_grupactid`, `aut_grupactactiune_grupactcod`,
+                                `aut_grupactactiune_actid`, `aut_grupactactiune_actcod`,    `aut_grupactactiune_importanta`,
+                                `aut_grupactactiune_parentactid`, `aut_grupactactiune_parentactcod` )
+VALUES
+(2001, 180, 'CONFIRMSIM', 180910, 'CONFIRMSIMACT', 1, null, null),
+						
+						
+(2002, 190, 'INDRUMMEM', 190910, 'INDRUMMEMACT', 1, null, null),	
+						
+(2003, 200, 'CEREREMEM', 200920, 'CEREREMEMCOMPLETCNP', 1, null, null),	
+(2004, 200, 'CEREREMEM', 200930, 'CEREREMEMCOMPLETADR', 2, null, null),	
+(2005, 200, 'CEREREMEM', 200940, 'CEREREMEMDOVADACOT',  3, null, null),	
+(2006, 200, 'CEREREMEM', 200950, 'CEREREMEMTRIMITECER', 4, null, null),
+						
+(2007, 240, 'GESTEXEACT', 210905, 'GESTACTEXELISTACTC',        1,   null,                null),		
+(2008, 240, 'GESTEXEACT', 210910, 'GESTACTEXELISTACTV',        2,   null,                null),	
+(2009, 240, 'GESTEXEACT', 210915, 'GESTACTEXELISTACTT',        3,   null,                null),
+(2010, 240, 'GESTEXEACT', 210920, 'GESTACTEXEVIZACTC',         4, 210905, 'GESTACTEXELISTACTC'),
+(2011, 240, 'GESTEXEACT', 210925, 'GESTACTEXEVIZACTV',         5, 210910, 'GESTACTEXELISTACTV'),
+(2012, 240, 'GESTEXEACT', 210930, 'GESTACTEXEVIZACTT',         6, 210915, 'GESTACTEXELISTACTT'),
+(2013, 240, 'GESTEXEACT', 210935, 'GESTACTEXEINSCACTV',        7, 210925, 'GESTACTEXEVIZACTV'),
+(2014, 240, 'GESTEXEACT', 210940, 'GESTACTEXERENUACTV',        8, 210925, 'GESTACTEXEVIZACTV'),
+(2015, 240, 'GESTEXEACT', 210945, 'GESTACTEXEADDREZACTC',      9, 210920, 'GESTACTEXEVIZACTC'),
+(2016, 240, 'GESTEXEACT', 210950, 'GESTACTEXEMODREZACTC',     10, 210920, 'GESTACTEXEVIZACTC'),
+(2017, 240, 'GESTEXEACT', 210955, 'GESTACTEXEDELREZACTC',     11, 210920, 'GESTACTEXEVIZACTC'),
+(2018, 240, 'GESTEXEACT', 210960, 'GESTACTEXEVIZREZACTT',     12, 210930, 'GESTACTEXEVIZACTT'),
+(2019, 240, 'GESTEXEACT', 210965, 'GESTACTEXELISTFAZVACTV',   13, 210925, 'GESTACTEXEVIZACTV'),
+(2020, 240, 'GESTEXEACT', 210970, 'GESTACTEXEVIZFAZVACTV',    14, 210965, 'GESTACTEXELISTFAZVACTV'),
+(2021, 240, 'GESTEXEACT', 210972, 'GESTACTEXEINSCFAZVACTV',   15, 210970, 'GESTACTEXEVIZFAZVACTV'),
+(2022, 240, 'GESTEXEACT', 210974, 'GESTACTEXERENUFAZVACTV',   16, 210970, 'GESTACTEXEVIZFAZVACTV'),
+(2023, 240, 'GESTEXEACT', 210976, 'GESTACTEXELISTFAZACTC',    17, 210905,'GESTACTEXELISTACTC'),
+(2024, 240, 'GESTEXEACT', 210978, 'GESTACTEXEVIZFAZACTC',     18, 210976, 'GESTACTEXELISTFAZACTC'),
+(2025, 240, 'GESTEXEACT', 210980, 'GESTACTEXEADDREZFAZC',     19, 210978, 'GESTACTEXEVIZFAZACTC'),
+(2026, 240, 'GESTEXEACT', 210982, 'GESTACTEXEMODREZFAZC',     20, 210978, 'GESTACTEXEVIZFAZACTC'),
+(2027, 240, 'GESTEXEACT', 210984, 'GESTACTEXEDELREZFAZC',     21, 210978, 'GESTACTEXEVIZFAZACTC'),
+(2028, 240, 'GESTEXEACT', 210986, 'GESTACTEXEVIZREZFAZTACTC', 22, 210978, 'GESTACTEXEVIZFAZACTC'),
+(2029, 240, 'GESTEXEACT', 210988, 'GESTACTEXELISTFAZACTT',    23, 210915, 'GESTACTEXELISTACTT'),
+(2030, 240, 'GESTEXEACT', 210990, 'GESTACTEXEVIZFAZTACTT',    24, 210988, 'GESTACTEXELISTFAZACTT'),
+(2031, 240, 'GESTEXEACT', 210992, 'GESTACTEXEVIZREZFAZTACTT', 25, 210992, 'GESTACTEXEVIZREZFAZTACTT'),
+						
+(2032, 110, 'GESTMESAJE', 110910, 'GESTMESAJENOTIFAPP', 1, null, null	
+);
+
 
 
 CREATE TABLE `aut_userinfo` (
@@ -106,7 +520,16 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_rez_codpostal`	varchar(16),
   `aut_userinfo_rez_adresa`	varchar(128),
   PRIMARY KEY (`aut_userinfo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+1	AUT_VALIDINREG_ID	Int	PK, Autoincrement
+2	AUT_VALIDINREG_USERID	int	FK
+3	AUT_VALIDINREG_CODVALIDARE	Int(8)	Not Null
+4	AUT_VALIDINREG_ACTIV_YN	datetime	Not null
+5	AUT_VALIDINREG_STARTDT	Datetime	Not null
+6	AUT_VALIDINREG_ENDDT	Datetime	Not null
+
 
 
 

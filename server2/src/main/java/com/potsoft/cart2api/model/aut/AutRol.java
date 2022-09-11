@@ -1,5 +1,9 @@
 package com.potsoft.cart2api.model.aut;
 
+import java.util.HashSet;
+//import java.util.List;
+import java.util.Set;
+
 //import java.util.HashSet;
 //import java.util.List;
 //import java.util.Set;
@@ -8,6 +12,7 @@ import javax.persistence.*;
 //import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
 
 
 
@@ -25,7 +30,7 @@ public class AutRol {
   private Long autRolId;
 
   @NotBlank
-  @Size(max = 9)
+  @Size(max = 10)
   @Column(name = "aut_rol_cod")
   private String autRolCod;
 
@@ -33,6 +38,10 @@ public class AutRol {
   @Size(max = 32)
   @Column(name = "aut_rol_nume")
   private String autRolNume;
+
+  @Size(max = 256)
+  @Column(name = "aut_rol_descriere")
+  private String autRolDescriere;
 
   @NotBlank
   @Size(max = 1)
@@ -49,19 +58,36 @@ public class AutRol {
   private String autRolEnddt;
 
 
+  @NotBlank
+  @Size(max = 32)
+  @Column(name = "aut_rol_displaynume")
+  private String autRolDisplaynume;
+
+  @Size(max = 256)
+  @Column(name = "aut_rol_displaydescriere")
+  private String autRolDisplaydescriere;
+
+  @OrderBy("aut_rolgrupact_importanta")
+  @OneToMany(mappedBy = "autRolgrupactRolid", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<AutRolGrupAct> rolgrupact = new HashSet<>();
+
 	public AutRol() 
   {
 	}
 
-	public AutRol( Long   aut_rol_id, String aut_rol_cod, String aut_rol_nume, 
-                  String aut_rol_activ_yn, String aut_rol_startdt, String aut_rol_enddt) 
+	public AutRol( Long   aut_rol_id, String aut_rol_cod, String aut_rol_nume, String aut_rol_descriere, 
+                  String aut_rol_activ_yn, String aut_rol_startdt, String aut_rol_enddt,
+                  String aut_rol_displaynume, String aut_rol_displaydescriere) 
   {
-		this.autRolId       = aut_rol_id;
-		this.autRolCod      = aut_rol_cod;
-    this.autRolNume     = aut_rol_nume;
-		this.autRolActivyn  = aut_rol_activ_yn;
-		this.autRolStartdt  = aut_rol_startdt;
-    this.autRolEnddt    = aut_rol_enddt;
+		this.autRolId               = aut_rol_id;
+		this.autRolCod              = aut_rol_cod;
+    this.autRolNume             = aut_rol_nume;
+    this.autRolDescriere        = aut_rol_descriere;
+		this.autRolActivyn          = aut_rol_activ_yn;
+		this.autRolStartdt          = aut_rol_startdt;
+    this.autRolEnddt            = aut_rol_enddt;
+    this.autRolDisplaynume      = aut_rol_displaynume;
+    this.autRolDisplaydescriere = aut_rol_displaydescriere;
 	}
 
   public Long getAutRolId() 
@@ -97,6 +123,17 @@ public class AutRol {
   }
 
 
+  public String getAutRolDescriere() 
+  {
+    return this.autRolDescriere;
+  }
+
+  public void setAutRolDescriere(String aut_rol_descriere)
+  {
+    this.autRolDescriere = aut_rol_descriere;
+  }
+
+
   public String getAutRolActivyn() 
   {
     return this.autRolActivyn;
@@ -129,5 +166,34 @@ public class AutRol {
     this.autRolEnddt = aut_rol_enddt;
   }
 
-    
+
+  public String getAutRolDisplayNume() 
+  {
+    return this.autRolDisplaynume;
+  }
+
+  public void setAutRolDisplayNume(String aut_rol_displaynume) 
+  {
+    this.autRolDisplaynume = aut_rol_displaynume;
+  }
+
+
+  public String getAutRolDisplaydescriere() 
+  {
+    return this.autRolDisplaydescriere;
+  }
+
+  public void setAutRolDisplaydescriere(String aut_rol_displaydescriere)
+  {
+    this.autRolDisplaydescriere = aut_rol_displaydescriere;
+  }
+
+  public Set<AutRolGrupAct> getRolgrupact() {
+    return this.rolgrupact;
+  }
+
+  public void setRolgrupact(Set<AutRolGrupAct> rolgrupact) {
+    this.rolgrupact = rolgrupact;
+  }
+  
 }

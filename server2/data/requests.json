@@ -111,5 +111,455 @@
         },
         "userName": "alexm"
     }
-  ]
+  ],
+
+  "x" : [
+    {
+        "autRolgrupactId": 260,
+        "autRolgrupactRolid": 14,
+        "autRolgrupactRolcod": "SIMPATIZ",
+        "autRolgrupactGrupactid": 180,
+        "autRolgrupactGrupactcod": "CONFIRMSIM",
+        "autRolgrupactImportanta": 1,
+        "grupactiuni": {
+            "autGrupactiuniId": 180,
+            "autGrupactiuniCod": "CONFIRMSIM",
+            "autGrupactiuniNume": "Confirmare Înregistrare Simpatizant",
+            "autGrupactiuniDescriere": "Confirmă Inregistrarea ca Simpatizant al Partidului",
+            "autGrupactiuniDisplaydescriere": "Confirmă Inregistrarea ca Simpatizant al Partidului",
+            "autGrupactiuniDisplayNume": "Confirmare Înregistrare Simpatizant"
+        }
+    },
+    {
+        "autRolgrupactId": 270,
+        "autRolgrupactRolid": 14,
+        "autRolgrupactRolcod": "SIMPATIZ",
+        "autRolgrupactGrupactid": 190,
+        "autRolgrupactGrupactcod": "INDRUMMEM",
+        "autRolgrupactImportanta": 2,
+        "grupactiuni": {
+            "autGrupactiuniId": 190,
+            "autGrupactiuniCod": "INDRUMMEM",
+            "autGrupactiuniNume": "Cum Poți Deveni Membru?",
+            "autGrupactiuniDescriere": "Îndrumător pentru a deveni Membru al Partidului",
+            "autGrupactiuniDisplaydescriere": "Îndrumător pentru a deveni Membru al Partidului",
+            "autGrupactiuniDisplayNume": "Cum Poți Deveni Membru?"
+        }
+    },
+    {
+        "autRolgrupactId": 280,
+        "autRolgrupactRolid": 14,
+        "autRolgrupactRolcod": "SIMPATIZ",
+        "autRolgrupactGrupactid": 200,
+        "autRolgrupactGrupactcod": "CEREREMEM",
+        "autRolgrupactImportanta": 3,
+        "grupactiuni": {
+            "autGrupactiuniId": 200,
+            "autGrupactiuniCod": "CEREREMEM",
+            "autGrupactiuniNume": "Cerere Membru",
+            "autGrupactiuniDescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+            "autGrupactiuniDisplaydescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+            "autGrupactiuniDisplayNume": "Cerere Membru"
+        }
+    },
+    {
+        "autRolgrupactId": 290,
+        "autRolgrupactRolid": 14,
+        "autRolgrupactRolcod": "SIMPATIZ",
+        "autRolgrupactGrupactid": 210,
+        "autRolgrupactGrupactcod": "GESTACTSIM",
+        "autRolgrupactImportanta": 4,
+        "grupactiuni": {
+            "autGrupactiuniId": 210,
+            "autGrupactiuniCod": "GESTACTSIM",
+            "autGrupactiuniNume": "Gestiune Activități",
+            "autGrupactiuniDescriere": "Gestionează Activitățile la care participi ca Simpatizant al Partidului",
+            "autGrupactiuniDisplaydescriere": "Gestionează Activitățile la care participi ca Simpatizant al Partidului",
+            "autGrupactiuniDisplayNume": "Gestiune Activități"
+        }
+    },
+    {
+        "autRolgrupactId": 300,
+        "autRolgrupactRolid": 14,
+        "autRolgrupactRolcod": "SIMPATIZ",
+        "autRolgrupactGrupactid": 110,
+        "autRolgrupactGrupactcod": "GESTMESAJE",
+        "autRolgrupactImportanta": 5,
+        "grupactiuni": {
+            "autGrupactiuniId": 110,
+            "autGrupactiuniCod": "GESTMESAJE",
+            "autGrupactiuniNume": "Gestionarea Mesajelor",
+            "autGrupactiuniDescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+            "autGrupactiuniDisplaydescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+            "autGrupactiuniDisplayNume": "Gestionarea Mesajelor"
+        }
+    }
+],
+"a":
+{
+    "id": 4,
+    "roles": [
+        "SIMPATIZ"
+    ],
+    "userName": "alexm",
+    "tokenType": "Bearer",
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyNzI1NTYwLCJleHAiOjE2NjI3MjkxNjB9.jSHN0ghgNH1ip3udnOyUKdzirLH4zujBHhF5q-fIHrfcBKblkbzuIs81d6NVW1nfDj0jHLeWYETsGtWKDJJeuQ",
+    "autUser": {
+        "autUserId": 4,
+        "autUserNume": "alexm",
+        "autUserParola": "",
+        "autUserActivyn": "y",
+        "autUserStartdt": "2022-09-02 17:20:55",
+        "autUserEnddt": null,
+        "roles": [
+            {
+                "autUserrolId": 1,
+                "autUserrolRolid": 14,
+                "autUserrolRolcod": "SIMPATIZ",
+                "autUserrolUserid": 4,
+                "autUserrolActivyn": "y",
+                "autUserrolStartdt": "2022-09-02 17:21:06",
+                "autUserrolEnddt": null,
+                "rol": {
+                    "autRolId": 14,
+                    "autRolCod": "SIMPATIZ",
+                    "autRolNume": "Simpatizant",
+                    "autRolDescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                    "autRolActivyn": "y",
+                    "autRolStartdt": "2022-09-09 08:00:30",
+                    "autRolEnddt": null,
+                    "autRolDisplaydescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                    "autRolDisplayNume": "Simpatizant"
+                }
+            }
+        ]
+    },
+    "aa":
+    {
+        "id": 4,
+        "roles": [
+            "SIMPATIZ"
+        ],
+        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyNzU2NzE1LCJleHAiOjE2NjI3NjAzMTV9.8ENsd26aILVCPyAdRaF0mmB90Mav3WMkZu-HcmEEn2kq9tKo-li6fEMFqkruAh4PGsmg9ySW2LxV0dzQ-gzqzg",
+        "tokenType": "Bearer",
+        "autUser": {
+            "autUserId": 4,
+            "autUserNume": "alexm",
+            "autUserParola": "",
+            "autUserActivyn": "y",
+            "autUserStartdt": "2022-09-02 17:20:55",
+            "autUserEnddt": null,
+            "roles": [
+                {
+                    "autUserrolId": 1,
+                    "autUserrolRolid": 14,
+                    "autUserrolRolcod": "SIMPATIZ",
+                    "autUserrolUserid": 4,
+                    "autUserrolActivyn": "y",
+                    "autUserrolStartdt": "2022-09-02 17:21:06",
+                    "autUserrolEnddt": null,
+                    "rol": {
+                        "autRolId": 14,
+                        "autRolCod": "SIMPATIZ",
+                        "autRolNume": "Simpatizant",
+                        "autRolDescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                        "autRolActivyn": "y",
+                        "autRolStartdt": "2022-09-09 08:00:30",
+                        "autRolEnddt": null,
+                        "autRolDisplaydescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                        "rolgrupact": [
+                            {
+                                "autRolgrupactId": 280,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 200,
+                                "autRolgrupactGrupactcod": "CEREREMEM",
+                                "autRolgrupactImportanta": 2,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 200,
+                                    "autGrupactiuniCod": "CEREREMEM",
+                                    "autGrupactiuniNume": "Cerere Membru",
+                                    "autGrupactiuniDescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+                                    "autGrupactiuniDisplaydescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+                                    "autGrupactiuniDisplayNume": "Cerere Membru"
+                                }
+                            },
+                            {
+                                "autRolgrupactId": 290,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 210,
+                                "autRolgrupactGrupactcod": "GESTACTSIM",
+                                "autRolgrupactImportanta": 3,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 210,
+                                    "autGrupactiuniCod": "GESTACTSIM",
+                                    "autGrupactiuniNume": "Gestiune Activități",
+                                    "autGrupactiuniDescriere": "Gestionează Activitățile la care participi ca Simpatizant al Partidului",
+                                    "autGrupactiuniDisplaydescriere": "Gestionează Activitățile la care participi ca Simpatizant al Partidului",
+                                    "autGrupactiuniDisplayNume": "Gestiune Activități"
+                                }
+                            },
+                            {
+                                "autRolgrupactId": 270,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 190,
+                                "autRolgrupactGrupactcod": "INDRUMMEM",
+                                "autRolgrupactImportanta": 1,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 190,
+                                    "autGrupactiuniCod": "INDRUMMEM",
+                                    "autGrupactiuniNume": "Cum Poți Deveni Membru?",
+                                    "autGrupactiuniDescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                    "autGrupactiuniDisplaydescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                    "autGrupactiuniDisplayNume": "Cum Poți Deveni Membru?"
+                                }
+                            },
+                            {
+                                "autRolgrupactId": 300,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 110,
+                                "autRolgrupactGrupactcod": "GESTMESAJE",
+                                "autRolgrupactImportanta": 4,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 110,
+                                    "autGrupactiuniCod": "GESTMESAJE",
+                                    "autGrupactiuniNume": "Gestionarea Mesajelor",
+                                    "autGrupactiuniDescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+                                    "autGrupactiuniDisplaydescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+                                    "autGrupactiuniDisplayNume": "Gestionarea Mesajelor"
+                                }
+                            }
+                        ],
+                        "autRolDisplayNume": "Simpatizant"
+                    }
+                }
+            ]
+        },
+        "userName": "alexm"
+    },
+    "x":{
+        "id": 4,
+        "roles": [
+            "SIMPATIZ"
+        ],
+        "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyODQ5MTk0LCJleHAiOjE2NjI4NTI3OTR9.aL5oH9kN1e-5AxWDlJJM5K7vm9n9D5ywtgHAgApVK4VK8NerdHQu9YVfcjO3gOwCSLxi8A70fi16i_5MUO3eVg",
+        "tokenType": "Bearer",
+        "autUser": {
+            "autUserId": 4,
+            "autUserNume": "alexm",
+            "autUserParola": "",
+            "autUserActivyn": "y",
+            "autUserStartdt": "2022-09-02 17:20:55",
+            "autUserEnddt": null,
+            "roles": [
+                {
+                    "autUserrolId": 1,
+                    "autUserrolRolid": 14,
+                    "autUserrolRolcod": "SIMPATIZ",
+                    "autUserrolUserid": 4,
+                    "autUserrolActivyn": "y",
+                    "autUserrolStartdt": "2022-09-02 17:21:06",
+                    "autUserrolEnddt": null,
+                    "rol": {
+                        "autRolId": 14,
+                        "autRolCod": "SIMPATIZ",
+                        "autRolNume": "Simpatizant al Partidului",
+                        "autRolDescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                        "autRolActivyn": "y",
+                        "autRolStartdt": "2022-09-10 04:36:26",
+                        "autRolEnddt": null,
+                        "autRolDisplaydescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                        "rolgrupact": [
+                            {
+                                "autRolgrupactId": 270,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 190,
+                                "autRolgrupactGrupactcod": "INDRUMMEM",
+                                "autRolgrupactImportanta": 1,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 190,
+                                    "autGrupactiuniCod": "INDRUMMEM",
+                                    "autGrupactiuniNume": "Cum Poți Deveni Membru?",
+                                    "autGrupactiuniDescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                    "autGrupactiuniDisplaydescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                    "grupactactiuni": [
+                                        {
+                                            "autGrupactactiuneId": 2002,
+                                            "autGrupactactiuneGrupactid": 190,
+                                            "autGrupactactiuneGrupactcod": "INDRUMMEM",
+                                            "autGrupactactiuneActid": 190910,
+                                            "autGrupactactiuneActcod": "INDRUMMEMACT",
+                                            "autGrupactactiuneImportanta": 1,
+                                            "actiune": {
+                                                "autActiuneId": 190910,
+                                                "autActiuneCod": "INDRUMMEMACT",
+                                                "autActiuneNume": "Îndrumător cum Poți Deveni Membru",
+                                                "autActiuneDescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                                "autActiuneDisplaynume": "Îndrumător cum Poți Deveni Membru",
+                                                "autActiuneDisplaydescriere": "Îndrumător pentru a deveni Membru al Partidului"
+                                            },
+                                            "autGrupactactiuneParentactid": null,
+                                            "autGrupactactiuneParentactcod": null
+                                        }
+                                    ],
+                                    "autGrupactiuniDisplayNume": "Cum Poți Deveni Membru?"
+                                }
+                            },
+                            {
+                                "autRolgrupactId": 280,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 200,
+                                "autRolgrupactGrupactcod": "CEREREMEM",
+                                "autRolgrupactImportanta": 2,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 200,
+                                    "autGrupactiuniCod": "CEREREMEM",
+                                    "autGrupactiuniNume": "Cerere Membru",
+                                    "autGrupactiuniDescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+                                    "autGrupactiuniDisplaydescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+                                    "grupactactiuni": [
+                                        {
+                                            "autGrupactactiuneId": 2003,
+                                            "autGrupactactiuneGrupactid": 200,
+                                            "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                            "autGrupactactiuneActid": 200920,
+                                            "autGrupactactiuneActcod": "CEREREMEMCOMPLETCNP",
+                                            "autGrupactactiuneImportanta": 1,
+                                            "actiune": {
+                                                "autActiuneId": 200920,
+                                                "autActiuneCod": "CEREREMEMCOMPLETCNP",
+                                                "autActiuneNume": "Completează CNP, Nr. și Seria CI",
+                                                "autActiuneDescriere": "Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI",
+                                                "autActiuneDisplaynume": "Completează CNP, Nr. și Seria CI",
+                                                "autActiuneDisplaydescriere": "Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI"
+                                            },
+                                            "autGrupactactiuneParentactid": null,
+                                            "autGrupactactiuneParentactcod": null
+                                        },
+                                        {
+                                            "autGrupactactiuneId": 2004,
+                                            "autGrupactactiuneGrupactid": 200,
+                                            "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                            "autGrupactactiuneActid": 200930,
+                                            "autGrupactactiuneActcod": "CEREREMEMCOMPLETADR",
+                                            "autGrupactactiuneImportanta": 2,
+                                            "actiune": {
+                                                "autActiuneId": 200930,
+                                                "autActiuneCod": "CEREREMEMCOMPLETADR",
+                                                "autActiuneNume": "Completează Adresa de Domiciliu",
+                                                "autActiuneDescriere": "Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență",
+                                                "autActiuneDisplaynume": "Completează Adresa de Domiciliu",
+                                                "autActiuneDisplaydescriere": "Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență"
+                                            },
+                                            "autGrupactactiuneParentactid": null,
+                                            "autGrupactactiuneParentactcod": null
+                                        },
+                                        {
+                                            "autGrupactactiuneId": 2005,
+                                            "autGrupactactiuneGrupactid": 200,
+                                            "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                            "autGrupactactiuneActid": 200940,
+                                            "autGrupactactiuneActcod": "CEREREMEMDOVADACOT",
+                                            "autGrupactactiuneImportanta": 3,
+                                            "actiune": {
+                                                "autActiuneId": 200940,
+                                                "autActiuneCod": "CEREREMEMDOVADACOT",
+                                                "autActiuneNume": "Dovadă Plată Cotizație Anuală",
+                                                "autActiuneDescriere": "Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent",
+                                                "autActiuneDisplaynume": "Dovadă Plată Cotizație Anuală",
+                                                "autActiuneDisplaydescriere": "Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent"
+                                            },
+                                            "autGrupactactiuneParentactid": null,
+                                            "autGrupactactiuneParentactcod": null
+                                        },
+                                        {
+                                            "autGrupactactiuneId": 2006,
+                                            "autGrupactactiuneGrupactid": 200,
+                                            "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                            "autGrupactactiuneActid": 200950,
+                                            "autGrupactactiuneActcod": "CEREREMEMTRIMITECER",
+                                            "autGrupactactiuneImportanta": 4,
+                                            "actiune": {
+                                                "autActiuneId": 200950,
+                                                "autActiuneCod": "CEREREMEMTRIMITECER",
+                                                "autActiuneNume": "Trimite Cererea de Membru",
+                                                "autActiuneDescriere": "Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)",
+                                                "autActiuneDisplaynume": "Trimite Cererea de Membru",
+                                                "autActiuneDisplaydescriere": "Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)"
+                                            },
+                                            "autGrupactactiuneParentactid": null,
+                                            "autGrupactactiuneParentactcod": null
+                                        }
+                                    ],
+                                    "autGrupactiuniDisplayNume": "Cerere Membru"
+                                }
+                            },
+                            {
+                                "autRolgrupactId": 290,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 240,
+                                "autRolgrupactGrupactcod": "GESTEXEACT",
+                                "autRolgrupactImportanta": 3,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 240,
+                                    "autGrupactiuniCod": "GESTEXEACT",
+                                    "autGrupactiuniNume": "Participă la Activități",
+                                    "autGrupactiuniDescriere": "Înscrie-te și Participă la la Activitățile Partidului",
+                                    "autGrupactiuniDisplaydescriere": "Înscrie-te și Participă la la Activitățile Partidului",
+                                    "grupactactiuni": [],
+                                    "autGrupactiuniDisplayNume": "Participă la Activități"
+                                }
+                            },
+                            {
+                                "autRolgrupactId": 300,
+                                "autRolgrupactRolid": 14,
+                                "autRolgrupactRolcod": "SIMPATIZ",
+                                "autRolgrupactGrupactid": 110,
+                                "autRolgrupactGrupactcod": "GESTMESAJE",
+                                "autRolgrupactImportanta": 4,
+                                "grupactiuni": {
+                                    "autGrupactiuniId": 110,
+                                    "autGrupactiuniCod": "GESTMESAJE",
+                                    "autGrupactiuniNume": "Gestionarea Mesajelor",
+                                    "autGrupactiuniDescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+                                    "autGrupactiuniDisplaydescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+                                    "grupactactiuni": [
+                                        {
+                                            "autGrupactactiuneId": 2032,
+                                            "autGrupactactiuneGrupactid": 110,
+                                            "autGrupactactiuneGrupactcod": "GESTMESAJE",
+                                            "autGrupactactiuneActid": 110910,
+                                            "autGrupactactiuneActcod": "GESTMESAJENOTIFAPP",
+                                            "autGrupactactiuneImportanta": 1,
+                                            "actiune": {
+                                                "autActiuneId": 110910,
+                                                "autActiuneCod": "GESTMESAJENOTIFAPP",
+                                                "autActiuneNume": "Notificări Aplicație",
+                                                "autActiuneDescriere": "Vizualizează și Gestionează Notificările Aplicației\tNotificări Aplicație",
+                                                "autActiuneDisplaynume": "Notificări Aplicație",
+                                                "autActiuneDisplaydescriere": "Vizualizează și Gestionează Notificările Aplicației\tNotificări Aplicație"
+                                            },
+                                            "autGrupactactiuneParentactid": null,
+                                            "autGrupactactiuneParentactcod": null
+                                        }
+                                    ],
+                                    "autGrupactiuniDisplayNume": "Gestionarea Mesajelor"
+                                }
+                            }
+                        ],
+                        "autRolDisplayNume": "Simpatizant al Partidului"
+                    }
+                }
+            ]
+        },
+        "userName": "alexm"
+    }
 }
+}
+

@@ -36,7 +36,7 @@ export class AuthGuardBeforeLoginService implements CanActivate {
     return this.store.select(selectIsAuth()).pipe(
       map((isAuth: boolean) => {
         if (isAuth) {
-          this.navController.navigateRoot(appConfig.routes.userroles.main);
+          this.navController.navigateRoot(appConfig.routes.aut.userroluri);
           return false;
         }
         return true;

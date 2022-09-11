@@ -183,6 +183,88 @@ public class AutUserController {
         AutUserRol newSimpatizantUserRol = new AutUserRol( aut_userrol_id, aut_userrol_rolid, aut_userrol_rolcod, aut_userrol_userid,
                                                     aut_userrol_activ_yn, aut_userrol_startdt, aut_userrol_enddt) ;
 
+		AutRol autMemIncNflRol = autRolRepository.loadByAutRolCod ("MEMINCNFL");
+        AutUserRol newMemIncNflUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autMemIncNflRol.getAutRolId(), 
+														   aut_userrol_rolcod=autMemIncNflRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autMemIncAflRol = autRolRepository.loadByAutRolCod ("MEMINCAFL");
+        AutUserRol newMemIncAflUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autMemIncAflRol.getAutRolId(), 
+														   aut_userrol_rolcod=autMemIncAflRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autMemActAflRol = autRolRepository.loadByAutRolCod ("MEMACTAFL");
+        AutUserRol newMemActAflUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autMemActAflRol.getAutRolId(), 
+														   aut_userrol_rolcod=autMemActAflRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autMemActNflRol = autRolRepository.loadByAutRolCod ("MEMACTNFL");
+        AutUserRol newMemActNflUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autMemActNflRol.getAutRolId(), 
+														   aut_userrol_rolcod=autMemActNflRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autMemExpNflRol = autRolRepository.loadByAutRolCod ("MEMEXPNFL");
+        AutUserRol newMemExpNflUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autMemExpNflRol.getAutRolId(), 
+														   aut_userrol_rolcod=autMemExpNflRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+														   
+		AutRol autMemExpAflRol = autRolRepository.loadByAutRolCod ("MEMEXPAFL");
+        AutUserRol newMemExpAflUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autMemExpAflRol.getAutRolId(), 
+														   aut_userrol_rolcod=autMemExpAflRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autSefGrupRol = autRolRepository.loadByAutRolCod ("SEFGRUP");
+        AutUserRol newSefGrupUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autSefGrupRol.getAutRolId(), 
+														   aut_userrol_rolcod=autSefGrupRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autCoordPrincRol = autRolRepository.loadByAutRolCod ("COORDPRINC");
+        AutUserRol newCoordPrincUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autCoordPrincRol.getAutRolId(), 
+														   aut_userrol_rolcod=autCoordPrincRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
+		AutRol autSimpatPendRol = autRolRepository.loadByAutRolCod ("SIMPATPEND");
+        AutUserRol newSimpatPendUserRol = new AutUserRol( aut_userrol_id=null, 
+		                                                   aut_userrol_rolid=autSimpatPendRol.getAutRolId(), 
+														   aut_userrol_rolcod=autSimpatPendRol.getAutRolCod(), 
+														   aut_userrol_userid=null,
+                                                           aut_userrol_activ_yn="y", 
+														   aut_userrol_startdt=null, 
+														   aut_userrol_enddt=null) ;
+
 		Set<AutUserRol> roles = new HashSet<>();
 		user.setRoles(roles);
         //roles.add(newSimpatizantUserRol);
@@ -194,7 +276,34 @@ public class AutUserController {
 		autUserInfoRepository.save(userInfo);
 
 		newSimpatizantUserRol.setAutUserrolUserid(newuserid);
-		autUserRolRepository.save(newSimpatizantUserRol);
+		//autUserRolRepository.save(newSimpatizantUserRol);
+
+		newMemIncNflUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newMemIncNflUserRol);
+
+		newMemIncAflUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newMemIncAflUserRol);
+
+		newMemActAflUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newMemActAflUserRol);
+
+		newMemActNflUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newMemActNflUserRol);
+
+		newMemExpNflUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newMemExpNflUserRol);
+
+		newMemExpAflUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newMemExpAflUserRol);
+
+		newSefGrupUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newSefGrupUserRol);
+
+		newCoordPrincUserRol.setAutUserrolUserid(newuserid);
+		//autUserRolRepository.save(newCoordPrincUserRol);
+
+		newSimpatPendUserRol.setAutUserrolUserid(newuserid);
+		autUserRolRepository.save(newSimpatPendUserRol);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{userId}")
 				.buildAndExpand(resUser.getAutUserId()).toUri();

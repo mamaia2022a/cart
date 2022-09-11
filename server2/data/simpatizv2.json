@@ -1,0 +1,676 @@
+{
+    "id": 4,
+    "roles": [
+        "SIMPATIZ"
+    ],
+    "userName": "alexm",
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNjYyODkyMDc5LCJleHAiOjE2NjI4OTU2Nzl9.oErwdWh0IPsGYmtHwi1m2bTn5FVle2MHQugm3c-njJK_Kxp313VvRyNBkFy2XO7nP4rEP8HWnaH4X_xLFpAbHw",
+    "tokenType": "Bearer",
+    "autUser": {
+        "autUserId": 4,
+        "autUserNume": "alexm",
+        "autUserParola": "",
+        "autUserActivyn": "y",
+        "autUserStartdt": "2022-09-02 17:20:55",
+        "autUserEnddt": null,
+        "roles": [
+            {
+                "autUserrolId": 1,
+                "autUserrolRolid": 14,
+                "autUserrolRolcod": "SIMPATIZ",
+                "autUserrolUserid": 4,
+                "autUserrolActivyn": "y",
+                "autUserrolStartdt": "2022-09-02 17:21:06",
+                "autUserrolEnddt": null,
+                "rol": {
+                    "autRolId": 14,
+                    "autRolCod": "SIMPATIZ",
+                    "autRolNume": "Simpatizant al Partidului",
+                    "autRolDescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                    "autRolActivyn": "y",
+                    "autRolStartdt": "2022-09-10 04:36:26",
+                    "autRolEnddt": null,
+                    "autRolDisplaydescriere": "Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...",
+                    "rolgrupact": [
+                        {
+                            "autRolgrupactId": 270,
+                            "autRolgrupactRolid": 14,
+                            "autRolgrupactRolcod": "SIMPATIZ",
+                            "autRolgrupactGrupactid": 190,
+                            "autRolgrupactGrupactcod": "INDRUMMEM",
+                            "autRolgrupactImportanta": 1,
+                            "grupactiuni": {
+                                "autGrupactiuniId": 190,
+                                "autGrupactiuniCod": "INDRUMMEM",
+                                "autGrupactiuniNume": "Cum Poți Deveni Membru?",
+                                "autGrupactiuniDescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                "autGrupactiuniDisplaydescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                "grupactactiuni": [
+                                    {
+                                        "autGrupactactiuneId": 2002,
+                                        "autGrupactactiuneGrupactid": 190,
+                                        "autGrupactactiuneGrupactcod": "INDRUMMEM",
+                                        "autGrupactactiuneActid": 190910,
+                                        "autGrupactactiuneActcod": "INDRUMMEMACT",
+                                        "autGrupactactiuneImportanta": 1,
+                                        "actiune": {
+                                            "autActiuneId": 190910,
+                                            "autActiuneCod": "INDRUMMEMACT",
+                                            "autActiuneNume": "Îndrumător cum Poți Deveni Membru",
+                                            "autActiuneDescriere": "Îndrumător pentru a deveni Membru al Partidului",
+                                            "autActiuneDisplaynume": "Îndrumător cum Poți Deveni Membru",
+                                            "autActiuneDisplaydescriere": "Îndrumător pentru a deveni Membru al Partidului"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    }
+                                ],
+                                "grupactactiunisec": [],
+                                "autGrupactiuniDisplayNume": "Cum Poți Deveni Membru?"
+                            }
+                        },
+                        {
+                            "autRolgrupactId": 280,
+                            "autRolgrupactRolid": 14,
+                            "autRolgrupactRolcod": "SIMPATIZ",
+                            "autRolgrupactGrupactid": 200,
+                            "autRolgrupactGrupactcod": "CEREREMEM",
+                            "autRolgrupactImportanta": 2,
+                            "grupactiuni": {
+                                "autGrupactiuniId": 200,
+                                "autGrupactiuniCod": "CEREREMEM",
+                                "autGrupactiuniNume": "Cerere Membru",
+                                "autGrupactiuniDescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+                                "autGrupactiuniDisplaydescriere": "Gestionează Cererea și Condițiile pentru a Deveni Membru\tCerere Membru",
+                                "grupactactiuni": [
+                                    {
+                                        "autGrupactactiuneId": 2003,
+                                        "autGrupactactiuneGrupactid": 200,
+                                        "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                        "autGrupactactiuneActid": 200920,
+                                        "autGrupactactiuneActcod": "CEREREMEMCOMPLETCNP",
+                                        "autGrupactactiuneImportanta": 1,
+                                        "actiune": {
+                                            "autActiuneId": 200920,
+                                            "autActiuneCod": "CEREREMEMCOMPLETCNP",
+                                            "autActiuneNume": "Completează CNP, Nr. și Seria CI",
+                                            "autActiuneDescriere": "Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI",
+                                            "autActiuneDisplaynume": "Completează CNP, Nr. și Seria CI",
+                                            "autActiuneDisplaydescriere": "Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2004,
+                                        "autGrupactactiuneGrupactid": 200,
+                                        "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                        "autGrupactactiuneActid": 200930,
+                                        "autGrupactactiuneActcod": "CEREREMEMCOMPLETADR",
+                                        "autGrupactactiuneImportanta": 2,
+                                        "actiune": {
+                                            "autActiuneId": 200930,
+                                            "autActiuneCod": "CEREREMEMCOMPLETADR",
+                                            "autActiuneNume": "Completează Adresa de Domiciliu",
+                                            "autActiuneDescriere": "Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență",
+                                            "autActiuneDisplaynume": "Completează Adresa de Domiciliu",
+                                            "autActiuneDisplaydescriere": "Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2005,
+                                        "autGrupactactiuneGrupactid": 200,
+                                        "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                        "autGrupactactiuneActid": 200940,
+                                        "autGrupactactiuneActcod": "CEREREMEMDOVADACOT",
+                                        "autGrupactactiuneImportanta": 3,
+                                        "actiune": {
+                                            "autActiuneId": 200940,
+                                            "autActiuneCod": "CEREREMEMDOVADACOT",
+                                            "autActiuneNume": "Dovadă Plată Cotizație Anuală",
+                                            "autActiuneDescriere": "Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent",
+                                            "autActiuneDisplaynume": "Dovadă Plată Cotizație Anuală",
+                                            "autActiuneDisplaydescriere": "Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2006,
+                                        "autGrupactactiuneGrupactid": 200,
+                                        "autGrupactactiuneGrupactcod": "CEREREMEM",
+                                        "autGrupactactiuneActid": 200950,
+                                        "autGrupactactiuneActcod": "CEREREMEMTRIMITECER",
+                                        "autGrupactactiuneImportanta": 4,
+                                        "actiune": {
+                                            "autActiuneId": 200950,
+                                            "autActiuneCod": "CEREREMEMTRIMITECER",
+                                            "autActiuneNume": "Trimite Cererea de Membru",
+                                            "autActiuneDescriere": "Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)",
+                                            "autActiuneDisplaynume": "Trimite Cererea de Membru",
+                                            "autActiuneDisplaydescriere": "Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    }
+                                ],
+                                "grupactactiunisec": [],
+                                "autGrupactiuniDisplayNume": "Cerere Membru"
+                            }
+                        },
+                        {
+                            "autRolgrupactId": 290,
+                            "autRolgrupactRolid": 14,
+                            "autRolgrupactRolcod": "SIMPATIZ",
+                            "autRolgrupactGrupactid": 240,
+                            "autRolgrupactGrupactcod": "GESTEXEACT",
+                            "autRolgrupactImportanta": 3,
+                            "grupactiuni": {
+                                "autGrupactiuniId": 240,
+                                "autGrupactiuniCod": "GESTEXEACT",
+                                "autGrupactiuniNume": "Participă la Activități",
+                                "autGrupactiuniDescriere": "Înscrie-te și Participă la la Activitățile Partidului",
+                                "autGrupactiuniDisplaydescriere": "Înscrie-te și Participă la la Activitățile Partidului",
+                                "grupactactiuni": [
+                                    {
+                                        "autGrupactactiuneId": 2007,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210905,
+                                        "autGrupactactiuneActcod": "GESTACTEXELISTACTC",
+                                        "autGrupactactiuneImportanta": 1,
+                                        "actiune": {
+                                            "autActiuneId": 210905,
+                                            "autActiuneCod": "GESTACTEXELISTACTC",
+                                            "autActiuneNume": "Lista activități în curs de desfășurare",
+                                            "autActiuneDescriere": "Lista de Activități  în curs de desfășurare la care sunteți înscris",
+                                            "autActiuneDisplaynume": "Lista activități în curs de desfășurare",
+                                            "autActiuneDisplaydescriere": "Lista de Activități  în curs de desfășurare la care sunteți înscris"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2008,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210910,
+                                        "autGrupactactiuneActcod": "GESTACTEXELISTACTV",
+                                        "autGrupactactiuneImportanta": 2,
+                                        "actiune": {
+                                            "autActiuneId": 210910,
+                                            "autActiuneCod": "GESTACTEXELISTACTV",
+                                            "autActiuneNume": "Lista activități viitoare",
+                                            "autActiuneDescriere": "Lista de Activități  noi la care vă puteți înscrie",
+                                            "autActiuneDisplaynume": "Lista activități viitoare",
+                                            "autActiuneDisplaydescriere": "Lista de Activități  noi la care vă puteți înscrie"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2009,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210915,
+                                        "autGrupactactiuneActcod": "GESTACTEXELISTACTT",
+                                        "autGrupactactiuneImportanta": 3,
+                                        "actiune": {
+                                            "autActiuneId": 210915,
+                                            "autActiuneCod": "GESTACTEXELISTACTT",
+                                            "autActiuneNume": "Listă activități trecute",
+                                            "autActiuneDescriere": "Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate",
+                                            "autActiuneDisplaynume": "Listă activități trecute",
+                                            "autActiuneDisplaydescriere": "Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    }
+                                ],
+                                "grupactactiunisec": [
+                                    {
+                                        "autGrupactactiuneId": 2010,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210920,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZACTC",
+                                        "autGrupactactiuneImportanta": 4,
+                                        "actiune": {
+                                            "autActiuneId": 210920,
+                                            "autActiuneCod": "GESTACTEXEVIZACTC",
+                                            "autActiuneNume": "Vizualizare Activitate Curentă",
+                                            "autActiuneDescriere": "Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați",
+                                            "autActiuneDisplaynume": "Vizualizare Activitate Curentă",
+                                            "autActiuneDisplaydescriere": "Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210905,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2011,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210925,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZACTV",
+                                        "autGrupactactiuneImportanta": 5,
+                                        "actiune": {
+                                            "autActiuneId": 210925,
+                                            "autActiuneCod": "GESTACTEXEVIZACTV",
+                                            "autActiuneNume": "Vizualizare Activitate Viitoare",
+                                            "autActiuneDescriere": "Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie",
+                                            "autActiuneDisplaynume": "Vizualizare Activitate Viitoare",
+                                            "autActiuneDisplaydescriere": "Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie"
+                                        },
+                                        "autGrupactactiuneParentactid": 210910,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2012,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210930,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZACTT",
+                                        "autGrupactactiuneImportanta": 6,
+                                        "actiune": {
+                                            "autActiuneId": 210930,
+                                            "autActiuneCod": "GESTACTEXEVIZACTT",
+                                            "autActiuneNume": "Vizualizare Activitate Trecute",
+                                            "autActiuneDescriere": "Vizualizarea unei Activități Trecute la care ați participat",
+                                            "autActiuneDisplaynume": "Vizualizare Activitate Trecute",
+                                            "autActiuneDisplaydescriere": "Vizualizarea unei Activități Trecute la care ați participat"
+                                        },
+                                        "autGrupactactiuneParentactid": 210915,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTACTT"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2013,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210935,
+                                        "autGrupactactiuneActcod": "GESTACTEXEINSCACTV",
+                                        "autGrupactactiuneImportanta": 7,
+                                        "actiune": {
+                                            "autActiuneId": 210935,
+                                            "autActiuneCod": "GESTACTEXEINSCACTV",
+                                            "autActiuneNume": "Înscrierea la o Activitate Nouă",
+                                            "autActiuneDescriere": "Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare",
+                                            "autActiuneDisplaynume": "Înscrierea la o Activitate Nouă",
+                                            "autActiuneDisplaydescriere": "Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare"
+                                        },
+                                        "autGrupactactiuneParentactid": 210925,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2014,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210940,
+                                        "autGrupactactiuneActcod": "GESTACTEXERENUACTV",
+                                        "autGrupactactiuneImportanta": 8,
+                                        "actiune": {
+                                            "autActiuneId": 210940,
+                                            "autActiuneCod": "GESTACTEXERENUACTV",
+                                            "autActiuneNume": "Renunțați la o Activitate Nouă",
+                                            "autActiuneDescriere": "Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare",
+                                            "autActiuneDisplaynume": "Renunțați la o Activitate Nouă",
+                                            "autActiuneDisplaydescriere": "Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare"
+                                        },
+                                        "autGrupactactiuneParentactid": 210925,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2015,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210945,
+                                        "autGrupactactiuneActcod": "GESTACTEXEADDREZACTC",
+                                        "autGrupactactiuneImportanta": 9,
+                                        "actiune": {
+                                            "autActiuneId": 210945,
+                                            "autActiuneCod": "GESTACTEXEADDREZACTC",
+                                            "autActiuneNume": "Adăugare Rezultat Activitate",
+                                            "autActiuneDescriere": "Adăugarea unui Rezultat pentru o Activitate la care participați",
+                                            "autActiuneDisplaynume": "Adăugare Rezultat Activitate",
+                                            "autActiuneDisplaydescriere": "Adăugarea unui Rezultat pentru o Activitate la care participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210920,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2016,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210950,
+                                        "autGrupactactiuneActcod": "GESTACTEXEMODREZACTC",
+                                        "autGrupactactiuneImportanta": 10,
+                                        "actiune": {
+                                            "autActiuneId": 210950,
+                                            "autActiuneCod": "GESTACTEXEMODREZACTC",
+                                            "autActiuneNume": "Modificare Rezultat Activitate",
+                                            "autActiuneDescriere": "Modificare unui Rezultat pentru o Activitate la care participați",
+                                            "autActiuneDisplaynume": "Modificare Rezultat Activitate",
+                                            "autActiuneDisplaydescriere": "Modificare unui Rezultat pentru o Activitate la care participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210920,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2017,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210955,
+                                        "autGrupactactiuneActcod": "GESTACTEXEDELREZACTC",
+                                        "autGrupactactiuneImportanta": 11,
+                                        "actiune": {
+                                            "autActiuneId": 210955,
+                                            "autActiuneCod": "GESTACTEXEDELREZACTC",
+                                            "autActiuneNume": "Ștergere Rezultat Activitate",
+                                            "autActiuneDescriere": "Ștergerea unui Rezultat pentru o Activitate la care participați",
+                                            "autActiuneDisplaynume": "Ștergere Rezultat Activitate",
+                                            "autActiuneDisplaydescriere": "Ștergerea unui Rezultat pentru o Activitate la care participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210920,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2018,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210960,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZREZACTT",
+                                        "autGrupactactiuneImportanta": 12,
+                                        "actiune": {
+                                            "autActiuneId": 210960,
+                                            "autActiuneCod": "GESTACTEXEVIZREZACTT",
+                                            "autActiuneNume": "Vizualizare Rezultat Activitate",
+                                            "autActiuneDescriere": "Vizualizați Rezultatul pentru o Activitate la care ați participat",
+                                            "autActiuneDisplaynume": "Vizualizare Rezultat Activitate",
+                                            "autActiuneDisplaydescriere": "Vizualizați Rezultatul pentru o Activitate la care ați participat"
+                                        },
+                                        "autGrupactactiuneParentactid": 210930,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTT"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2019,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210965,
+                                        "autGrupactactiuneActcod": "GESTACTEXELISTFAZVACTV",
+                                        "autGrupactactiuneImportanta": 13,
+                                        "actiune": {
+                                            "autActiuneId": 210965,
+                                            "autActiuneCod": "GESTACTEXELISTFAZVACTV",
+                                            "autActiuneNume": "Listă Faze Activitate Viitoare",
+                                            "autActiuneDescriere": "Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)",
+                                            "autActiuneDisplaynume": "Listă Faze Activitate Viitoare",
+                                            "autActiuneDisplaydescriere": "Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)"
+                                        },
+                                        "autGrupactactiuneParentactid": 210925,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2020,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210970,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZFAZVACTV",
+                                        "autGrupactactiuneImportanta": 14,
+                                        "actiune": {
+                                            "autActiuneId": 210970,
+                                            "autActiuneCod": "GESTACTEXEVIZFAZVACTV",
+                                            "autActiuneNume": "Vizualizare Fază Viitoare",
+                                            "autActiuneDescriere": "Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)",
+                                            "autActiuneDisplaynume": "Vizualizare Fază Viitoare",
+                                            "autActiuneDisplaydescriere": "Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)"
+                                        },
+                                        "autGrupactactiuneParentactid": 210965,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTFAZVACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2021,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210972,
+                                        "autGrupactactiuneActcod": "GESTACTEXEINSCFAZVACTV",
+                                        "autGrupactactiuneImportanta": 15,
+                                        "actiune": {
+                                            "autActiuneId": 210972,
+                                            "autActiuneCod": "GESTACTEXEINSCFAZVACTV",
+                                            "autActiuneNume": "Înscrierea Participare Fază Activitate",
+                                            "autActiuneDescriere": "Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare",
+                                            "autActiuneDisplaynume": "Înscrierea Participare Fază Activitate",
+                                            "autActiuneDisplaydescriere": "Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare"
+                                        },
+                                        "autGrupactactiuneParentactid": 210970,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZFAZVACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2022,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210974,
+                                        "autGrupactactiuneActcod": "GESTACTEXERENUFAZVACTV",
+                                        "autGrupactactiuneImportanta": 16,
+                                        "actiune": {
+                                            "autActiuneId": 210974,
+                                            "autActiuneCod": "GESTACTEXERENUFAZVACTV",
+                                            "autActiuneNume": "Renunțare Participare Fază Activitate",
+                                            "autActiuneDescriere": "Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare",
+                                            "autActiuneDisplaynume": "Renunțare Participare Fază Activitate",
+                                            "autActiuneDisplaydescriere": "Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare"
+                                        },
+                                        "autGrupactactiuneParentactid": 210970,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZFAZVACTV"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2023,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210976,
+                                        "autGrupactactiuneActcod": "GESTACTEXELISTFAZACTC",
+                                        "autGrupactactiuneImportanta": 17,
+                                        "actiune": {
+                                            "autActiuneId": 210976,
+                                            "autActiuneCod": "GESTACTEXELISTFAZACTC",
+                                            "autActiuneNume": "Listă Faze Activitate CurentăVi",
+                                            "autActiuneDescriere": "zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)",
+                                            "autActiuneDisplaynume": "Listă Faze Activitate CurentăVi",
+                                            "autActiuneDisplaydescriere": "zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)"
+                                        },
+                                        "autGrupactactiuneParentactid": 210905,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2024,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210978,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZFAZACTC",
+                                        "autGrupactactiuneImportanta": 18,
+                                        "actiune": {
+                                            "autActiuneId": 210978,
+                                            "autActiuneCod": "GESTACTEXEVIZFAZACTC",
+                                            "autActiuneNume": "Vizualizare Fază Activitate Curentă",
+                                            "autActiuneDescriere": "Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)",
+                                            "autActiuneDisplaynume": "Vizualizare Fază Activitate Curentă",
+                                            "autActiuneDisplaydescriere": "Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)"
+                                        },
+                                        "autGrupactactiuneParentactid": 210976,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTFAZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2025,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210980,
+                                        "autGrupactactiuneActcod": "GESTACTEXEADDREZFAZC",
+                                        "autGrupactactiuneImportanta": 19,
+                                        "actiune": {
+                                            "autActiuneId": 210980,
+                                            "autActiuneCod": "GESTACTEXEADDREZFAZC",
+                                            "autActiuneNume": "Adăugare Rezultat Fază în Desfășurare",
+                                            "autActiuneDescriere": "Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați",
+                                            "autActiuneDisplaynume": "Adăugare Rezultat Fază în Desfășurare",
+                                            "autActiuneDisplaydescriere": "Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210978,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZFAZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2026,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210982,
+                                        "autGrupactactiuneActcod": "GESTACTEXEMODREZFAZC",
+                                        "autGrupactactiuneImportanta": 20,
+                                        "actiune": {
+                                            "autActiuneId": 210982,
+                                            "autActiuneCod": "GESTACTEXEMODREZFAZC",
+                                            "autActiuneNume": "Modificare Rezultat Fază în Desfășurare",
+                                            "autActiuneDescriere": "Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați",
+                                            "autActiuneDisplaynume": "Modificare Rezultat Fază în Desfășurare",
+                                            "autActiuneDisplaydescriere": "Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210978,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZFAZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2027,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210984,
+                                        "autGrupactactiuneActcod": "GESTACTEXEDELREZFAZC",
+                                        "autGrupactactiuneImportanta": 21,
+                                        "actiune": {
+                                            "autActiuneId": 210984,
+                                            "autActiuneCod": "GESTACTEXEDELREZFAZC",
+                                            "autActiuneNume": "Ștergere Rezultat Fază în Desfășurare",
+                                            "autActiuneDescriere": "Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați",
+                                            "autActiuneDisplaynume": "Ștergere Rezultat Fază în Desfășurare",
+                                            "autActiuneDisplaydescriere": "Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați"
+                                        },
+                                        "autGrupactactiuneParentactid": 210978,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZFAZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2028,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210986,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZREZFAZTACTC",
+                                        "autGrupactactiuneImportanta": 22,
+                                        "actiune": {
+                                            "autActiuneId": 210986,
+                                            "autActiuneCod": "GESTACTEXEVIZREZFAZTACTC",
+                                            "autActiuneNume": "Vizualizare Rezultat Fază Trecută Activitate Curentă",
+                                            "autActiuneDescriere": "Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente",
+                                            "autActiuneDisplaynume": "Vizualizare Rezultat Fază Trecută Activitate Curentă",
+                                            "autActiuneDisplaydescriere": "Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente"
+                                        },
+                                        "autGrupactactiuneParentactid": 210978,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZFAZACTC"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2029,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210988,
+                                        "autGrupactactiuneActcod": "GESTACTEXELISTFAZACTT",
+                                        "autGrupactactiuneImportanta": 23,
+                                        "actiune": {
+                                            "autActiuneId": 210988,
+                                            "autActiuneCod": "GESTACTEXELISTFAZACTT",
+                                            "autActiuneNume": "Listă Faze Activitate Trecută",
+                                            "autActiuneDescriere": "Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)",
+                                            "autActiuneDisplaynume": "Listă Faze Activitate Trecută",
+                                            "autActiuneDisplaydescriere": "Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)"
+                                        },
+                                        "autGrupactactiuneParentactid": 210915,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTACTT"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2030,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210990,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZFAZTACTT",
+                                        "autGrupactactiuneImportanta": 24,
+                                        "actiune": {
+                                            "autActiuneId": 210990,
+                                            "autActiuneCod": "GESTACTEXEVIZFAZTACTT",
+                                            "autActiuneNume": "Vizualizare Fază Trecută Activitate Trecută",
+                                            "autActiuneDescriere": "Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)",
+                                            "autActiuneDisplaynume": "Vizualizare Fază Trecută Activitate Trecută",
+                                            "autActiuneDisplaydescriere": "Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)"
+                                        },
+                                        "autGrupactactiuneParentactid": 210988,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXELISTFAZACTT"
+                                    },
+                                    {
+                                        "autGrupactactiuneId": 2031,
+                                        "autGrupactactiuneGrupactid": 240,
+                                        "autGrupactactiuneGrupactcod": "GESTEXEACT",
+                                        "autGrupactactiuneActid": 210992,
+                                        "autGrupactactiuneActcod": "GESTACTEXEVIZREZFAZTACTT",
+                                        "autGrupactactiuneImportanta": 25,
+                                        "actiune": {
+                                            "autActiuneId": 210992,
+                                            "autActiuneCod": "GESTACTEXEVIZREZFAZTACTT",
+                                            "autActiuneNume": "Vizualizare Rezultat Fază Activitate Trecută",
+                                            "autActiuneDescriere": "Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute",
+                                            "autActiuneDisplaynume": "Vizualizare Rezultat Fază Activitate Trecută",
+                                            "autActiuneDisplaydescriere": "Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute"
+                                        },
+                                        "autGrupactactiuneParentactid": 210992,
+                                        "autGrupactactiuneParentactcod": "GESTACTEXEVIZREZFAZTACTT"
+                                    }
+                                ],
+                                "autGrupactiuniDisplayNume": "Participă la Activități"
+                            }
+                        },
+                        {
+                            "autRolgrupactId": 300,
+                            "autRolgrupactRolid": 14,
+                            "autRolgrupactRolcod": "SIMPATIZ",
+                            "autRolgrupactGrupactid": 110,
+                            "autRolgrupactGrupactcod": "GESTMESAJE",
+                            "autRolgrupactImportanta": 4,
+                            "grupactiuni": {
+                                "autGrupactiuniId": 110,
+                                "autGrupactiuniCod": "GESTMESAJE",
+                                "autGrupactiuniNume": "Gestionarea Mesajelor",
+                                "autGrupactiuniDescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+                                "autGrupactiuniDisplaydescriere": "Vizualizează și Gestionează Mesajele și Notificările",
+                                "grupactactiuni": [
+                                    {
+                                        "autGrupactactiuneId": 2032,
+                                        "autGrupactactiuneGrupactid": 110,
+                                        "autGrupactactiuneGrupactcod": "GESTMESAJE",
+                                        "autGrupactactiuneActid": 110910,
+                                        "autGrupactactiuneActcod": "GESTMESAJENOTIFAPP",
+                                        "autGrupactactiuneImportanta": 1,
+                                        "actiune": {
+                                            "autActiuneId": 110910,
+                                            "autActiuneCod": "GESTMESAJENOTIFAPP",
+                                            "autActiuneNume": "Notificări Aplicație",
+                                            "autActiuneDescriere": "Vizualizează și Gestionează Notificările Aplicației",
+                                            "autActiuneDisplaynume": "Notificări Aplicație",
+                                            "autActiuneDisplaydescriere": "Vizualizează și Gestionează Notificările Aplicației"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    }
+                                ],
+                                "grupactactiunisec": [],
+                                "autGrupactiuniDisplayNume": "Gestionarea Mesajelor"
+                            }
+                        }
+                    ],
+                    "autRolDisplayNume": "Simpatizant al Partidului"
+                }
+            }
+        ]
+    }
+}

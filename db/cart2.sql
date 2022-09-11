@@ -29,7 +29,7 @@ CREATE TABLE `adm_admin` (
   `adm_admin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_admin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `adm_superadmin` (
   `adm_superadmin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_superadmin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_superadmin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +68,93 @@ LOCK TABLES `adm_superadmin` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `aut_actiune`
+--
+
+DROP TABLE IF EXISTS `aut_actiune`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aut_actiune` (
+  `aut_actiune_id` int NOT NULL AUTO_INCREMENT,
+  `aut_actiune_cod` varchar(25) COLLATE utf8mb4_bin NOT NULL,
+  `aut_actiune_nume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `aut_actiune_descriere` varchar(256) COLLATE utf8mb4_bin NOT NULL,
+  `aut_actiune_displaynume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `aut_actiune_displaydescriere` varchar(256) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`aut_actiune_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=210993 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aut_actiune`
+--
+
+LOCK TABLES `aut_actiune` WRITE;
+/*!40000 ALTER TABLE `aut_actiune` DISABLE KEYS */;
+INSERT INTO `aut_actiune` VALUES (110910,'GESTMESAJENOTIFAPP','Notificări Aplicație','Vizualizează și Gestionează Notificările Aplicației','Notificări Aplicație','Vizualizează și Gestionează Notificările Aplicației'),(180910,'CONFIRMSIMACT','Validare Înregistrare','Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit','Validare Înregistrare','Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit'),(190910,'INDRUMMEMACT','Îndrumător cum Poți Deveni Membru','Îndrumător pentru a deveni Membru al Partidului','Îndrumător cum Poți Deveni Membru','Îndrumător pentru a deveni Membru al Partidului'),(200920,'CEREREMEMCOMPLETCNP','Completează CNP, Nr. și Seria CI','Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI','Completează CNP, Nr. și Seria CI','Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI'),(200930,'CEREREMEMCOMPLETADR','Completează Adresa de Domiciliu','Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență','Completează Adresa de Domiciliu','Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență'),(200940,'CEREREMEMDOVADACOT','Dovadă Plată Cotizație Anuală','Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent','Dovadă Plată Cotizație Anuală','Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent'),(200950,'CEREREMEMTRIMITECER','Trimite Cererea de Membru','Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)','Trimite Cererea de Membru','Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)'),(210905,'GESTACTEXELISTACTC','Lista activități în curs de desfășurare','Lista de Activități  în curs de desfășurare la care sunteți înscris','Lista activități în curs de desfășurare','Lista de Activități  în curs de desfășurare la care sunteți înscris'),(210910,'GESTACTEXELISTACTV','Lista activități viitoare','Lista de Activități  noi la care vă puteți înscrie','Lista activități viitoare','Lista de Activități  noi la care vă puteți înscrie'),(210915,'GESTACTEXELISTACTT','Listă activități trecute','Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate','Listă activități trecute','Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate'),(210920,'GESTACTEXEVIZACTC','Vizualizare Activitate Curentă','Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați','Vizualizare Activitate Curentă','Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați'),(210925,'GESTACTEXEVIZACTV','Vizualizare Activitate Viitoare','Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie','Vizualizare Activitate Viitoare','Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie'),(210930,'GESTACTEXEVIZACTT','Vizualizare Activitate Trecute','Vizualizarea unei Activități Trecute la care ați participat','Vizualizare Activitate Trecute','Vizualizarea unei Activități Trecute la care ați participat'),(210935,'GESTACTEXEINSCACTV','Înscrierea la o Activitate Nouă','Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare','Înscrierea la o Activitate Nouă','Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare'),(210940,'GESTACTEXERENUACTV','Renunțați la o Activitate Nouă','Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare','Renunțați la o Activitate Nouă','Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare'),(210945,'GESTACTEXEADDREZACTC','Adăugare Rezultat Activitate','Adăugarea unui Rezultat pentru o Activitate la care participați','Adăugare Rezultat Activitate','Adăugarea unui Rezultat pentru o Activitate la care participați'),(210950,'GESTACTEXEMODREZACTC','Modificare Rezultat Activitate','Modificare unui Rezultat pentru o Activitate la care participați','Modificare Rezultat Activitate','Modificare unui Rezultat pentru o Activitate la care participați'),(210955,'GESTACTEXEDELREZACTC','Ștergere Rezultat Activitate','Ștergerea unui Rezultat pentru o Activitate la care participați','Ștergere Rezultat Activitate','Ștergerea unui Rezultat pentru o Activitate la care participați'),(210960,'GESTACTEXEVIZREZACTT','Vizualizare Rezultat Activitate','Vizualizați Rezultatul pentru o Activitate la care ați participat','Vizualizare Rezultat Activitate','Vizualizați Rezultatul pentru o Activitate la care ați participat'),(210965,'GESTACTEXELISTFAZVACTV','Listă Faze Activitate Viitoare','Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)','Listă Faze Activitate Viitoare','Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)'),(210970,'GESTACTEXEVIZFAZVACTV','Vizualizare Fază Viitoare','Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)','Vizualizare Fază Viitoare','Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)'),(210972,'GESTACTEXEINSCFAZVACTV','Înscrierea Participare Fază Activitate','Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare','Înscrierea Participare Fază Activitate','Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare'),(210974,'GESTACTEXERENUFAZVACTV','Renunțare Participare Fază Activitate','Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare','Renunțare Participare Fază Activitate','Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare'),(210976,'GESTACTEXELISTFAZACTC','Listă Faze Activitate CurentăVi','zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)','Listă Faze Activitate CurentăVi','zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)'),(210978,'GESTACTEXEVIZFAZACTC','Vizualizare Fază Activitate Curentă','Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)','Vizualizare Fază Activitate Curentă','Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)'),(210980,'GESTACTEXEADDREZFAZC','Adăugare Rezultat Fază în Desfășurare','Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Adăugare Rezultat Fază în Desfășurare','Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),(210982,'GESTACTEXEMODREZFAZC','Modificare Rezultat Fază în Desfășurare','Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Modificare Rezultat Fază în Desfășurare','Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),(210984,'GESTACTEXEDELREZFAZC','Ștergere Rezultat Fază în Desfășurare','Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Ștergere Rezultat Fază în Desfășurare','Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),(210986,'GESTACTEXEVIZREZFAZTACTC','Vizualizare Rezultat Fază Trecută Activitate Curentă','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente','Vizualizare Rezultat Fază Trecută Activitate Curentă','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente'),(210988,'GESTACTEXELISTFAZACTT','Listă Faze Activitate Trecută','Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)','Listă Faze Activitate Trecută','Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)'),(210990,'GESTACTEXEVIZFAZTACTT','Vizualizare Fază Trecută Activitate Trecută','Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)','Vizualizare Fază Trecută Activitate Trecută','Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)'),(210992,'GESTACTEXEVIZREZFAZTACTT','Vizualizare Rezultat Fază Activitate Trecută','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute','Vizualizare Rezultat Fază Activitate Trecută','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute');
+/*!40000 ALTER TABLE `aut_actiune` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aut_grupactactiune`
+--
+
+DROP TABLE IF EXISTS `aut_grupactactiune`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aut_grupactactiune` (
+  `aut_grupactactiune_id` int NOT NULL AUTO_INCREMENT,
+  `aut_grupactactiune_grupactid` int NOT NULL,
+  `aut_grupactactiune_grupactcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactactiune_actid` int NOT NULL,
+  `aut_grupactactiune_actcod` varchar(25) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactactiune_importanta` int NOT NULL,
+  `aut_grupactactiune_parentactid` int DEFAULT NULL,
+  `aut_grupactactiune_parentactcod` varchar(25) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`aut_grupactactiune_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2033 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aut_grupactactiune`
+--
+
+LOCK TABLES `aut_grupactactiune` WRITE;
+/*!40000 ALTER TABLE `aut_grupactactiune` DISABLE KEYS */;
+INSERT INTO `aut_grupactactiune` VALUES (2001,180,'CONFIRMSIM',180910,'CONFIRMSIMACT',1,NULL,NULL),(2002,190,'INDRUMMEM',190910,'INDRUMMEMACT',1,NULL,NULL),(2003,200,'CEREREMEM',200920,'CEREREMEMCOMPLETCNP',1,NULL,NULL),(2004,200,'CEREREMEM',200930,'CEREREMEMCOMPLETADR',2,NULL,NULL),(2005,200,'CEREREMEM',200940,'CEREREMEMDOVADACOT',3,NULL,NULL),(2006,200,'CEREREMEM',200950,'CEREREMEMTRIMITECER',4,NULL,NULL),(2007,240,'GESTEXEACT',210905,'GESTACTEXELISTACTC',1,NULL,NULL),(2008,240,'GESTEXEACT',210910,'GESTACTEXELISTACTV',2,NULL,NULL),(2009,240,'GESTEXEACT',210915,'GESTACTEXELISTACTT',3,NULL,NULL),(2010,240,'GESTEXEACT',210920,'GESTACTEXEVIZACTC',4,210905,'GESTACTEXELISTACTC'),(2011,240,'GESTEXEACT',210925,'GESTACTEXEVIZACTV',5,210910,'GESTACTEXELISTACTV'),(2012,240,'GESTEXEACT',210930,'GESTACTEXEVIZACTT',6,210915,'GESTACTEXELISTACTT'),(2013,240,'GESTEXEACT',210935,'GESTACTEXEINSCACTV',7,210925,'GESTACTEXEVIZACTV'),(2014,240,'GESTEXEACT',210940,'GESTACTEXERENUACTV',8,210925,'GESTACTEXEVIZACTV'),(2015,240,'GESTEXEACT',210945,'GESTACTEXEADDREZACTC',9,210920,'GESTACTEXEVIZACTC'),(2016,240,'GESTEXEACT',210950,'GESTACTEXEMODREZACTC',10,210920,'GESTACTEXEVIZACTC'),(2017,240,'GESTEXEACT',210955,'GESTACTEXEDELREZACTC',11,210920,'GESTACTEXEVIZACTC'),(2018,240,'GESTEXEACT',210960,'GESTACTEXEVIZREZACTT',12,210930,'GESTACTEXEVIZACTT'),(2019,240,'GESTEXEACT',210965,'GESTACTEXELISTFAZVACTV',13,210925,'GESTACTEXEVIZACTV'),(2020,240,'GESTEXEACT',210970,'GESTACTEXEVIZFAZVACTV',14,210965,'GESTACTEXELISTFAZVACTV'),(2021,240,'GESTEXEACT',210972,'GESTACTEXEINSCFAZVACTV',15,210970,'GESTACTEXEVIZFAZVACTV'),(2022,240,'GESTEXEACT',210974,'GESTACTEXERENUFAZVACTV',16,210970,'GESTACTEXEVIZFAZVACTV'),(2023,240,'GESTEXEACT',210976,'GESTACTEXELISTFAZACTC',17,210905,'GESTACTEXELISTACTC'),(2024,240,'GESTEXEACT',210978,'GESTACTEXEVIZFAZACTC',18,210976,'GESTACTEXELISTFAZACTC'),(2025,240,'GESTEXEACT',210980,'GESTACTEXEADDREZFAZC',19,210978,'GESTACTEXEVIZFAZACTC'),(2026,240,'GESTEXEACT',210982,'GESTACTEXEMODREZFAZC',20,210978,'GESTACTEXEVIZFAZACTC'),(2027,240,'GESTEXEACT',210984,'GESTACTEXEDELREZFAZC',21,210978,'GESTACTEXEVIZFAZACTC'),(2028,240,'GESTEXEACT',210986,'GESTACTEXEVIZREZFAZTACTC',22,210978,'GESTACTEXEVIZFAZACTC'),(2029,240,'GESTEXEACT',210988,'GESTACTEXELISTFAZACTT',23,210915,'GESTACTEXELISTACTT'),(2030,240,'GESTEXEACT',210990,'GESTACTEXEVIZFAZTACTT',24,210988,'GESTACTEXELISTFAZACTT'),(2031,240,'GESTEXEACT',210992,'GESTACTEXEVIZREZFAZTACTT',25,210992,'GESTACTEXEVIZREZFAZTACTT'),(2032,110,'GESTMESAJE',110910,'GESTMESAJENOTIFAPP',1,NULL,NULL);
+/*!40000 ALTER TABLE `aut_grupactactiune` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aut_grupactiuni`
+--
+
+DROP TABLE IF EXISTS `aut_grupactiuni`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aut_grupactiuni` (
+  `aut_grupactiuni_id` int NOT NULL AUTO_INCREMENT,
+  `aut_grupactiuni_cod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactiuni_nume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactiuni_descriere` varchar(256) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactiuni_displaynume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `aut_grupactiuni_displaydescriere` varchar(256) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`aut_grupactiuni_id`),
+  UNIQUE KEY `aut_grupactiuni_cod_unique` (`aut_grupactiuni_cod`)
+) ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aut_grupactiuni`
+--
+
+LOCK TABLES `aut_grupactiuni` WRITE;
+/*!40000 ALTER TABLE `aut_grupactiuni` DISABLE KEYS */;
+INSERT INTO `aut_grupactiuni` VALUES (10,'GESTADMIN','Gestiune Administratori IT','Gestionează Administratorii IT ai Sistemului','Gestiune Administratori IT','Gestionează Administratorii IT ai Sistemului'),(20,'GESTCOOPRI','Gestiune Coordonatori Principali','Gestionează Coordonatorii Principali ai Partidului','Gestiune Coordonatori Principali','Gestionează Coordonatorii Principali ai Partidului'),(25,'CONFIRMCOO','Confirmare Coordonator Principal','Confirmă Invitația de a Deveni Coordonator Principal','Confirmare Coordonator Principal','Confirmă Invitația de a Deveni Coordonator Principal'),(30,'GESTORGNZ','Gestiune Organizatori Activități','Gestionează Organizatorii de Activități ai Partidului','Gestiune Organizatori Activități','Gestionează Organizatorii de Activități ai Partidului'),(40,'GESTEVALTR','Gestiune Evaluatori Rezultate','Gestionează Evaluatorii Partidului - persoanele care vor evalua rezultatele activităților','Gestiune Evaluatori Rezultate','Gestionează Evaluatorii Partidului - persoanele care vor evalua rezultatele activităților'),(50,'GESTVALDTR','Gestiune Validatori Evaluări','Gestionează Validatorii Partidului - persoanele care vor valida evaluările făcute de evaluator','Gestiune Validatori Evaluări','Gestionează Validatorii Partidului - persoanele care vor valida evaluările făcute de evaluator'),(60,'GESTACTIV','Gestiunea Activităților','Inițiază și Gestionează Activitățile făcute de Membri și Simpatizanții Partidului','Gestiunea Activităților','Inițiază și Gestionează Activitățile făcute de Membri și Simpatizanții Partidului'),(70,'GESTVOTĂRI','Gestiunea Votărilor','Inițiază și Gestionează Votările interne ale Partidului','Gestiunea Votărilor','Inițiază și Gestionează Votările interne ale Partidului'),(80,'VIZGRUPURI','Vizualizarea Grupurilor','Vizualizează Grupurile de Membri existente in Partid','Vizualizarea Grupurilor','Vizualizează Grupurile de Membri existente in Partid'),(90,'VIZMEMBRI','Vizualizarea Membrilor','Vizualizează Membri Partidului	Vizualizarea Membrilor','Vizualizarea Membrilor','Vizualizează Membri Partidului	Vizualizarea Membrilor'),(100,'VIZSIMPAT','Vizualizarea Simpatizanților','Vizualizează Simpatizanților Partidului','Vizualizarea Simpatizanților','Vizualizează Simpatizanților Partidului'),(110,'GESTMESAJE','Gestionarea Mesajelor','Vizualizează și Gestionează Mesajele și Notificările','Gestionarea Mesajelor','Vizualizează și Gestionează Mesajele și Notificările'),(120,'CONFIRMORG','Confirmare Organizator','Confirmă Invitația de a Deveni Organizator de Activități','Confirmare Organizator','Confirmă Invitația de a Deveni Organizator de Activități'),(130,'GESTORGACT','Gestiune Organizări Activități','Gestionează Organizărilor Alocate','Gestiune Organizări Activități','Gestionează Organizărilor Alocate'),(135,'CONFINVORG','Noi Invitații primite pentru a Organiza Activități','Confirmă invitațiile primite de a fi organizator pentru Activități noi','Noi Invitații primite pentru a Organiza Activități','Confirmă invitațiile primite de a fi organizator pentru Activități noi'),(140,'CONFIRMEVL','Confirmare Evaluator','Confirmă Invitația de a Deveni Evaluator de Rezultate al Activităților Partidului','Confirmare Evaluator','Confirmă Invitația de a Deveni Evaluator de Rezultate al Activităților Partidului'),(150,'GESTEVLREZ','Gestiune Evaluări Rezultate','Evaluează Rezultatelor Activităților din Partid','Gestiune Evaluări Rezultate','Evaluează Rezultatelor Activităților din Partid'),(155,'CONFINVEVL','Noi Invitații primite pentru a fi Evalua Rezultate','Confirmă invitațiile primite de a fi Evaluator pentru Rezultatele unor Activități noi','Noi Invitații primite pentru a fi Evalua Rezultate','Confirmă invitațiile primite de a fi Evaluator pentru Rezultatele unor Activități noi'),(160,'CONFIRMVAL','Confirmare Validator','Confirmă Invitația de a Deveni Validator de Evaluări ale Activităților Partidului','Confirmare Validator','Confirmă Invitația de a Deveni Validator de Evaluări ale Activităților Partidului'),(170,'GESTVALEVL','Gestiune Validare Evaluări','Validează Evaluarea Rezultatelor Activităților efectuate','Gestiune Validare Evaluări','Validează Evaluarea Rezultatelor Activităților efectuate'),(175,'CONFINVVAL','Noi Invitații primite pentru a fi Valida Evaluări','Confirmă invitațiile primite de a fi Validator pentru Evaluările Rezultatelor unor Activități noi','Noi Invitații primite pentru a fi Valida Evaluări','Confirmă invitațiile primite de a fi Validator pentru Evaluările Rezultatelor unor Activități noi'),(180,'CONFIRMSIM','Confirmă Înregistrarea ca Simpatizant','Confirmă Inregistrarea ca Simpatizant al Partidului','Confirmă Înregistrare ca Simpatizant','Confirmă Inregistrarea ca Simpatizant al Partidului'),(190,'INDRUMMEM','Cum Poți Deveni Membru?','Îndrumător pentru a deveni Membru al Partidului','Cum Poți Deveni Membru?','Îndrumător pentru a deveni Membru al Partidului'),(200,'CEREREMEM','Cerere Membru','Gestionează Cererea și Condițiile pentru a Deveni Membru	Cerere Membru','Cerere Membru','Gestionează Cererea și Condițiile pentru a Deveni Membru	Cerere Membru'),(220,'INDRMEMACT','Cum Poți Deveni Membru Activ?','Îndrumător pentru a deveni Membru Activ al Partidului','Cum Poți Deveni Membru Activ?','Îndrumător pentru a deveni Membru Activ al Partidului'),(230,'AFILGRPMEM','Afiliază-te la un Grup','Afiliază-te la un Grup de Membri','Afiliază-te la un Grup','Afiliază-te la un Grup de Membri'),(240,'GESTEXEACT','Participă la Activități','Înscrie-te și Participă la la Activitățile Partidului','Participă la Activități','Înscrie-te și Participă la la Activitățile Partidului'),(250,'GESTEXEVOT','Participă la Votări','Înscrie-te și Participă la la Votările Partidului','Participă la Votări','Înscrie-te și Participă la la Votările Partidului'),(260,'INDRMEMEXP','Cum Poți Deveni Membru Experimentat?','Îndrumător pentru a deveni Membru Experimentat al Partidului','Cum Poți Deveni Membru Experimentat?','Îndrumător pentru a deveni Membru Experimentat al Partidului'),(270,'DAFLGRPMEM','Dezafiliază-te de la Grup','Dezafiliază-te de la Grupul Tău','Dezafiliază-te de la Grup','Dezafiliază-te de la Grupul Tău'),(280,'VIZGRUPMEM','Grupul Meu','Vizualizează și Participă la Activitatea Grupului din care faci parte','Grupul Meu','Vizualizează și Participă la Activitatea Grupului din care faci parte'),(290,'CREAREGRUP','Creare Grup','Crează-ți Propriul Tău Grup','Creare Grup','Crează-ți Propriul Tău Grup'),(300,'GESTGRUP','Gestiune Grup','Gestionează Grupul pe care l-ai înființat','Gestiune Grup','Gestionează Grupul pe care l-ai înființat'),(310,'VIZACTGRUP','Activitățile din Grup','Vizualizează Activitățile Membrilor din Grupul Tău','Activitățile din Grup','Vizualizează Activitățile Membrilor din Grupul Tău'),(320,'VIZVOTGRUP','Votările din Grup','Vizualizează Participarea la Votări a Membrilor din Grupul Tău','Votările din Grup','Vizualizează Participarea la Votări a Membrilor din Grupul Tău'),(330,'DAFLGRPSEF','Dezafiliază-te ca Șef de Grup','Dezafiliază-te de la Grupul Înființat de Tine','Dezafiliază-te ca Șef de Grup','Dezafiliază-te de la Grupul Înființat de Tine');
+/*!40000 ALTER TABLE `aut_grupactiuni` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `aut_rol`
 --
 
@@ -76,15 +163,18 @@ DROP TABLE IF EXISTS `aut_rol`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `aut_rol` (
   `aut_rol_id` int NOT NULL AUTO_INCREMENT,
-  `aut_rol_cod` varchar(9) NOT NULL,
-  `aut_rol_nume` varchar(32) NOT NULL,
-  `aut_rol_activ_yn` varchar(1) NOT NULL,
+  `aut_rol_cod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `aut_rol_nume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `aut_rol_descriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
+  `aut_rol_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
   `aut_rol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_rol_enddt` datetime DEFAULT NULL,
+  `aut_rol_displaynume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `aut_rol_displaydescriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`aut_rol_id`),
   UNIQUE KEY `aut_rol_cod_unique` (`aut_rol_cod`),
   UNIQUE KEY `aut_rol_nume_unique` (`aut_rol_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,8 +183,36 @@ CREATE TABLE `aut_rol` (
 
 LOCK TABLES `aut_rol` WRITE;
 /*!40000 ALTER TABLE `aut_rol` DISABLE KEYS */;
-INSERT INTO `aut_rol` VALUES (1,'SUPERADM','Superadministrator','y','2022-08-27 18:27:48',NULL),(2,'ADMIN','Administrator','y','2022-08-27 18:27:48',NULL),(3,'COORDPRI','Coordonator principal','y','2022-08-27 18:27:48',NULL),(4,'ORGVOT','Organizator votare','n','2022-08-27 18:27:48',NULL),(5,'CREVOT','Creator votare','n','2022-08-27 18:27:48',NULL),(6,'EVLVOT','Evaluator rezultate votare','n','2022-08-27 18:27:48',NULL),(7,'VALVOT','Validator evaluare votare','n','2022-08-27 18:27:48',NULL),(8,'VOTANT','Votant','n','2022-08-27 18:27:48',NULL),(9,'CREACT','Creator acțiune','n','2022-08-27 18:27:48',NULL),(11,'EXEACT','Executant (/Organizator) acțiune','y','2022-08-27 18:27:48',NULL),(12,'EVLREZ','Evaluator rezultate acțiune','y','2022-08-27 18:27:48',NULL),(13,'VALEVAL','Validator evaluare acțiune','y','2022-08-27 18:27:48',NULL),(14,'SIMPATIZ','Simpatizant','y','2022-08-27 18:27:48',NULL),(15,'MEMINCAFL','Membru începător afiliat','y','2022-08-27 18:27:48',NULL),(16,'MBRINCNFL','Membru începător neafiliat','y','2022-08-27 18:27:48',NULL),(17,'MEMACTAFL','Membru activ afiliat','y','2022-08-27 18:27:48',NULL),(18,'MEMACTNFL','Membru activ neafiliat','y','2022-08-27 18:27:48',NULL),(19,'MEMEXPAFL','Membru experimentat afiliat','y','2022-08-27 18:27:48',NULL),(20,'MEMEXPNFL','Membru experimentat neafiliat','y','2022-08-27 18:27:48',NULL),(21,'SEFGRUP','Șef de grup','y','2022-08-27 18:27:48',NULL);
+INSERT INTO `aut_rol` VALUES (1,'SUPERADMIN','Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...','y','2022-09-10 04:36:26',NULL,'Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...'),(2,'ADMIN','Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...','y','2022-09-10 04:36:26',NULL,'Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...'),(3,'COORDPRINC','Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...','y','2022-09-10 04:36:26',NULL,'Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...'),(4,'ORGANIZVOT','Organizator votare','','n','2022-09-10 04:36:26',NULL,'Organizator votare',''),(5,'CREATORVOT','Creator votare','','n','2022-09-10 04:36:26',NULL,'Creator votare',''),(6,'EVALUATVOT','Evaluator rezultate votare','','n','2022-09-10 04:36:26',NULL,'Evaluator rezultate votare',''),(7,'VALIDATVOT','Validator evaluare votare','','n','2022-09-10 04:36:26',NULL,'Validator evaluare votare',''),(8,'VOTANT','Votant','','n','2022-09-10 04:36:26',NULL,'Votant',''),(9,'CREATORACT','Creator acțiune','','n','2022-09-10 04:36:26',NULL,'Creator acțiune',''),(11,'EXECUTACT','Executant acțiune','','n','2022-09-10 04:36:26',NULL,'Executant acțiune',''),(12,'EVALUATREZ','Evaluator rezultate acțiune','Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...','y','2022-09-10 04:36:26',NULL,'Evaluator rezultate acțiune','Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...'),(13,'VALIDATEVL','Validator evaluare acțiune','Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...','y','2022-09-10 04:36:26',NULL,'Validator evaluare acțiune','Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...'),(14,'SIMPATIZ','Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...','y','2022-09-10 04:36:26',NULL,'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'),(15,'MEMINCAFL','Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...','y','2022-09-10 04:36:26',NULL,'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'),(16,'MEMINCNFL','Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător Neafiliat...','y','2022-09-10 04:36:26',NULL,'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător neafiliat...'),(17,'MEMACTAFL','Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...','y','2022-09-10 04:36:26',NULL,'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'),(18,'MEMACTNFL','Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...','y','2022-09-10 04:36:26',NULL,'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'),(19,'MEMEXPAFL','Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...','y','2022-09-10 04:36:26',NULL,'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'),(20,'MEMEXPNFL','Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...','y','2022-09-10 04:36:26',NULL,'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'),(21,'SEFGRUP','Șef de Grup','Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...','y','2022-09-10 04:36:26',NULL,'Șef de Grup','Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'),(22,'ORGANIZACT','Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...','y','2022-09-10 04:36:26',NULL,'Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'),(23,'SIMPATPEND','Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...','y','2022-09-10 04:36:26',NULL,'Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...'),(24,'ORGANIPEND','Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-10 04:36:26',NULL,'Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),(25,'EVALUAPEND','Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-10 04:36:26',NULL,'Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),(26,'VALIDAPEND','Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-10 04:36:26',NULL,'Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),(27,'COORPRPEND','Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-10 04:36:26',NULL,'Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.');
 /*!40000 ALTER TABLE `aut_rol` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aut_rolgrupact`
+--
+
+DROP TABLE IF EXISTS `aut_rolgrupact`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aut_rolgrupact` (
+  `aut_rolgrupact_id` int NOT NULL AUTO_INCREMENT,
+  `aut_rolgrupact_rolid` int NOT NULL,
+  `aut_rolgrupact_rolcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `aut_rolgrupact_grupactid` int NOT NULL,
+  `aut_rolgrupact_grupactcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `aut_rolgrupact_importanta` int NOT NULL,
+  PRIMARY KEY (`aut_rolgrupact_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=721 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aut_rolgrupact`
+--
+
+LOCK TABLES `aut_rolgrupact` WRITE;
+/*!40000 ALTER TABLE `aut_rolgrupact` DISABLE KEYS */;
+INSERT INTO `aut_rolgrupact` VALUES (10,1,'SUPERADMIN',10,'GESTADMIN',1),(20,1,'SUPERADMIN',110,'GESTMESAJE',2),(30,2,'ADMIN',20,'GESTCOOPRI',1),(40,2,'ADMIN',110,'GESTMESAJE',2),(45,27,'COORPRPEND',25,'CONFIRMCOO',1),(50,3,'COORDPRINC',30,'GESTORGACT',5),(60,3,'COORDPRINC',40,'GESTEVLREZ',3),(70,3,'COORDPRINC',50,'GESTVALREZ',4),(80,3,'COORDPRINC',60,'GESTACTIV',1),(90,3,'COORDPRINC',70,'GESTVOTĂRI',2),(100,3,'COORDPRINC',80,'VIZGRUPURI',7),(110,3,'COORDPRINC',90,'VIZMEMBRI',6),(120,3,'COORDPRINC',100,'VIZSIMPAT',8),(130,3,'COORDPRINC',110,'GESTMESAJE',9),(140,24,'ORGANIPEND',120,'CONFIRMORG',1),(150,22,'ORGANIZACT',130,'GESTORGACT',1),(160,22,'ORGANIZACT',135,'CONFINVACT',2),(170,22,'ORGANIZACT',110,'GESTMESAJE',3),(180,25,'EVALUAPEND',140,'CONFIRMEVL',1),(190,12,'EVALUATREZ',150,'GESTEVLREZ',1),(200,12,'EVALUATREZ',155,'CONFINVEVL',2),(210,12,'EVALUATREZ',110,'GESTMESAJE',3),(220,26,'VALIDAPEND',160,'CONFIRMVAL',1),(230,13,'VALIDATEVL',170,'GESTVALEVL',1),(240,13,'VALIDATEVL',175,'CONFINVVAL',2),(250,13,'VALIDATEVL',110,'GESTMESAJE',3),(260,23,'SIMPATPEND',180,'CONFIRMSIM',1),(270,14,'SIMPATIZ',190,'INDRUMMEM',1),(280,14,'SIMPATIZ',200,'CEREREMEM',2),(290,14,'SIMPATIZ',240,'GESTEXEACT',3),(300,14,'SIMPATIZ',110,'GESTMESAJE',4),(310,16,'MEMINCNFL',220,'INDRMEMACT',1),(320,16,'MEMINCNFL',230,'AFILGRPMEM',4),(330,16,'MEMINCNFL',240,'GESTEXEACT',2),(340,16,'MEMINCNFL',250,'GESTEXEVOT',3),(350,16,'MEMINCNFL',110,'GESTMESAJE',5),(360,15,'MEMINCAFL',220,'INDRMEMACT',1),(370,15,'MEMINCAFL',240,'GESTEXEACT',2),(380,15,'MEMINCAFL',250,'GESTEXEVOT',3),(390,15,'MEMINCAFL',280,'VIZGRUPMEM',4),(400,15,'MEMINCAFL',270,'DAFLGRPMEM',5),(410,15,'MEMINCAFL',110,'GESTMESAJE',6),(420,18,'MEMACTNFL',260,'INDRMEMEXP',1),(430,18,'MEMACTNFL',290,'CREAREGRUP',4),(440,18,'MEMACTNFL',230,'AFILMEMGRP',5),(450,18,'MEMACTNFL',240,'GESTEXEACT',2),(460,18,'MEMACTNFL',250,'GESTEXEVOT',3),(470,18,'MEMACTNFL',110,'GESTMESAJE',6),(480,17,'MEMACTAFL',260,'INDRMEMEXP',1),(490,17,'MEMACTAFL',240,'GESTEXEACT',2),(500,17,'MEMACTAFL',250,'GESTEXEVOT',3),(510,17,'MEMACTAFL',280,'VIZGRUPMEM',4),(520,17,'MEMACTAFL',270,'DAFLGRPMEM',5),(530,17,'MEMACTAFL',110,'GESTMESAJE',6),(550,20,'MEMEXPNFL',290,'CREAREGRUP',3),(560,20,'MEMEXPNFL',230,'AFILMEMGRP',4),(570,20,'MEMEXPNFL',240,'GESTEXEACT',1),(580,20,'MEMEXPNFL',250,'GESTEXEVOT',2),(590,20,'MEMEXPNFL',110,'GESTMESAJE',5),(610,19,'MEMEXPAFL',240,'GESTEXEACT',1),(620,19,'MEMEXPAFL',250,'GESTEXEVOT',2),(630,19,'MEMEXPAFL',280,'VIZGRUPMEM',3),(640,19,'MEMEXPAFL',270,'DAFLGRPMEM',4),(650,19,'MEMEXPAFL',110,'GESTMESAJE',5),(660,21,'SEFGRUP',300,'GESTGRUP',1),(670,21,'SEFGRUP',310,'VIZACTGRUP',2),(680,21,'SEFGRUP',320,'VIZVOTGRUP',3),(690,21,'SEFGRUP',240,'GESTEXEACT',4),(700,21,'SEFGRUP',250,'GESTEXEVOT',5),(710,21,'SEFGRUP',330,'DAFLGRPSEF',6),(720,21,'SEFGRUP',110,'GESTMESAJE',7);
+/*!40000 ALTER TABLE `aut_rolgrupact` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -113,7 +231,7 @@ CREATE TABLE `aut_user` (
   `aut_user_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_user_id`),
   UNIQUE KEY `aut_user_nume_unique` (`aut_user_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +240,7 @@ CREATE TABLE `aut_user` (
 
 LOCK TABLES `aut_user` WRITE;
 /*!40000 ALTER TABLE `aut_user` DISABLE KEYS */;
-INSERT INTO `aut_user` VALUES (4,'alexm','$2a$10$7IH54k956fueuSv2prT67OOrxeJKBlINzBzCwN5FDYKpmb4BwlmYu','y','2022-09-02 17:20:55',NULL);
+INSERT INTO `aut_user` VALUES (4,'alexm','$2a$10$7IH54k956fueuSv2prT67OOrxeJKBlINzBzCwN5FDYKpmb4BwlmYu','y','2022-09-02 17:20:55',NULL),(6,'alexs','$2a$10$VjrbJSs67LFnQL7ZeRKay.9VfAqDC2K5jqERreedfN7848FXUU/DO','y','2022-09-09 08:19:57',NULL),(7,'memincnfl','$2a$10$IO5mAAnMx3LCKU6TI1pKO..TTV2JutoHv1zOX.eNhwf8TROkPBpf.','y','2022-09-10 02:29:40',NULL),(8,'memincafl','$2a$10$NeDEZUNPZazznApzffnJa.pue5A8IILoXPUSfyYX27OT/wE2jI4xO','y','2022-09-10 02:37:46',NULL),(10,'memactafl','$2a$10$kBCeg6vNKnw5MBVeWyOan.P9/4rvqpZeR2oFQ9jtddhn5dIjDygY6','y','2022-09-10 03:10:42',NULL),(11,'memactnfl','$2a$10$dr/ggbRVWwCt0jafp/eGuuDZ0FOShH2eG0/cTh47immKTYwjiyY6G','y','2022-09-10 03:16:12',NULL),(12,'memexpnfl','$2a$10$RCMQk.2CtuHGBkhUEQuv0u.ZynqEDYBmYvhJeTWRWaIrejb8omxDK','y','2022-09-10 03:33:40',NULL),(13,'memexpafl','$2a$10$HynzLN24IG68OOFCJ/BZluLa8OarnJ7wS5EE4GLi5ylg4c/f.xtMG','y','2022-09-10 03:37:44',NULL),(14,'sefgrup','$2a$10$miwKKZVRqn0W8tVaDvs1dOBhUi0DkDXVt1apWJj1lapC/LMC7SOzG','y','2022-09-10 03:42:29',NULL),(17,'coordprinc','$2a$10$7uGkO270W5PWwi/N372amuxB4t4PirgAl2lRIQI9cTFoh65mOhIUq','y','2022-09-10 04:02:46',NULL),(18,'simpatpend','$2a$10$NyImTdOa/3ErUDj3Ri3wJOuXaMiJPOtgySOv6s26Kco7f6xI2qZf2','y','2022-09-10 04:13:09',NULL);
 /*!40000 ALTER TABLE `aut_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +278,7 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_rez_codpostal` varchar(16) DEFAULT NULL,
   `aut_userinfo_rez_adresa` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`aut_userinfo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +287,7 @@ CREATE TABLE `aut_userinfo` (
 
 LOCK TABLES `aut_userinfo` WRITE;
 /*!40000 ALTER TABLE `aut_userinfo` DISABLE KEYS */;
-INSERT INTO `aut_userinfo` VALUES (2,4,'pop','mihai','3227222','m','pop.mihai9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `aut_userinfo` VALUES (2,4,'pop','mihai','3227222','m','pop.mihai9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,6,'pop','sorin','3227221','m','pop.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,7,'memincnfl','sorin','3227220','m','memincnfl.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,8,'memincafl','sorin','3227230','m','memincqfl.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,10,'memactafl','sorin','3227130','m','memactafl.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,11,'memactnfl','sorin','3217130','m','memactnfl.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,12,'memexpnfl','sorin','3337130','m','memexpnfl.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(11,13,'memexpafl','sorin','8337130','m','memexpafl.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(12,14,'sefgrup','sorin','8337130','m','sefgrup.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(15,17,'coordprinc','sorin','8137330','m','coordprinc.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(16,18,'simpatpend','sorin','8237330','m','simpatpend.sorin9012@gmail.com',NULL,1,'TR',1,'AB',322122,322122,'344555','Calea Moților nr. 33 Bl V5 ap. 3','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `aut_userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,13 +301,13 @@ DROP TABLE IF EXISTS `aut_userrol`;
 CREATE TABLE `aut_userrol` (
   `aut_userrol_id` int NOT NULL AUTO_INCREMENT,
   `aut_userrol_rolid` int NOT NULL,
-  `aut_userrol_rolcod` varchar(9) NOT NULL,
+  `aut_userrol_rolcod` varchar(10) NOT NULL,
   `aut_userrol_userid` int NOT NULL,
   `aut_userrol_activ_yn` varchar(1) NOT NULL,
   `aut_userrol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_userrol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_userrol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +316,7 @@ CREATE TABLE `aut_userrol` (
 
 LOCK TABLES `aut_userrol` WRITE;
 /*!40000 ALTER TABLE `aut_userrol` DISABLE KEYS */;
-INSERT INTO `aut_userrol` VALUES (1,14,'SIMPATIZ',4,'y','2022-09-02 17:21:06',NULL);
+INSERT INTO `aut_userrol` VALUES (1,14,'SIMPATIZ',4,'y','2022-09-02 17:21:06',NULL),(2,14,'SIMPATIZ',6,'y','2022-09-09 08:19:57',NULL),(3,16,'MEMINCNFL',7,'y','2022-09-10 02:29:40',NULL),(4,15,'MEMINCAFL',8,'y','2022-09-10 02:37:46',NULL),(6,17,'MEMACTAFL',10,'y','2022-09-10 03:10:42',NULL),(7,18,'MEMACTNFL',11,'y','2022-09-10 03:16:12',NULL),(8,20,'MEMEXPNFL',12,'y','2022-09-10 03:33:40',NULL),(9,19,'MEMEXPAFL',13,'y','2022-09-10 03:37:44',NULL),(10,21,'SEFGRUP',14,'y','2022-09-10 03:42:29',NULL),(11,3,'COORDPRINC',17,'y','2022-09-10 04:02:46',NULL),(12,23,'SIMPATPEND',18,'y','2022-09-10 04:13:09',NULL);
 /*!40000 ALTER TABLE `aut_userrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +353,7 @@ CREATE TABLE `geo_codpostal` (
   `geo_codpostal_numerebloc` varchar(128) NOT NULL,
   PRIMARY KEY (`geo_codpostal_id`),
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +382,7 @@ CREATE TABLE `geo_judet` (
   PRIMARY KEY (`geo_judet_id`),
   UNIQUE KEY `geo_judet_cod_unique` (`geo_judet_cod`),
   UNIQUE KEY `geo_judet_nume_unique` (`geo_judet_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +417,7 @@ CREATE TABLE `geo_localitate` (
   `geo_localitate_regiune` varchar(64) NOT NULL,
   PRIMARY KEY (`geo_localitate_id`),
   UNIQUE KEY `geo_localitate_cod_unique` (`geo_localitate_cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=13750 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13750 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,7 +463,7 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +495,7 @@ CREATE TABLE `geo_zonajudet` (
   PRIMARY KEY (`geo_zonajudet_id`),
   UNIQUE KEY `geo_zonajudet_cod_unique` (`geo_zonajudet_cod`),
   UNIQUE KEY `geo_zonajudet_nume_unique` (`geo_zonajudet_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,7 +533,7 @@ CREATE TABLE `geo_zonalocalitate` (
   PRIMARY KEY (`geo_zonalocalitate_id`),
   UNIQUE KEY `geo_zonalocalitate_cod_unique` (`geo_zonalocalitate_cod`),
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,7 +559,7 @@ CREATE TABLE `geo_zonatara` (
   PRIMARY KEY (`geo_zonatara_id`),
   UNIQUE KEY `geo_zonatara_cod_unique` (`geo_zonatara_cod`),
   UNIQUE KEY `geo_zonatara_nume_unique` (`geo_zonatara_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -463,4 +581,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-06 12:51:53
+-- Dump completed on 2022-09-11 16:52:35

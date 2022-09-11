@@ -27,7 +27,7 @@ public class AutUserRol
   private Long autUserrolRolid;
 
   @NotBlank
-  @Size(max = 9)
+  @Size(max = 10)
   @Column(name = "aut_userrol_rolcod")
   private String autUserrolRolcod;
 
@@ -48,6 +48,11 @@ public class AutUserRol
   @Size(max = 20)
   @Column(name = "aut_userrol_enddt")
   private String autUserrolEnddt;
+
+  //@Where(clause = "aut_userrol_activ_yn = 'y'")
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+  @JoinColumn(name = "aut_userrol_rolid", referencedColumnName = "aut_rol_id", insertable = false, updatable = false)
+	private AutRol rol;
 
 
 	public AutUserRol() 
@@ -143,16 +148,13 @@ public class AutUserRol
     this.autUserrolEnddt = aut_userrol_enddt;
   }
 
-  /** 
-  public Set<Role> getRoles() {
-    return roles;
+  public AutRol getRol() {
+    return this.rol;
   }
 
-  public void setRoles(Set<Role> roles) {
-    this.roles = roles;
+  public void setRol(AutRol rol) {
+    this.rol = rol;
   }
-  */
-
 
   
 }

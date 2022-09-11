@@ -1,4 +1,6 @@
 import { RouterStateModel } from '@ngxs/router-plugin';
+import { RolGrupActiuniAction } from '../aut/rol_grupactiuni/rol_grupactiuni.actions';
+import { RolGrupActiuniStateModel } from '../aut/rol_grupactiuni/rol_grupactiuni.models';
 //import { LoginAnswer } from 'src/app/payloads/aut/LoginAnswer';
 //import { MessageDetailPageStateModel } from '../../pages/message-detail/message-detail.model';
 //import { SettingsPageStateModel } from '../../pages/settings/settings.model';
@@ -10,6 +12,7 @@ import { AuthStateModel } from '../auth-guard/auth-guard.models';
 
 export interface AppStoreModel {
   auth: AuthStateModel;
+  rolgrupactiuni : RolGrupActiuniStateModel;
   //main: MainPageStateModel;
   //services: ServicesPageStateModel;
   //messages: MessagesPageStateModel;

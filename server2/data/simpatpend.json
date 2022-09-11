@@ -1,0 +1,77 @@
+{
+    "id": 18,
+    "roles": [
+        "SIMPATPEND"
+    ],
+    "userName": "simpatpend",
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOCIsImlhdCI6MTY2Mjg1MDA0OCwiZXhwIjoxNjYyODUzNjQ4fQ.NJLOOFH3xQWHHgGTLlBfL88YlYmf0dfoUmzBw-OT_5tTnHlkA9bHnWaJP_mm6AEXn87IKWlGnhpzgY0ETkXGaA",
+    "tokenType": "Bearer",
+    "autUser": {
+        "autUserId": 18,
+        "autUserNume": "simpatpend",
+        "autUserParola": "",
+        "autUserActivyn": "y",
+        "autUserStartdt": "2022-09-10 04:13:09",
+        "autUserEnddt": null,
+        "roles": [
+            {
+                "autUserrolId": 12,
+                "autUserrolRolid": 23,
+                "autUserrolRolcod": "SIMPATPEND",
+                "autUserrolUserid": 18,
+                "autUserrolActivyn": "y",
+                "autUserrolStartdt": "2022-09-10 04:13:09",
+                "autUserrolEnddt": null,
+                "rol": {
+                    "autRolId": 23,
+                    "autRolCod": "SIMPATPEND",
+                    "autRolNume": "Simpatizant în Așteptare",
+                    "autRolDescriere": "V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...",
+                    "autRolActivyn": "y",
+                    "autRolStartdt": "2022-09-10 04:36:26",
+                    "autRolEnddt": null,
+                    "autRolDisplaydescriere": "V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...",
+                    "rolgrupact": [
+                        {
+                            "autRolgrupactId": 260,
+                            "autRolgrupactRolid": 23,
+                            "autRolgrupactRolcod": "SIMPATPEND",
+                            "autRolgrupactGrupactid": 180,
+                            "autRolgrupactGrupactcod": "CONFIRMSIM",
+                            "autRolgrupactImportanta": 1,
+                            "grupactiuni": {
+                                "autGrupactiuniId": 180,
+                                "autGrupactiuniCod": "CONFIRMSIM",
+                                "autGrupactiuniNume": "Confirmă Înregistrarea ca Simpatizant",
+                                "autGrupactiuniDescriere": "Confirmă Inregistrarea ca Simpatizant al Partidului",
+                                "autGrupactiuniDisplaydescriere": "Confirmă Inregistrarea ca Simpatizant al Partidului",
+                                "grupactactiuni": [
+                                    {
+                                        "autGrupactactiuneId": 2001,
+                                        "autGrupactactiuneGrupactid": 180,
+                                        "autGrupactactiuneGrupactcod": "CONFIRMSIM",
+                                        "autGrupactactiuneActid": 180910,
+                                        "autGrupactactiuneActcod": "CONFIRMSIMACT",
+                                        "autGrupactactiuneImportanta": 1,
+                                        "actiune": {
+                                            "autActiuneId": 180910,
+                                            "autActiuneCod": "CONFIRMSIMACT",
+                                            "autActiuneNume": "Validare Înregistrare",
+                                            "autActiuneDescriere": "Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit",
+                                            "autActiuneDisplaynume": "Validare Înregistrare",
+                                            "autActiuneDisplaydescriere": "Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit"
+                                        },
+                                        "autGrupactactiuneParentactid": null,
+                                        "autGrupactactiuneParentactcod": null
+                                    }
+                                ],
+                                "autGrupactiuniDisplayNume": "Confirmă Înregistrare ca Simpatizant"
+                            }
+                        }
+                    ],
+                    "autRolDisplayNume": "Simpatizant în Așteptare"
+                }
+            }
+        ]
+    }
+}

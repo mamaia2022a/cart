@@ -13,7 +13,9 @@ import { AuthAction } from '../../../core/auth-guard/auth-guard.actions';
 export class LoginPage implements OnInit {
   login: FormGroup;
 
-  constructor(private store: Store, private navController: NavController, private platform: Platform) {}
+  constructor(private store: Store, private navController: NavController, private platform: Platform) 
+    {
+    }
 
   onLogin() {
     if (this.login.valid) {

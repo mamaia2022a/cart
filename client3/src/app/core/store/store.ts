@@ -7,6 +7,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsModuleOptions } from '@ngxs/store';
 import { LoginAnswer } from '../../../app/payloads/aut/LoginAnswer';
 import { environment } from '../../../environments/environment';
+import { RolGrupActiuniGuardState } from '../aut/rol_grupactiuni/rol_grupactiuni.state';
 //import { MessageDetailPageState } from '../../pages/message-detail/message-detail.state';
 //import { SettingsPageState } from '../../pages/settings/settings.state';
 //import { MainPageState } from '../../tabs/main/main.state';
@@ -18,6 +19,7 @@ import { AuthGuardState } from '../auth-guard/auth-guard.state';
 
 const ngxsMainStates = [
   AuthGuardState,
+  RolGrupActiuniGuardState,
   //TabsState,
   //MainPageState,
   //ServicesPageState,

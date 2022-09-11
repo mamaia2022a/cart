@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
-  constructor() {}
+  constructor() {
+    //this.storage.create();
+  }
 
   ngOnInit(): void {}
 }

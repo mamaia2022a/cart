@@ -24,6 +24,33 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.Rolgrupactiunii)
+  rolgrupactiunii(context: StateContext<AuthAction.Rolgrupactiunii>, action: AuthAction.Rolgrupactiunii) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+  @Action(AuthAction.Grupactactiuni)
+  grupactactiuni(context: StateContext<AuthAction.Grupactactiuni>, action: AuthAction.Grupactactiuni) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+  @Action(AuthAction.Actiune)
+  actiune(context: StateContext<AuthAction.Actiune>, action: AuthAction.Actiune) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
   @Action(AuthAction.Logout)
   logout(context: StateContext<AuthAction.Logout>) {
     const state = context.getState();

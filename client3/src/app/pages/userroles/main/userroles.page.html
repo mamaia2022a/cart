@@ -15,18 +15,33 @@
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; Iată Lista Funcțiilor tale în Partid: </ion-title>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; Funcțiile în Partid: </ion-title>
   </ion-toolbar>  
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <!-- List of Text Items -->
-      <ng-container *ngIf="roles">
+      <ng-container *ngIf="userroles">
         <ion-list>
-          <button width="100%" ion-item *ngFor='let rol of roles' (click)="selectieRol(rol.autUserrolId)"> 
-            <h3>Ești {{rol.autUserrolRolcod}} al Partidului. Intră pe lista ta de acțiuni...</h3> 
-          </button>  
+          <!--
+          <ion-item detail *ngFor='let rol of roles' (click)="selectieRol(rol.autUserrolId)">
+            <ion-label>
+              <h2>{{rol.rol.autRolDisplayNume}}</h2>
+              <p>{{rol.rol.autRolDisplaydescriere}}</p>
+            </ion-label>
+          </ion-item>
+          -->
+          
+          <button width="100%" ion-item *ngFor='let userrol of userroles' (click)="selectieRol(userrol.autUserrolId)"> 
+            <ion-label>
+              <h2>{{userrol.rol.autRolDisplayNume}}</h2>
+              <p>{{userrol.rol.autRolDisplaydescriere}}</p>
+            </ion-label>
+
+          </button>
+        
         </ion-list>
      </ng-container>
+
 
 </ion-content>

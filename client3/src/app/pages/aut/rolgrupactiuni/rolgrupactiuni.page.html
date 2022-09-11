@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/userroluri"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   
+  <!-- List of Text Items -->
+      <ng-container *ngIf="crtrol">
+        <h3>Sunteți {{crtrol.autRolDisplayNume}}</h3>
+        <ion-list>
+        
+          <ion-item detail button="true" *ngFor='let crtgrupact of crtrol.rolgrupact' (click)="selectieGrupActiune(crtgrupact.autRolgrupactId)">
+            <ion-label>
+              <h2>{{crtgrupact.grupactiuni.autGrupactiuniDisplayNume}}</h2>
+               <p>{{crtgrupact.grupactiuni.autGrupactiuniDisplaydescriere}}</p>
+            </ion-label>
+          </ion-item>
+        <!--
+          <button width="100%" ion-item *ngFor='let crtgrupact of crtrol.rolgrupact' > 
+              <h2>{{crtgrupact.grupactiuni.autGrupactiuniDisplayNume}}</h2>
+               <p>{{crtgrupact.grupactiuni.autGrupactiuniDisplaydescriere}}</p>
+               <br>
+          </button>
+        -->
+        </ion-list>
+     </ng-container>
+  
+
+
+</ion-content>

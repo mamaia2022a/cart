@@ -9,14 +9,14 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./userroles.page.scss'],
 })
 export class UserRolesPage implements OnInit {
-  forgot: FormControl;
-  roles : any = null;
-  loginResponse : any;
+  frmUserRoles: FormControl;
+  userroles: any = null;
+  loginResponse: any;
 
 
   constructor(private storage: Storage) 
   {
-    this.roles = null;
+    this.userroles = null;
     this.getLocalStorageData()
             .then(data =>{
                   //ok
@@ -30,7 +30,7 @@ export class UserRolesPage implements OnInit {
         .then( value => 
             { 
               self.loginResponse = value;
-              self.roles = self.loginResponse.autUser.roles;
+              self.userroles = self.loginResponse.autUser.roles;
               console.log(value);
               resolve(value);
             });
@@ -39,8 +39,8 @@ export class UserRolesPage implements OnInit {
     }
 
   done() {
-    if (this.forgot.valid) {
-      console.log(this.forgot.value);
+    if (this.frmUserRoles.valid) {
+      console.log(this.frmUserRoles.value);
     }
   }
 
@@ -49,7 +49,7 @@ export class UserRolesPage implements OnInit {
   }
 
   ngOnInit(){
-    this.forgot = new FormControl('', [Validators.required, Validators.email]);
-    console.log(this.roles);
+    this.frmUserRoles = new FormControl('', [Validators.required, Validators.email]);
+    console.log(this.userroles);
   }
 }

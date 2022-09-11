@@ -17,6 +17,22 @@ export namespace AuthAction {
     static readonly type = '[Logout] User logout';
     constructor(public isAuth: boolean = false) {}
   }
+
+  export class Rolgrupactiunii {
+    static readonly type = '[Rolgrupactiunii] Rol Grup Actiunii';
+    constructor(public userrolid, public loginAnswer : LoginAnswer) {}
+  }
+
+  export class Grupactactiuni {
+    static readonly type = '[Grupactactiuni] Grup Act Actiunii';
+    constructor(public rolgrupactid, public crtRol : any) {}
+  }
+
+  export class Actiune {
+    static readonly type = '[Actiune] Actiune';
+    constructor(public grupactactiuneid, public crtGrupAct : any) {}
+  }
+
 }
 
 
