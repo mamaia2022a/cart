@@ -15,6 +15,7 @@ export const appConfig = {
       main: 'userroles/main',
     },
     aut: {
+      logout: 'aut/logout',
       userroluri: 'aut/userroluri',
       rolgrupactiuni: 'aut/rolgrupactiuni',
       grupactactiuni: 'aut/grupactactiuni'

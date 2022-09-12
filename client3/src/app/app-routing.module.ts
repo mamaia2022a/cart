@@ -37,6 +37,10 @@ const routes: Routes = [
   },  
   */
   {
+    path: 'aut/logout',
+    loadChildren: () => import('./pages/aut/logout/logout.module').then((m) => m.LogoutPageModule),
+  },
+  {
     path: 'aut/userroluri',
     loadChildren: () => import('./pages/aut/userroluri/userroluri.module').then((m) => m.UserRoluriPageModule),
   },

@@ -1,8 +1,28 @@
 <ion-app>
   <!-- [ngClass]="{ dark: (isDarkMode$ | async) }"
   <app-camera-side-menu></app-camera-side-menu>
-  <app-profile-menu></app-profile-menu>
-  -->
+    <app-profile-menu></app-profile-menu>
   
+  -->
+  <ion-menu menuId="mainmenu" type="push" side="end" contentId="main">
+    <ion-header>
+      <ion-toolbar color="black">
+        <ion-title>Meniul Principal</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>Clasament Membri</ion-item>
+        <ion-item>Clasament Grupuri</ion-item>
+        <ion-item-divider></ion-item-divider>        
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/aut/logout']">Logout</ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+
   <ion-router-outlet id="main"></ion-router-outlet>
+
 </ion-app>

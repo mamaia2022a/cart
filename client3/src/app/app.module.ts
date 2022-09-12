@@ -7,7 +7,7 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
-//import { ProfileMenuComponentModule } from './components/profile-menu/profile-menu.module';
+import { ProfileMenuComponentModule } from './components/profile-menu/profile-menu.module';
 //import { CameraSideMenuComponentModule } from './components/camera-side-menu/camera-side-menu.module';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     IonicStorageModule.forRoot(),
     AppRoutingModule,
     //CameraSideMenuComponentModule,
-    //ProfileMenuComponentModule,
+    ProfileMenuComponentModule,
     CoreModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

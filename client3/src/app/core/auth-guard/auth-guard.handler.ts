@@ -219,7 +219,26 @@ export class AuthHandler {
       this.navController.navigateRoot(appConfig.routes.aut.rolgrupactiuni);//appConfig.routes.auth.register) ;//appConfig.routes.tabs.root);
       return;    
     });
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.Logout)).subscribe(data2 => 
+    {
+      let logoutAction : AuthAction.Logout = data2;
+      console.log("Logout");
+      this.navController.navigateRoot(appConfig.routes.auth.login);
+    });
+
     
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.Register)).subscribe(data2 => 
+    {
+      let registerAction : AuthAction.Register = data2;
+      console.log("Register");
+      var registerRequest = registerAction.registerRequest;
+      console.log(registerRequest);
+      this.navController.navigateRoot(appConfig.routes.auth.login);
+    });
+
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.Login)).subscribe(data2 => 
     {

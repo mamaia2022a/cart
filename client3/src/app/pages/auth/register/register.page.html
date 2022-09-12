@@ -12,27 +12,60 @@
     <ion-row>
       <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
         <form [formGroup]="register" (ngSubmit)="onRegister()">
-          <div class="logo">
-            <img src="./assets/logo/TK_DEFAULT_LOGO.png" width="96px" />
-          </div>
-
           <ion-card color="light" class="auth-card ion-margin">
-            <ion-item color="light">
-              <ion-input type="text" placeholder="Nume" formControlName="firstName"></ion-input>
-            </ion-item>
-            <ion-item color="light">
-              <ion-input type="text" placeholder="Prenume" formControlName="lastName"></ion-input>
-            </ion-item>
-            <ion-item color="light">
-              <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+            <ion-item color="light" class="ion-no-inner-padding-end">
+              <ion-input type="text" placeholder="Nume utilizator (minim 5)" formControlName="username"></ion-input>
             </ion-item>
             <ion-item color="light" class="ion-no-inner-padding-end">
-              <ion-input type="password" placeholder="parola" formControlName="password"></ion-input>
+              <ion-input type="password" placeholder="Parola (minim 5)" formControlName="password"></ion-input>
             </ion-item>
             <ion-item color="light" class="ion-no-inner-padding-end">
-              <ion-input type="password" placeholder="parola (confirmă)" formControlName="passwordConfirm">
+              <ion-input type="password" placeholder="Parola (confirmare)" formControlName="passwordConfirm">
               </ion-input>
             </ion-item>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Nume" formControlName="nume"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Prenume" formControlName="prenume"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Telefon" formControlName="telefon"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-select placeholder="Sexul" formControlName="sex">
+                <ion-select-option value="f">Feminin</ion-select-option>
+                <ion-select-option value="m">Masculin</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item color="light">
+              <ion-select placeholder="Domiciliu în Țară sau în Diaspora?" formControlName="domzonatara">
+                <ion-select-option value="TR">Țară</ion-select-option>
+                <ion-select-option value="DS">Diaspora</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item color="light">
+              <ion-select placeholder="Județul de domiciliu" formControlName="domjudet" >
+                <ion-select-option value="1">Alba</ion-select-option>
+                <ion-select-option value="22">București</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item color="light">
+              <ion-select placeholder="Localitatea de domiciliu" formControlName="domlocalitate">
+                <ion-select-option value="122">Turda</ion-select-option>
+                <ion-select-option value="222">Sector 3</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Codul Postal la Domiciliu" formControlName="domcodpostal"></ion-input>
+            </ion-item>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Adresa de Domiciliu" formControlName="domadresa"></ion-input>
+            </ion-item>
+
           </ion-card>
 
           <ion-button
@@ -41,16 +74,16 @@
             type="submit"
             [disabled]="!register.valid"
           >
-            Sign Up
+            Înregistrare
           </ion-button>
           <span class="ion-margin"></span>
         </form>
 
         <p class="ion-margin">
           <ion-text>
-            By pressing Sign Up, you agree to the service's
+            Apăsând butonul "Înregistrare", sunteți de acord cu:
             <a href="http://">Terms of Service</a>
-            and
+            și cu:
             <a href="http://">Privacy Policy</a>
           </ion-text>
         </p>

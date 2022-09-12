@@ -24,6 +24,25 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.Logout)
+  logout(context: StateContext<AuthAction.Logout>) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      isAuth: false,
+    });
+  }
+
+
+  @Action(AuthAction.Register)
+  register(context: StateContext<AuthAction.Register>, action: AuthAction.Register) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
   @Action(AuthAction.Rolgrupactiunii)
   rolgrupactiunii(context: StateContext<AuthAction.Rolgrupactiunii>, action: AuthAction.Rolgrupactiunii) {
     const state = context.getState();
@@ -51,12 +70,4 @@ export class AuthGuardState {
     });
   }
 
-  @Action(AuthAction.Logout)
-  logout(context: StateContext<AuthAction.Logout>) {
-    const state = context.getState();
-    context.setState({
-      ...state,
-      isAuth: false,
-    });
-  }
 }

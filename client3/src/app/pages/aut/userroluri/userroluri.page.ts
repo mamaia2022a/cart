@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { IonContent, MenuController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Store } from '@ngxs/store';
 import { RolGrupActiuniAction } from '../../../core/aut/rol_grupactiuni/rol_grupactiuni.actions';
@@ -17,7 +18,7 @@ export class UserRoluriPage implements OnInit {
   loginResponse: any;
 
 
-  constructor(private storage: Storage, private store: Store) 
+  constructor(private storage: Storage, private store: Store, private menuController: MenuController) 
   {
     //this.userroluri = null;
     this.getLocalStorageData()
@@ -57,5 +58,16 @@ export class UserRoluriPage implements OnInit {
     this.frmUserRoluri = new FormControl('', [Validators.required, Validators.email]);
     console.log(this.userroluri);
   }
+
+  toggleProfileMenu() {
+    console.log('toggleProfileMenu');
+    //this.menuController.toggle('profile');
+    
+    var self = this;
+    this.menuController.toggle("profile").then(() => {
+      //this.menuController.open();
+    });
+  }
+
 }
 

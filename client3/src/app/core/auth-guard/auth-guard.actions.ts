@@ -3,6 +3,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { LoginAnswer } from '../../../app/payloads/aut/LoginAnswer';
 import { LoginRequest } from '../../../app/payloads/aut/LoginRequest';
 import {ApiService} from '../../../app/services/api/api.service'
+import { RegisterRequest } from '../../payloads/aut/RegisterRequest';
 
 export namespace AuthAction {
   export class Login {
@@ -15,7 +16,12 @@ export namespace AuthAction {
   }
   export class Logout {
     static readonly type = '[Logout] User logout';
-    constructor(public isAuth: boolean = false) {}
+    constructor(public loginAnswer : LoginAnswer, public isAuth: boolean = false) {}
+  }
+
+  export class Register {
+    static readonly type = '[Register] Register user';
+    constructor(public registerRequest: RegisterRequest) {}
   }
 
   export class Rolgrupactiunii {

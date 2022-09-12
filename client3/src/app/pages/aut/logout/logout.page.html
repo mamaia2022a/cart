@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/auth/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Logout &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true" class="auth-page">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+        <form [formGroup]="logout" (ngSubmit)="onLogout()">
+
+          <ion-card color="light" class="auth-card ion-margin">
+            <ion-item color="light">
+              <p>Sunteți sigur că doriți să vă Delogați?</p>
+              <ion-input type="hidden" placeholder="Nume" formControlName="logoutMessage" value="Sunteți sigur că doriți să vă Delogați?"></ion-input>
+            </ion-item>
+          </ion-card>
+
+          <ion-button
+            expand="block"
+            class="ion-margin-start ion-margin-end ion-margin-bottom"
+            type="submit"
+            
+          >
+            Logout
+          </ion-button>
+          <span class="ion-margin"></span>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
