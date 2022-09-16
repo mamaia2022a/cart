@@ -1,0 +1,476 @@
+package com.potsoft.cart2api.model.mem;
+
+//import com.potsoft.cart2api.model.aut.userrol.MemMembrurolRol;
+
+//import java.util.HashSet;
+//import java.util.List;
+//import java.util.Set;
+
+import javax.persistence.*;
+//import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+
+@Entity
+@Table(name = "mem_membrurol")
+public class MemMembruRol{
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "mem_membrurol_id")
+  private Long memMembrurolId;
+
+
+  @NotNull
+  @Column(name = "mem_membrurol_membruid")
+  private Long memMembrurolMembruid;
+
+  @Size(max = 16)
+  @Column(name = "mem_membrurol_membrucodunic")
+  private String memMembrurolMembrucodunic;
+
+
+  @NotNull
+  @Column(name = "mem_membrurol_userid")
+  private Long memMembrurolUserid;
+  
+  @Size(max = 20)
+  @Column(name = "mem_membrurol_usernume")
+  private String memMembrurolUsernume;
+
+
+  @NotNull
+  @Column(name = "mem_membrurol_tiprolid")
+  private Long memMembrurolTiprolid;
+
+  @Size(max = 10)
+  @Column(name = "mem_membrurol_tiprolcod")
+  private String memMembrurolTiprolcod;
+ 
+  
+  @NotNull
+  @Column(name = "mem_membrurol_acopgeoid")
+  private Long memMembrurolAcopgeoid;
+
+  @Size(max = 10)
+  @Column(name = "mem_membrurol_acopgeocod")
+  private String memMembrurolAcopgeocod;
+ 
+  
+  
+  @Column(name = "mem_membrurol_zonataraid")
+  private Long memMembrurolZonataraid;
+  
+  @Size(max = 2)
+  @Column(name = "mem_membrurol_zonataracod")
+  private String memMembrurolZonataracod;
+  
+  @Column(name = "mem_membrurol_judetid")
+  private Long memMembrurolJudetid;
+  
+  @Size(max = 2)
+  @Column(name = "mem_membrurol_judetcod")
+  private String memMembrurolJudetcod;
+  
+  @Column(name = "mem_membrurol_localitateid")
+  private Long memMembrurolLocalitateid;
+  
+  @Size(max = 8)
+  @Column(name = "mem_membrurol_localitatecod")
+  private String memMembrurolLocalitatecod;
+  
+
+  @Column(name = "mem_membru_zonajudetid")
+  private Long memMembrurolZonajudetid;
+  
+  @Size(max = 2)
+  @Column(name = "mem_membrurol_zonajudetcod")
+  private String memMembrurolZonajudetcod;
+
+  @Column(name = "mem_membrurol_zonalocalitateid")
+  private Long memMembrurolZonalocalitateid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_membrurol_zonalocalitatecod")
+  private String memMembrurolZonalocalitatecod;
+
+  @Column(name = "mem_membrurol_sectievotareid")
+  private Long memMembrurolSectievotareid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_membrurol_sectievotarenr")
+  private Long memMembrurolSectievotarenr;
+
+  @Column(name = "mem_membrurol_codpostalid")
+  private Long memMembrurolCodpostalid;
+ 
+  @Size(max = 16)
+  @Column(name = "mem_membrurol_codpostalcod")
+  private String memMembrurolCodpostalcod;
+
+ 
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrurol_activ_yn")
+  private String memMembrurolActivyn;
+
+  @Size(max = 20)
+  @Column(name = "mem_membrurol_startdt", insertable = false, updatable = false)
+  private String memMembrurolStartdt;
+
+  @Size(max = 20)
+  @Column(name = "mem_membrurol_enddt")
+  private String memMembrurolEnddt;
+
+
+ 
+
+	public MemMembruRol() 
+  {
+	}
+
+	public MemMembruRol( Long memMembruRolId, 
+                       Long memMembruRolMembruid, String memMembruRolMembrucodunic,
+                       Long memMembruRolUserid, String memMembruRolUsernume, 
+                       Long memMembruRolTiprolid, String memMembruRolTiprolcod, 
+                       Long memMembruRolAcopgeoid, String memMembruRolAcopgeocod, 
+                       String memMembruRolActivyn, String memMembruRolStartdt,  String memMembruRolEnddt,
+                       Long memMembruRolZonataraid, String memMembruRolZonataracod, 
+                       Long memMembruRolJudetid, String memMembruRolJudetcod, 
+                       Long memMembruRolLocalitateid, String memMembruRolLocalitatecod, 
+                       Long memMembruRolZonajudetid, String memMembruRolZonajudetcod, 
+                       Long memMembruRolZonalocalitateid, String memMembruRolZonalocalitatecod,  
+                       Long memMembruRolSectievotareid, Long memMembruRolSectievotarenr, 
+                       Long memMembruRolCodpostalid, String memMembruRolCodpostalcod
+                     ) 
+  {
+    this.memMembrurolId                = memMembruRolId;
+
+    this.memMembrurolMembruid          = memMembruRolMembruid;
+    this.memMembrurolMembrucodunic     = memMembruRolMembrucodunic;
+
+    this.memMembrurolUserid            = memMembruRolUserid;
+    this.memMembrurolUsernume          = memMembruRolUsernume;
+
+    this.memMembrurolTiprolid          = memMembruRolTiprolid;
+    this.memMembrurolTiprolcod         = memMembruRolTiprolcod;
+
+    this.memMembrurolAcopgeoid          = memMembruRolAcopgeoid;
+    this.memMembrurolAcopgeocod         = memMembruRolAcopgeocod;
+
+    this.memMembrurolActivyn           = memMembruRolActivyn;
+    this.memMembrurolStartdt           = memMembruRolStartdt;
+    this.memMembrurolEnddt             = memMembruRolEnddt;
+
+    this.memMembrurolZonataraid        = memMembruRolZonataraid;
+    this.memMembrurolZonataracod       = memMembruRolZonataracod;
+    this.memMembrurolJudetid           = memMembruRolJudetid;
+    this.memMembrurolJudetcod          = memMembruRolJudetcod;
+    this.memMembrurolLocalitateid      = memMembruRolLocalitateid;
+    this.memMembrurolLocalitatecod     = memMembruRolLocalitatecod;
+    this.memMembrurolZonajudetid       = memMembruRolZonajudetid;    
+    this.memMembrurolZonajudetcod      = memMembruRolZonajudetcod;  
+    this.memMembrurolZonalocalitateid  = memMembruRolZonalocalitateid;    
+    this.memMembrurolZonalocalitatecod = memMembruRolZonalocalitatecod;  
+    this.memMembrurolSectievotareid    = memMembruRolSectievotareid;    
+    this.memMembrurolSectievotarenr    = memMembruRolSectievotarenr;
+    this.memMembrurolCodpostalid       = memMembruRolCodpostalid;
+    this.memMembrurolCodpostalcod      = memMembruRolCodpostalcod;
+    
+  }
+
+
+  public Long getMemMembrurolId() 
+  {
+    return this.memMembrurolId;
+  }
+
+  public void setMemMembrurolId(Long memMembrurolId) 
+  {
+    this.memMembrurolId = memMembrurolId;
+  }
+
+  
+  
+  public Long getMemMembrurolMembruid() 
+  {
+    return this.memMembrurolMembruid;
+  }
+
+  public void setMemMembrurolMembruid(Long memMembrurolMembruid) 
+  {
+    this.memMembrurolMembruid = memMembrurolMembruid;
+  }
+
+
+  public String getMemMembrurolMembruCodunic() 
+  {
+    return this.memMembrurolMembrucodunic;
+  }
+
+  public void setMemMembrurolMembruCodunic(String memMembrurolMembrucodunic) 
+  {
+    this.memMembrurolMembrucodunic = memMembrurolMembrucodunic;
+  }
+
+
+
+  public Long getMemMembrurolUserid() 
+  {
+    return this.memMembrurolUserid;
+  }
+
+  public void setMemMembrurolUserid(Long memMembrurolUserid) 
+  {
+    this.memMembrurolUserid = memMembrurolUserid;
+  }
+
+
+  public String getMemMembrurolUsernume() 
+  {
+    return this.memMembrurolUsernume;
+  }
+
+  public void setMemMembrurolUsernume(String memMembrurolUsernume) 
+  {
+    this.memMembrurolUsernume = memMembrurolUsernume;
+  }
+
+
+
+  public Long getMemMembrurolTiprolid() 
+  {
+    return this.memMembrurolTiprolid;
+  }
+
+  public void setMemMembrurolTiprolid(Long memMembrurolTiprolid) 
+  {
+    this.memMembrurolTiprolid = memMembrurolTiprolid;
+  }
+  
+
+  public String getMemMembrurolTiprolcod() 
+  {
+    return this.memMembrurolTiprolcod;
+  }
+
+  public void setMemMembrurolTiprolcod(String memMembrurolTiprolcod) 
+  {
+    this.memMembrurolTiprolcod = memMembrurolTiprolcod;
+  }
+ 
+
+
+  public Long getMemMembrurolAcopgeoid() 
+  {
+    return this.memMembrurolAcopgeoid;
+  }
+
+  public void setMemMembrurolAcopgeoid(Long memMembrurolAcopgeoid) 
+  {
+    this.memMembrurolAcopgeoid = memMembrurolAcopgeoid;
+  }
+
+  public String getMemMembrurolAcopgeocod() 
+  {
+    return this.memMembrurolAcopgeocod;
+  }
+
+  public void setMemMembrurolAcopgeocod(String memMembrurolAcopgeocod) 
+  {
+    this.memMembrurolAcopgeocod = memMembrurolAcopgeocod;
+  }
+
+
+
+  public Long getMemMembrurolZonataraid() 
+  {
+    return this.memMembrurolZonataraid;
+  }
+
+  public void setMemMembrurolZonataraid(Long memMembrurolZonataraid) 
+  {
+    this.memMembrurolZonataraid = memMembrurolZonataraid;
+  }
+
+  public String getMemMembrurolZonataracod() 
+  {
+    return this.memMembrurolZonataracod;
+  }
+
+  public void setMemMembrurolZonataracod(String memMembrurolZonataracod) 
+  {
+    this.memMembrurolZonataracod = memMembrurolZonataracod;
+  }
+
+
+
+
+  public Long getMemMembrurolJudetid() 
+  {
+    return this.memMembrurolJudetid;
+  }
+
+  public void setMemMembrurolJudetid(Long memMembrurolJudetid) 
+  {
+    this.memMembrurolJudetid = memMembrurolJudetid;
+  }
+
+  public String getMemMembrurolJudetcod() 
+  {
+    return this.memMembrurolJudetcod;
+  }
+
+  public void setMemMembrurolJudetcod(String memMembrurolJudetcod) 
+  {
+    this.memMembrurolJudetcod = memMembrurolJudetcod;
+  }
+
+
+
+  public Long getMemMembrurolLocalitateid() 
+  {
+    return this.memMembrurolLocalitateid;
+  }
+
+  public void setMemMembrurolLocalitateid(Long memMembrurolLocalitateid) 
+  {
+    this.memMembrurolLocalitateid = memMembrurolLocalitateid;
+  }
+
+  public String getMemMembrurolLocalitatecod() 
+  {
+    return this.memMembrurolLocalitatecod;
+  }
+
+  public void setMemMembrurolLocalitatecod(String memMembrurolLocalitatecod) 
+  {
+    this.memMembrurolLocalitatecod = memMembrurolLocalitatecod;
+  }
+
+
+
+  public Long getMemMembrurolZonajudetid() 
+  {
+    return this.memMembrurolZonajudetid;
+  }
+
+  public void setMemMembrurolZonajudetid(Long memMembrurolZonajudetid) 
+  {
+    this.memMembrurolZonajudetid = memMembrurolZonajudetid;
+  }
+
+  public String getMemMembrurolZonajudetcod() 
+  {
+    return this.memMembrurolZonajudetcod;
+  }
+
+  public void setMemMembrurolZonajudetcod(String memMembrurolZonajudetcod) 
+  {
+    this.memMembrurolZonajudetcod = memMembrurolZonajudetcod;
+  }
+
+
+
+  public Long getMemMembrurolZonalocalitateid() 
+  {
+    return this.memMembrurolZonalocalitateid;
+  }
+
+  public void setMemMembrurolZonalocalitateid(Long memMembrurolZonalocalitateid) 
+  {
+    this.memMembrurolZonalocalitateid = memMembrurolZonalocalitateid;
+  }
+
+  public String getMemMembrurolZonalocalitatecod() 
+  {
+    return this.memMembrurolZonalocalitatecod;
+  }
+
+  public void setMemMembrurolZonalocalitatecod(String memMembrurolZonalocalitatecod) 
+  {
+    this.memMembrurolZonalocalitatecod = memMembrurolZonalocalitatecod;
+  }
+
+
+
+  public Long getMemMembrurolSectievotareid() 
+  {
+    return this.memMembrurolSectievotareid;
+  }
+
+  public void setMemMembrurolSectievotareid(Long memMembrurolSectievotareid) 
+  {
+    this.memMembrurolSectievotareid = memMembrurolSectievotareid;
+  }
+  
+  public Long getMemMembrurolSectievotarenr() 
+  {
+    return this.memMembrurolSectievotarenr;
+  }
+
+  public void setMemMembrurolSectievotarenr(Long memMembrurolSectievotarenr) 
+  {
+    this.memMembrurolSectievotarenr = memMembrurolSectievotarenr;
+  }
+
+
+  
+  public Long getMemMembrurolCodpostalid() 
+  {
+    return this.memMembrurolCodpostalid;
+  }
+
+  public void setMemMembrurolCodpostalid(Long memMembrurolCodpostalid) 
+  {
+    this.memMembrurolCodpostalid = memMembrurolCodpostalid;
+  }
+
+
+  public String getMemMembrurolCodpostalcod() 
+  {
+    return this.memMembrurolCodpostalcod;
+  }
+
+  public void setMemMembrurolCodpostalcod(String memMembrurolCodpostalcod) 
+  {
+    this.memMembrurolCodpostalcod = memMembrurolCodpostalcod;
+  }
+
+
+
+  public String getMemMembrurolActivyn() 
+  {
+    return this.memMembrurolActivyn;
+  }
+
+  public void setMemMembrurolActivyn(String memMembrurolActivyn) 
+  {
+    this.memMembrurolActivyn = memMembrurolActivyn;
+  }
+
+
+  public String getMemMembrurolStartdt() 
+  {
+    return this.memMembrurolStartdt;
+  }
+
+  public void setMemMebrutipStartdt(String memMembrurolStartdt) 
+  {
+    this.memMembrurolStartdt = memMembrurolStartdt;
+  }
+
+
+  public String getMemMembrurolEnddt() 
+  {
+    return this.memMembrurolEnddt;
+  }
+
+  public void setMemMembrurolEnddt(String memMembrurolEnddt) 
+  {
+    this.memMembrurolEnddt = memMembrurolEnddt;
+  }
+
+}

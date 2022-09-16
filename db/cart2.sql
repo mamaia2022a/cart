@@ -29,7 +29,7 @@ CREATE TABLE `adm_admin` (
   `adm_admin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_admin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `adm_superadmin` (
   `adm_superadmin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_superadmin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_superadmin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `aut_user` (
   `aut_user_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_user_id`),
   UNIQUE KEY `aut_user_nume_unique` (`aut_user_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,7 +278,7 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_rez_codpostal` varchar(16) DEFAULT NULL,
   `aut_userinfo_rez_adresa` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`aut_userinfo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +307,7 @@ CREATE TABLE `aut_userrol` (
   `aut_userrol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_userrol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_userrol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -353,7 +353,7 @@ CREATE TABLE `geo_codpostal` (
   `geo_codpostal_numerebloc` varchar(128) NOT NULL,
   PRIMARY KEY (`geo_codpostal_id`),
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -382,7 +382,7 @@ CREATE TABLE `geo_judet` (
   PRIMARY KEY (`geo_judet_id`),
   UNIQUE KEY `geo_judet_cod_unique` (`geo_judet_cod`),
   UNIQUE KEY `geo_judet_nume_unique` (`geo_judet_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -417,7 +417,7 @@ CREATE TABLE `geo_localitate` (
   `geo_localitate_regiune` varchar(64) NOT NULL,
   PRIMARY KEY (`geo_localitate_id`),
   UNIQUE KEY `geo_localitate_cod_unique` (`geo_localitate_cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=13750 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13750 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -463,7 +463,7 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -495,7 +495,7 @@ CREATE TABLE `geo_zonajudet` (
   PRIMARY KEY (`geo_zonajudet_id`),
   UNIQUE KEY `geo_zonajudet_cod_unique` (`geo_zonajudet_cod`),
   UNIQUE KEY `geo_zonajudet_nume_unique` (`geo_zonajudet_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -533,7 +533,7 @@ CREATE TABLE `geo_zonalocalitate` (
   PRIMARY KEY (`geo_zonalocalitate_id`),
   UNIQUE KEY `geo_zonalocalitate_cod_unique` (`geo_zonalocalitate_cod`),
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -559,7 +559,7 @@ CREATE TABLE `geo_zonatara` (
   PRIMARY KEY (`geo_zonatara_id`),
   UNIQUE KEY `geo_zonatara_cod_unique` (`geo_zonatara_cod`),
   UNIQUE KEY `geo_zonatara_nume_unique` (`geo_zonatara_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -571,6 +571,565 @@ LOCK TABLES `geo_zonatara` WRITE;
 INSERT INTO `geo_zonatara` VALUES (1,'TR','Țară'),(2,'DS','Diaspora');
 /*!40000 ALTER TABLE `geo_zonatara` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_acoperiregeografica`
+--
+
+DROP TABLE IF EXISTS `mem_acoperiregeografica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_acoperiregeografica` (
+  `mem_acoperiregeografica_id` int NOT NULL AUTO_INCREMENT,
+  `mem_acoperiregeografica_cod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_acoperiregeografica_nume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `mem_acoperiregeografica_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_acoperiregeografica_displaynume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`mem_acoperiregeografica_id`),
+  UNIQUE KEY `mem_acoperiregeografica_cod_unique` (`mem_acoperiregeografica_cod`),
+  UNIQUE KEY `mem_acoperiregeografica_nume_unique` (`mem_acoperiregeografica_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_acoperiregeografica`
+--
+
+LOCK TABLES `mem_acoperiregeografica` WRITE;
+/*!40000 ALTER TABLE `mem_acoperiregeografica` DISABLE KEYS */;
+INSERT INTO `mem_acoperiregeografica` VALUES (1,'toate','acoperire la toate nivelele','y','Acoperire la toate nivelele: Naționale, Județene și Locale'),(2,'nivromania','acoperire la nivel de țară și diasporă','y','Acoperire la nivel întreaga Țară și Diasporă'),(3,'nivinterntara','acoperire la nivel de zonă țară','y','Acoperire pe întreg Interiorul Țării'),(4,'nivdiaspora','acoperire la nivel de diaspora','y','Acoperire pe întreaga Diaspora'),(5,'nivjudet','acoperire la nivel de județ','y','Acoperire la nivel de Județ'),(6,'nivtaradiasp','acoperire pe o țară din diaspora','y','Acoperire pe o Țară din Diaspora'),(7,'nivlocalit','acoperire la nivel de nivel localitate','y','Acoperire la nivel de Localitate'),(8,'nivzonajudet','acoperire la nivel de zona județ','n','Acoperire pe o Zonă de Județ'),(9,'nivzonaloc','acoperire la nivel de nivel de zonă de localitate','n','Acoperire pe o Zonă a unei Localități'),(10,'nivsectvot','acoperire pe zona definită de o secție de votare','n','Acoperire pe Zona definită de o Secție de Votare'),(11,'nivcodpost','responsabilitate pe zona definită de un cod postal','n','Acoperire pe Zona definită de un Cod Postal');
+/*!40000 ALTER TABLE `mem_acoperiregeografica` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_grup`
+--
+
+DROP TABLE IF EXISTS `mem_grup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_grup` (
+  `mem_grup_id` int NOT NULL AUTO_INCREMENT,
+  `mem_grup_codunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_nume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_sefgrupid` int NOT NULL,
+  `mem_grup_sefgrupcodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_sefgrupuserid` int NOT NULL,
+  `mem_grup_sefgrupusernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_zonataraid` int NOT NULL,
+  `mem_grup_zonataracod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_judetid` int NOT NULL,
+  `mem_grup_judetcod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_zonajudetid` int NOT NULL,
+  `mem_grup_zonajudetcod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_localitateid` int NOT NULL,
+  `mem_grup_localitatecod` int NOT NULL,
+  `mem_grup_zonalocalitateid` int NOT NULL,
+  `mem_grup_zonalocalitatecod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_sectievotareid` int NOT NULL,
+  `mem_grup_sectievotarenr` int NOT NULL,
+  `mem_grup_codpostalid` int NOT NULL,
+  `mem_grup_codpostalcod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_grup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_grup_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_grup_id`),
+  UNIQUE KEY `mem_grup_codunic_unique` (`mem_grup_codunic`),
+  UNIQUE KEY `mem_grup_nume_unique` (`mem_grup_nume`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_grup`
+--
+
+LOCK TABLES `mem_grup` WRITE;
+/*!40000 ALTER TABLE `mem_grup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_grup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membru`
+--
+
+DROP TABLE IF EXISTS `mem_membru`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membru` (
+  `mem_membru_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membru_codunic` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membrurol_userid` int NOT NULL,
+  `mem_membrurol_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_tipid` int DEFAULT NULL,
+  `mem_membru_tipcod` varchar(10) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_grupid` int DEFAULT NULL,
+  `mem_membru_grupnume` varchar(20) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_grupcodunic` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_adrrezidenta_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_zonataraid` int NOT NULL,
+  `mem_membru_zonataracod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_judetid` int NOT NULL,
+  `mem_membru_judetcod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_zonajudetid` int NOT NULL,
+  `mem_membru_zonajudetcod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_localitateid` int NOT NULL,
+  `mem_membru_localitatecod` int NOT NULL,
+  `mem_membru_zonalocalitateid` int NOT NULL,
+  `mem_membru_zonalocalitatecod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_sectievotareid` int NOT NULL,
+  `mem_membru_sectievotarenr` int NOT NULL,
+  `mem_membru_codpostalid` int NOT NULL,
+  `mem_membru_codpostalcod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_complci_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_compladr_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_platitcotiz_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_complskills_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membru_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membru_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membru_enddt` datetime DEFAULT NULL,
+  `mem_membru_suspended_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`mem_membru_id`),
+  UNIQUE KEY `mem_membru_codunique_unique` (`mem_membru_codunic`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membru`
+--
+
+LOCK TABLES `mem_membru` WRITE;
+/*!40000 ALTER TABLE `mem_membru` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membru` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membruci`
+--
+
+DROP TABLE IF EXISTS `mem_membruci`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membruci` (
+  `mem_membruci_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membruci_membruid` int NOT NULL,
+  `mem_membruci_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruci_userid` int NOT NULL,
+  `mem_membruci_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruci_cnp` int NOT NULL,
+  `mem_membruci_serie` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruci_nr` int NOT NULL,
+  `mem_membruci_activ_yn` char(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruci_dataelib` datetime DEFAULT NULL,
+  `mem_membruci_dataexp` datetime DEFAULT NULL,
+  `mem_membruci_docurl` varchar(512) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membruci_doclocalpath` varchar(512) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`mem_membruci_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membruci`
+--
+
+LOCK TABLES `mem_membruci` WRITE;
+/*!40000 ALTER TABLE `mem_membruci` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membruci` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membrucotizatie`
+--
+
+DROP TABLE IF EXISTS `mem_membrucotizatie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membrucotizatie` (
+  `mem_membrucotizatie_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membrucotizatie_membruid` int NOT NULL,
+  `mem_membrucotizatie_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrucotizatie_userid` int NOT NULL,
+  `mem_membrucotizatie_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrucotizatie_activ_yn` char(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrucotizatie_anul` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrucotizatie_lunastart` int NOT NULL,
+  `mem_membrucotizatie_lunaend` int NOT NULL,
+  `mem_membrucotizatie_refplatasaudoc_12` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membrucotizatie_refplata` varchar(64) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membrucotizatie_docurl` varchar(512) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membrucotizatie_doclocalpath` varchar(512) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`mem_membrucotizatie_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membrucotizatie`
+--
+
+LOCK TABLES `mem_membrucotizatie` WRITE;
+/*!40000 ALTER TABLE `mem_membrucotizatie` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membrucotizatie` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membrugrup`
+--
+
+DROP TABLE IF EXISTS `mem_membrugrup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membrugrup` (
+  `mem_membrugrup_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membrugrup_membruid` int NOT NULL,
+  `mem_membrugrup_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_userid` int NOT NULL,
+  `mem_membrugrup_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_grupid` int NOT NULL,
+  `mem_membrugrup_grupnume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_grupcodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_zonataraid` int NOT NULL,
+  `mem_membrugrup_zonataracod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_judetid` int NOT NULL,
+  `mem_membrugrup_judetcod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_zonajudetid` int NOT NULL,
+  `mem_membrugrup_zonajudetcod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_localitateid` int NOT NULL,
+  `mem_membrugrup_localitatecod` int NOT NULL,
+  `mem_membrugrup_zonalocalitateid` int NOT NULL,
+  `mem_membrugrup_zonalocalitatecod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_sectievotareid` int NOT NULL,
+  `mem_membrugrup_sectievotarenr` int NOT NULL,
+  `mem_membrugrup_codpostalid` int NOT NULL,
+  `mem_membrugrup_codpostalcod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrugrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrugrup_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_membrugrup_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membrugrup`
+--
+
+LOCK TABLES `mem_membrugrup` WRITE;
+/*!40000 ALTER TABLE `mem_membrugrup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membrugrup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membruoneskill`
+--
+
+DROP TABLE IF EXISTS `mem_membruoneskill`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membruoneskill` (
+  `mem_membruoneskill_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membruoneskill_memskillsid` int NOT NULL,
+  `mem_membruoneskill_memskillscod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruoneskill_skilltipid` int NOT NULL,
+  `mem_membruoneskill_skilltipcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruoneskill_skillvalid` int NOT NULL,
+  `mem_membruoneskill_skillvalcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`mem_membruoneskill_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membruoneskill`
+--
+
+LOCK TABLES `mem_membruoneskill` WRITE;
+/*!40000 ALTER TABLE `mem_membruoneskill` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membruoneskill` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membrurol`
+--
+
+DROP TABLE IF EXISTS `mem_membrurol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membrurol` (
+  `mem_membrurol_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membrurol_membruid` int NOT NULL,
+  `mem_membrurol_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_userid` int NOT NULL,
+  `mem_membrurol_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_tiprolid` int NOT NULL,
+  `mem_membrurol_tiprolcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_acopgeoid` int NOT NULL,
+  `mem_membrurol_acopgeocod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_adrrezidenta_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membrurol_zonataraid` int NOT NULL,
+  `mem_membrurol_zonataracod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_judetid` int NOT NULL,
+  `mem_membrurol_judetcod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_zonajudetid` int NOT NULL,
+  `mem_membrurol_zonajudetcod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_localitateid` int NOT NULL,
+  `mem_membrurol_localitatecod` int NOT NULL,
+  `mem_membrurol_zonalocalitateid` int NOT NULL,
+  `mem_membrurol_zonalocalitatecod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_sectievotareid` int NOT NULL,
+  `mem_membrurol_sectievotarenr` int NOT NULL,
+  `mem_membrurol_codpostalid` int NOT NULL,
+  `mem_membrurol_codpostalcod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrurol_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_membrurol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membrurol`
+--
+
+LOCK TABLES `mem_membrurol` WRITE;
+/*!40000 ALTER TABLE `mem_membrurol` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membrurol` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membruskills`
+--
+
+DROP TABLE IF EXISTS `mem_membruskills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membruskills` (
+  `mem_membruskills_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membruskills_membruid` int NOT NULL,
+  `mem_membruskills_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membruskills_userid` int NOT NULL,
+  `mem_membruskills_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`mem_membruskills_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membruskills`
+--
+
+LOCK TABLES `mem_membruskills` WRITE;
+/*!40000 ALTER TABLE `mem_membruskills` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membruskills` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_membrutip`
+--
+
+DROP TABLE IF EXISTS `mem_membrutip`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_membrutip` (
+  `mem_membrutip_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membrutip_membruid` int NOT NULL,
+  `mem_membrutip_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_userid` int NOT NULL,
+  `mem_membrutip_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_tipid` int DEFAULT NULL,
+  `mem_membrutip_tipcod` varchar(10) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_membrutip_zonataraid` int NOT NULL,
+  `mem_membrutip_zonataracod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_judetid` int NOT NULL,
+  `mem_membrutip_judetcod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_zonajudetid` int NOT NULL,
+  `mem_membrutip_zonajudetcod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_localitateid` int NOT NULL,
+  `mem_membrutip_localitatecod` int NOT NULL,
+  `mem_membrutip_zonalocalitateid` int NOT NULL,
+  `mem_membrutip_zonalocalitatecod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_sectievotareid` int NOT NULL,
+  `mem_membrutip_sectievotarenr` int NOT NULL,
+  `mem_membrutip_codpostalid` int NOT NULL,
+  `mem_membrutip_codpostalcod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_membrutip_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrutip_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_membrutip_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_membrutip`
+--
+
+LOCK TABLES `mem_membrutip` WRITE;
+/*!40000 ALTER TABLE `mem_membrutip` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_membrutip` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_sefgrup`
+--
+
+DROP TABLE IF EXISTS `mem_sefgrup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_sefgrup` (
+  `mem_sefgrup_id` int NOT NULL AUTO_INCREMENT,
+  `mem_sefgrup_membruid` int NOT NULL,
+  `mem_sefgrup_membrucodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_userid` int NOT NULL,
+  `mem_sefgrup_usernume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_grupid` int NOT NULL,
+  `mem_sefgrup_grupnume` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_grupcodunic` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_zonataraid` int NOT NULL,
+  `mem_sefgrup_zonataracod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_judetid` int NOT NULL,
+  `mem_sefgrup_judetcod` varchar(2) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_zonajudetid` int NOT NULL,
+  `mem_sefgrup_zonajudetcod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_localitateid` int NOT NULL,
+  `mem_sefgrup_localitatecod` int NOT NULL,
+  `mem_sefgrup_zonalocalitateid` int NOT NULL,
+  `mem_sefgrup_zonalocalitatecod` varchar(9) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_sectievotareid` int NOT NULL,
+  `mem_sefgrup_sectievotarenr` int NOT NULL,
+  `mem_sefgrup_codpostalid` int NOT NULL,
+  `mem_sefgrup_codpostalcod` varchar(16) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_sefgrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_sefgrup_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_sefgrup_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_sefgrup`
+--
+
+LOCK TABLES `mem_sefgrup` WRITE;
+/*!40000 ALTER TABLE `mem_sefgrup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_sefgrup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_skilltip`
+--
+
+DROP TABLE IF EXISTS `mem_skilltip`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_skilltip` (
+  `mem_skilltip_id` int NOT NULL AUTO_INCREMENT,
+  `mem_skilltip_cod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_skilltip_nume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `mem_skilltip_displaynume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`mem_skilltip_id`),
+  UNIQUE KEY `mem_skilltip_cod_unique` (`mem_skilltip_cod`),
+  UNIQUE KEY `mem_skilltip_nume_unique` (`mem_skilltip_nume`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_skilltip`
+--
+
+LOCK TABLES `mem_skilltip` WRITE;
+/*!40000 ALTER TABLE `mem_skilltip` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_skilltip` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_skillvaloare`
+--
+
+DROP TABLE IF EXISTS `mem_skillvaloare`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_skillvaloare` (
+  `mem_skillvaloare_id` int NOT NULL AUTO_INCREMENT,
+  `mem_skillvaloare_skilltipid` int NOT NULL,
+  `mem_skillvaloare_skilltipcod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_skillvaloare_cod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_skillvaloare_nume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  `mem_skillvaloare_displaynume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`mem_skillvaloare_id`),
+  UNIQUE KEY `mem_skillvaloare_cod_unique` (`mem_skillvaloare_cod`),
+  UNIQUE KEY `mem_skillvaloare_nume_unique` (`mem_skillvaloare_nume`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_skillvaloare`
+--
+
+LOCK TABLES `mem_skillvaloare` WRITE;
+/*!40000 ALTER TABLE `mem_skillvaloare` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mem_skillvaloare` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_tip`
+--
+
+DROP TABLE IF EXISTS `mem_tip`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_tip` (
+  `mem_tip_id` int NOT NULL AUTO_INCREMENT,
+  `mem_tip_cod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tip_nume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tip_descriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_tip_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tip_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_tip_enddt` datetime DEFAULT NULL,
+  `mem_tip_displaynume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tip_displaydescriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`mem_tip_id`),
+  UNIQUE KEY `mem_tip_cod_unique` (`mem_tip_cod`),
+  UNIQUE KEY `mem_tip_nume_unique` (`mem_tip_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_tip`
+--
+
+LOCK TABLES `mem_tip` WRITE;
+/*!40000 ALTER TABLE `mem_tip` DISABLE KEYS */;
+INSERT INTO `mem_tip` VALUES (14,'SIMPATIZ','Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...','y','2022-09-14 09:37:27',NULL,'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'),(15,'MEMINCAFL','Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...','y','2022-09-14 09:37:27',NULL,'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'),(16,'MEMINCNFL','Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător Neafiliat...','y','2022-09-14 09:37:27',NULL,'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător neafiliat...'),(17,'MEMACTAFL','Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...','y','2022-09-14 09:37:27',NULL,'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'),(18,'MEMACTNFL','Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...','y','2022-09-14 09:37:27',NULL,'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'),(19,'MEMEXPAFL','Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...','y','2022-09-14 09:37:27',NULL,'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'),(20,'MEMEXPNFL','Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...','y','2022-09-14 09:37:27',NULL,'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'),(21,'SEFGRUP','Șef de Grup','Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...','y','2022-09-14 09:37:27',NULL,'Șef de Grup','Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'),(22,'ORGANIZACT','Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...','y','2022-09-14 09:37:27',NULL,'Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...');
+/*!40000 ALTER TABLE `mem_tip` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mem_tiprol`
+--
+
+DROP TABLE IF EXISTS `mem_tiprol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mem_tiprol` (
+  `mem_tiprol_id` int NOT NULL AUTO_INCREMENT,
+  `mem_tiprol_cod` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tiprol_nume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tiprol_descriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
+  `mem_tiprol_activ_yn` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tiprol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_tiprol_enddt` datetime DEFAULT NULL,
+  `mem_tiprol_displaynume` varchar(64) COLLATE utf8mb4_bin NOT NULL,
+  `mem_tiprol_displaydescriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`mem_tiprol_id`),
+  UNIQUE KEY `mem_tiprol_cod_unique` (`mem_tiprol_cod`),
+  UNIQUE KEY `mem_tiprol_nume_unique` (`mem_tiprol_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mem_tiprol`
+--
+
+LOCK TABLES `mem_tiprol` WRITE;
+/*!40000 ALTER TABLE `mem_tiprol` DISABLE KEYS */;
+INSERT INTO `mem_tiprol` VALUES (1,'SUPERADMIN','Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...','y','2022-09-14 09:30:19',NULL,'Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...'),(2,'ADMIN','Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...','y','2022-09-14 09:30:19',NULL,'Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...'),(3,'COORDPRINC','Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...','y','2022-09-14 09:30:19',NULL,'Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...'),(4,'ORGANIZVOT','Organizator votare','','n','2022-09-14 09:30:19',NULL,'Organizator votare',''),(5,'CREATORVOT','Creator votare','','n','2022-09-14 09:30:19',NULL,'Creator votare',''),(6,'EVALUATVOT','Evaluator rezultate votare','','n','2022-09-14 09:30:19',NULL,'Evaluator rezultate votare',''),(7,'VALIDATVOT','Validator evaluare votare','','n','2022-09-14 09:30:19',NULL,'Validator evaluare votare',''),(8,'VOTANT','Votant','','n','2022-09-14 09:30:19',NULL,'Votant',''),(9,'CREATORACT','Creator acțiune','','n','2022-09-14 09:30:19',NULL,'Creator acțiune',''),(11,'EXECUTACT','Executant acțiune','','n','2022-09-14 09:30:19',NULL,'Executant acțiune',''),(12,'EVALUATREZ','Evaluator rezultate acțiune','Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...','y','2022-09-14 09:30:19',NULL,'Evaluator rezultate acțiune','Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...'),(13,'VALIDATEVL','Validator evaluare acțiune','Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...','y','2022-09-14 09:30:19',NULL,'Validator evaluare acțiune','Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...'),(14,'SIMPATIZ','Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...','y','2022-09-14 09:30:19',NULL,'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'),(15,'MEMINCAFL','Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...','y','2022-09-14 09:30:19',NULL,'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'),(16,'MEMINCNFL','Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător Neafiliat...','y','2022-09-14 09:30:19',NULL,'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător neafiliat...'),(17,'MEMACTAFL','Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...','y','2022-09-14 09:30:19',NULL,'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'),(18,'MEMACTNFL','Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...','y','2022-09-14 09:30:19',NULL,'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'),(19,'MEMEXPAFL','Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...','y','2022-09-14 09:30:19',NULL,'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'),(20,'MEMEXPNFL','Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...','y','2022-09-14 09:30:19',NULL,'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'),(21,'SEFGRUP','Șef de Grup','Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...','y','2022-09-14 09:30:19',NULL,'Șef de Grup','Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'),(22,'ORGANIZACT','Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...','y','2022-09-14 09:30:19',NULL,'Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'),(23,'SIMPATPEND','Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...','y','2022-09-14 09:30:19',NULL,'Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...'),(24,'ORGANIPEND','Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-14 09:30:19',NULL,'Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),(25,'EVALUAPEND','Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-14 09:30:19',NULL,'Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),(26,'VALIDAPEND','Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-14 09:30:19',NULL,'Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),(27,'COORPRPEND','Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.','y','2022-09-14 09:30:19',NULL,'Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.');
+/*!40000 ALTER TABLE `mem_tiprol` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -581,4 +1140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-11 16:52:35
+-- Dump completed on 2022-09-16  3:15:15

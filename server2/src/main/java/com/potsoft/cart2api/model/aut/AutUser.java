@@ -157,34 +157,5 @@ public class AutUser {
     this.roles = roles;
   }
   
-
-
-///**
-// * @return the agencys
-// */
-//public List<Agency> getAgencys() {
-//	return agencys;
-//}
-//
-///**
-// * @param agencys the agencys to set
-// */
-//public void setAgencys(List<Agency> agencys) {
-//	this.agencys = agencys;
-//}
-
-///**
-// * @return the tickets
-// */
-//public List<Ticket> getTickets() {
-//	return tickets;
-//}
-//
-///**
-// * @param tickets the tickets to set
-// */
-//public void setTickets(List<Ticket> tickets) {
-//	this.tickets = tickets;
-//}
   
 }

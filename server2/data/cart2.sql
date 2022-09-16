@@ -735,4 +735,516 @@ CREATE TABLE `geo_codpostal` (
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
 
- 
+
+
+
+
+
+
+DROP TABLE `mem_tiprol`;
+CREATE TABLE `mem_tiprol` (
+  `mem_tiprol_id` int NOT NULL AUTO_INCREMENT,
+  `mem_tiprol_cod` varchar(10) NOT NULL,
+  `mem_tiprol_nume` varchar(64) NOT NULL,
+  `mem_tiprol_descriere` varchar(256),
+  `mem_tiprol_activ_yn` varchar(1) NOT NULL,
+  `mem_tiprol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_tiprol_enddt` datetime DEFAULT NULL,
+  `mem_tiprol_displaynume` varchar(64) NOT NULL,
+  `mem_tiprol_displaydescriere` varchar(256),
+  PRIMARY KEY (`mem_tiprol_id`),
+  UNIQUE KEY `mem_tiprol_cod_unique` (`mem_tiprol_cod`),
+  UNIQUE KEY `mem_tiprol_nume_unique` (`mem_tiprol_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+TRUNCATE TABLE mem_tiprol;
+INSERT INTO mem_tiprol ( `mem_tiprol_id`, `mem_tiprol_cod`, `mem_tiprol_nume`, `mem_tiprol_descriere`,
+                         `mem_tiprol_activ_yn`, `mem_tiprol_displaynume`, `mem_tiprol_displaydescriere`) 
+        VALUES  (1,	'SUPERADMIN', 'Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...'
+                            ,'y', 'Superadministrator','Sunteți Superadministrator IT. Intrați pe pagina Superadministratorului IT...'),
+
+                (2, 'ADMIN',      'Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...'
+                            ,'y', 'Administrator','Sunteți Administrator IT. Intrați pe pagina Administratorului IT...'),
+
+                (3, 'COORDPRINC', 'Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...'
+                            ,'y', 'Coordonator principal','Sunteți Coordonator Principal. Intrați pe pagina Coordonatorului Principal...'),
+
+                (4, 'ORGANIZVOT', 'Organizator votare',           '','n', 'Organizator votare',''),
+                (5, 'CREATORVOT', 'Creator votare',               '','n', 'Creator votare',''),
+                (6, 'EVALUATVOT', 'Evaluator rezultate votare',   '','n', 'Evaluator rezultate votare',''),
+                (7, 'VALIDATVOT', 'Validator evaluare votare',    '','n', 'Validator evaluare votare',''),
+                (8, 'VOTANT',     'Votant',                       '','n', 'Votant',''),
+                (9, 'CREATORACT', 'Creator acțiune',              '','n', 'Creator acțiune',''),
+
+                (11, 'EXECUTACT', 'Executant acțiune',            '','n', 'Executant acțiune',''),
+
+                (12, 'EVALUATREZ','Evaluator rezultate acțiune', 'Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...'
+                             ,'y', 'Evaluator rezultate acțiune','Sunteți Evaluator al Rezultatelor Acțiunilor. Intrați pe pagina Evaluatorului...'),
+
+                (13, 'VALIDATEVL','Validator evaluare acțiune', 'Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...'
+                             ,'y', 'Validator evaluare acțiune','Sunteți Validator al Evaluărilor făcute Rezultatelor Acțiunilor. Intrați pe pagina Validatorului...'),
+
+                (14, 'SIMPATIZ',  'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'
+                            ,'y', 'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'),
+
+                (15, 'MEMINCAFL', 'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'
+                            ,'y', 'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'),
+
+                (16, 'MEMINCNFL', 'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător Neafiliat...'
+                            ,'y', 'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător neafiliat...'),
+
+                (17, 'MEMACTAFL', 'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'
+                            ,'y', 'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'),
+
+                (18, 'MEMACTNFL', 'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'
+                            ,'y', 'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'),
+
+                (19, 'MEMEXPAFL', 'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'
+                            ,'y', 'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'),
+
+                (20, 'MEMEXPNFL', 'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'
+                            ,'y', 'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'),
+
+                (21, 'SEFGRUP',  'Șef de Grup', 'Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'                 
+                           ,'y', 'Șef de Grup', 'Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'),
+
+                (22, 'ORGANIZACT','Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'
+                            ,'y', 'Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'),
+
+                (23, 'SIMPATPEND','Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...'
+                            ,'y', 'Simpatizant în Așteptare','V-ați înregistrat ca Simpatizant al Partidului. Vă rugăm să confirmați înregistrarea...'),
+
+                (24, 'ORGANIPEND','Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'
+                             ,'y','Organizator Activități în Așteptare','Ați fost invitat să deveniți Organizator de Activități al Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),
+
+                (25, 'EVALUAPEND','Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'
+                             ,'y','Evaluator Rezultate în Așteptare','Ați fost invitat să deveniți Evaluator al Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),
+
+                (26, 'VALIDAPEND','Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'  
+                           '','y','Validator Evaluări în Așteptare','Ați fost invitat să deveniți Validator al Evaluărilor Rezultatelor Activităților Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'),
+
+                (27, 'COORPRPEND','Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.'  
+                             ,'y','Coordonator Principal în Așteptare','Ați fost invitat să deveniți Coordonator Principal al Activităților și Votărilor Partidului. Vă rugăm să confirmați sau să infirmați invitația primită.');
+
+
+
+
+DROP TABLE `mem_tip`;
+CREATE TABLE `mem_tip` (
+  `mem_tip_id` int NOT NULL AUTO_INCREMENT,
+  `mem_tip_cod` varchar(10) NOT NULL,
+  `mem_tip_nume` varchar(64) NOT NULL,
+  `mem_tip_descriere` varchar(256),
+  `mem_tip_activ_yn` varchar(1) NOT NULL,
+  `mem_tip_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_tip_enddt` datetime DEFAULT NULL,
+  `mem_tip_displaynume` varchar(64) NOT NULL,
+  `mem_tip_displaydescriere` varchar(256),
+  PRIMARY KEY (`mem_tip_id`),
+  UNIQUE KEY `mem_tip_cod_unique` (`mem_tip_cod`),
+  UNIQUE KEY `mem_tip_nume_unique` (`mem_tip_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+TRUNCATE TABLE mem_tip;
+INSERT INTO mem_tip ( `mem_tip_id`, `mem_tip_cod`, `mem_tip_nume`, `mem_tip_descriere`,
+                      `mem_tip_activ_yn`, `mem_tip_displaynume`, `mem_tip_displaydescriere`) 
+        VALUES  
+        (14, 'SIMPATIZ',  'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'
+        ,'y', 'Simpatizant al Partidului','Sunteți Simpatizant al Partidului. Intrați pe pagina Simpatizantului de Partid...'),
+
+        (15, 'MEMINCAFL', 'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'
+        ,'y', 'Membru Începător Afiliat','Sunteți Membru Începător al Partidului Afiliat unui Grup. Intrați pe pagina Membru Începător Afiliat...'),
+
+        (16, 'MEMINCNFL', 'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător Neafiliat...'
+        ,'y', 'Membru Începător Neafiliat','Sunteți Membru Începător al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Începător neafiliat...'),
+
+        (17, 'MEMACTAFL', 'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'
+        ,'y', 'Membru Activ Afiliat','Sunteți Membru Activ al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Activ Afiliat...'),
+
+        (18, 'MEMACTNFL', 'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'
+        ,'y', 'Membru Activ Neafiliat','Sunteți Membru Activ al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Activ Neafiliat...'),
+
+        (19, 'MEMEXPAFL', 'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'
+        ,'y', 'Membru Experimentat Afiliat','Sunteți Membru Experimentat al Partidului Afiliat unui Grup. Intrați pe pagina Membrului Experimentat Afiliat...'),
+
+        (20, 'MEMEXPNFL', 'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'
+        ,'y', 'Membru Experimentat Neafiliat','Sunteți Membru Experimentat al Partidului Neafiliat nici unui Grup. Intrați pe pagina Membrului Experimentat Neafiliat...'),
+
+        (21, 'SEFGRUP',  'Șef de Grup', 'Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'                 
+        ,'y', 'Șef de Grup', 'Sunteți Șeful Unui Grup Al Partidului. Intrați pe pagina Șefului de Grup...'),
+
+        (22, 'ORGANIZACT','Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'
+        ,'y', 'Organizator de Activități','Sunteți Organizator de Activități ale Partidului. Intrați pe pagina Organizatorului de Activități...'
+      );
+
+
+
+
+
+DROP TABLE `mem_membru`;
+CREATE TABLE `mem_membru` (
+  `mem_membru_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membru_codunic`	varchar(16),	
+
+  `mem_membrurol_userid` int	not null,
+  `mem_membrurol_usernume` varchar(20)	not null,
+
+  `mem_membru_tipid`	int,
+  `mem_membru_tipcod`	varchar(10),	
+
+  `mem_membru_grupid` int, 	
+  `mem_membru_grupnume` varchar(20),
+  `mem_membru_grupcodunic` varchar(16), 
+
+  `mem_membru_adrrezidenta_yn`	char(1), 
+  `mem_membru_zonataraid` int	not null, 	
+  `mem_membru_zonataracod` varchar(2) not null, 
+  `mem_membru_judetid` int	not null, 
+  `mem_membru_judetcod` varchar(2) not null, 
+  `mem_membru_zonajudetid` int	not null, 
+  `mem_membru_zonajudetcod` varchar(9) not null, 
+  `mem_membru_localitateid` int not null, 
+  `mem_membru_localitatecod` int	not null, 
+  `mem_membru_zonalocalitateid` int not null, 
+  `mem_membru_zonalocalitatecod` varchar(9) not null, 
+  `mem_membru_sectievotareid` int not null, 
+  `mem_membru_sectievotarenr` int not null, 
+  `mem_membru_codpostalid` int not null,  
+  `mem_membru_codpostalcod` varchar(16)	not null, 
+
+  `mem_membru_complci_yn` char(1),
+  `mem_membru_compladr_yn` char(1),
+  `mem_membru_platitcotiz_yn` char(1),
+  `mem_membru_complskills_yn` char(1),
+  `mem_membru_activ_yn` varchar(1) NOT NULL,
+  `mem_membru_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membru_enddt` datetime DEFAULT NULL,
+  `mem_membru_suspended_yn` char(1),	
+  PRIMARY KEY (`mem_membru_id`),
+  UNIQUE KEY `mem_membru_codunique_unique` (`mem_membru_codunic`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+DROP TABLE `mem_membruci`;
+CREATE TABLE `mem_membruci` (
+  `mem_membruci_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membruci_membruid` int	not null,
+  `mem_membruci_membrucodunic` varchar(16) not null,
+  `mem_membruci_userid` int	not null,
+  `mem_membruci_usernume` varchar(20)	not null,
+  `mem_membruci_cnp` int not null,
+  `mem_membruci_serie` varchar(2)	not null,
+  `mem_membruci_nr` int not null,
+  `mem_membruci_activ_yn` char(1) not null,
+  `mem_membruci_dataelib` datetime,	
+  `mem_membruci_dataexp` datetime,		
+  `mem_membruci_docurl` varchar(512),	
+  `mem_membruci_doclocalpath` varchar(512),	
+  PRIMARY KEY (`mem_membruci_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+DROP TABLE `mem_membrucotizatie`;
+CREATE TABLE `mem_membrucotizatie` (
+  `mem_membrucotizatie_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membrucotizatie_membruid` int	not null,
+  `mem_membrucotizatie_membrucodunic` varchar(16) not null,
+  `mem_membrucotizatie_userid` int	not null,
+  `mem_membrucotizatie_usernume` varchar(20)	not null,
+  `mem_membrucotizatie_activ_yn` char(1) not null,
+  `mem_membrucotizatie_anul` varchar(16)	not null,
+  `mem_membrucotizatie_lunastart` int(2)	not null,
+  `mem_membrucotizatie_lunaend` int(2)	not null,
+  `mem_membrucotizatie_refplatasaudoc_12` varchar(64),		
+  `mem_membrucotizatie_refplata` varchar(64),		
+  `mem_membrucotizatie_docurl` varchar(512),	
+  `mem_membrucotizatie_doclocalpath` varchar(512),	
+  PRIMARY KEY (`mem_membrucotizatie_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+-- --------------------------
+--   table skills-uri
+-- --------------------------
+
+DROP TABLE `mem_skilltip`;
+CREATE TABLE `mem_skilltip` (
+  `mem_skilltip_id`  int NOT NULL AUTO_INCREMENT,
+  `mem_skilltip_cod` varchar(10)	not null,
+  `mem_skilltip_nume` varchar(128)	not null,
+  `mem_skilltip_displaynume` varchar(128)	not null,
+  PRIMARY KEY (`mem_skilltip_id`),
+  UNIQUE KEY `mem_skilltip_cod_unique` (`mem_skilltip_cod`),
+  UNIQUE KEY `mem_skilltip_nume_unique` (`mem_skilltip_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+DROP TABLE `mem_skillvaloare`;
+CREATE TABLE `mem_skillvaloare` (
+  `mem_skillvaloare_id`  int NOT NULL AUTO_INCREMENT,
+  `mem_skillvaloare_skilltipid` int not null,
+  `mem_skillvaloare_skilltipcod` varchar(10)	not null,
+  `mem_skillvaloare_cod` varchar(10)	not null,
+  `mem_skillvaloare_nume` varchar(128)	not null,
+  `mem_skillvaloare_displaynume` varchar(128)	not null,
+  PRIMARY KEY (`mem_skillvaloare_id`),
+  UNIQUE KEY `mem_skillvaloare_cod_unique` (`mem_skillvaloare_cod`),
+  UNIQUE KEY `mem_skillvaloare_nume_unique` (`mem_skillvaloare_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+
+DROP TABLE `mem_membruskills`;
+CREATE TABLE `mem_membruskills` (
+  `mem_membruskills_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membruskills_membruid` int	not null,
+  `mem_membruskills_membrucodunic` varchar(16) not null,
+  `mem_membruskills_userid` int	not null,
+  `mem_membruskills_usernume` varchar(20)	not null,
+  PRIMARY KEY (`mem_membruskills_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+DROP TABLE `mem_membruoneskill`;
+CREATE TABLE `mem_membruoneskill` (
+  `mem_membruoneskill_id` int NOT NULL AUTO_INCREMENT,
+  `mem_membruoneskill_memskillsid` int not null,
+  `mem_membruoneskill_memskillscod` varchar(10)	not null,
+  `mem_membruoneskill_skilltipid` int not null,
+  `mem_membruoneskill_skilltipcod` varchar(10)	not null,
+  `mem_membruoneskill_skillvalid` int not null,
+  `mem_membruoneskill_skillvalcod` varchar(10)	not null,
+  PRIMARY KEY (`mem_membruoneskill_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+DROP TABLE `mem_membrutip`;
+CREATE TABLE `mem_membrutip` (
+  `mem_membrutip_id`  int NOT NULL AUTO_INCREMENT,
+
+  `mem_membrutip_membruid` int	not null,
+  `mem_membrutip_membrucodunic` varchar(16) not null,
+
+  `mem_membrutip_userid` int	not null,
+  `mem_membrutip_usernume` varchar(20)	not null,
+
+  `mem_membrutip_tipid`	int,
+  `mem_membrutip_tipcod`	varchar(10),	
+
+  `mem_membrutip_zonataraid` int	not null, 	
+  `mem_membrutip_zonataracod` varchar(2) not null, 
+  `mem_membrutip_judetid` int	not null, 
+  `mem_membrutip_judetcod` varchar(2) not null, 
+  `mem_membrutip_zonajudetid` int	not null, 
+  `mem_membrutip_zonajudetcod` varchar(9) not null, 
+  `mem_membrutip_localitateid` int not null, 
+  `mem_membrutip_localitatecod` int	not null, 
+  `mem_membrutip_zonalocalitateid` int not null, 
+  `mem_membrutip_zonalocalitatecod` varchar(9) not null, 
+  `mem_membrutip_sectievotareid` int not null, 
+  `mem_membrutip_sectievotarenr` int not null, 
+  `mem_membrutip_codpostalid` int not null,  
+  `mem_membrutip_codpostalcod` varchar(16)	not null, 
+
+  `mem_membrutip_activ_yn` varchar(1) NOT NULL,
+  `mem_membrutip_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrutip_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_membrutip_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+
+DROP TABLE `mem_acoperiregeografica`;
+CREATE TABLE `mem_acoperiregeografica` (
+  `mem_acoperiregeografica_id` int NOT NULL AUTO_INCREMENT,	
+  `mem_acoperiregeografica_cod` varchar(16) not null,	
+  `mem_acoperiregeografica_nume` varchar(64) not null,
+  `mem_acoperiregeografica_activ_yn` varchar(1) not null,
+  `mem_acoperiregeografica_displaynume` varchar(128) not null,
+  UNIQUE KEY `mem_acoperiregeografica_cod_unique`  (`mem_acoperiregeografica_cod`),
+  UNIQUE KEY `mem_acoperiregeografica_nume_unique` (`mem_acoperiregeografica_nume`),
+  PRIMARY KEY (`mem_acoperiregeografica_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+TRUNCATE TABLE cart2.mem_acoperiregeografica;
+INSERT INTO cart2.mem_acoperiregeografica
+                      (`mem_acoperiregeografica_id`,`mem_acoperiregeografica_cod`, `mem_acoperiregeografica_nume`, 
+                       `mem_acoperiregeografica_activ_yn`, `mem_acoperiregeografica_displaynume`) 
+VALUES  
+  (1, 'toate',        'acoperire la toate nivelele',                       'y', 'Acoperire la toate nivelele: Naționale, Județene și Locale'),
+  (2, 'nivromania',   'acoperire la nivel de țară și diasporă',            'y', 'Acoperire la nivel întreaga Țară și Diasporă'),
+  (3, 'nivinterntara','acoperire la nivel de zonă țară',                   'y', 'Acoperire pe întreg Interiorul Țării'),
+  (4, 'nivdiaspora',  'acoperire la nivel de diaspora',                    'y', 'Acoperire pe întreaga Diaspora'),
+  (5, 'nivjudet',     'acoperire la nivel de județ',                       'y', 'Acoperire la nivel de Județ'),
+  (6, 'nivtaradiasp', 'acoperire pe o țară din diaspora',                  'y', 'Acoperire pe o Țară din Diaspora'),
+  (7, 'nivlocalit',   'acoperire la nivel de nivel localitate',            'y', 'Acoperire la nivel de Localitate'),
+  (8, 'nivzonajudet', 'acoperire la nivel de zona județ',                  'n', 'Acoperire pe o Zonă de Județ'),
+  (9, 'nivzonaloc',   'acoperire la nivel de nivel de zonă de localitate', 'n', 'Acoperire pe o Zonă a unei Localități'),
+  (10, 'nivsectvot',  'acoperire pe zona definită de o secție de votare',  'n', 'Acoperire pe Zona definită de o Secție de Votare'),
+  (11, 'nivcodpost',  'responsabilitate pe zona definită de un cod postal','n', 'Acoperire pe Zona definită de un Cod Postal'
+  );
+
+
+
+DROP TABLE `mem_membrurol`;
+CREATE TABLE `mem_membrurol` (
+  `mem_membrurol_id`  int NOT NULL AUTO_INCREMENT,
+  
+  `mem_membrurol_membruid` int	not null,
+  `mem_membrurol_membrucodunic` varchar(16) not null,
+  
+  `mem_membrurol_userid` int	not null,
+  `mem_membrurol_usernume` varchar(20)	not null,
+
+  `mem_membrurol_tiprolid` int	not null,
+  `mem_membrurol_tiprolcod` varchar(10) not null,
+
+  `mem_membrurol_acopgeoid` int not null,
+  `mem_membrurol_acopgeocod` varchar(16)	not null,
+
+  `mem_membrurol_adrrezidenta_yn`	char(1), 
+  `mem_membrurol_zonataraid` int	not null, 	
+  `mem_membrurol_zonataracod` varchar(2) not null, 
+  `mem_membrurol_judetid` int	not null, 
+  `mem_membrurol_judetcod` varchar(2) not null, 
+  `mem_membrurol_zonajudetid` int	not null, 
+  `mem_membrurol_zonajudetcod` varchar(9) not null, 
+  `mem_membrurol_localitateid` int not null, 
+  `mem_membrurol_localitatecod` int	not null, 
+  `mem_membrurol_zonalocalitateid` int not null, 
+  `mem_membrurol_zonalocalitatecod` varchar(9) not null, 
+  `mem_membrurol_sectievotareid` int not null, 
+  `mem_membrurol_sectievotarenr` int not null, 
+  `mem_membrurol_codpostalid` int not null,  
+  `mem_membrurol_codpostalcod` varchar(16)	not null, 
+
+  `mem_membrurol_activ_yn` varchar(1) NOT NULL,
+  `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrurol_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_membrurol_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+DROP TABLE `mem_grup`;
+CREATE TABLE `mem_grup` (
+  `mem_grup_id` int NOT NULL AUTO_INCREMENT,
+  `mem_grup_codunic` varchar(16) not null, 	
+  `mem_grup_nume` varchar(20) not null, 		
+  
+  `mem_grup_sefgrupid` int	not null, 	
+  `mem_grup_sefgrupcodunic` varchar(16)	not null, 	
+  `mem_grup_sefgrupuserid` int	not null,
+  `mem_grup_sefgrupusernume` varchar(20)	not null,
+  
+  `mem_grup_zonataraid` int	not null, 	
+  `mem_grup_zonataracod` varchar(2) not null, 
+  `mem_grup_judetid` int	not null, 
+  `mem_grup_judetcod` varchar(2) not null, 
+  `mem_grup_zonajudetid` int	not null, 
+  `mem_grup_zonajudetcod` varchar(9) not null, 
+  `mem_grup_localitateid` int not null, 
+  `mem_grup_localitatecod` int	not null, 
+  `mem_grup_zonalocalitateid` int not null, 
+  `mem_grup_zonalocalitatecod` varchar(9) not null, 
+  `mem_grup_sectievotareid` int not null, 
+  `mem_grup_sectievotarenr` int not null, 
+  `mem_grup_codpostalid` int not null,  
+  `mem_grup_codpostalcod` varchar(16)	not null, 
+
+  `mem_grup_activ_yn` varchar(1) NOT NULL,
+  `mem_grup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_grup_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_grup_id`),
+  UNIQUE KEY `mem_grup_codunic_unique` (`mem_grup_codunic`),
+  UNIQUE KEY `mem_grup_nume_unique` (`mem_grup_nume`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+
+
+
+DROP TABLE `mem_membrugrup`;
+CREATE TABLE `mem_membrugrup` (
+  `mem_membrugrup_id`  int NOT NULL AUTO_INCREMENT,
+
+  `mem_membrugrup_membruid` int	not null, 	
+  `mem_membrugrup_membrucodunic` varchar(16) not null, 	
+
+  `mem_membrugrup_userid` int	not null, 	
+  `mem_membrugrup_usernume` varchar(20)	not null,
+
+  `mem_membrugrup_grupid` int	not null, 	
+  `mem_membrugrup_grupnume` varchar(20)	not null,
+  `mem_membrugrup_grupcodunic` varchar(16) not null, 
+
+  `mem_membrugrup_zonataraid` int	not null, 	
+  `mem_membrugrup_zonataracod` varchar(2) not null, 
+  `mem_membrugrup_judetid` int	not null, 
+  `mem_membrugrup_judetcod` varchar(2) not null, 
+  `mem_membrugrup_zonajudetid` int	not null, 
+  `mem_membrugrup_zonajudetcod` varchar(9) not null, 
+  `mem_membrugrup_localitateid` int not null, 
+  `mem_membrugrup_localitatecod` int	not null, 
+  `mem_membrugrup_zonalocalitateid` int not null, 
+  `mem_membrugrup_zonalocalitatecod` varchar(9) not null, 
+  `mem_membrugrup_sectievotareid` int not null, 
+  `mem_membrugrup_sectievotarenr` int not null, 
+  `mem_membrugrup_codpostalid` int not null,  
+  `mem_membrugrup_codpostalcod` varchar(16)	not null, 
+
+  `mem_membrugrup_activ_yn` varchar(1) NOT NULL,
+  `mem_membrugrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrugrup_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_membrugrup_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+
+DROP TABLE `mem_sefgrup`;
+CREATE TABLE `mem_sefgrup` (
+  `mem_sefgrup_id` int NOT NULL AUTO_INCREMENT,
+
+  `mem_sefgrup_membruid` int	not null, 	
+  `mem_sefgrup_membrucodunic` varchar(16) not null, 	
+
+  `mem_sefgrup_userid` int	not null, 	
+  `mem_sefgrup_usernume` varchar(20)	not null,
+
+  `mem_sefgrup_grupid` int	not null, 	
+  `mem_sefgrup_grupnume` varchar(20)	not null,
+  `mem_sefgrup_grupcodunic` varchar(16) not null, 
+
+  `mem_sefgrup_zonataraid` int	not null, 	
+  `mem_sefgrup_zonataracod` varchar(2) not null, 
+  `mem_sefgrup_judetid` int	not null, 
+  `mem_sefgrup_judetcod` varchar(2) not null, 
+  `mem_sefgrup_zonajudetid` int	not null, 
+  `mem_sefgrup_zonajudetcod` varchar(9) not null, 
+  `mem_sefgrup_localitateid` int not null, 
+  `mem_sefgrup_localitatecod` int	not null, 
+  `mem_sefgrup_zonalocalitateid` int not null, 
+  `mem_sefgrup_zonalocalitatecod` varchar(9) not null, 
+  `mem_sefgrup_sectievotareid` int not null, 
+  `mem_sefgrup_sectievotarenr` int not null, 
+  `mem_sefgrup_codpostalid` int not null,  
+  `mem_sefgrup_codpostalcod` varchar(16)	not null, 
+
+  `mem_sefgrup_activ_yn` varchar(1) NOT NULL,
+  `mem_sefgrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_sefgrup_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mem_sefgrup_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
