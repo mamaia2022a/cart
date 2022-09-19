@@ -16,7 +16,6 @@ import javax.validation.constraints.Size;
 @Table(name = "geo_localitate", 
     uniqueConstraints = {
       @UniqueConstraint(columnNames = "geo_localitate_cod"), 
-      @UniqueConstraint(columnNames = "geo_localitate_nume")
     })
 public class GeoLocalitate {
 
@@ -39,6 +38,7 @@ public class GeoLocalitate {
   @Column(name = "geo_localitate_zonataranume")
   private String geoLocalitateZonataranume;
 
+  
   @NotNull
   @Column(name = "geo_localitate_judetid")
   private Long geoLocalitateJudetid;
@@ -52,6 +52,22 @@ public class GeoLocalitate {
   @Size(max = 32)
   @Column(name = "geo_localitate_judetnume")
   private String geoLocalitateJudetnume;
+
+
+  @NotNull
+  @Column(name = "geo_localitate_uatid")
+  private Long geoLocalitateUatid;
+
+  @NotBlank
+  @Size(max = 2)
+  @Column(name = "geo_localitate_uatcod")
+  private String geoLocalitateUatcod;
+
+  @NotBlank
+  @Size(max = 64)
+  @Column(name = "geo_localitate_uatnume")
+  private String geoLocalitateUatnume;
+  
 
   @NotBlank
   @Size(max = 2)
@@ -74,8 +90,8 @@ public class GeoLocalitate {
 
   @NotBlank
   @Size(max = 32)
-  @Column(name = "geo_localitate_regiune")
-  private String geoLocalitateRegiune;
+  @Column(name = "geo_localitate_regiuneid")
+  private String geoLocalitateRegiuneid;
 
   
 	public GeoLocalitate() 
@@ -85,8 +101,9 @@ public class GeoLocalitate {
 	public GeoLocalitate( Long   geo_localitate_id, 
                    Long   geo_localitate_zonataraid, String geo_localitate_zonataracod, String geo_localitate_zonataranume,
                    Long   geo_localitate_judetid, String geo_localitate_judetcod, String geo_localitate_judetnume,
+                   Long   geo_localitate_uatid, String geo_localitate_uatcod, String geo_localitate_uatnume,
                    String geo_localitate_cod, String geo_localitate_nume,
-                   Double geo_localitate_latitudine, Double geo_localitate_longitudine, String geo_localitate_regiune) 
+                   Double geo_localitate_latitudine, Double geo_localitate_longitudine, String geo_localitate_regiuneid) 
   {
 		this.geoLocalitateId           = geo_localitate_id;
     this.geoLocalitateZonataraid   = geo_localitate_zonataraid;
@@ -95,11 +112,14 @@ public class GeoLocalitate {
     this.geoLocalitateJudetid      = geo_localitate_judetid;
     this.geoLocalitateJudetcod     = geo_localitate_judetcod;
     this.geoLocalitateJudetnume    = geo_localitate_judetnume;
+    this.geoLocalitateUatid        = geo_localitate_uatid;
+    this.geoLocalitateUatcod       = geo_localitate_uatcod;
+    this.geoLocalitateUatnume      = geo_localitate_uatnume;
 		this.geoLocalitateCod          = geo_localitate_cod;
     this.geoLocalitateNume         = geo_localitate_nume;
 		this.geoLocalitateLatitudine   = geo_localitate_latitudine;
     this.geoLocalitateLongitudine  = geo_localitate_longitudine;
-		this.geoLocalitateRegiune      = geo_localitate_regiune;
+		this.geoLocalitateRegiuneid    = geo_localitate_regiuneid;
 	}
 
   public Long getGeoLocalitateId() 
@@ -179,6 +199,40 @@ public class GeoLocalitate {
   }
 
 
+
+  public Long getGeoLocalitateUatid() 
+  {
+    return this.geoLocalitateUatid;
+  }
+
+  public void setGeoLocalitateUatid(Long geo_localitate_uatid) 
+  {
+    this.geoLocalitateUatid = geo_localitate_uatid;
+  }
+
+
+  public String getGeoLocalitateUatcod() 
+  {
+    return this.geoLocalitateUatcod;
+  }
+
+  public void setGeoLocalitateUatcod(String geo_localitate_uatcod) 
+  {
+    this.geoLocalitateUatcod = geo_localitate_uatcod;
+  }
+
+
+  public String getGeoLocalitateUatnume() 
+  {
+    return this.geoLocalitateUatnume;
+  }
+
+  public void setGeoLocalitateUatnume(String geo_localitate_uatnume) 
+  {
+    this.geoLocalitateUatnume = geo_localitate_uatnume;
+  }
+
+
   public String getGeoLocalitateCod() 
   {
     return this.geoLocalitateCod;
@@ -223,14 +277,14 @@ public class GeoLocalitate {
   }
 
 
-  public String getGeoLocalitateRegiune() 
+  public String getGeoLocalitateRegiuneid() 
   {
-    return this.geoLocalitateRegiune;
+    return this.geoLocalitateRegiuneid;
   }
 
-  public void setGeoLocalitateRegiune(String geo_localitate_regiune) 
+  public void setGeoLocalitateRegiuneid(String geo_localitate_regiuneid) 
   {
-    this.geoLocalitateRegiune = geo_localitate_regiune;
+    this.geoLocalitateRegiuneid = geo_localitate_regiuneid;
   }
 
 }

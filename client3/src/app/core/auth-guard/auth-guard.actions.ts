@@ -39,6 +39,27 @@ export namespace AuthAction {
     constructor(public grupactactiuneid, public crtGrupAct : any) {}
   }
 
+  export class GeoZonetara {
+    static readonly type = '[GeoZonetara] Geo Zone Tara';
+    constructor(public storageResultKey: string) {}
+  }
+
+  export class GeoJudete {
+    static readonly type = '[GeoJudete] Geo Judete';
+    constructor(public zonataraid: number, public storageResultKey: string) {}
+  }
+
+
+  export class GeoUateuri {
+    static readonly type = '[GeoUateuri] Geo Uateuri';
+    constructor(public zonataraid: number, public judetid: number, public storageResultKey) {}
+  }
+
+  export class GeoLocalitati {
+    static readonly type = '[GeoLocalitati] Geo Localitati';
+    constructor(public zonataraid: number, public judetid: number, public  uatid: number, public storageResultKey) {}
+  }
+
 }
 
 

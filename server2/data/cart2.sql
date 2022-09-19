@@ -569,17 +569,35 @@ INSERT INTO  cart2.geo_zonatara (geo_zonatara_id, geo_zonatara_cod, geo_zonatara
        VALUES              (                1,               "TR",             "Țară"),
                            (                2,               "DS",         "Diaspora");
 
+DROP TABLE geo_judet;
 CREATE TABLE `geo_judet` (
   `geo_judet_id`	  int NOT NULL AUTO_INCREMENT,
   `geo_judet_zonataraid`	int NOT NULL,
   `geo_judet_zonataracod`   varchar(2) NOT NULL,
   `geo_judet_zonataranume`	varchar(10) NOT NULL,
   `geo_judet_cod`	varchar(2) NOT NULL,
-  `geo_judet_nume`	varchar(32) NOT NULL,
+  `geo_judet_nume`	varchar(64),
+  `geo_judet_numescurt`	varchar(64) NOT NULL,
+  `geo_judet_siruta`	int NULL,
+  `geo_judet_regiuneid`	int NULL,
   primary key (`geo_judet_id`),
-  UNIQUE KEY `geo_judet_cod_unique` (`geo_judet_cod`),
-  UNIQUE KEY `geo_judet_nume_unique` (`geo_judet_nume`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `geo_judet_cod_unique` (`geo_judet_zonataracod`,`geo_judet_cod`)
+  -- , UNIQUE KEY `geo_judet_nume_unique` (`geo_judet_nume`)
+) engine=innodb AUTO_INCREMENT=1 default charset=utf8mb4 collate=utf8mb4_romanian_ci;
+
+
+TRUNCATE TABLE cart2.geo_judet;
+INSERT INTO cart2.geo_judet (
+    geo_judet_id,
+    geo_judet_zonataraid,
+    geo_judet_zonataracod,
+    geo_judet_zonataranume,
+    geo_judet_cod,
+    geo_judet_numescurt)
+SELECT null, 1, "TR", "Țară", code, name 
+         FROM localitati.account_county
+         WHERE code NOT IN ("B","CL","GR")
+         ORDER BY NAME COLLATE utf8_romanian_ci;
 
 INSERT INTO cart2.geo_judet (
     geo_judet_id,
@@ -587,29 +605,235 @@ INSERT INTO cart2.geo_judet (
     geo_judet_zonataracod,
     geo_judet_zonataranume,
     geo_judet_cod,
-    geo_judet_nume)
-  SELECT id, 1, "TR", "Țară", code, name 
-         FROM localitati.account_county;
+    geo_judet_numescurt)
+SELECT 40, 1, "TR", "Țară", code, name 
+         FROM localitati.account_county
+         WHERE code IN ("B")
+         ORDER BY NAME;
 
-CREATE TABLE `geo_localitate` (
+INSERT INTO cart2.geo_judet (
+    geo_judet_id,
+    geo_judet_zonataraid,
+    geo_judet_zonataracod,
+    geo_judet_zonataranume,
+    geo_judet_cod,
+    geo_judet_numescurt)
+SELECT 51, 1, "TR", "Țară", code, name 
+         FROM localitati.account_county
+         WHERE code IN ("CL")
+         ORDER BY NAME;
+
+INSERT INTO cart2.geo_judet (
+    geo_judet_id,
+    geo_judet_zonataraid,
+    geo_judet_zonataracod,
+    geo_judet_zonataranume,
+    geo_judet_cod,
+    geo_judet_numescurt)
+SELECT 52, 1, "TR", "Țară", code, name 
+         FROM localitati.account_county
+         WHERE code IN ("GR")
+         ORDER BY NAME;
+
+UPDATE cart2.geo_judet geojud
+   INNER JOIN localitati.siruta sir ON sir.JUD = geojud.geo_judet_id
+   SET 
+      geojud.geo_judet_nume      = sir.DENLOC,
+      geojud.geo_judet_siruta    = sir.SIRUTA,
+      geojud.geo_judet_regiuneid = sir.REGIUNE
+   WHERE sir.NIV = 1 ;
+   
+ALTER TABLE cart2.geo_judet AUTO_INCREMENT = 100;
+
+
+INSERT INTO cart2.geo_judet (
+    geo_judet_id,
+    geo_judet_zonataraid,
+    geo_judet_zonataracod,
+    geo_judet_zonataranume,
+    geo_judet_cod,
+    geo_judet_nume,
+    geo_judet_numescurt)
+  SELECT null, 2, "DS", "Diaspora", id, name, name
+         FROM localitati.countries;
+
+/**
+INSERT INTO cart2.geo_judet (
+    geo_judet_id,
+    geo_judet_zonataraid,
+    geo_judet_zonataracod,
+    geo_judet_zonataranume,
+    geo_judet_cod,
+    geo_judet_nume)
+  SELECT null, 1, "TR", "Țară", code, name 
+         FROM localitati.account_county
+         WHERE code NOT IN ("B","CL")
+         ORDER BY NAME;
+*/
+
+
+
+
+DROP TABLE cart2.`geo_uat`;
+CREATE TABLE cart2.`geo_uat` (
+  `geo_uat_id` int not null AUTO_INCREMENT,	
+  `geo_uat_zonataraid`	int not null,
+  `geo_uat_zonataracod` varchar(2)	not null,
+  `geo_uat_zonataranume`	varchar(10) not null,
+  `geo_uat_judetid`	int not null,
+  `geo_uat_judetcod`	varchar(2)	not null,
+  `geo_uat_judetnume`	varchar(64)	not null,
+  `geo_uat_cod`	int	not null,
+  `geo_uat_nume`	varchar(64) not null,
+  `geo_uat_longitudine`	decimal(18,16)	null,
+  `geo_uat_latitudine`	decimal(18,16)	null,
+  `geo_uat_regiuneid`	int	null,
+  primary key (`geo_uat_id`),
+  UNIQUE KEY `geo_uat_unique` (`geo_uat_cod`)
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
+
+
+INSERT INTO cart2.geo_uat
+(
+  geo_uat_id,	
+  geo_uat_zonataraid,
+  geo_uat_zonataracod,
+  geo_uat_zonataranume,
+  geo_uat_judetid,
+  geo_uat_judetcod,
+  geo_uat_judetnume,
+  geo_uat_cod,
+  geo_uat_nume,
+  geo_uat_longitudine,
+  geo_uat_latitudine,
+  geo_uat_regiuneid
+  )
+  SELECT null, 1, "TR", "Țară", geojud.geo_judet_id, geojud.geo_judet_cod, geojud.geo_judet_nume,
+         uat.SIRUTA, uat.DENLOC, 0, 0, uat.REGIUNE
+	FROM 
+         cart2.geo_judet as geojud,
+         localitati.siruta as uat
+       WHERE uat.JUD = geojud.geo_judet_id  and 
+             uat.NIV = 2;
+
+
+INSERT INTO cart2.geo_uat(
+  geo_uat_id,	
+  geo_uat_zonataraid,
+  geo_uat_zonataracod,
+  geo_uat_zonataranume,
+  geo_uat_judetid,
+  geo_uat_judetcod,
+  geo_uat_judetnume,
+  geo_uat_cod,
+  geo_uat_nume,
+  geo_uat_longitudine,
+  geo_uat_latitudine,
+  geo_uat_regiuneid
+  )
+  SELECT null, 2, "DS", "Diaspora", 
+         jud.geo_judet_id, jud.geo_judet_cod, jud.geo_judet_nume,
+         ifnull(100000*jud.geo_judet_id + pro.id, 0), 
+         ifnull(pro.name, "Whole country one region"), 
+         0, 0, 0
+	FROM geo_judet as jud
+     RIGHT JOIN `localitati`.`provinces` as pro
+    ON 
+        jud.geo_judet_cod = pro.country_id
+    WHERE 
+	    jud.geo_judet_zonataraid = 2
+        ;
+
+
+DROP TABLE cart2.`geo_localitate`;
+CREATE TABLE cart2.`geo_localitate` (
   `geo_localitate_id` int not null AUTO_INCREMENT,	
   `geo_localitate_zonataraid`	int not null,
   `geo_localitate_zonataracod` varchar(2)	not null,
   `geo_localitate_zonataranume`	varchar(10) not null,
   `geo_localitate_judetid`	int not null,
   `geo_localitate_judetcod`	varchar(2)	not null,
-  `geo_localitate_judetnume`	varchar(32)	not null,
+  `geo_localitate_judetnume`	varchar(64)	not null,
+  `geo_localitate_uatid`	int not null,
+  `geo_localitate_uatcod`	int	not null,
+  `geo_localitate_uatnume`	varchar(64)	not null,
   `geo_localitate_cod`	int	not null,
-  `geo_localitate_nume`	varchar(32) not null,
-  `geo_localitate_longitudine`	decimal(18,16)	not null,
-  `geo_localitate_latitudine`	decimal(18,16)	not null,
-  `geo_localitate_regiune`	varchar(64)	not null,
+  `geo_localitate_nume`	varchar(128) not null,
+  `geo_localitate_longitudine`	decimal(18,16) null,
+  `geo_localitate_latitudine`	decimal(18,16) null,
+  `geo_localitate_regiuneid`	int	null,
   primary key (`geo_localitate_id`),
-  UNIQUE KEY `geo_localitate_cod_unique` (`geo_localitate_cod`),
-  UNIQUE KEY `geo_localitate_nume_unique` (`geo_localitate_nume`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `geo_localitate_cod_unique` (`geo_localitate_cod`)
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
 
+INSERT INTO cart2.geo_localitate(
+  geo_localitate_id,	
+  geo_localitate_zonataraid,
+  geo_localitate_zonataracod,
+  geo_localitate_zonataranume,
+  geo_localitate_judetid,
+  geo_localitate_judetcod,
+  geo_localitate_judetnume,
+  geo_localitate_uatid,
+  geo_localitate_uatcod,
+  geo_localitate_uatnume,
+  geo_localitate_cod,
+  geo_localitate_nume,
+  geo_localitate_longitudine,
+  geo_localitate_latitudine,
+  geo_localitate_regiuneid
+  )
+  SELECT null, 1, "TR", "Țară", 
+         geojud.geo_judet_id, geojud.geo_judet_cod, geojud.geo_judet_nume,
+         geouat.geo_uat_id, geouat.geo_uat_cod, geouat.geo_uat_nume,
+         loc.SIRUTA, loc.DENLOC, 0, 0, loc.REGIUNE
+	FROM 
+         cart2.geo_judet as geojud,
+         cart2.geo_uat   as geouat,
+         localitati.siruta as loc
+       WHERE loc.JUD = geojud.geo_judet_id  and 
+             loc.SIRSUP = geouat.geo_uat_cod and
+             loc.NIV = 3;
+
+
+INSERT INTO cart2.geo_localitate(
+  geo_localitate_id,	
+  geo_localitate_zonataraid,
+  geo_localitate_zonataracod,
+  geo_localitate_zonataranume,
+  geo_localitate_judetid,
+  geo_localitate_judetcod,
+  geo_localitate_judetnume,
+  geo_localitate_uatid,
+  geo_localitate_uatcod,
+  geo_localitate_uatnume,
+  geo_localitate_cod,
+  geo_localitate_nume,
+  geo_localitate_longitudine,
+  geo_localitate_latitudine,
+  geo_localitate_regiuneid
+  )
+  SELECT null, 2, "DS", "Diaspora", 
+         geouat.geo_uat_judetid, geouat.geo_uat_judetcod, geouat.geo_uat_judetnume,
+         geouat.geo_uat_id, geouat.geo_uat_cod, geouat.geo_uat_nume,
+         geouat.geo_uat_cod*10, CONCAT("Orice localitate din regiunea ", geouat.geo_uat_nume), 
+         0, 0, geouat.geo_uat_regiuneid
+	     FROM 
+         cart2.geo_uat   as geouat
+       WHERE 
+         geouat.geo_uat_zonataraid = 2;
+
+/**
+  SELECT loc.id, 1, "TR", "Țară", jud.id, jud.code, jud.name, 
+         loc.siruta, loc.name, loc.longitude, loc.latitude, loc.region
+	FROM 
+         localitati.account_county as jud,
+         localitati.account_city as loc
+       WHERE loc.county_id = jud.id       ;
+*/
+
+/**
 INSERT INTO cart2.geo_localitate(
   geo_localitate_id,	
   geo_localitate_zonataraid,
@@ -630,6 +854,36 @@ INSERT INTO cart2.geo_localitate(
          localitati.account_county as jud,
          localitati.account_city as loc
        WHERE loc.county_id = jud.id       ;
+
+
+INSERT INTO cart2.geo_localitate(
+  geo_localitate_id,	
+  geo_localitate_zonataraid,
+  geo_localitate_zonataracod,
+  geo_localitate_zonataranume,
+  geo_localitate_judetid,
+  geo_localitate_judetcod,
+  geo_localitate_judetnume,
+  geo_localitate_cod,
+  geo_localitate_nume,
+  geo_localitate_longitudine,
+  geo_localitate_latitudine,
+  geo_localitate_regiune
+  )
+  SELECT null, 2, "DS", "Diaspora", 
+         jud.geo_judet_id, jud.geo_judet_cod, jud.geo_judet_nume, 
+         ifnull(100000*jud.geo_judet_id + pro.id, 0), 
+         ifnull(pro.name, "Whole country one region"), 
+         0, 0, ""
+	FROM geo_judet as jud
+     RIGHT JOIN `localitati`.`provinces` as pro
+    ON 
+        jud.geo_judet_cod = pro.country_id
+    WHERE 
+	    jud.geo_judet_zonataraid = 2
+        ;
+
+*/
 
 '''
 id	int	NO	PRI		auto_increment
@@ -654,7 +908,30 @@ CREATE TABLE `geo_zonajudet` (
   primary key (`geo_zonajudet_id`),
   UNIQUE KEY `geo_zonajudet_cod_unique` (`geo_zonajudet_cod`),
   UNIQUE KEY `geo_zonajudet_nume_unique` (`geo_zonajudet_nume`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
+
+
+CREATE TABLE `geo_zonauat` (
+    `geo_zonauat_id`	int not null AUTO_INCREMENT,
+    `geo_zonauat_zonataraid`	int not null, 
+    `geo_zonauat_zonataracod`	varchar(2) not null, 
+    `geo_zonauat_zonataranume`	varchar(10) not null, 
+    `geo_zonauat_judetid`	int	not null, 
+    `geo_zonauat_judetcod`	varchar(2)	not null, 
+    `geo_zonauat_judetnume`	varchar(32)	not null, 
+    `geo_zonauat_zonajudetid`	int	not null, 
+    `geo_zonauat_zonajudetcod`	varchar(9)	not null, 
+    `geo_zonauat_zonajudetnume`	varchar(32)	not null, 
+    `geo_zonauat_uatid`	int	not null, 
+    `geo_zonauat_uatcod`	int	not null, 
+    `geo_zonauat_uatnume`	varchar(32)	not null, 
+    `geo_zonauat_cod`	varchar(9) not null, 
+    `geo_zonauat_nume`	varchar(32)	not null, 
+  primary key (`geo_uat_id`),
+  UNIQUE KEY `geo_uat_cod_unique` (`geo_uat_cod`),
+  UNIQUE KEY `geo_uat_nume_unique` (`geo_uat_nume`)
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
+
 
 
 CREATE TABLE `geo_zonalocalitate` (
@@ -668,15 +945,21 @@ CREATE TABLE `geo_zonalocalitate` (
     `geo_zonalocalitate_zonajudetid`	int	not null, 
     `geo_zonalocalitate_zonajudetcod`	varchar(9)	not null, 
     `geo_zonalocalitate_zonajudetnume`	varchar(32)	not null, 
+    `geo_zonalocalitate_uatid`	int	not null, 
+    `geo_zonalocalitate_uatcod`	int	not null, 
+    `geo_zonalocalitate_uatnume`	varchar(64)	not null, 
+    `geo_zonalocalitate_zonauatid`	int	not null, 
+    `geo_zonalocalitate_zonauatcod`	varchar(9)	not null, 
+    `geo_zonalocalitate_zonauatnume`	varchar(32)	not null, 
     `geo_zonalocalitate_localitateid`	int	not null, 
     `geo_zonalocalitate_localitatecod`	int	not null, 
-    `geo_zonalocalitate_localitatenume`	varchar(32)	not null, 
+    `geo_zonalocalitate_localitatenume`	varchar(128)	not null, 
     `geo_zonalocalitate_cod`	varchar(9) not null, 
     `geo_zonalocalitate_nume`	varchar(32)	not null, 
   primary key (`geo_zonalocalitate_id`),
   UNIQUE KEY `geo_zonalocalitate_cod_unique` (`geo_zonalocalitate_cod`),
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
  
 CREATE TABLE `geo_sectievotare` (
@@ -704,7 +987,7 @@ CREATE TABLE `geo_sectievotare` (
    `geo_sectievotare_uatnume`	varchar(128),	
   primary key (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
 
 CREATE TABLE `geo_codpostal` (
@@ -733,7 +1016,7 @@ CREATE TABLE `geo_codpostal` (
   `geo_codpostal_numerebloc` varchar(128)	not null,
   primary key (`geo_codpostal_id`),
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_0900_ai_ci;
+) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
 
 
@@ -755,7 +1038,7 @@ CREATE TABLE `mem_tiprol` (
   PRIMARY KEY (`mem_tiprol_id`),
   UNIQUE KEY `mem_tiprol_cod_unique` (`mem_tiprol_cod`),
   UNIQUE KEY `mem_tiprol_nume_unique` (`mem_tiprol_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 TRUNCATE TABLE mem_tiprol;
@@ -844,7 +1127,7 @@ CREATE TABLE `mem_tip` (
   PRIMARY KEY (`mem_tip_id`),
   UNIQUE KEY `mem_tip_cod_unique` (`mem_tip_cod`),
   UNIQUE KEY `mem_tip_nume_unique` (`mem_tip_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 TRUNCATE TABLE mem_tip;

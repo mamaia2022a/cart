@@ -70,4 +70,34 @@ export class AuthGuardState {
     });
   }
 
+
+  @Action(AuthAction.GeoZonetara)
+  geozonetara(context: StateContext<AuthAction.GeoZonetara>, action: AuthAction.GeoZonetara) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
+  @Action(AuthAction.GeoJudete)
+  geojudete(context: StateContext<AuthAction.GeoJudete>, action: AuthAction.GeoJudete) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
+  @Action(AuthAction.GeoUateuri)
+  geouat(context: StateContext<AuthAction.GeoUateuri>, action: AuthAction.GeoUateuri) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
 }

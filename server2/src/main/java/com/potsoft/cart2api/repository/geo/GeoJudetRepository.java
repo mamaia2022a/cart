@@ -14,4 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface GeoJudetRepository extends JpaRepository<GeoJudet, Long> 
 {
    List<GeoJudet> findAll();
+   List<GeoJudet> findByGeoJudetZonataraidOrderByGeoJudetNume(Long zonataraid);
+   List<GeoJudet> findByGeoJudetZonataracodOrderByGeoJudetNume(String zonataracod);
 }

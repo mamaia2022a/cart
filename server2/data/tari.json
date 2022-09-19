@@ -1,0 +1,1930 @@
+[
+    {
+        "geoJudetId": 102,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AF",
+        "geoJudetNume": "Afghanistan"
+    },
+    {
+        "geoJudetId": 115,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AX",
+        "geoJudetNume": "Åland Islands"
+    },
+    {
+        "geoJudetId": 105,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AL",
+        "geoJudetNume": "Albania"
+    },
+    {
+        "geoJudetId": 158,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "DZ",
+        "geoJudetNume": "Algeria"
+    },
+    {
+        "geoJudetId": 111,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AS",
+        "geoJudetNume": "American Samoa"
+    },
+    {
+        "geoJudetId": 100,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AD",
+        "geoJudetNume": "Andorra"
+    },
+    {
+        "geoJudetId": 108,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AO",
+        "geoJudetNume": "Angola"
+    },
+    {
+        "geoJudetId": 104,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AI",
+        "geoJudetNume": "Anguilla"
+    },
+    {
+        "geoJudetId": 109,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AQ",
+        "geoJudetNume": "Antarctica"
+    },
+    {
+        "geoJudetId": 103,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AG",
+        "geoJudetNume": "Antigua and/or Barbuda"
+    },
+    {
+        "geoJudetId": 110,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AR",
+        "geoJudetNume": "Argentina"
+    },
+    {
+        "geoJudetId": 106,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AM",
+        "geoJudetNume": "Armenia"
+    },
+    {
+        "geoJudetId": 114,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AW",
+        "geoJudetNume": "Aruba"
+    },
+    {
+        "geoJudetId": 113,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AU",
+        "geoJudetNume": "Australia"
+    },
+    {
+        "geoJudetId": 112,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AT",
+        "geoJudetNume": "Austria"
+    },
+    {
+        "geoJudetId": 116,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AZ",
+        "geoJudetNume": "Azerbaijan"
+    },
+    {
+        "geoJudetId": 130,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BS",
+        "geoJudetNume": "Bahamas"
+    },
+    {
+        "geoJudetId": 123,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BH",
+        "geoJudetNume": "Bahrain"
+    },
+    {
+        "geoJudetId": 119,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BD",
+        "geoJudetNume": "Bangladesh"
+    },
+    {
+        "geoJudetId": 118,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BB",
+        "geoJudetNume": "Barbados"
+    },
+    {
+        "geoJudetId": 134,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BY",
+        "geoJudetNume": "Belarus"
+    },
+    {
+        "geoJudetId": 120,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BE",
+        "geoJudetNume": "Belgium"
+    },
+    {
+        "geoJudetId": 135,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BZ",
+        "geoJudetNume": "Belize"
+    },
+    {
+        "geoJudetId": 125,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BJ",
+        "geoJudetNume": "Benin"
+    },
+    {
+        "geoJudetId": 126,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BM",
+        "geoJudetNume": "Bermuda"
+    },
+    {
+        "geoJudetId": 131,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BT",
+        "geoJudetNume": "Bhutan"
+    },
+    {
+        "geoJudetId": 128,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BO",
+        "geoJudetNume": "Bolivia"
+    },
+    {
+        "geoJudetId": 117,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BA",
+        "geoJudetNume": "Bosnia and Herzegovina"
+    },
+    {
+        "geoJudetId": 133,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BW",
+        "geoJudetNume": "Botswana"
+    },
+    {
+        "geoJudetId": 132,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BV",
+        "geoJudetNume": "Bouvet Island"
+    },
+    {
+        "geoJudetId": 129,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BR",
+        "geoJudetNume": "Brazil"
+    },
+    {
+        "geoJudetId": 201,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IO",
+        "geoJudetNume": "British lndian Ocean Territory"
+    },
+    {
+        "geoJudetId": 127,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BN",
+        "geoJudetNume": "Brunei Darussalam"
+    },
+    {
+        "geoJudetId": 122,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BG",
+        "geoJudetNume": "Bulgaria"
+    },
+    {
+        "geoJudetId": 121,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BF",
+        "geoJudetNume": "Burkina Faso"
+    },
+    {
+        "geoJudetId": 124,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "BI",
+        "geoJudetNume": "Burundi"
+    },
+    {
+        "geoJudetId": 211,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KH",
+        "geoJudetNume": "Cambodia"
+    },
+    {
+        "geoJudetId": 144,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CM",
+        "geoJudetNume": "Cameroon"
+    },
+    {
+        "geoJudetId": 136,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CA",
+        "geoJudetNume": "Canada"
+    },
+    {
+        "geoJudetId": 149,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CV",
+        "geoJudetNume": "Cape Verde"
+    },
+    {
+        "geoJudetId": 218,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KY",
+        "geoJudetNume": "Cayman Islands"
+    },
+    {
+        "geoJudetId": 138,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CF",
+        "geoJudetNume": "Central African Republic"
+    },
+    {
+        "geoJudetId": 304,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TD",
+        "geoJudetNume": "Chad"
+    },
+    {
+        "geoJudetId": 143,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CL",
+        "geoJudetNume": "Chile"
+    },
+    {
+        "geoJudetId": 145,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CN",
+        "geoJudetNume": "China"
+    },
+    {
+        "geoJudetId": 150,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CX",
+        "geoJudetNume": "Christmas Island"
+    },
+    {
+        "geoJudetId": 137,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CC",
+        "geoJudetNume": "Cocos (Keeling) Islands"
+    },
+    {
+        "geoJudetId": 146,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CO",
+        "geoJudetNume": "Colombia"
+    },
+    {
+        "geoJudetId": 213,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KM",
+        "geoJudetNume": "Comoros"
+    },
+    {
+        "geoJudetId": 139,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CG",
+        "geoJudetNume": "Congo"
+    },
+    {
+        "geoJudetId": 142,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CK",
+        "geoJudetNume": "Cook Islands"
+    },
+    {
+        "geoJudetId": 147,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CR",
+        "geoJudetNume": "Costa Rica"
+    },
+    {
+        "geoJudetId": 194,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "HR",
+        "geoJudetNume": "Croatia (Hrvatska)"
+    },
+    {
+        "geoJudetId": 148,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CU",
+        "geoJudetNume": "Cuba"
+    },
+    {
+        "geoJudetId": 151,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CY",
+        "geoJudetNume": "Cyprus"
+    },
+    {
+        "geoJudetId": 152,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CZ",
+        "geoJudetNume": "Czech Republic"
+    },
+    {
+        "geoJudetId": 155,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "DK",
+        "geoJudetNume": "Denmark"
+    },
+    {
+        "geoJudetId": 154,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "DJ",
+        "geoJudetNume": "Djibouti"
+    },
+    {
+        "geoJudetId": 156,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "DM",
+        "geoJudetNume": "Dominica"
+    },
+    {
+        "geoJudetId": 157,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "DO",
+        "geoJudetNume": "Dominican Republic"
+    },
+    {
+        "geoJudetId": 313,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TP",
+        "geoJudetNume": "East Timor"
+    },
+    {
+        "geoJudetId": 159,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "EC",
+        "geoJudetNume": "Ecuador"
+    },
+    {
+        "geoJudetId": 161,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "EG",
+        "geoJudetNume": "Egypt"
+    },
+    {
+        "geoJudetId": 300,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SV",
+        "geoJudetNume": "El Salvador"
+    },
+    {
+        "geoJudetId": 184,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GQ",
+        "geoJudetNume": "Equatorial Guinea"
+    },
+    {
+        "geoJudetId": 163,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ER",
+        "geoJudetNume": "Eritrea"
+    },
+    {
+        "geoJudetId": 160,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "EE",
+        "geoJudetNume": "Estonia"
+    },
+    {
+        "geoJudetId": 165,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ET",
+        "geoJudetNume": "Ethiopia"
+    },
+    {
+        "geoJudetId": 168,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FK",
+        "geoJudetNume": "Falkland Islands (Malvinas)"
+    },
+    {
+        "geoJudetId": 170,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FO",
+        "geoJudetNume": "Faroe Islands"
+    },
+    {
+        "geoJudetId": 167,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FJ",
+        "geoJudetNume": "Fiji"
+    },
+    {
+        "geoJudetId": 166,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FI",
+        "geoJudetNume": "Finland"
+    },
+    {
+        "geoJudetId": 171,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FR",
+        "geoJudetNume": "France"
+    },
+    {
+        "geoJudetId": 172,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FX",
+        "geoJudetNume": "France, Metropolitan"
+    },
+    {
+        "geoJudetId": 177,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GF",
+        "geoJudetNume": "French Guiana"
+    },
+    {
+        "geoJudetId": 268,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PF",
+        "geoJudetNume": "French Polynesia"
+    },
+    {
+        "geoJudetId": 305,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TF",
+        "geoJudetNume": "French Southern Territories"
+    },
+    {
+        "geoJudetId": 173,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GA",
+        "geoJudetNume": "Gabon"
+    },
+    {
+        "geoJudetId": 181,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GM",
+        "geoJudetNume": "Gambia"
+    },
+    {
+        "geoJudetId": 176,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GE",
+        "geoJudetNume": "Georgia"
+    },
+    {
+        "geoJudetId": 153,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "DE",
+        "geoJudetNume": "Germany"
+    },
+    {
+        "geoJudetId": 178,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GH",
+        "geoJudetNume": "Ghana"
+    },
+    {
+        "geoJudetId": 179,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GI",
+        "geoJudetNume": "Gibraltar"
+    },
+    {
+        "geoJudetId": 185,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GR",
+        "geoJudetNume": "Greece"
+    },
+    {
+        "geoJudetId": 180,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GL",
+        "geoJudetNume": "Greenland"
+    },
+    {
+        "geoJudetId": 175,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GD",
+        "geoJudetNume": "Grenada"
+    },
+    {
+        "geoJudetId": 183,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GP",
+        "geoJudetNume": "Guadeloupe"
+    },
+    {
+        "geoJudetId": 188,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GU",
+        "geoJudetNume": "Guam"
+    },
+    {
+        "geoJudetId": 187,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GT",
+        "geoJudetNume": "Guatemala"
+    },
+    {
+        "geoJudetId": 182,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GN",
+        "geoJudetNume": "Guinea"
+    },
+    {
+        "geoJudetId": 189,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GW",
+        "geoJudetNume": "Guinea-Bissau"
+    },
+    {
+        "geoJudetId": 190,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GY",
+        "geoJudetNume": "Guyana"
+    },
+    {
+        "geoJudetId": 195,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "HT",
+        "geoJudetNume": "Haiti"
+    },
+    {
+        "geoJudetId": 192,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "HM",
+        "geoJudetNume": "Heard and Mc Donald Islands"
+    },
+    {
+        "geoJudetId": 193,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "HN",
+        "geoJudetNume": "Honduras"
+    },
+    {
+        "geoJudetId": 191,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "HK",
+        "geoJudetNume": "Hong Kong"
+    },
+    {
+        "geoJudetId": 196,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "HU",
+        "geoJudetNume": "Hungary"
+    },
+    {
+        "geoJudetId": 204,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IS",
+        "geoJudetNume": "Iceland"
+    },
+    {
+        "geoJudetId": 200,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IN",
+        "geoJudetNume": "India"
+    },
+    {
+        "geoJudetId": 197,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ID",
+        "geoJudetNume": "Indonesia"
+    },
+    {
+        "geoJudetId": 203,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IR",
+        "geoJudetNume": "Iran (Islamic Republic of)"
+    },
+    {
+        "geoJudetId": 202,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IQ",
+        "geoJudetNume": "Iraq"
+    },
+    {
+        "geoJudetId": 198,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IE",
+        "geoJudetNume": "Ireland"
+    },
+    {
+        "geoJudetId": 199,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IL",
+        "geoJudetNume": "Israel"
+    },
+    {
+        "geoJudetId": 205,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "IT",
+        "geoJudetNume": "Italy"
+    },
+    {
+        "geoJudetId": 141,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CI",
+        "geoJudetNume": "Ivory Coast"
+    },
+    {
+        "geoJudetId": 206,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "JM",
+        "geoJudetNume": "Jamaica"
+    },
+    {
+        "geoJudetId": 208,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "JP",
+        "geoJudetNume": "Japan"
+    },
+    {
+        "geoJudetId": 207,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "JO",
+        "geoJudetNume": "Jordan"
+    },
+    {
+        "geoJudetId": 219,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KZ",
+        "geoJudetNume": "Kazakhstan"
+    },
+    {
+        "geoJudetId": 209,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KE",
+        "geoJudetNume": "Kenya"
+    },
+    {
+        "geoJudetId": 212,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KI",
+        "geoJudetNume": "Kiribati"
+    },
+    {
+        "geoJudetId": 215,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KP",
+        "geoJudetNume": "Korea, Democratic People's Republic of"
+    },
+    {
+        "geoJudetId": 216,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KR",
+        "geoJudetNume": "Korea, Republic of"
+    },
+    {
+        "geoJudetId": 334,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "XK",
+        "geoJudetNume": "Kosovo"
+    },
+    {
+        "geoJudetId": 217,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KW",
+        "geoJudetNume": "Kuwait"
+    },
+    {
+        "geoJudetId": 210,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KG",
+        "geoJudetNume": "Kyrgyzstan"
+    },
+    {
+        "geoJudetId": 220,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LA",
+        "geoJudetNume": "Lao People's Democratic Republic"
+    },
+    {
+        "geoJudetId": 229,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LV",
+        "geoJudetNume": "Latvia"
+    },
+    {
+        "geoJudetId": 221,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LB",
+        "geoJudetNume": "Lebanon"
+    },
+    {
+        "geoJudetId": 226,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LS",
+        "geoJudetNume": "Lesotho"
+    },
+    {
+        "geoJudetId": 225,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LR",
+        "geoJudetNume": "Liberia"
+    },
+    {
+        "geoJudetId": 230,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LY",
+        "geoJudetNume": "Libyan Arab Jamahiriya"
+    },
+    {
+        "geoJudetId": 223,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LI",
+        "geoJudetNume": "Liechtenstein"
+    },
+    {
+        "geoJudetId": 227,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LT",
+        "geoJudetNume": "Lithuania"
+    },
+    {
+        "geoJudetId": 228,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LU",
+        "geoJudetNume": "Luxembourg"
+    },
+    {
+        "geoJudetId": 241,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MO",
+        "geoJudetNume": "Macau"
+    },
+    {
+        "geoJudetId": 237,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MK",
+        "geoJudetNume": "Macedonia"
+    },
+    {
+        "geoJudetId": 235,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MG",
+        "geoJudetNume": "Madagascar"
+    },
+    {
+        "geoJudetId": 249,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MW",
+        "geoJudetNume": "Malawi"
+    },
+    {
+        "geoJudetId": 251,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MY",
+        "geoJudetNume": "Malaysia"
+    },
+    {
+        "geoJudetId": 248,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MV",
+        "geoJudetNume": "Maldives"
+    },
+    {
+        "geoJudetId": 238,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ML",
+        "geoJudetNume": "Mali"
+    },
+    {
+        "geoJudetId": 246,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MT",
+        "geoJudetNume": "Malta"
+    },
+    {
+        "geoJudetId": 236,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MH",
+        "geoJudetNume": "Marshall Islands"
+    },
+    {
+        "geoJudetId": 243,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MQ",
+        "geoJudetNume": "Martinique"
+    },
+    {
+        "geoJudetId": 244,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MR",
+        "geoJudetNume": "Mauritania"
+    },
+    {
+        "geoJudetId": 247,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MU",
+        "geoJudetNume": "Mauritius"
+    },
+    {
+        "geoJudetId": 336,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "YT",
+        "geoJudetNume": "Mayotte"
+    },
+    {
+        "geoJudetId": 250,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MX",
+        "geoJudetNume": "Mexico"
+    },
+    {
+        "geoJudetId": 169,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "FM",
+        "geoJudetNume": "Micronesia, Federated States of"
+    },
+    {
+        "geoJudetId": 233,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MD",
+        "geoJudetNume": "Moldova, Republic of"
+    },
+    {
+        "geoJudetId": 232,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MC",
+        "geoJudetNume": "Monaco"
+    },
+    {
+        "geoJudetId": 240,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MN",
+        "geoJudetNume": "Mongolia"
+    },
+    {
+        "geoJudetId": 234,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ME",
+        "geoJudetNume": "Montenegro"
+    },
+    {
+        "geoJudetId": 245,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MS",
+        "geoJudetNume": "Montserrat"
+    },
+    {
+        "geoJudetId": 231,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MA",
+        "geoJudetNume": "Morocco"
+    },
+    {
+        "geoJudetId": 252,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MZ",
+        "geoJudetNume": "Mozambique"
+    },
+    {
+        "geoJudetId": 239,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MM",
+        "geoJudetNume": "Myanmar"
+    },
+    {
+        "geoJudetId": 253,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NA",
+        "geoJudetNume": "Namibia"
+    },
+    {
+        "geoJudetId": 262,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NR",
+        "geoJudetNume": "Nauru"
+    },
+    {
+        "geoJudetId": 261,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NP",
+        "geoJudetNume": "Nepal"
+    },
+    {
+        "geoJudetId": 259,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NL",
+        "geoJudetNume": "Netherlands"
+    },
+    {
+        "geoJudetId": 107,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AN",
+        "geoJudetNume": "Netherlands Antilles"
+    },
+    {
+        "geoJudetId": 254,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NC",
+        "geoJudetNume": "New Caledonia"
+    },
+    {
+        "geoJudetId": 264,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NZ",
+        "geoJudetNume": "New Zealand"
+    },
+    {
+        "geoJudetId": 258,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NI",
+        "geoJudetNume": "Nicaragua"
+    },
+    {
+        "geoJudetId": 255,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NE",
+        "geoJudetNume": "Niger"
+    },
+    {
+        "geoJudetId": 257,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NG",
+        "geoJudetNume": "Nigeria"
+    },
+    {
+        "geoJudetId": 263,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NU",
+        "geoJudetNume": "Niue"
+    },
+    {
+        "geoJudetId": 256,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NF",
+        "geoJudetNume": "Norfork Island"
+    },
+    {
+        "geoJudetId": 242,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "MP",
+        "geoJudetNume": "Northern Mariana Islands"
+    },
+    {
+        "geoJudetId": 260,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "NO",
+        "geoJudetNume": "Norway"
+    },
+    {
+        "geoJudetId": 265,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "OM",
+        "geoJudetNume": "Oman"
+    },
+    {
+        "geoJudetId": 271,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PK",
+        "geoJudetNume": "Pakistan"
+    },
+    {
+        "geoJudetId": 277,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PW",
+        "geoJudetNume": "Palau"
+    },
+    {
+        "geoJudetId": 266,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PA",
+        "geoJudetNume": "Panama"
+    },
+    {
+        "geoJudetId": 269,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PG",
+        "geoJudetNume": "Papua New Guinea"
+    },
+    {
+        "geoJudetId": 278,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PY",
+        "geoJudetNume": "Paraguay"
+    },
+    {
+        "geoJudetId": 267,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PE",
+        "geoJudetNume": "Peru"
+    },
+    {
+        "geoJudetId": 270,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PH",
+        "geoJudetNume": "Philippines"
+    },
+    {
+        "geoJudetId": 274,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PN",
+        "geoJudetNume": "Pitcairn"
+    },
+    {
+        "geoJudetId": 272,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PL",
+        "geoJudetNume": "Poland"
+    },
+    {
+        "geoJudetId": 276,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PT",
+        "geoJudetNume": "Portugal"
+    },
+    {
+        "geoJudetId": 275,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PR",
+        "geoJudetNume": "Puerto Rico"
+    },
+    {
+        "geoJudetId": 279,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "QA",
+        "geoJudetNume": "Qatar"
+    },
+    {
+        "geoJudetId": 280,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "RE",
+        "geoJudetNume": "Reunion"
+    },
+    {
+        "geoJudetId": 282,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "RU",
+        "geoJudetNume": "Russian Federation"
+    },
+    {
+        "geoJudetId": 283,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "RW",
+        "geoJudetNume": "Rwanda"
+    },
+    {
+        "geoJudetId": 214,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "KN",
+        "geoJudetNume": "Saint Kitts and Nevis"
+    },
+    {
+        "geoJudetId": 222,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LC",
+        "geoJudetNume": "Saint Lucia"
+    },
+    {
+        "geoJudetId": 326,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VC",
+        "geoJudetNume": "Saint Vincent and the Grenadines"
+    },
+    {
+        "geoJudetId": 333,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "WS",
+        "geoJudetNume": "Samoa"
+    },
+    {
+        "geoJudetId": 295,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SM",
+        "geoJudetNume": "San Marino"
+    },
+    {
+        "geoJudetId": 299,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ST",
+        "geoJudetNume": "Sao Tome and Principe"
+    },
+    {
+        "geoJudetId": 284,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SA",
+        "geoJudetNume": "Saudi Arabia"
+    },
+    {
+        "geoJudetId": 296,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SN",
+        "geoJudetNume": "Senegal"
+    },
+    {
+        "geoJudetId": 281,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "RS",
+        "geoJudetNume": "Serbia"
+    },
+    {
+        "geoJudetId": 286,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SC",
+        "geoJudetNume": "Seychelles"
+    },
+    {
+        "geoJudetId": 294,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SL",
+        "geoJudetNume": "Sierra Leone"
+    },
+    {
+        "geoJudetId": 289,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SG",
+        "geoJudetNume": "Singapore"
+    },
+    {
+        "geoJudetId": 293,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SK",
+        "geoJudetNume": "Slovakia"
+    },
+    {
+        "geoJudetId": 291,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SI",
+        "geoJudetNume": "Slovenia"
+    },
+    {
+        "geoJudetId": 285,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SB",
+        "geoJudetNume": "Solomon Islands"
+    },
+    {
+        "geoJudetId": 297,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SO",
+        "geoJudetNume": "Somalia"
+    },
+    {
+        "geoJudetId": 337,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ZA",
+        "geoJudetNume": "South Africa"
+    },
+    {
+        "geoJudetId": 186,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GS",
+        "geoJudetNume": "South Georgia South Sandwich Islands"
+    },
+    {
+        "geoJudetId": 164,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ES",
+        "geoJudetNume": "Spain"
+    },
+    {
+        "geoJudetId": 224,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "LK",
+        "geoJudetNume": "Sri Lanka"
+    },
+    {
+        "geoJudetId": 290,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SH",
+        "geoJudetNume": "St. Helena"
+    },
+    {
+        "geoJudetId": 273,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "PM",
+        "geoJudetNume": "St. Pierre and Miquelon"
+    },
+    {
+        "geoJudetId": 287,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SD",
+        "geoJudetNume": "Sudan"
+    },
+    {
+        "geoJudetId": 298,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SR",
+        "geoJudetNume": "Suriname"
+    },
+    {
+        "geoJudetId": 292,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SJ",
+        "geoJudetNume": "Svalbarn and Jan Mayen Islands"
+    },
+    {
+        "geoJudetId": 302,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SZ",
+        "geoJudetNume": "Swaziland"
+    },
+    {
+        "geoJudetId": 288,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SE",
+        "geoJudetNume": "Sweden"
+    },
+    {
+        "geoJudetId": 140,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "CH",
+        "geoJudetNume": "Switzerland"
+    },
+    {
+        "geoJudetId": 301,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "SY",
+        "geoJudetNume": "Syrian Arab Republic"
+    },
+    {
+        "geoJudetId": 317,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TW",
+        "geoJudetNume": "Taiwan"
+    },
+    {
+        "geoJudetId": 308,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TJ",
+        "geoJudetNume": "Tajikistan"
+    },
+    {
+        "geoJudetId": 318,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TZ",
+        "geoJudetNume": "Tanzania, United Republic of"
+    },
+    {
+        "geoJudetId": 307,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TH",
+        "geoJudetNume": "Thailand"
+    },
+    {
+        "geoJudetId": 306,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TG",
+        "geoJudetNume": "Togo"
+    },
+    {
+        "geoJudetId": 309,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TK",
+        "geoJudetNume": "Tokelau"
+    },
+    {
+        "geoJudetId": 312,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TO",
+        "geoJudetNume": "Tonga"
+    },
+    {
+        "geoJudetId": 315,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TT",
+        "geoJudetNume": "Trinidad and Tobago"
+    },
+    {
+        "geoJudetId": 311,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TN",
+        "geoJudetNume": "Tunisia"
+    },
+    {
+        "geoJudetId": 314,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TR",
+        "geoJudetNume": "Turkey"
+    },
+    {
+        "geoJudetId": 310,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TM",
+        "geoJudetNume": "Turkmenistan"
+    },
+    {
+        "geoJudetId": 303,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TC",
+        "geoJudetNume": "Turks and Caicos Islands"
+    },
+    {
+        "geoJudetId": 316,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "TV",
+        "geoJudetNume": "Tuvalu"
+    },
+    {
+        "geoJudetId": 320,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "UG",
+        "geoJudetNume": "Uganda"
+    },
+    {
+        "geoJudetId": 319,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "UA",
+        "geoJudetNume": "Ukraine"
+    },
+    {
+        "geoJudetId": 101,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "AE",
+        "geoJudetNume": "United Arab Emirates"
+    },
+    {
+        "geoJudetId": 174,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "GB",
+        "geoJudetNume": "United Kingdom"
+    },
+    {
+        "geoJudetId": 322,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "US",
+        "geoJudetNume": "United States"
+    },
+    {
+        "geoJudetId": 321,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "UM",
+        "geoJudetNume": "United States minor outlying islands"
+    },
+    {
+        "geoJudetId": 323,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "UY",
+        "geoJudetNume": "Uruguay"
+    },
+    {
+        "geoJudetId": 324,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "UZ",
+        "geoJudetNume": "Uzbekistan"
+    },
+    {
+        "geoJudetId": 331,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VU",
+        "geoJudetNume": "Vanuatu"
+    },
+    {
+        "geoJudetId": 325,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VA",
+        "geoJudetNume": "Vatican City State"
+    },
+    {
+        "geoJudetId": 327,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VE",
+        "geoJudetNume": "Venezuela"
+    },
+    {
+        "geoJudetId": 330,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VN",
+        "geoJudetNume": "Vietnam"
+    },
+    {
+        "geoJudetId": 328,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VG",
+        "geoJudetNume": "Virgin Islands (British)"
+    },
+    {
+        "geoJudetId": 329,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "VI",
+        "geoJudetNume": "Virgin Islands (U.S.)"
+    },
+    {
+        "geoJudetId": 332,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "WF",
+        "geoJudetNume": "Wallis and Futuna Islands"
+    },
+    {
+        "geoJudetId": 162,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "EH",
+        "geoJudetNume": "Western Sahara"
+    },
+    {
+        "geoJudetId": 335,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "YE",
+        "geoJudetNume": "Yemen"
+    },
+    {
+        "geoJudetId": 339,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ZR",
+        "geoJudetNume": "Zaire"
+    },
+    {
+        "geoJudetId": 338,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ZM",
+        "geoJudetNume": "Zambia"
+    },
+    {
+        "geoJudetId": 340,
+        "geoJudetZonataraid": 2,
+        "geoJudetZonataracod": "DS",
+        "geoJudetZonataranume": "Diaspora",
+        "geoJudetCod": "ZW",
+        "geoJudetNume": "Zimbabwe"
+    }
+]

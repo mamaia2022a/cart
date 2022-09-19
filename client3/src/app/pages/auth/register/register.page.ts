@@ -1,17 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { AuthAction } from '../../../core/auth-guard/auth-guard.actions';
 import { RegisterRequest } from '../../../payloads/aut/RegisterRequest';
-import { NavController, Platform } from '@ionic/angular';
+import { IonSelect, NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
+
+
 export class RegisterPage implements OnInit {
+  // refer to the select via the template reference
+  //@ViewChild('domZoneTaraSelect', { static: false }) domZoneTaraSelect: IonSelect;
+  //@ViewChild('domJudeteSelect', { static: false }) domJudeteSelect: IonSelect;
+  //@ViewChild('domLocalitatiSelect', { static: false }) domLocalitatiSelect: IonSelect;
+
   register: FormGroup = new FormGroup(
     {
        username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
@@ -21,20 +29,331 @@ export class RegisterPage implements OnInit {
        prenume: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        telefon: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        email: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+       datanasterii: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        sex: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domzonatara: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domjudet: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+       domuat: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domlocalitate: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domcodpostal: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domadresa: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+       rezdifdom: new FormControl('', [Validators.required, Validators.maxLength(1)]),
+       rezzonatara: new FormControl('', [Validators.maxLength(150)]),
+       rezjudet: new FormControl('', [Validators.maxLength(150)]),
+       rezuat: new FormControl('', [Validators.maxLength(150)]),
+       rezlocalitate: new FormControl('', [Validators.maxLength(150)]),
+       rezcodpostal: new FormControl('', [Validators.maxLength(150)]),
+       rezadresa: new FormControl('', [Validators.maxLength(150)]),
     },
-    { validators: this.passwordConfirmMatchValidator },
+    { validators: [this.passwordConfirmMatchValidator, 
+                  this.rezjudetMatchValidator]
+    },
   );
 
-  obsActionRegister: Observable<any>;
+  //obsActionRegister: Observable<any>;
+  //obsActionJudete: Observable<any>;
 
-  constructor(private store: Store, private navController: NavController, private platform: Platform) 
-  {}
+  zonetara$ : Observable<any> = null;
+  
+  //------------- pentru domiciliu
+  selDomZonataraid : number ;
+  
+  domjudete$ : Observable<any> = null;
+  domjudete : Array<any> = null;
+
+  selDomJudetid : number ;
+
+  domuateuri$ : Observable<any> = null;
+  domuateuri : Array<any> = null;
+
+  selDomUatid : number ;
+
+
+  domlocalitati$ : Observable<any> = null;
+  domlocalitati : Array<any> = null;
+
+  selDomLocalitateid : number ;
+
+  //------------- pentru rezidenta 
+  selRezZonataraid : number ;
+
+  rezjudete$ : Observable<any> = null;
+  rezjudete : Array<any> = null;
+
+  selRezJudetid : number ;
+
+  rezuateuri$ : Observable<any> = null;
+  rezuateuri : Array<any> = null;
+
+  selRezUatid : number ;
+
+  rezlocalitati$ : Observable<any> = null;
+  rezlocalitati : Array<any> = null;
+
+  selRezLocalitateid : number ;
+
+  selDomDifRez : number;
+  showRezidenta : boolean ;
+
+  
+
+  constructor(private store: Store, private navController: NavController, private platform: Platform, private storage: Storage) 
+  {
+    this.showRezidenta = false;
+    //this.loadZonetara("zonetara");
+    var self = this;
+    var storageResultKey = "zonetara";
+    this.store.dispatch(new AuthAction.GeoZonetara(storageResultKey)).subscribe(async () => {
+      //console.log('Call Action GeoZonetara: ');
+      
+      var data = await this.storage.get(storageResultKey);
+      while (data == null) 
+        data = await this.storage.get(storageResultKey);
+      //---
+      self.zonetara$ = of(data);
+
+    },
+    error => {
+      console.log('Error Calling Action GeoZoneTara: ' + error);
+    }
+    );
+  }  
+
+
+  loadZonetara(storageResultKey: string) 
+  {
+    var self = this;
+    this.store.dispatch(new AuthAction.GeoZonetara(storageResultKey)).subscribe(async () => {
+      //console.log('Call Action GeoZonetara: ');
+      
+      var data = await this.storage.get(storageResultKey);
+      while (data == null) 
+        data = await this.storage.get(storageResultKey);
+      //---
+      self.zonetara$ = of(data);
+
+    },
+    error => {
+      console.log('Error Calling Action GeoZoneTara: ' + error);
+    }
+    );
+  }
+
+
+  loadJudete(zonataraid : number, storageResultKey: string) 
+  {
+    var self = this;
+    this.store.dispatch(new AuthAction.GeoJudete(zonataraid, storageResultKey)).subscribe(async () => {
+      console.log('Call Action GeoJudete: ');
+      var data = await this.storage.get(storageResultKey);
+      while (data == null) 
+      {
+        data = await this.storage.get(storageResultKey);
+      }
+      //---
+      if (storageResultKey == "domjudete")
+        self.domjudete$ = of(data);      
+      else if (storageResultKey == "rezjudete")
+        self.rezjudete$ = of(data);      
+
+    },
+    error => {
+      console.log('Error Calling Action GeoJudete: ' + error);
+    }
+    );
+  }
+
+
+  loadUateuri(zonataraid : number, judetid : number, storageResultKey: string) 
+  {
+    var self = this;
+    this.store.dispatch(new AuthAction.GeoUateuri(zonataraid, judetid, storageResultKey)).subscribe(async () => {
+      console.log('Call Action GeoUateuri: ');
+      var data = await this.storage.get(storageResultKey);
+      while (data == null) 
+      {
+        data = await this.storage.get(storageResultKey);
+      }
+      //---
+      if (storageResultKey == "domuateuri")
+        self.domuateuri$ = of(data);      
+      else if (storageResultKey == "rezuateuri")
+        self.rezuateuri$ = of(data);      
+
+    },
+    error => {
+      console.log('Error Calling Action GeoUateuri: ' + error);
+    }
+    );
+  }  
+
+  loadLocalitati(zonataraid : number, judetid : number, uatid: number, storageResultKey: string) 
+  {
+    var self = this;
+    this.store.dispatch(new AuthAction.GeoLocalitati(zonataraid, judetid, uatid, storageResultKey)).subscribe(async () => {
+      console.log('Call Action GeoLocalitati: ');
+      var data = await this.storage.get(storageResultKey);
+      while (data == null) 
+      {
+        data = await this.storage.get(storageResultKey);
+      }
+      //---
+      if (storageResultKey == "domlocalitati")
+        self.domlocalitati$ = of(data);      
+      else if (storageResultKey == "rezlocalitati")
+        self.rezlocalitati$ = of(data);      
+
+    },
+    error => {
+      console.log('Error Calling Action GeoLocalitati: ' + error);
+    }
+    );
+  }  
+
+
+  selectieDomZonatara(event : any) 
+  {
+    console.log("selectie dom zona tara id:" + event.detail.value);
+    this.selDomZonataraid  = event.detail.value; //this.register.get("domzonatara").value;
+    console.log(this.selDomJudetid);
+    this.domjudete$ = null;
+    this.domuateuri$ = null;
+    this.domlocalitati$ = null;
+    this.selDomJudetid = null;
+    this.selDomUatid = null;
+    this.selDomLocalitateid = null;
+    this.storage.remove("domjudete");
+    this.register.get("domjudet").reset();
+    this.storage.remove("domuateuri");
+    this.register.get("domuat").reset();
+    this.storage.remove("domlocalitati");
+    this.register.get("domlocalitate").reset();
+    this.loadJudete(this.selDomZonataraid, "domjudete");
+  }
+
+
+  selectieDomJudet(event : any) 
+  {
+    console.log("selectie dom judet id:" + event.detail.value);
+    this.selDomJudetid  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selDomJudetid);
+    this.domuateuri$ = null;
+    this.domlocalitati$ = null;
+    this.selDomUatid = null;
+    this.selDomLocalitateid = null;
+    this.storage.remove("domuateuri");
+    this.register.get("domuat").reset();
+    this.storage.remove("domlocalitati");
+    this.register.get("domlocalitate").reset();
+    if (this.selDomJudetid == 0)
+      return;
+    this.loadUateuri(this.selDomZonataraid, this.selDomJudetid, "domuateuri");
+  }
+
+
+  selectieDomUat(event : any) 
+  {
+    console.log("selectie dom uat id:" + event.detail.value);
+    this.selDomUatid  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selDomUatid);
+    this.domlocalitati$ = null;
+    this.selDomLocalitateid = null;
+    this.storage.remove("domlocalitati");
+    this.register.get("domlocalitate").reset();
+    if (this.selDomJudetid == 0)
+      return;
+    if (this.selDomUatid == 0)
+      return;      
+    this.loadLocalitati(this.selDomZonataraid, this.selDomJudetid, this.selDomUatid, "domlocalitati");
+
+  }
+
+
+  selectieDomLocalitate(event : any) 
+  {
+    console.log("selectie dom localitate id:" + event.detail.value);
+    this.selDomLocalitateid  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selDomLocalitateid);
+  }
+
+
+  selectieDomDifRez(event : any) 
+  {
+    console.log("selectie dom dif rez:" + event.detail.value);
+    this.selDomDifRez  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selDomDifRez);
+    if (this.selDomDifRez == 0)
+      this.showRezidenta = false;
+    else
+      this.showRezidenta  = true;
+  }
+
+
+  selectieRezZonatara(event : any) 
+  {
+    console.log("selectie rez zona tara id:" + event.detail.value);
+    this.selRezZonataraid  = event.detail.value; //this.register.get("domzonatara").value;
+    console.log(this.selRezJudetid);
+    this.rezjudete$ = null;
+    this.rezuateuri$ = null;
+    this.rezlocalitati$ = null;
+    this.selRezJudetid = null;
+    this.selRezUatid = null;
+    this.selRezLocalitateid = null;
+    this.storage.remove("rezjudete");
+    this.register.get("rezjudet").reset();
+    this.storage.remove("rezuateuri");
+    this.register.get("rezuat").reset();
+    this.storage.remove("rezlocalitati");
+    this.register.get("rezlocalitate").reset();
+    this.loadJudete(this.selRezZonataraid, "rezjudete");
+  }
+
+
+  selectieRezJudet(event : any) 
+  {
+    console.log("selectie rez judet id:" + event.detail.value);
+    this.selRezJudetid  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selRezJudetid);
+    this.rezuateuri$ = null;
+    this.rezlocalitati$ = null;
+    this.selRezUatid = null;
+    this.selRezLocalitateid = null;
+    this.storage.remove("rezuateuri");
+    this.register.get("rezuat").reset();
+    this.storage.remove("rezlocalitati");
+    this.register.get("rezlocalitate").reset();
+    if (this.selRezJudetid == 0)
+      return;
+    this.loadUateuri(this.selRezZonataraid, this.selRezJudetid, "rezuateuri");
+  }
+
+
+  selectieRezUat(event : any) 
+  {
+    console.log("selectie rez uat id:" + event.detail.value);
+    this.selRezUatid  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selRezUatid);
+    this.rezlocalitati$ = null;
+    this.selRezLocalitateid = null;
+    this.storage.remove("rezlocalitati");
+    this.register.get("rezlocalitate").reset();
+    if (this.selRezJudetid == 0)
+      return;
+    if (this.selRezUatid == 0)
+      return;      
+    this.loadLocalitati(this.selRezZonataraid, this.selRezJudetid, this.selRezUatid, "rezlocalitati");
+
+  }
+
+
+  selectieRezLocalitate(event : any) 
+  {
+    console.log("selectie rez localitate id:" + event.detail.value);
+    this.selRezLocalitateid  = event.detail.value; //this.register.get("domjudet").value;
+    console.log(this.selRezLocalitateid);
+  }
+
 
   onRegister() {
     if (this.register.valid) {
@@ -53,7 +372,8 @@ export class RegisterPage implements OnInit {
       registerRequest.domCodpostal     = this.register.get("domcodpostal").value;
       registerRequest.domAdresa        = this.register.get("domadresa").value;
 
-      this.obsActionRegister = this.store.dispatch(new AuthAction.Register(registerRequest));
+      this.store.dispatch(new AuthAction.Register(registerRequest));
+      //this.obsActionRegister = this.store.dispatch(new AuthAction.Register(registerRequest));
       /** 
       this.obsActionRegister.subscribe(
         info => {
@@ -86,6 +406,79 @@ export class RegisterPage implements OnInit {
     }
   }
  
+  rezjudetMatchValidator(g: AbstractControl): ValidationErrors | null {
+    const rezdifdom = g.get('rezdifdom');
+    const rezjudet = g.get('rezjudet');
+    if (rezdifdom.value == 0){
+      rezjudet.setErrors(null);
+      return;
+    }
+  }
+
+      /*
+    this.judete.subscribe(judetee => 
+    {
+      var judet = judetee[selIdx];
+      console.log(judet);
+    });*/
+
+    /** 
+    var zonataraid : number = 1;
+    var self = this;
+    this.store.dispatch(new AuthAction.GeoJudete(zonataraid,"domjudete")).subscribe(async () => {
+      console.log('GEO JUDETE: ');
+      var data = await this.storage.get('judete');
+      if (data == null) 
+      {
+        data = await this.storage.get('judete');
+      }
+      //---
+      self.judete = of(data);
+       
+      //self.getLocalStorageData()
+      //.then(data =>{
+      //  self.judete = of(data);
+      //})
+      
+    },
+    error => {
+      console.log('GEO JUDETE ERROR: ' + error);
+    }
+    );
+  }*/
+   
+    /**   
+    this.store.dispatch(new AuthAction.GeoJudete(zonataraid)).subscribe(
+        info => {
+          console.log('GEO JUDETE: ' + info);
+          this.getLocalStorageData()
+          .then(data =>{
+                //ok
+          })
+        },
+        error => {
+          console.log('GEO JUDETE ERROR: ' + error);
+        }
+      );
+      */
+
+  /** 
+  getLocalStorageData(){
+    var self =this;
+    return new Promise(resolve => {
+      self.storage.get("judete")
+        .then( value => 
+            { 
+              //if (value == null)
+                //return this.store.dispatch(new AuthAction.GeoJudete(1));
+              //self.judete = of(value);
+              //console.log(value);
+              resolve(value);
+            });
+            
+         });
+    }*/
+
 
   /**
   authUrl = "https://sampleapi.herokuapp.com"
@@ -122,5 +515,20 @@ export class RegisterPage implements OnInit {
       }
     );
     }
+
+
+    public GetLocations(apiUrl, siteKey, pLocationKey){
+
+    return new Promise((resolve, reject) => {
+        this.http.get(apiUrl + "site/" + siteKey + "/location/" + pLocationKey)
+          .map(res => res.json())
+          .subscribe(data => {
+              resolve(data);     //Corrected
+          },
+          err =>{
+            reject(err);
+          });
+    });
+}
     */
 }

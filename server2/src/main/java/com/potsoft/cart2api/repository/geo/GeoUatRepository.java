@@ -1,6 +1,6 @@
 package com.potsoft.cart2api.repository.geo;
 
-import com.potsoft.cart2api.model.geo.GeoLocalitate;
+import com.potsoft.cart2api.model.geo.GeoUat;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 //import java.util.Optional;
 
 @Repository
-public interface GeoLocalitateRepository extends JpaRepository<GeoLocalitate, Long> 
+public interface GeoUatRepository extends JpaRepository<GeoUat, Long> 
 {
-   List<GeoLocalitate> findAll();
-   List<GeoLocalitate> findByGeoLocalitateZonataraidAndGeoLocalitateJudetidAndGeoLocalitateUatidOrderByGeoLocalitateNume(Long zonataraid, Long judetid, Long uatid);
-   List<GeoLocalitate> findByGeoLocalitateZonataraidAndGeoLocalitateJudetcodAndGeoLocalitateUatcodOrderByGeoLocalitateNume(Long zonataraid, String judetcod, long uatcod);
+   List<GeoUat> findAll();
+   List<GeoUat> findByGeoUatZonataraidAndGeoUatJudetidOrderByGeoUatNume(Long zonataraid, Long judetid);
+   List<GeoUat> findByGeoUatZonataraidAndGeoUatJudetcodOrderByGeoUatNume(Long zonataraid, String judetcod);
 }
 
 

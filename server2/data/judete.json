@@ -1,0 +1,338 @@
+[
+    {
+        "geoJudetId": 21,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "AB",
+        "geoJudetNume": "Alba"
+    },
+    {
+        "geoJudetId": 29,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "AR",
+        "geoJudetNume": "Arad"
+    },
+    {
+        "geoJudetId": 23,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "AG",
+        "geoJudetNume": "Argeș"
+    },
+    {
+        "geoJudetId": 2,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BC",
+        "geoJudetNume": "Bacău"
+    },
+    {
+        "geoJudetId": 25,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BH",
+        "geoJudetNume": "Bihor"
+    },
+    {
+        "geoJudetId": 4,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BN",
+        "geoJudetNume": "Bistrița-Năsăud"
+    },
+    {
+        "geoJudetId": 7,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BT",
+        "geoJudetNume": "Botoșani"
+    },
+    {
+        "geoJudetId": 10,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BR",
+        "geoJudetNume": "Brăila"
+    },
+    {
+        "geoJudetId": 8,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BV",
+        "geoJudetNume": "Brașov"
+    },
+    {
+        "geoJudetId": 9,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "B",
+        "geoJudetNume": "București"
+    },
+    {
+        "geoJudetId": 16,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "BZ",
+        "geoJudetNume": "Buzău"
+    },
+    {
+        "geoJudetId": 24,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "CL",
+        "geoJudetNume": "Călărași"
+    },
+    {
+        "geoJudetId": 31,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "CS",
+        "geoJudetNume": "Caraș-Severin"
+    },
+    {
+        "geoJudetId": 20,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "CJ",
+        "geoJudetNume": "Cluj"
+    },
+    {
+        "geoJudetId": 34,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "CT",
+        "geoJudetNume": "Constanța"
+    },
+    {
+        "geoJudetId": 13,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "CV",
+        "geoJudetNume": "Covasna"
+    },
+    {
+        "geoJudetId": 5,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "DB",
+        "geoJudetNume": "Dâmbovița"
+    },
+    {
+        "geoJudetId": 1,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "DJ",
+        "geoJudetNume": "Dolj"
+    },
+    {
+        "geoJudetId": 32,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "GL",
+        "geoJudetNume": "Galați"
+    },
+    {
+        "geoJudetId": 22,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "GR",
+        "geoJudetNume": "Giurgiu"
+    },
+    {
+        "geoJudetId": 33,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "GJ",
+        "geoJudetNume": "Gorj"
+    },
+    {
+        "geoJudetId": 3,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "HR",
+        "geoJudetNume": "Harghita"
+    },
+    {
+        "geoJudetId": 11,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "HD",
+        "geoJudetNume": "Hunedoara"
+    },
+    {
+        "geoJudetId": 30,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "IL",
+        "geoJudetNume": "Ialomița"
+    },
+    {
+        "geoJudetId": 26,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "IS",
+        "geoJudetNume": "Iași"
+    },
+    {
+        "geoJudetId": 18,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "IF",
+        "geoJudetNume": "Ilfov"
+    },
+    {
+        "geoJudetId": 36,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "MM",
+        "geoJudetNume": "Maramureș"
+    },
+    {
+        "geoJudetId": 37,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "MH",
+        "geoJudetNume": "Mehedinți"
+    },
+    {
+        "geoJudetId": 40,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "MS",
+        "geoJudetNume": "Mureș"
+    },
+    {
+        "geoJudetId": 19,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "NT",
+        "geoJudetNume": "Neamț"
+    },
+    {
+        "geoJudetId": 42,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "OT",
+        "geoJudetNume": "Olt"
+    },
+    {
+        "geoJudetId": 17,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "PH",
+        "geoJudetNume": "Prahova"
+    },
+    {
+        "geoJudetId": 38,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "SJ",
+        "geoJudetNume": "Sălaj"
+    },
+    {
+        "geoJudetId": 35,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "SM",
+        "geoJudetNume": "Satu Mare"
+    },
+    {
+        "geoJudetId": 41,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "SB",
+        "geoJudetNume": "Sibiu"
+    },
+    {
+        "geoJudetId": 6,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "SV",
+        "geoJudetNume": "Suceava"
+    },
+    {
+        "geoJudetId": 12,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "TR",
+        "geoJudetNume": "Teleorman"
+    },
+    {
+        "geoJudetId": 15,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "TM",
+        "geoJudetNume": "Timiș"
+    },
+    {
+        "geoJudetId": 14,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "TL",
+        "geoJudetNume": "Tulcea"
+    },
+    {
+        "geoJudetId": 27,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "VL",
+        "geoJudetNume": "Vâlcea"
+    },
+    {
+        "geoJudetId": 39,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "VS",
+        "geoJudetNume": "Vaslui"
+    },
+    {
+        "geoJudetId": 28,
+        "geoJudetZonataraid": 1,
+        "geoJudetZonataracod": "TR",
+        "geoJudetZonataranume": "Țară",
+        "geoJudetCod": "VN",
+        "geoJudetNume": "Vrancea"
+    }
+]

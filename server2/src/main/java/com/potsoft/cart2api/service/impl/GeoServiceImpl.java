@@ -5,9 +5,11 @@ import com.potsoft.cart2api.service.GeoService;
 import com.potsoft.cart2api.repository.geo.GeoZonaTaraRepository;
 import com.potsoft.cart2api.model.geo.GeoJudet;
 import com.potsoft.cart2api.model.geo.GeoLocalitate;
+import com.potsoft.cart2api.model.geo.GeoUat;
 import com.potsoft.cart2api.model.geo.GeoZonaTara;
 import com.potsoft.cart2api.repository.geo.GeoJudetRepository;
 import com.potsoft.cart2api.repository.geo.GeoLocalitateRepository;
+import com.potsoft.cart2api.repository.geo.GeoUatRepository;
 
 //import java.util.Arrays;
 //import java.util.Collections;
@@ -28,8 +30,12 @@ public class GeoServiceImpl implements GeoService
 	private GeoJudetRepository geoJudetRepository;
 
 	@Autowired
+	private GeoUatRepository geoUatRepository;
+
+	@Autowired
 	private GeoLocalitateRepository geoLocalitateRepository;
 
+	
 
 	@Override
 	public List<GeoZonaTara> getZoneTara()
@@ -38,43 +44,66 @@ public class GeoServiceImpl implements GeoService
 	}
 
 
+
 	@Override
-	public List<GeoJudet> getToateJudeteleDinTara()
+	public List<GeoJudet> getToateJudetele()
 	{
 	  return this.geoJudetRepository.findAll();
 	}
 	
+	@Override
+	public List<GeoJudet> getJudeteleDupaZonataraid(Long zonataraid)
+	{
+	  return this.geoJudetRepository.findByGeoJudetZonataraidOrderByGeoJudetNume(zonataraid);
+	}
 
 	@Override
-	public List<GeoLocalitate> getToateLocalitatileDinTara()
+	public List<GeoJudet> getJudeteleDupaZonataracod(String zonataracod)
+	{
+	  return this.geoJudetRepository.findByGeoJudetZonataracodOrderByGeoJudetNume(zonataracod);
+	}
+
+
+	@Override
+	public List<GeoUat> getToateUateurile()
+	{
+	 return this.geoUatRepository.findAll();
+	}
+  
+	@Override
+	public List<GeoUat> getUateuriDupaZonataraidSiDupaJudetid(Long zonataraid, Long judetid)
+	{
+	  return this.geoUatRepository.findByGeoUatZonataraidAndGeoUatJudetidOrderByGeoUatNume(zonataraid, judetid);
+	}
+
+	@Override
+	public List<GeoUat> getUateuriDupaZonataraidSiDupaJudetcod(Long zonataraid, String judetcod)
+	{
+	  return this.geoUatRepository.findByGeoUatZonataraidAndGeoUatJudetcodOrderByGeoUatNume(zonataraid, judetcod);
+	}
+
+
+
+
+	@Override
+	public List<GeoLocalitate> getToateLocalitatile()
 	{
 	 return this.geoLocalitateRepository.findAll();
 	}
-  
-
+   
 	@Override
-	public List<GeoLocalitate> getToateLocalitatileDinJudetDupaJudetid(Long judetid)
+	public List<GeoLocalitate> getLocalitatileDupaZonataraidDupaJudetidDupaUatid(Long zonataraid, Long judetid, Long uatid)
 	{
-	  return this.geoLocalitateRepository.findByGeoLocalitateZonataraidAndGeoLocalitateJudetid(1L, judetid);
+	  return this.geoLocalitateRepository.findByGeoLocalitateZonataraidAndGeoLocalitateJudetidAndGeoLocalitateUatidOrderByGeoLocalitateNume(zonataraid, judetid, uatid);
 	}
 
 	@Override
-	public List<GeoLocalitate> getToateLocalitatileDinJudetDupaJudetcod(String judetcod)
+	public List<GeoLocalitate> getLocalitatileDupaZonataraidSiDupaJudetcodDupaUatcod(Long zonataraid, String judetcod, Long uatcod)
 	{
-	  return this.geoLocalitateRepository.findByGeoLocalitateZonataraidAndGeoLocalitateJudetcod(1L, judetcod);
+	  return this.geoLocalitateRepository.findByGeoLocalitateZonataraidAndGeoLocalitateJudetcodAndGeoLocalitateUatcodOrderByGeoLocalitateNume(zonataraid, judetcod, uatcod);
 	}
 
-	@Override
-	public List<GeoLocalitate> getToateLocalitatileDinTaraDiasporaDupaTaraid(Long taraid)
-	{
-	  return this.geoLocalitateRepository.findByGeoLocalitateZonataraidAndGeoLocalitateJudetid(1L, taraid);
-	}
-
-	@Override
-	public List<GeoLocalitate> getToateLocalitatileDinTaraDiasporaDupaTaracod2(String taracod2)
-	{
-	  return this.geoLocalitateRepository.findByGeoLocalitateZonataraidAndGeoLocalitateJudetcod(1L, taracod2);
-	}
+	
 }
 
 

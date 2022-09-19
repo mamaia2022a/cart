@@ -20,9 +20,25 @@ import { promise } from 'protractor';
 @Injectable({ providedIn: 'root' })
 export class AuthHandler {
 
+  private ApiBaseURL: string = "http://localhost:8080";//"http://localhost:8080/api/aut/user/login";
 
-  private ApiURL: string = "http://fluierul.ro:8080/api/aut/user/login";//"http://localhost:8080/api/aut/user/login";
-
+  //---------------------------------- out
+  private ApiURLAutLogin: string                              = this.ApiBaseURL + "/api/aut/user/login";
+  private ApiURLAutRegister: string                           = this.ApiBaseURL + "/api/aut/user/register";
+  //---------------------------------- geo
+  //zonetara/toate
+  private ApiURLGeoZonetara: string                           = this.ApiBaseURL + "/api/geo/zonetara";
+  //judete/zonataraid/{zonataraid}
+  private ApiURLGeoJudete: string                             = this.ApiBaseURL + "/api/geo/judete";
+  ///zonataraiuatd/{zonataraid}/judetid/{judetid}
+  private ApiURLGeoUat: string                                = this.ApiBaseURL + "/api/geo/uat";
+  private Toate                                               = "/toate";
+  private ByZonataraid                                        = "/zonataraid/";
+  private ByJudetid                                           = "/judetid/";
+  //localitati/zonataraid/{zonataraid}/judetid/{judetid}
+  private ApiURLGeoLocalitati: string                         = this.ApiBaseURL + "/api/geo/localitati";
+  private ByUatid                                             = "/uatid/";
+  
     /**
     constructor(private actions$: Actions, private navController: NavController, 
                                          private http: HttpClient, private toastService: ToastService) 
@@ -251,7 +267,7 @@ export class AuthHandler {
         "password": "turda"
       };*/
       //return this.http.post(this.ApiURL, loginAction.loginRequest).subscribe(data  => {
-      return this.apiService.post(this.ApiURL, loginAction.loginRequest).subscribe(data  => {  
+      return this.apiService.post(this.ApiURLAutLogin, loginAction.loginRequest).subscribe(data  => {  
         let response : any = data;
         console.log(data);
         console.log(response.accessToken);
@@ -283,12 +299,103 @@ export class AuthHandler {
       },
       (error) => {
         console.log("Error" + error);
-        toastService.default("Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați [" + error.message + "]");
+        toastService.default("Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
         return this.navController.navigateRoot(appConfig.routes.auth.login);
       })
     });
 
   //});
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.GeoZonetara)).subscribe(async data2 => 
+    {
+        let geoZonetaraAction : AuthAction.GeoZonetara = data2;
+        var storageResultKey = geoZonetaraAction.storageResultKey;
+        console.log("Action Geo Zone Tara [storageResultKey=" + storageResultKey + "]");
+        // ----
+        this.apiService.get(this.ApiURLGeoZonetara + this.Toate, {}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare: Nu se pote obține lista de Zonetara");
+          return of(false);
+        })  
+    });
+    
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.GeoJudete)).subscribe(async data2 => 
+    {
+        let geoJudeteAction :AuthAction.GeoJudete = data2;
+        var zonataraid       = geoJudeteAction.zonataraid;
+        var storageResultKey = geoJudeteAction.storageResultKey;
+        console.log("Action Geo Judete [zonataraid=" + zonataraid + " , storageResultKey=" + storageResultKey + "]");
+        // ----
+        this.apiService.get(this.ApiURLGeoJudete + this.ByZonataraid + zonataraid, {}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare: Nu se poate obține lista de județe");
+          return of(false);
+        })  
+    });
+
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.GeoUateuri)).subscribe(async data2 => 
+      {
+          let geoUateuriAction :AuthAction.GeoUateuri = data2;
+          var zonataraid       = geoUateuriAction.zonataraid;
+          var judetid          = geoUateuriAction.judetid;
+          var storageResultKey = geoUateuriAction.storageResultKey;
+          console.log("Action Geo Uat [zonataraid=" + zonataraid + " , judetid=" + judetid + " , storageResultKey=" + storageResultKey + "]");
+          // ----
+          this.apiService.get(this.ApiURLGeoUat + this.ByZonataraid + zonataraid + this.ByJudetid + judetid, {}).subscribe(data  => {  
+            let response : any = data;
+            console.log(response);
+            storage.set(storageResultKey, response);
+            return of(response);
+          },
+          (error) => {
+            console.log("Error" + error);
+            toastService.default("Eroare: Nu se poate obține lista de unitati administrativ teritoriale");
+            return of(false);
+          })  
+      });
+  
+  
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.GeoLocalitati)).subscribe(async data2 => 
+    {
+        let geoLocalitatiAction :AuthAction.GeoLocalitati = data2;
+        var zonataraid       = geoLocalitatiAction.zonataraid;
+        var judetid          = geoLocalitatiAction.judetid;
+        var uatid            = geoLocalitatiAction.uatid;
+        var storageResultKey = geoLocalitatiAction.storageResultKey;
+        console.log("Action Geo Localități [zonataraid=" + zonataraid + " , judetid=" + judetid + " , uatid=" + uatid + " , storageResultKey=" + storageResultKey + "]");
+        // ----
+        this.apiService.get(this.ApiURLGeoLocalitati + this.ByZonataraid + zonataraid 
+                                                     + this.ByJudetid + judetid + this.ByUatid + uatid, {}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare: Nu se poate obține lista de localități");
+          return of(false);
+        })  
+    });
+
 
   }
 }
@@ -315,4 +422,5 @@ export class AuthHandler {
         return;
       }
       this.navController.navigateRoot(appConfig.routes.auth.login);
+
       */

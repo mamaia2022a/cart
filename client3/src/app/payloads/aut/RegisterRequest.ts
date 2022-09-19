@@ -15,6 +15,8 @@ export class RegisterRequest
 
 	telefon:string;
 
+	datanasterii : number;
+
 	sex:string;
 
 	email:string;
@@ -25,29 +27,30 @@ export class RegisterRequest
 	domJudetid:number;
 	domJudetcod:string;
 
+	domUatid:number;
+	domUatcod: number;
+
 	domLocalitateid:number;
-	domLocalitatecod:string;
+	domLocalitatecod: number;
 
 	domCodpostal:string;
-
 	domAdresa:string;
 
     rezdifdedom:string;
 
-	rezZonataraid:string;
-
+	rezZonataraid:number;
 	rezZonataracod:string;
 
-	rezJudetid:string;
-
+	rezJudetid:number;
 	rezJudetcod:string;
 
-	rezLocalitateid:string;
+	rezLocalitateid:number;
+	rezLocalitatecod:number;
 
-	rezLocalitatecod:string;
+	rezUatid: number;
+	rezUatcod: number;
 
 	rezCodpostal:string;
-
 	rezAdresa:string;
 
 

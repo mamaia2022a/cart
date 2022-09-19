@@ -49,6 +49,19 @@ public class GeoJudet {
   @Column(name = "geo_judet_nume")
   private String geoJudetNume;
 
+  @NotBlank
+  @Size(max = 32)
+  @Column(name = "geo_judet_numescurt")
+  private String geoJudetNumescurt;
+
+  @NotNull
+  @Column(name = "geo_judet_siruta")
+  private String geoJudetSiruta;
+
+  @NotNull
+  @Column(name = "geo_judet_regiuneid")
+  private String geoJudetRegiuneid;
+
 
 	public GeoJudet() 
   {
@@ -56,7 +69,8 @@ public class GeoJudet {
 
 	public GeoJudet( Long   geo_judet_id, 
                    Long   geo_judet_zonataraid, String geo_judet_zonataracod, String geo_judet_zonataranume,
-                   String geo_judet_cod, String geo_judet_nume) 
+                   String geo_judet_cod, String geo_judet_nume, String geo_judet_numescurt,
+                   String geo_judet_siruta, String geo_judet_regiuneid) 
   {
 		this.geoJudetId           = geo_judet_id;
     this.geoJudetZonataraid   = geo_judet_zonataraid;
@@ -64,6 +78,9 @@ public class GeoJudet {
     this.geoJudetZonataranume = geo_judet_zonataranume;
 		this.geoJudetCod          = geo_judet_cod;
     this.geoJudetNume         = geo_judet_nume;
+    this.geoJudetNumescurt    = geo_judet_numescurt;
+    this.geoJudetSiruta       = geo_judet_siruta;
+    this.geoJudetRegiuneid    = geo_judet_regiuneid;
 	}
 
   public Long getGeoJudetId() 
@@ -132,5 +149,36 @@ public class GeoJudet {
   }
 
 
-    
+  public String getGeoJudetNumescurt() 
+  {
+    return this.geoJudetNumescurt;
+  }
+
+  public void setGeoJudetNumescurt(String geo_judet_numescurt) 
+  {
+    this.geoJudetNumescurt = geo_judet_numescurt;
+  }
+
+
+  public String getGeoJudetSiruta() 
+  {
+    return this.geoJudetSiruta;
+  }
+
+  public void setGeoJudetSiruta(String geo_judet_siruta) 
+  {
+    this.geoJudetSiruta = geo_judet_siruta;
+  }
+
+  
+  public String getGeoJudetRegiuneid() 
+  {
+    return this.geoJudetRegiuneid;
+  }
+
+  public void setGeoJudetRegiuneid(String geo_judet_regiuneid) 
+  {
+    this.geoJudetRegiuneid = geo_judet_regiuneid;
+  }
+
 }

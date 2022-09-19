@@ -40,24 +40,37 @@
                 <ion-select-option value="f">Feminin</ion-select-option>
                 <ion-select-option value="m">Masculin</ion-select-option>
               </ion-select>
+            </ion-item> 
+            <ion-item color="light">
+               <ion-datetime placeholder="Data Nașterii"  displayFormat="YYYYMMDD" formControlName="datanasterii"></ion-datetime>
             </ion-item>
             <ion-item color="light">
-              <ion-select placeholder="Domiciliu în Țară sau în Diaspora?" formControlName="domzonatara">
-                <ion-select-option value="TR">Țară</ion-select-option>
-                <ion-select-option value="DS">Diaspora</ion-select-option>
+              <ng-container *ngIf="zonetara$">
+                <ion-select #domZoneTaraSelect placeholder="Aveți Domiciliul în Țară sau în Diaspora?" formControlName="domzonatara" (ionChange)="selectieDomZonatara($event)">
+                   <ion-select-option value="{{zonatara.geoZonaTaraId}}" *ngFor='let zonatara of (zonetara$|async)'>{{zonatara.geoZonaTaraNume}}</ion-select-option>
               </ion-select>
+              </ng-container>              
             </ion-item>
             <ion-item color="light">
-              <ion-select placeholder="Județul de domiciliu" formControlName="domjudet" >
-                <ion-select-option value="1">Alba</ion-select-option>
-                <ion-select-option value="22">București</ion-select-option>
+              <ng-container *ngIf="domjudete$">
+                <ion-select #domJudeteSelect placeholder="Județul de domiciliu" formControlName="domjudet" (ionChange)="selectieDomJudet($event)">
+                   <ion-select-option value="{{judet.geoJudetId}}" *ngFor='let judet of (domjudete$|async)'>{{judet.geoJudetNume}}</ion-select-option>
               </ion-select>
+              </ng-container>
             </ion-item>
             <ion-item color="light">
-              <ion-select placeholder="Localitatea de domiciliu" formControlName="domlocalitate">
-                <ion-select-option value="122">Turda</ion-select-option>
-                <ion-select-option value="222">Sector 3</ion-select-option>
+              <ng-container *ngIf="domuateuri$">
+                <ion-select #domUateuriSelect placeholder="Unitatea administrativ Teritoriala de domiciliu" formControlName="domuat" (ionChange)="selectieDomUat($event)">
+                   <ion-select-option value="{{uat.geoUatId}}" *ngFor='let uat of (domuateuri$|async)'>{{uat.geoUatNume}}</ion-select-option>
               </ion-select>
+              </ng-container>
+            </ion-item>
+            <ion-item color="light">
+              <ng-container *ngIf="domlocalitati$">
+                <ion-select #domLocalitatiSelect placeholder="Localitatea de domiciliu" formControlName="domlocalitate" (ionChange)="selectieDomLocalitate($event)">
+                   <ion-select-option value="{{localitate.geoLocalitateId}}" *ngFor='let localitate of (domlocalitati$|async)'>{{localitate.geoLocalitateNume}}</ion-select-option>
+              </ion-select>
+              </ng-container>
             </ion-item>
             <ion-item color="light">
               <ion-input type="text" placeholder="Codul Postal la Domiciliu" formControlName="domcodpostal"></ion-input>
@@ -65,7 +78,50 @@
             <ion-item color="light">
               <ion-input type="text" placeholder="Adresa de Domiciliu" formControlName="domadresa"></ion-input>
             </ion-item>
+            <ion-item color="light">
+              <ion-select placeholder="Locuiți la o adresa de rezindență alte decât cea din CI?" formControlName="rezdifdom" (ionChange)="selectieDomDifRez($event)">
+                <ion-select-option value="0">Locuiesc la Adresa de Domiciliu din Cartea de Identitate</ion-select-option>
+                <ion-select-option value="1">Locuiesc la o Adresă de Rezidență alta decât cea de Domiciliu</ion-select-option>
+              </ion-select>
+            </ion-item>
 
+
+            <div *ngIf="showRezidenta">
+              <ion-item color="light">
+                <ng-container *ngIf="zonetara$">
+                  <ion-select #rezZoneTaraSelect placeholder="Aveți Rezidența în Țară sau în Diaspora?" formControlName="rezzonatara" (ionChange)="selectieRezZonatara($event)">
+                    <ion-select-option value="{{zonatara.geoZonaTaraId}}" *ngFor='let zonatara of (zonetara$|async)'>{{zonatara.geoZonaTaraNume}}</ion-select-option>
+                </ion-select>
+                </ng-container>              
+              </ion-item>
+              <ion-item color="light">
+                <ng-container *ngIf="rezjudete$">
+                  <ion-select #rezJudeteSelect placeholder="Județul de rezidență" formControlName="rezjudet" (ionChange)="selectieRezJudet($event)">
+                    <ion-select-option value="{{judet.geoJudetId}}" *ngFor='let judet of (rezjudete$|async)'>{{judet.geoJudetNume}}</ion-select-option>
+                </ion-select>
+                </ng-container>
+              </ion-item>
+              <ion-item color="light">
+                <ng-container *ngIf="rezuateuri$">
+                  <ion-select #rezUateuriSelect placeholder="Unitatea administrativ Teritoriala de rezidență" formControlName="rezuat" (ionChange)="selectieRezUat($event)">
+                    <ion-select-option value="{{uat.geoUatId}}" *ngFor='let uat of (rezuateuri$|async)'>{{uat.geoUatNume}}</ion-select-option>
+                </ion-select>
+                </ng-container>
+              </ion-item>
+              <ion-item color="light">
+                <ng-container *ngIf="rezlocalitati$">
+                  <ion-select #rezLocalitatiSelect placeholder="Localitatea de rezidență" formControlName="rezlocalitate" (ionChange)="selectieRezLocalitate($event)">
+                    <ion-select-option value="{{localitate.geoLocalitateId}}" *ngFor='let localitate of (rezlocalitati$|async)'>{{localitate.geoLocalitateNume}}</ion-select-option>
+                </ion-select>
+                </ng-container>
+              </ion-item>
+              <ion-item color="light">
+                <ion-input type="text" placeholder="Codul Postal la Rezidență" formControlName="rezcodpostal"></ion-input>
+              </ion-item>
+              <ion-item color="light">
+                <ion-input type="text" placeholder="Adresa de Rezidență" formControlName="rezadresa"></ion-input>
+              </ion-item>
+            </div>
           </ion-card>
 
           <ion-button

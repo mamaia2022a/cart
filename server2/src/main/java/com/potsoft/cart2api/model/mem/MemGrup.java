@@ -37,7 +37,7 @@ public class MemGrup{
   private Long memGrupSefgrupid;
 
   @Size(max = 16)
-  @Column(name = "mem_grup_codunic")
+  @Column(name = "mem_grup_sefgrupcodunic")
   private String memGrupSefgrupcodunic;
 
   @NotNull
