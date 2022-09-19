@@ -3,13 +3,10 @@ package com.potsoft.cart2api.controller;
 import java.util.stream.Collectors;
 
 import com.potsoft.cart2api.security.UserDetailsImpl;
-
+import com.potsoft.cart2api.service.AutUserService;
 //import com.potsoft.cart2api.exception.AppException;
-import com.potsoft.cart2api.exception.CartapiException;
+//import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
-import com.potsoft.cart2api.model.aut.AutUserRol;
-import com.potsoft.cart2api.model.aut.AutUserInfo;
-import com.potsoft.cart2api.model.aut.AutRol;
 
 //import com.potsoft.cart2api.model.aut.rol.AutRoleName;
 import com.potsoft.cart2api.payload.response.general.ApiResponse;
@@ -18,21 +15,19 @@ import com.potsoft.cart2api.payload.request.aut.LoginRequest;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
 
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
-import com.potsoft.cart2api.repository.aut.AutRolRepository;
-import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
-import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
 
 import com.potsoft.cart2api.payload.response.aut.JwtResponse;
-
+//import com.potsoft.cart2api.security.CurrentUser;
 import com.potsoft.cart2api.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,14 +36,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URI;
+//import java.nio.file.attribute.UserPrincipal;
 import java.sql.SQLException;
 //import java.util.ArrayList;
 import java.util.List;
 //import java.util.Optional;
-import java.util.HashSet;
-import java.util.Set;
+//import java.util.HashSet;
+//import java.util.Set;
 
 @RestController
 @RequestMapping("/api/aut/user")
@@ -56,39 +54,34 @@ public class AutUserController {
 	//private static final String USER_ROLE_NOT_SET = "User role not set";
 
 	@Autowired
+	private AutUserService autUserService;
+	
+	@Autowired
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
 	private AutUserRepository autUserRepository;
 
-	@Autowired
-	private AutUserInfoRepository autUserInfoRepository;
-
-	@Autowired
-	private AutRolRepository autRolRepository;
-
-	@Autowired
-	private AutUserRolRepository autUserRolRepository;
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	//@Autowired
+	//private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
 
-	/** 
-	@PostMapping("/login2")
-	public ResponseEntity<JwtAuthenticationResponse> authenticateUser2(@Valid @RequestBody LoginRequest loginRequest) {
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-
-		String jwt = jwtTokenProvider.generateToken(authentication);
-		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
-	}
-    */
 	
+	//------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/logout")
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) 
+	{  
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();  
+		if (auth != null){      
+		   new SecurityContextLogoutHandler().logout(request, response, auth);  
+		}  
+		return "/login";  
+	}  
+
+	//------------------------------------------------
 	@CrossOrigin(origins = "*")
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -113,11 +106,27 @@ public class AutUserController {
 						   roles,
 						   crtUser));
 	}
-  
+
+    //-----------------------------------------------------------
 	@CrossOrigin(origins = "*")
 	@PostMapping("/register")
 	@Transactional(rollbackFor = { SQLException.class })
 	public ResponseEntity<ApiResponse> registerUser(@Valid @RequestBody RegisterRequest registerRequest) 
+	{
+        AutUser newUser = autUserService.inregistreazaUser(registerRequest);
+		
+		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{userId}")
+				.buildAndExpand(newUser.getAutUserId()).toUri();
+
+		return ResponseEntity.created(location).body(
+			              new ApiResponse(Boolean.TRUE, "V-ați înregistrat cu succes"));
+	}
+
+	/** 
+	@CrossOrigin(origins = "*")
+	@PostMapping("/registerold")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<ApiResponse> registerUserOld(@Valid @RequestBody RegisterRequest registerRequest) 
 	{
 		if (Boolean.TRUE.equals(autUserRepository.existsByAutUserNume(registerRequest.getUsername()))) 
 		{
@@ -308,9 +317,10 @@ public class AutUserController {
 		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{userId}")
 				.buildAndExpand(resUser.getAutUserId()).toUri();
 
-		return ResponseEntity.created(location).body(new ApiResponse(Boolean.TRUE, "User registered successfully"));
+		return ResponseEntity.created(location).body(
+			              new ApiResponse(Boolean.TRUE, "User registered successfully"));
 	}
-
+    */
 
     /**
 	@PostMapping("/register")
@@ -381,3 +391,15 @@ public class AutUserController {
 
 
 }
+	/** 
+	@PostMapping("/login2")
+	public ResponseEntity<JwtAuthenticationResponse> authenticateUser2(@Valid @RequestBody LoginRequest loginRequest) {
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		String jwt = jwtTokenProvider.generateToken(authentication);
+		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+	}
+    */

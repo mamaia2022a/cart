@@ -37,7 +37,7 @@ export class RegisterPage implements OnInit {
        domlocalitate: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domcodpostal: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domadresa: new FormControl('', [Validators.required, Validators.maxLength(150)]),
-       rezdifdom: new FormControl('', [Validators.required, Validators.maxLength(1)]),
+       rezdifdom: new FormControl('0', [Validators.required, Validators.maxLength(150)]),
        rezzonatara: new FormControl('', [Validators.maxLength(150)]),
        rezjudet: new FormControl('', [Validators.maxLength(150)]),
        rezuat: new FormControl('', [Validators.maxLength(150)]),
@@ -45,8 +45,7 @@ export class RegisterPage implements OnInit {
        rezcodpostal: new FormControl('', [Validators.maxLength(150)]),
        rezadresa: new FormControl('', [Validators.maxLength(150)]),
     },
-    { validators: [this.passwordConfirmMatchValidator, 
-                  this.rezjudetMatchValidator]
+    { validators: [this.passwordConfirmMatchValidator]
     },
   );
 
@@ -409,10 +408,13 @@ export class RegisterPage implements OnInit {
   rezjudetMatchValidator(g: AbstractControl): ValidationErrors | null {
     const rezdifdom = g.get('rezdifdom');
     const rezjudet = g.get('rezjudet');
+    console.log("rzdiform" + rezdifdom.value);
     if (rezdifdom.value == 0){
       rezjudet.setErrors(null);
-      return;
+      return ({validRezjudet: true});  
     }
+    
+    return ({validRezjudet: false});  
   }
 
       /*
