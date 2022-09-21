@@ -79,12 +79,19 @@ public class MemMembru {
   @Column(name = "mem_membru_judetcod")
   private String memMembruJudetcod;
   
+  @Column(name = "mem_membru_uatid")
+  private Long memMembruUatid;
+  
+  @Size(max = 10)
+  @Column(name = "mem_membru_uatcod")
+  private Long memMembruUatcod;
+
   @Column(name = "mem_membru_localitateid")
   private Long memMembruLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "mem_membru_localitatecod")
-  private String memMembruLocalitatecod;
+  private Long memMembruLocalitatecod;
   
   
   @Column(name = "mem_membru_zonajudetid")
@@ -94,6 +101,13 @@ public class MemMembru {
   @Column(name = "mem_membru_zonajudetcod")
   private String memMembruZonajudetcod;
 
+  @Column(name = "mem_membru_zonauatid")
+  private Long memMembruZonauatid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_membru_zonauatcod")
+  private String memMembruZonauatcod;
+  
   @Column(name = "mem_membru_zonalocalitateid")
   private Long memMembruZonalocalitateid;
   
@@ -168,8 +182,10 @@ public class MemMembru {
                     Long memGrupid, String memGrupnume, String memGrupcodunic,
                     String memAdrrezidentayn,
                     Long memZonataraid, String memZonataracod, Long memJudetid, String memJudetcod, 
-                    Long memLocalitateid, String memLocalitatecod, 
+                    Long memUatid, Long memUatcod, 
+                    Long memLocalitateid, Long memLocalitatecod, 
                     Long memZonajudetid, String memZonajudetcod, 
+                    Long memZonauatid, String memZonauatcod, 
                     Long memZonalocalitateid, String memZonalocalitatecod,  
                     Long memSectievotareid, Long memSectievotarenr, 
                     Long memCodpostalid, String memCodpostalcod,
@@ -197,10 +213,14 @@ public class MemMembru {
     this.memMembruZonataracod       = memZonataracod;
     this.memMembruJudetid           = memJudetid;
     this.memMembruJudetcod          = memJudetcod;
+    this.memMembruUatid             = memUatid;
+    this.memMembruUatcod            = memUatcod;
     this.memMembruLocalitateid      = memLocalitateid;
     this.memMembruLocalitatecod     = memLocalitatecod;
     this.memMembruZonajudetid       = memZonajudetid;    
     this.memMembruZonajudetcod      = memZonajudetcod;  
+    this.memMembruZonauatid         = memZonauatid;    
+    this.memMembruZonauatcod        = memZonauatcod;  
     this.memMembruZonalocalitateid  = memZonalocalitateid;    
     this.memMembruZonalocalitatecod = memZonalocalitatecod;  
     this.memMembruSectievotareid    = memSectievotareid;    
@@ -378,6 +398,27 @@ public class MemMembru {
   }
 
 
+  public Long getMemMembruUatid() 
+  {
+    return this.memMembruUatid;
+  }
+
+  public void setMemMembruUatid(Long memMembruUatid) 
+  {
+    this.memMembruLocalitateid = memMembruUatid;
+  }
+
+  public Long getMemMembruUatcod() 
+  {
+    return this.memMembruUatcod;
+  }
+
+  public void setMemMembruUatcod(Long memMembruLocalitatecod) 
+  {
+    this.memMembruLocalitatecod = memMembruLocalitatecod;
+  }
+
+
 
   public Long getMemMembruLocalitateid() 
   {
@@ -389,12 +430,12 @@ public class MemMembru {
     this.memMembruLocalitateid = memMembruLocalitateid;
   }
 
-  public String getMemMembruLocalitatecod() 
+  public Long getMemMembruLocalitatecod() 
   {
     return this.memMembruLocalitatecod;
   }
 
-  public void setMemMembruLocalitatecod(String memMembruLocalitatecod) 
+  public void setMemMembruLocalitatecod(Long memMembruLocalitatecod) 
   {
     this.memMembruLocalitatecod = memMembruLocalitatecod;
   }
@@ -419,6 +460,27 @@ public class MemMembru {
   public void setMemMembruZonajudetcod(String memMembruZonajudetcod) 
   {
     this.memMembruZonajudetcod = memMembruZonajudetcod;
+  }
+
+
+  public Long getMemMembruZonauatid() 
+  {
+    return this.memMembruZonauatid;
+  }
+
+  public void setMemMembruZonauatid(Long memMembruZonauatid) 
+  {
+    this.memMembruZonauatid = memMembruZonauatid;
+  }
+
+  public String getMemMembruZonauatcod() 
+  {
+    return this.memMembruZonauatcod;
+  }
+
+  public void setMemMembruZonauatcod(String memMembruZonauatcod) 
+  {
+    this.memMembruZonauatcod = memMembruZonauatcod;
   }
 
 

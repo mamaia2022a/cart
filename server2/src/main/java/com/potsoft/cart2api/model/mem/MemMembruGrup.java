@@ -71,10 +71,17 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_judetcod")
   private String memMembrugrupJudetcod;
   
+  @Column(name = "mem_membrugrup_uatid")
+  private Long memMembrugrupUatid;
+  
+  @Size(max = 10)
+  @Column(name = "mem_membrugrup_uatcod")
+  private Long memMembrugrupUatcod;
+ 
   @Column(name = "mem_membrugrup_localitateid")
   private Long memMembrugrupLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "mem_membrugrup_localitatecod")
   private String memMembrugrupLocalitatecod;
   
@@ -85,6 +92,13 @@ public class MemMembruGrup{
   @Size(max = 2)
   @Column(name = "mem_membrugrup_zonajudetcod")
   private String memMembrugrupZonajudetcod;
+
+  @Column(name = "mem_membrugrup_zonauatid")
+  private Long memMembrugrupZonauatid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_membrugrup_zonauatcod")
+  private String memMembrugrupZonauatcod;
 
   @Column(name = "mem_membrugrup_zonalocalitateid")
   private Long memMembrugrupZonalocalitateid;
@@ -134,8 +148,10 @@ public class MemMembruGrup{
                        String memMembrugrupActivyn, String memMembrugrupStartdt,  String memMembrugrupEnddt,
                        Long memMembrugrupZonataraid, String memMembrugrupZonataracod, 
                        Long memMembrugrupJudetid, String memMembrugrupJudetcod, 
+                       Long memMembrugrupUatid, Long memMembrugrupUatcod, 
                        Long memMembrugrupLocalitateid, String memMembrugrupLocalitatecod, 
                        Long memMembrugrupZonajudetid, String memMembrugrupZonajudetcod, 
+                       Long memMembrugrupZonauatid, String memMembrugrupZonauatcod, 
                        Long memMembrugrupZonalocalitateid, String memMembrugrupZonalocalitatecod,  
                        Long memMembrugrupSectievotareid, Long memMembrugrupSectievotarenr, 
                        Long memMembrugrupCodpostalid, String memMembrugrupCodpostalcod
@@ -157,6 +173,8 @@ public class MemMembruGrup{
     this.memMembrugrupZonataracod       = memMembrugrupZonataracod;
     this.memMembrugrupJudetid           = memMembrugrupJudetid;
     this.memMembrugrupJudetcod          = memMembrugrupJudetcod;
+    this.memMembrugrupUatid             = memMembrugrupUatid;
+    this.memMembrugrupUatcod            = memMembrugrupUatcod;
     this.memMembrugrupLocalitateid      = memMembrugrupLocalitateid;
     this.memMembrugrupLocalitatecod     = memMembrugrupLocalitatecod;
     this.memMembrugrupZonajudetid       = memMembrugrupZonajudetid;    

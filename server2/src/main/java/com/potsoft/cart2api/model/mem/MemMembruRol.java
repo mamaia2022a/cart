@@ -74,13 +74,19 @@ public class MemMembruRol{
   @Column(name = "mem_membrurol_judetcod")
   private String memMembrurolJudetcod;
   
+  @Column(name = "mem_membrurol_uatid")
+  private Long memMembrurolUatid;
+  
+  @Size(max = 10)
+  @Column(name = "mem_membrurol_uatcod")
+  private Long memMembrurolUatcod;
+
   @Column(name = "mem_membrurol_localitateid")
   private Long memMembrurolLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "mem_membrurol_localitatecod")
   private String memMembrurolLocalitatecod;
-  
 
   @Column(name = "mem_membru_zonajudetid")
   private Long memMembrurolZonajudetid;
@@ -88,6 +94,13 @@ public class MemMembruRol{
   @Size(max = 2)
   @Column(name = "mem_membrurol_zonajudetcod")
   private String memMembrurolZonajudetcod;
+
+  @Column(name = "mem_membrurol_zonauatid")
+  private Long memMembrurolZonauatid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_membrurol_zonauatcod")
+  private String memMembrurolZonauatcod;
 
   @Column(name = "mem_membrurol_zonalocalitateid")
   private Long memMembrurolZonalocalitateid;
@@ -139,8 +152,10 @@ public class MemMembruRol{
                        String memMembruRolActivyn, String memMembruRolStartdt,  String memMembruRolEnddt,
                        Long memMembruRolZonataraid, String memMembruRolZonataracod, 
                        Long memMembruRolJudetid, String memMembruRolJudetcod, 
+                       Long memMembruRolUatid, Long memMembruRolUatcod, 
                        Long memMembruRolLocalitateid, String memMembruRolLocalitatecod, 
                        Long memMembruRolZonajudetid, String memMembruRolZonajudetcod, 
+                       Long memMembruRolZonauatid, String memMembruRolZonauatcod, 
                        Long memMembruRolZonalocalitateid, String memMembruRolZonalocalitatecod,  
                        Long memMembruRolSectievotareid, Long memMembruRolSectievotarenr, 
                        Long memMembruRolCodpostalid, String memMembruRolCodpostalcod
@@ -168,6 +183,8 @@ public class MemMembruRol{
     this.memMembrurolZonataracod       = memMembruRolZonataracod;
     this.memMembrurolJudetid           = memMembruRolJudetid;
     this.memMembrurolJudetcod          = memMembruRolJudetcod;
+    this.memMembrurolUatid             = memMembruRolUatid;
+    this.memMembrurolUatcod            = memMembruRolUatcod;
     this.memMembrurolLocalitateid      = memMembruRolLocalitateid;
     this.memMembrurolLocalitatecod     = memMembruRolLocalitatecod;
     this.memMembrurolZonajudetid       = memMembruRolZonajudetid;    

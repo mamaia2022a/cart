@@ -64,12 +64,19 @@ public class MemGrup{
   @Column(name = "mem_grup_judetcod")
   private String memGrupJudetcod;
   
+  @Column(name = "mem_grup_uatid")
+  private Long memGrupUatid;
+  
+  @Size(max = 10)
+  @Column(name = "mem_grup_uatcod")
+  private Long memGrupUatcod;
+  
   @Column(name = "mem_grup_localitateid")
   private Long memGrupLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "mem_grup_localitatecod")
-  private String memGrupLocalitatecod;
+  private Long memGrupLocalitatecod;
   
 
   @Column(name = "mem_grup_zonajudetid")
@@ -79,6 +86,13 @@ public class MemGrup{
   @Column(name = "mem_grup_zonajudetcod")
   private String memGrupZonajudetcod;
 
+  @Column(name = "mem_grup_zonauatid")
+  private Long memGrupZonauatid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_grup_zonauatcod")
+  private String memGrupZonauatcod;
+  
   @Column(name = "mem_grup_zonalocalitateid")
   private Long memGrupZonalocalitateid;
   
@@ -127,8 +141,10 @@ public class MemGrup{
                        String memGrupActivyn, String memGrupStartdt,  String memGrupEnddt,
                        Long memGrupZonataraid, String memGrupZonataracod, 
                        Long memGrupJudetid, String memGrupJudetcod, 
-                       Long memGrupLocalitateid, String memGrupLocalitatecod, 
+                       Long memGrupUatid, Long memGrupUatcod, 
+                       Long memGrupLocalitateid, Long memGrupLocalitatecod, 
                        Long memGrupZonajudetid, String memGrupZonajudetcod, 
+                       Long memGrupZonauatid, String memGrupZonauatcod, 
                        Long memGrupZonalocalitateid, String memGrupZonalocalitatecod,  
                        Long memGrupSectievotareid, Long memGrupSectievotarenr, 
                        Long memGrupCodpostalid, String memGrupCodpostalcod
@@ -151,6 +167,8 @@ public class MemGrup{
     this.memGrupZonataracod       = memGrupZonataracod;
     this.memGrupJudetid           = memGrupJudetid;
     this.memGrupJudetcod          = memGrupJudetcod;
+    this.memGrupUatid             = memGrupUatid;
+    this.memGrupUatcod            = memGrupUatcod;        
     this.memGrupLocalitateid      = memGrupLocalitateid;
     this.memGrupLocalitatecod     = memGrupLocalitatecod;
     this.memGrupZonajudetid       = memGrupZonajudetid;    
@@ -337,12 +355,12 @@ public class MemGrup{
     this.memGrupLocalitateid = memGrupLocalitateid;
   }
 
-  public String getMemGrupLocalitatecod() 
+  public Long getMemGrupLocalitatecod() 
   {
     return this.memGrupLocalitatecod;
   }
 
-  public void setMemGrupLocalitatecod(String memGrupLocalitatecod) 
+  public void setMemGrupLocalitatecod(Long memGrupLocalitatecod) 
   {
     this.memGrupLocalitatecod = memGrupLocalitatecod;
   }

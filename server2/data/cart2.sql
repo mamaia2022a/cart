@@ -136,7 +136,7 @@ CREATE TABLE `aut_userrol` (
   `aut_userrol_startdt` datetime NOT NULL,
   `aut_userrol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_userrol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 CREATE TABLE `aut_grupactiuni` (
@@ -492,8 +492,8 @@ VALUES
 );
 
 
-
-CREATE TABLE `aut_userinfo` (
+DROP TABLE IF EXISTS cart2.`aut_userinfo`;
+CREATE TABLE cart2.`aut_userinfo` (
   `aut_userinfo_id`	int NOT NULL AUTO_INCREMENT,
   `aut_userinfo_userid`  int NOT NULL,
   `aut_userinfo_nume`	varchar(32),
@@ -506,8 +506,10 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_dom_zonataracod`	varchar(2),
   `aut_userinfo_dom_judetid`	int,
   `aut_userinfo_dom_judetcod`	varchar(2),
+  `aut_userinfo_dom_uatid`	  int not null,
+  `aut_userinfo_dom_uatcod`	  int	not null,
   `aut_userinfo_dom_localitateid`	int,
-  `aut_userinfo_dom_localitatecod`	int(8),
+  `aut_userinfo_dom_localitatecod`	int,
   `aut_userinfo_dom_codpostal`	varchar(16),
   `aut_userinfo_dom_adresa`	varchar(128),
   `aut_userinfo_rez_dif_de_dom`	char(1),
@@ -515,20 +517,26 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_rez_zonataracod`	varchar(2),
   `aut_userinfo_rez_judetid`	int,
   `aut_userinfo_rez_judetcod`	varchar(2),
+  `aut_userinfo_rez_uatid`	  int not null,
+  `aut_userinfo_rez_uatcod`	  int	not null,
   `aut_userinfo_rez_localitateid`	int,
-  `aut_userinfo_rez_localitatecod`	int(8),
+  `aut_userinfo_rez_localitatecod`	int,
   `aut_userinfo_rez_codpostal`	varchar(16),
   `aut_userinfo_rez_adresa`	varchar(128),
   PRIMARY KEY (`aut_userinfo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
-1	AUT_VALIDINREG_ID	Int	PK, Autoincrement
-2	AUT_VALIDINREG_USERID	int	FK
-3	AUT_VALIDINREG_CODVALIDARE	Int(8)	Not Null
-4	AUT_VALIDINREG_ACTIV_YN	datetime	Not null
-5	AUT_VALIDINREG_STARTDT	Datetime	Not null
-6	AUT_VALIDINREG_ENDDT	Datetime	Not null
+
+CREATE TABLE `aut_validinreg` (
+  `aut_validinreg_id` int NOT NULL AUTO_INCREMENT,
+  `aut_validinreg_userid` int NOT NULL,
+  `aut_validinreg_codvalidare` int NOT NULL,
+  `aut_validinreg_activ_yn` varchar(1) NOT NULL,
+  `aut_validinreg_startdt` datetime NOT NULL,
+  `aut_validinreg_enddt` datetime NOT NULL,
+  PRIMARY KEY (`aut_validinreg_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 
@@ -1166,7 +1174,7 @@ INSERT INTO mem_tip ( `mem_tip_id`, `mem_tip_cod`, `mem_tip_nume`, `mem_tip_desc
 
 
 
-DROP TABLE `mem_membru`;
+DROP TABLE IF EXISTS `mem_membru`;
 CREATE TABLE `mem_membru` (
   `mem_membru_id` int NOT NULL AUTO_INCREMENT,
   `mem_membru_codunic`	varchar(16),	
@@ -1188,6 +1196,10 @@ CREATE TABLE `mem_membru` (
   `mem_membru_judetcod` varchar(2) not null, 
   `mem_membru_zonajudetid` int	not null, 
   `mem_membru_zonajudetcod` varchar(9) not null, 
+  `mem_membru_uatid`	  int not null,
+  `mem_membru_uatcod`	  int	not null,
+  `mem_membru_zonauatid` int not null, 
+  `mem_membru_zonauatcod` varchar(9) not null, 
   `mem_membru_localitateid` int not null, 
   `mem_membru_localitatecod` int	not null, 
   `mem_membru_zonalocalitateid` int not null, 
@@ -1211,7 +1223,7 @@ CREATE TABLE `mem_membru` (
 
 
 
-DROP TABLE `mem_membruci`;
+DROP TABLE IF EXISTS `mem_membruci`;
 CREATE TABLE `mem_membruci` (
   `mem_membruci_id` int NOT NULL AUTO_INCREMENT,
   `mem_membruci_membruid` int	not null,
@@ -1230,7 +1242,7 @@ CREATE TABLE `mem_membruci` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
-DROP TABLE `mem_membrucotizatie`;
+DROP TABLE IF EXISTS `mem_membrucotizatie`;
 CREATE TABLE `mem_membrucotizatie` (
   `mem_membrucotizatie_id` int NOT NULL AUTO_INCREMENT,
   `mem_membrucotizatie_membruid` int	not null,
@@ -1253,7 +1265,7 @@ CREATE TABLE `mem_membrucotizatie` (
 --   table skills-uri
 -- --------------------------
 
-DROP TABLE `mem_skilltip`;
+DROP TABLE IF EXISTS `mem_skilltip`;
 CREATE TABLE `mem_skilltip` (
   `mem_skilltip_id`  int NOT NULL AUTO_INCREMENT,
   `mem_skilltip_cod` varchar(10)	not null,
@@ -1266,7 +1278,7 @@ CREATE TABLE `mem_skilltip` (
 
 
 
-DROP TABLE `mem_skillvaloare`;
+DROP TABLE IF EXISTS `mem_skillvaloare`;
 CREATE TABLE `mem_skillvaloare` (
   `mem_skillvaloare_id`  int NOT NULL AUTO_INCREMENT,
   `mem_skillvaloare_skilltipid` int not null,
@@ -1282,7 +1294,7 @@ CREATE TABLE `mem_skillvaloare` (
 
 
 
-DROP TABLE `mem_membruskills`;
+DROP TABLE IF EXISTS `mem_membruskills`;
 CREATE TABLE `mem_membruskills` (
   `mem_membruskills_id` int NOT NULL AUTO_INCREMENT,
   `mem_membruskills_membruid` int	not null,
@@ -1294,7 +1306,7 @@ CREATE TABLE `mem_membruskills` (
 
 
 
-DROP TABLE `mem_membruoneskill`;
+DROP TABLE IF EXISTS `mem_membruoneskill`;
 CREATE TABLE `mem_membruoneskill` (
   `mem_membruoneskill_id` int NOT NULL AUTO_INCREMENT,
   `mem_membruoneskill_memskillsid` int not null,
@@ -1308,7 +1320,7 @@ CREATE TABLE `mem_membruoneskill` (
 
 
 
-DROP TABLE `mem_membrutip`;
+DROP TABLE IF EXISTS `mem_membrutip`;
 CREATE TABLE `mem_membrutip` (
   `mem_membrutip_id`  int NOT NULL AUTO_INCREMENT,
 
@@ -1327,6 +1339,10 @@ CREATE TABLE `mem_membrutip` (
   `mem_membrutip_judetcod` varchar(2) not null, 
   `mem_membrutip_zonajudetid` int	not null, 
   `mem_membrutip_zonajudetcod` varchar(9) not null, 
+  `mem_membrutip_uatid`	     int not null,
+  `mem_membrutip_uatcod`	  int	not null,
+  `mem_membrutip_zonauatid` int not null, 
+  `mem_membrutip_zonauatcod` varchar(9) not null, 
   `mem_membrutip_localitateid` int not null, 
   `mem_membrutip_localitatecod` int	not null, 
   `mem_membrutip_zonalocalitateid` int not null, 
@@ -1345,7 +1361,7 @@ CREATE TABLE `mem_membrutip` (
 
 
 
-DROP TABLE `mem_acoperiregeografica`;
+DROP TABLE IF EXISTS `mem_acoperiregeografica`;
 CREATE TABLE `mem_acoperiregeografica` (
   `mem_acoperiregeografica_id` int NOT NULL AUTO_INCREMENT,	
   `mem_acoperiregeografica_cod` varchar(16) not null,	
@@ -1364,22 +1380,24 @@ INSERT INTO cart2.mem_acoperiregeografica
                       (`mem_acoperiregeografica_id`,`mem_acoperiregeografica_cod`, `mem_acoperiregeografica_nume`, 
                        `mem_acoperiregeografica_activ_yn`, `mem_acoperiregeografica_displaynume`) 
 VALUES  
-  (1, 'toate',        'acoperire la toate nivelele',                       'y', 'Acoperire la toate nivelele: Naționale, Județene și Locale'),
-  (2, 'nivromania',   'acoperire la nivel de țară și diasporă',            'y', 'Acoperire la nivel întreaga Țară și Diasporă'),
-  (3, 'nivinterntara','acoperire la nivel de zonă țară',                   'y', 'Acoperire pe întreg Interiorul Țării'),
-  (4, 'nivdiaspora',  'acoperire la nivel de diaspora',                    'y', 'Acoperire pe întreaga Diaspora'),
-  (5, 'nivjudet',     'acoperire la nivel de județ',                       'y', 'Acoperire la nivel de Județ'),
-  (6, 'nivtaradiasp', 'acoperire pe o țară din diaspora',                  'y', 'Acoperire pe o Țară din Diaspora'),
-  (7, 'nivlocalit',   'acoperire la nivel de nivel localitate',            'y', 'Acoperire la nivel de Localitate'),
-  (8, 'nivzonajudet', 'acoperire la nivel de zona județ',                  'n', 'Acoperire pe o Zonă de Județ'),
-  (9, 'nivzonaloc',   'acoperire la nivel de nivel de zonă de localitate', 'n', 'Acoperire pe o Zonă a unei Localități'),
-  (10, 'nivsectvot',  'acoperire pe zona definită de o secție de votare',  'n', 'Acoperire pe Zona definită de o Secție de Votare'),
-  (11, 'nivcodpost',  'responsabilitate pe zona definită de un cod postal','n', 'Acoperire pe Zona definită de un Cod Postal'
+  (1,  'toate',        'acoperire la toate nivelele',                       'y', 'Acoperire la toate nivelele: Naționale, Județene și Locale'),
+  (2,  'nivromania',   'acoperire la nivel de țară și diasporă',            'y', 'Acoperire la nivel întreaga Țară și Diasporă'),
+  (3,  'nivinterntara','acoperire la nivel de țară',                        'y', 'Acoperire pe întreg Interiorul Țării'),
+  (4,  'nivdiaspora',  'acoperire la nivel de diaspora',                    'y', 'Acoperire pe întreaga Diaspora'),
+  (5,  'nivjudet',     'acoperire la nivel de județ',                       'y', 'Acoperire la nivel de Județ'),
+  (6,  'nivtaradiasp', 'acoperire pe o țară din diaspora',                  'y', 'Acoperire pe o Țară din Diaspora'),
+  (7,  'nivuat',       'acoperire la nivel de unitate administrativ teritoriala','y','Acoperire la nivel Unitate Administrativ Teritoriala'),  
+  (8,  'nivlocalit',   'acoperire la nivel de localitate',                  'y', 'Acoperire la nivel de Localitate'),
+  (9,  'nivzonajudet', 'acoperire la nivel de zona județ',                  'n', 'Acoperire pe o Zonă de Județ'),
+  (10, 'nivzonauat',   'acoperire la nivel de zonă de unitate administrativ teritoriala', 'n', 'Acoperire pe o Zonă a unei Unități Administrativ Teritoriale'),
+  (11, 'nivzonaloc',   'acoperire la nivel de zonă a unei localități',      'n', 'Acoperire pe o Zonă a unei Localități'),
+  (12, 'nivsectvot',   'acoperire pe zona definită de o secție de votare',  'n', 'Acoperire pe Zona definită de o Secție de Votare'),
+  (13, 'nivcodpost',   'acoperire pe zona definită de un cod postal',       'n', 'Acoperire pe Zona definită de un Cod Postal'
   );
 
 
 
-DROP TABLE `mem_membrurol`;
+DROP TABLE IF EXISTS `mem_membrurol`;
 CREATE TABLE `mem_membrurol` (
   `mem_membrurol_id`  int NOT NULL AUTO_INCREMENT,
   
@@ -1402,6 +1420,10 @@ CREATE TABLE `mem_membrurol` (
   `mem_membrurol_judetcod` varchar(2) not null, 
   `mem_membrurol_zonajudetid` int	not null, 
   `mem_membrurol_zonajudetcod` varchar(9) not null, 
+  `mem_membrurol_uatid`	     int not null,
+  `mem_membrurol_uatcod`	   int	not null,
+  `mem_membrurol_zonauatid` int not null, 
+  `mem_membrurol_zonauatcod` varchar(9) not null, 
   `mem_membrurol_localitateid` int not null, 
   `mem_membrurol_localitatecod` int	not null, 
   `mem_membrurol_zonalocalitateid` int not null, 
@@ -1418,7 +1440,7 @@ CREATE TABLE `mem_membrurol` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
-DROP TABLE `mem_grup`;
+DROP TABLE IF EXISTS `mem_grup`;
 CREATE TABLE `mem_grup` (
   `mem_grup_id` int NOT NULL AUTO_INCREMENT,
   `mem_grup_codunic` varchar(16) not null, 	
@@ -1435,6 +1457,10 @@ CREATE TABLE `mem_grup` (
   `mem_grup_judetcod` varchar(2) not null, 
   `mem_grup_zonajudetid` int	not null, 
   `mem_grup_zonajudetcod` varchar(9) not null, 
+  `mem_grup_uatid`	  int not null,
+  `mem_grup_uatcod`	  int	not null,
+  `mem_grup_zonauatid` int not null, 
+  `mem_grup_zonauatcod` varchar(9) not null, 
   `mem_grup_localitateid` int not null, 
   `mem_grup_localitatecod` int	not null, 
   `mem_grup_zonalocalitateid` int not null, 
@@ -1475,6 +1501,10 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_zonataracod` varchar(2) not null, 
   `mem_membrugrup_judetid` int	not null, 
   `mem_membrugrup_judetcod` varchar(2) not null, 
+  `mem_membrugrup_uatid`	  int not null,
+  `mem_membrugrup_uatcod`	  int	not null,
+  `mem_membrugrup_zonauatid` int not null, 
+  `mem_membrugrup_zonauatcod` varchar(9) not null, 
   `mem_membrugrup_zonajudetid` int	not null, 
   `mem_membrugrup_zonajudetcod` varchar(9) not null, 
   `mem_membrugrup_localitateid` int not null, 
@@ -1513,6 +1543,10 @@ CREATE TABLE `mem_sefgrup` (
   `mem_sefgrup_zonataracod` varchar(2) not null, 
   `mem_sefgrup_judetid` int	not null, 
   `mem_sefgrup_judetcod` varchar(2) not null, 
+  `mem_sefgrup_uatid`	  int not null,
+  `mem_sefgrup_uatcod`	  int	not null,
+  `mem_sefgrup_zonauatid` int not null, 
+  `mem_sefgrup_zonauatcod` varchar(9) not null, 
   `mem_sefgrup_zonajudetid` int	not null, 
   `mem_sefgrup_zonajudetcod` varchar(9) not null, 
   `mem_sefgrup_localitateid` int not null, 

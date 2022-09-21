@@ -30,7 +30,7 @@ public class MemController {
 
 	@CrossOrigin(origins = "*")
 	@GetMapping("/membru/tip/creare")
-	public ResponseEntity<MembruTipResponse_Creare> membruTip_Creaza(
+	public ResponseEntity<MembruTipResponse_Creare> membru_Creare(
 		                             @Valid @RequestBody MembruTipRequest_Creare membruTipRequestCreare,
 	                                 @CurrentUser UserPrincipal currentUser) 
 	{

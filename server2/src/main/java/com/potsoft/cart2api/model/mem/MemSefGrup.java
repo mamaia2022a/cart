@@ -71,13 +71,19 @@ public class MemSefGrup{
   @Column(name = "mem_sefgrup_judetcod")
   private String memSefgrupJudetcod;
   
+  @Column(name = "mem_sefgrup_uatid")
+  private Long memSefgrupUatid;
+  
+  @Size(max = 10)
+  @Column(name = "mem_sefgrup_uatcod")
+  private Long memSefgrupUatcod;
+
   @Column(name = "mem_sefgrup_localitateid")
   private Long memSefgrupLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "mem_sefgrup_localitatecod")
   private String memSefgrupLocalitatecod;
-  
 
   @Column(name = "mem_sefgrup_zonajudetid")
   private Long memSefgrupZonajudetid;
@@ -88,6 +94,13 @@ public class MemSefGrup{
 
   @Column(name = "mem_sefgrup_zonalocalitateid")
   private Long memSefgrupZonalocalitateid;
+  
+  @Column(name = "mem_sefgrup_zonauatid")
+  private Long memSefgrupZonauatid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_sefgrup_zonauatcod")
+  private String memSefgrupZonauatcod;
   
   @Size(max = 9)
   @Column(name = "mem_sefgrup_zonalocalitatecod")
@@ -134,8 +147,10 @@ public class MemSefGrup{
                        String memSefGrupActivyn, String memSefGrupStartdt,  String memSefGrupEnddt,
                        Long memSefGrupZonataraid, String memSefGrupZonataracod, 
                        Long memSefGrupJudetid, String memSefGrupJudetcod, 
+                       Long memSefGrupUatid, Long memSefGrupUatcod, 
                        Long memSefGrupLocalitateid, String memSefGrupLocalitatecod, 
                        Long memSefGrupZonajudetid, String memSefGrupZonajudetcod, 
+                       Long memSefGrupZonauatid, String memSefGrupZonauatcod, 
                        Long memSefGrupZonalocalitateid, String memSefGrupZonalocalitatecod,  
                        Long memSefGrupSectievotareid, Long memSefGrupSectievotarenr, 
                        Long memSefGrupCodpostalid, String memSefGrupCodpostalcod
@@ -157,6 +172,8 @@ public class MemSefGrup{
     this.memSefgrupZonataracod       = memSefGrupZonataracod;
     this.memSefgrupJudetid           = memSefGrupJudetid;
     this.memSefgrupJudetcod          = memSefGrupJudetcod;
+    this.memSefgrupUatid             = memSefGrupUatid;
+    this.memSefgrupUatcod            = memSefGrupUatcod;
     this.memSefgrupLocalitateid      = memSefGrupLocalitateid;
     this.memSefgrupLocalitatecod     = memSefGrupLocalitatecod;
     this.memSefgrupZonajudetid       = memSefGrupZonajudetid;    

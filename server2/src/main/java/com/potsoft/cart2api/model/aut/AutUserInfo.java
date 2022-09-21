@@ -46,6 +46,9 @@ public class AutUserInfo {
   @Column(name = "aut_userinfo_sex")
   private String autUserInfoSex;
 
+  @Column(name = "aut_userinfo_datanasterii")
+  private Long autUserInfoDatanasterii;
+
   @Size(max = 32)
   @Column(name = "aut_userinfo_email")
   private String autUserInfoEmail;
@@ -64,12 +67,19 @@ public class AutUserInfo {
   @Column(name = "aut_userinfo_dom_judetcod")
   private String autUserInfoDomJudetcod;
   
+  @Column(name = "aut_userinfo_dom_uatid")
+  private Long autUserInfoDomUatid;
+  
+  @Size(max = 10)
+  @Column(name = "aut_userinfo_dom_uatcod")
+  private Long autUserInfoDomUatcod;
+
   @Column(name = "aut_userinfo_dom_localitateid")
   private Long autUserInfoDomLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "aut_userinfo_dom_localitatecod")
-  private String autUserInfoDomLocalitatecod;
+  private Long autUserInfoDomLocalitatecod;
   
   @Size(max = 16)
   @Column(name = "aut_userinfo_dom_codpostal")
@@ -97,12 +107,19 @@ public class AutUserInfo {
   @Column(name = "aut_userinfo_rez_judetcod")
   private String autUserInfoRezJudetcod;
   
+  @Column(name = "aut_userinfo_rez_uatid")
+  private Long autUserInfoRezUatid;
+  
+  @Size(max = 10)
+  @Column(name = "aut_userinfo_rez_uatcod")
+  private Long autUserInfoRezUatcod;
+
   @Column(name = "aut_userinfo_rez_localitateid")
   private Long autUserInfoRezLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "aut_userinfo_rez_localitatecod")
-  private String autUserInfoRezLocalitatecod;
+  private Long autUserInfoRezLocalitatecod;
   
   @Size(max = 16)
   @Column(name = "aut_userinfo_rez_codpostal")
@@ -119,10 +136,13 @@ public class AutUserInfo {
 
 	public AutUserInfo( Long userinfoid, Long userid, String nume, String prenume, String telefon, String sex, String email,
                       Long domZonaTaraid, String domZonaTaracod, Long domJudetid, String domJudetcod, 
-                      Long domLocalitateid, String domLocalitatecod, String domCodpostal, String domAdresa,
+                      Long domUatid, Long domUatcod, 
+                      Long domLocalitateid, Long domLocalitatecod, String domCodpostal, String domAdresa,
                       String rezdifdedom,
                       Long rezZonaTaraid, String rezZonaTaracod, Long rezJudetid, String rezJudetcod,
-                      Long rezLocalitateid, String rezLocalitatecod, String rezCodpostal, String rezAdresa) 
+                      Long rezUatid, Long rezUatcod,
+                      Long rezLocalitateid, Long rezLocalitatecod, String rezCodpostal, String rezAdresa,
+                      Long datanasterii) 
   {
     this.autUserInfoId                = userinfoid;
     this.autUserInfoUserid            = userid;
@@ -131,10 +151,13 @@ public class AutUserInfo {
     this.autUserInfoTelefon           = telefon;
     this.autUserInfoSex               = sex;
     this.autUserInfoEmail             = email;
+    this.autUserInfoDatanasterii      = datanasterii;
     this.autUserInfoDomZonaTaraid     = domZonaTaraid;
     this.autUserInfoDomZonaTaracod    = domZonaTaracod;
     this.autUserInfoDomJudetid        = domJudetid;
     this.autUserInfoDomJudetcod       = domJudetcod;
+    this.autUserInfoDomUatid          = domUatid;
+    this.autUserInfoDomUatcod         = domUatcod;
     this.autUserInfoDomLocalitateid   = domLocalitateid;
     this.autUserInfoDomLocalitatecod  = domLocalitatecod;
     this.autUserInfoDomCodpostal      = domCodpostal;
@@ -144,6 +167,8 @@ public class AutUserInfo {
     this.autUserInfoRezZonaTaracod    = rezZonaTaracod;
     this.autUserInfoRezJudetid        = rezJudetid;
     this.autUserInfoRezJudetcod       = rezJudetcod;
+    this.autUserInfoRezUatid          = rezUatid;
+    this.autUserInfoRezUatcod         = rezUatcod;
     this.autUserInfoRezLocalitateid   = rezLocalitateid;
     this.autUserInfoRezLocalitatecod  = rezLocalitatecod;
     this.autUserInfoRezCodpostal      = rezCodpostal;
@@ -227,6 +252,17 @@ public class AutUserInfo {
   }
 
 
+  public Long getAutUserInfoDatanasterii() 
+  {
+    return this.autUserInfoDatanasterii;
+  }
+
+  public void setAutUserInfoDatanasterii(Long autUserInfoDatanasterii) 
+  {
+    this.autUserInfoDatanasterii = autUserInfoDatanasterii;
+  }
+
+
   public Long getAutUserInfoDomZonaTaraid() 
   {
     return this.autUserInfoDomZonaTaraid;
@@ -270,6 +306,28 @@ public class AutUserInfo {
 
 
 
+  public Long getAutUserInfoDomUatid() 
+  {
+    return this.autUserInfoDomUatid;
+  }
+
+  public void setAutUserInfoDomUatid(Long autUserInfoDomUatid) 
+  {
+    this.autUserInfoDomUatid = autUserInfoDomUatid;
+  }
+
+  public Long getAutUserInfoDomUatcod() 
+  {
+    return this.autUserInfoDomUatcod;
+  }
+
+  public void setAutUserInfoDomUatcod(Long autUserInfoDomUatcod) 
+  {
+    this.autUserInfoDomUatcod = autUserInfoDomUatcod;
+  }
+
+
+
   public Long getAutUserInfoDomLocalitateid() 
   {
     return this.autUserInfoDomLocalitateid;
@@ -280,12 +338,12 @@ public class AutUserInfo {
     this.autUserInfoDomLocalitateid = autUserInfoDomLocalitateid;
   }
 
-  public String getAutUserInfoDomLocalitatecod() 
+  public Long getAutUserInfoDomLocalitatecod() 
   {
     return this.autUserInfoDomLocalitatecod;
   }
 
-  public void setAutUserInfoDomLocalitatecod(String autUserInfoDomLocalitatecod) 
+  public void setAutUserInfoDomLocalitatecod(Long autUserInfoDomLocalitatecod) 
   {
     this.autUserInfoDomLocalitatecod = autUserInfoDomLocalitatecod;
   }
@@ -366,6 +424,27 @@ public class AutUserInfo {
   }
 
 
+  public Long getAutUserInfoRezUatid() 
+  {
+    return this.autUserInfoRezUatid;
+  }
+
+  public void setAutUserInfoRezUatid(Long autUserInfoRezUatid) 
+  {
+    this.autUserInfoRezUatid = autUserInfoRezUatid;
+  }
+
+  public Long getAutUserInfoRezUatcod() 
+  {
+    return this.autUserInfoRezUatcod;
+  }
+
+  public void setAutUserInfoRezUatcod(Long autUserInfoRezUatcod) 
+  {
+    this.autUserInfoRezUatcod = autUserInfoRezUatcod;
+  }
+
+
 
   public Long getAutUserInfoRezLocalitateid() 
   {
@@ -377,12 +456,12 @@ public class AutUserInfo {
     this.autUserInfoRezLocalitateid = autUserInfoRezLocalitateid;
   }
 
-  public String getAutUserInfoRezLocalitatecod() 
+  public Long getAutUserInfoRezLocalitatecod() 
   {
-    return this.autUserInfoRezJudetcod;
+    return this.autUserInfoRezLocalitatecod;
   }
 
-  public void setAutUserInfoRezLocalitatecod(String autUserInfoRezLocalitatecod) 
+  public void setAutUserInfoRezLocalitatecod(Long autUserInfoRezLocalitatecod) 
   {
     this.autUserInfoRezLocalitatecod = autUserInfoRezLocalitatecod;
   }

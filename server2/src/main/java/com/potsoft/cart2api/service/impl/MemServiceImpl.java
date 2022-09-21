@@ -1,5 +1,9 @@
 package com.potsoft.cart2api.service.impl;
 
+import com.potsoft.cart2api.model.aut.AutUser;
+import com.potsoft.cart2api.model.aut.AutUserInfo;
+import com.potsoft.cart2api.model.aut.AutUserRol;
+import com.potsoft.cart2api.model.mem.MemMembru;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembriGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruAdresaRequest_Actualizare;
@@ -48,8 +52,23 @@ import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Vizualizare;
+import com.potsoft.cart2api.repository.mem.MemMembruRepository;
+//import com.potsoft.cart2api.repository.mem.MemGrupRepository;
+//import com.potsoft.cart2api.repository.mem.MemMembruCIRepository;
+//import com.potsoft.cart2api.repository.mem.MemMembruCotizatieRepository;
+//import com.potsoft.cart2api.repository.mem.MemMembruGrupRepository;
+//import com.potsoft.cart2api.repository.mem.MemMembruRepository;
+//import com.potsoft.cart2api.repository.mem.MemMembruRolRepository;
+//import com.potsoft.cart2api.repository.mem.MemMembruTipRepository;
+//import com.potsoft.cart2api.repository.mem.MemSefGrupRepository;
+//import com.potsoft.cart2api.repository.mem.MemTipRepository;
+//import com.potsoft.cart2api.repository.mem.MemTipRolRepository;
 //import com.potsoft.cart2api.repository.mem.MemMembruRepository;
 import com.potsoft.cart2api.service.MemService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+//import org.springframework.beans.factory.annotation.Autowired;
 
 //import java.util.Arrays;
 //import java.util.Collections;
@@ -62,56 +81,83 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemServiceImpl implements MemService 
 {
+	@Autowired
+	private MemMembruRepository memMembruRepository;
+
 	//@Autowired
-	//private MemMembruRepository memMembruRepository;
+	//private MemMembruCIRepository memMembruCIRepository;
 
+	//@Autowired
+	//private MemMembruCotizatieRepository memMembruCotizatieRepository;
 
+	//@Autowired
+	//private MemMembruTipRepository memMembruTipRepository;
 
-    /** 
-	@Override
-	public List<GeoJudet> getToateJudetele()
-	{
-	  return this.geoJudetRepository.findAll();
-	}
-    */
+	//@Autowired
+	//private MemMembruRolRepository memMembruRolRepository;
+
+	//@Autowired
+	//private MemMembruGrupRepository memMembruGrupRepository;
+
+	//@Autowired
+	//private MemSefGrupRepository memSefGrupRepository;
+
+	//@Autowired
+	//private MemGrupRepository memGrupRepository;
+
+	//@Autowired
+	//private MemTipRepository memTipRepository;
+
+	//@Autowired
+	//private MemTipRolRepository memTipRolRepository;
+
+	
 
 	@Override
 	public MembruResponse_Creare membru_Creare(Long userid, MembruRequest_Creare membruRequestCreare)
 	{
-	  return null;
+	  MembruResponse_Creare resp = new MembruResponse_Creare();	
+	  return resp;
 	}
   
 	@Override
 	public MembruResponse_Stergere membru_Stergere(Long userid, MembruRequest_Stergere membruRequestStergere)
 	{
-	  return null;
+	  MembruResponse_Stergere resp = new MembruResponse_Stergere();	
+	  return resp;
 	}
 
 	@Override
 	public MembruResponse_Vizualizare membru_Vizualizare(Long userid, MembruRequest_Vizualizare membruRequestVizualizare)
 	{
-	  return null;
+	  MembruResponse_Vizualizare resp = new MembruResponse_Vizualizare();	
+	  return resp;
 	}
 	
 	
 	@Override
 	public MembruCIResponse_Creare  membruCI_Creare(Long userid, MembruCIRequest_Creare membruCIRequestCreare)
 	{
-	  return null;
+	  MembruCIResponse_Creare resp = new MembruCIResponse_Creare();	
+	  return resp;
 	}
 	
+
 	@Override
 	public MembruCIResponse_Actualizare membruCI_Actualizare(Long userid, 
 	                                                         MembruCIRequest_Actualizare membruCIRequestActualizare)
 	{
-	  return null;
+	  MembruCIResponse_Actualizare resp = new MembruCIResponse_Actualizare();	
+	  return resp;
 	}
 	
+
 	@Override
 	public MembruCIResponse_Vizualizare membruCI_Vizualizare  (Long userid, 
 	                                                           MembruCIRequest_Vizualizare membruCIRequestVizualizare)
 	{
-	  return null;
+	  MembruCIResponse_Vizualizare resp = new MembruCIResponse_Vizualizare();	
+	  return resp;
 	}
   
 
@@ -120,27 +166,31 @@ public class MemServiceImpl implements MemService
 	public MembruCotizatieResponse_Creare membruCotizatie_Creare(Long userid, 
 	                                                             MembruCotizatieRequest_Creare membruCotizatieRequestCreare)
 	{
-	  return null;
+	  MembruCotizatieResponse_Creare resp = new MembruCotizatieResponse_Creare();	
+	  return resp;
 	}
 
 	@Override
 	public MembruCotizatieResponse_Actualizare membruCotizatie_Actualizare(Long userid, 
 	                                                           MembruCotizatieRequest_Actualizare membruCotizatieRequestActualizare)
 	{
-	  return null;
+	  MembruCotizatieResponse_Actualizare resp = new MembruCotizatieResponse_Actualizare();	
+	  return resp;
 	}
 	
 	@Override
 	public MembruCotizatieResponse_Stergere membruCotizatie_Stergere(Long userid, MembruCotizatieRequest_Stergere    membruCotizatieRequestStergere)
 	{
-	  return null;
+	  MembruCotizatieResponse_Stergere resp = new MembruCotizatieResponse_Stergere();	
+	  return resp;
 	}
 	
 	@Override
 	public MembruCotizatieResponse_Vizualizare  membruCotizatie_Vizualizare(Long userid, 
 	                                                MembruCotizatieRequest_Vizualizare membruCotizatieRequestVizualizare)
 	{
-	  return null;
+	  MembruCotizatieResponse_Vizualizare resp = new MembruCotizatieResponse_Vizualizare();	
+	  return resp;
 	}
   
 
@@ -148,92 +198,258 @@ public class MemServiceImpl implements MemService
 	public MembruAdresaResponse_Actualizare membruAdresa_Actualizare(Long userid, 
 	                                                MembruAdresaRequest_Actualizare membruCIRequestActualizare)
 	{
-	  return null;
+	  MembruAdresaResponse_Actualizare resp = new MembruAdresaResponse_Actualizare();	
+	  return resp;
 	}
+
 
 	@Override
 	public MembruAdresaResponse_Vizualizare membruAdresa_Vizualizare(Long userid, MembruAdresaRequest_Vizualizare membruCIRequestVizualizare)
   	{
-	  return null;
+	  MembruAdresaResponse_Vizualizare resp = new MembruAdresaResponse_Vizualizare();	
+	  return resp;
 	}
 
   
 	@Override
 	public MembruTipResponse_Creare membruTip_Creare(Long userid, MembruTipRequest_Creare membruTipRequestCreare)
 	{
-	  return null;
+	  MembruTipResponse_Creare resp = new MembruTipResponse_Creare();	
+	  return resp;
 	}
 	
 	@Override
 	public MembruTipResponse_Stergere membruTip_Stergere(Long userid, MembruTipRequest_Stergere membruTipRequestStergere)
 	{
-	  return null;
+	  MembruTipResponse_Stergere resp = new MembruTipResponse_Stergere();	
+	  return resp;
 	}
   
 	@Override
 	public MembruRolResponse_Creare membruRol_Creare(Long userid, MembruRolRequest_Creare membruRolRequestCreare)
 	{
-	  return null;
+	  MembruRolResponse_Creare resp = new MembruRolResponse_Creare();	
+	  return resp;
 	}
+
 	@Override
 	public MembruRolResponse_Stergere membruRol_Stergere(Long userid, MembruRolRequest_Stergere membruRolRequestStergere)
 	{
-	  return null;
+	  MembruRolResponse_Stergere resp = new MembruRolResponse_Stergere();	
+	  return resp;
 	}
   
   
 	@Override
 	public MembruGrupResponse_Creare membruGrup_Creare(Long userid, MembruGrupRequest_Creare membruGrupRequestCreare)
 	{
-	  return null;
+	  MembruGrupResponse_Creare resp = new MembruGrupResponse_Creare();	
+	  return resp;
 	}
 	
 	@Override
 	public MembruGrupResponse_Stergere membruGrup_Stergere(Long userid, MembruGrupRequest_Stergere membruGrupRequestStergere)
 	{
-	  return null;
+	  MembruGrupResponse_Stergere resp = new MembruGrupResponse_Stergere();	
+	  return resp;
 	}
 
 	@Override
 	public MembruGrupResponse_Vizualizare membruGrup_Vizualizare(Long userid, MembruGrupRequest_Vizualizare membruGrupRequestVizualizare)
 	{
-	  return null;
+	  MembruGrupResponse_Vizualizare resp = new MembruGrupResponse_Vizualizare();	
+	  return resp;
 	}
   
 
 	@Override
 	public SefGrupResponse_Creare sefGrup_Creare(Long userid, SefGrupRequest_Creare sefGrupRequestCreare)
 	{
-	  return null;
+	  SefGrupResponse_Creare resp = new SefGrupResponse_Creare();	
+	  return resp;
 	}
 
 	@Override
 	public SefGrupResponse_Stergere sefGrup_Stergere(Long userid, SefGrupRequest_Stergere sefGrupRequestStergere)
 	{
-	  return null;
+	  SefGrupResponse_Stergere resp = new SefGrupResponse_Stergere();	
+	  return resp;
 	}
 
 	@Override
 	public SefGrupResponse_Vizualizare sefGrup_Vizualizare(Long userid, SefGrupRequest_Vizualizare sefGrupRequestVizualizare)
 	{
-	  return null;
+	  SefGrupResponse_Vizualizare resp = new SefGrupResponse_Vizualizare();	
+	  return resp;
 	}
   
 
 	@Override
 	public GrupResponse_Vizualizare  grup_Vizualizare(Long userid, GrupRequest_Vizualizare grupRequestVizualizare)
   	{
-	  return null;
+	  GrupResponse_Vizualizare resp = new GrupResponse_Vizualizare();	
+	  return resp;
 	}
 
 	@Override
 	public MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare grupRequestVizualizare)
 	{
-	  return null;
+	  MembriGrupResponse_Vizualizare resp = new MembriGrupResponse_Vizualizare();	
+	  return resp;
 	}
   
+    public String genereazaCodUnic(String prefix, String value1, String value2)
+	{
+      return "aaaaaaaa";
+	}
 
 
+	// -----------------------------------------------------------
+	@Override
+	public MemMembru creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, AutUserRol autUserRol)
+	{
+		Long   memid                = null; 
+		String memCodunic           = null;
+
+		Long   memUserid            = autUser.getAutUserId();
+		String memUsernume          = autUser.getAutUserNume();
+
+		Long   memTipid             = autUserRol.getAutUserrolRolid();
+		String memTipcod            = autUserRol.getAutUserrolRolcod();
+
+		Long   memGrupid            = null;
+		String memGrupnume          = null;
+		String memGrupcodunic       = null;
+
+		String memAdrrezidentayn    = autUserInfo.getAutUserInfoRezdifdedom();
+		Long   memZonataraid        = autUserInfo.getAutUserInfoDomZonaTaraid();
+		String memZonataracod       = autUserInfo.getAutUserInfoDomZonaTaracod();
+		Long   memJudetid           = autUserInfo.getAutUserInfoDomJudetid();
+		String memJudetcod          = autUserInfo.getAutUserInfoDomJudetcod();
+		Long   memUatid             = autUserInfo.getAutUserInfoDomUatid();
+		Long   memUatcod            = autUserInfo.getAutUserInfoDomUatcod();
+		Long   memLocalitateid      = autUserInfo.getAutUserInfoRezLocalitateid();
+		Long   memLocalitatecod     = autUserInfo.getAutUserInfoDomLocalitatecod();
+		Long   memZonajudetid       = 0l;
+		String memZonajudetcod      = "0";
+		Long   memZonauatid         = 0l;
+		String memZonauatcod        = "0";
+		Long   memZonalocalitateid  = 0l;
+		String memZonalocalitatecod = "0";
+		Long   memSectievotareid    = 0l;
+		Long   memSectievotarenr    = 0l;
+		Long   memCodpostalid       = 0l;
+		String memCodpostalcod      = "0";
+        if (autUserInfo.getAutUserInfoRezdifdedom() == "y")
+		{
+		  memZonataraid    = autUserInfo.getAutUserInfoRezZonaTaraid();
+		  memZonataracod   = autUserInfo.getAutUserInfoRezZonaTaracod();
+		  memJudetid       = autUserInfo.getAutUserInfoRezJudetid();
+		  memJudetcod      = autUserInfo.getAutUserInfoRezJudetcod();
+	      memUatid         = autUserInfo.getAutUserInfoRezUatid();
+		  memUatcod        = autUserInfo.getAutUserInfoRezUatcod();
+	      memLocalitateid  = autUserInfo.getAutUserInfoRezLocalitateid();
+		  memLocalitatecod = autUserInfo.getAutUserInfoRezLocalitatecod();
+		}
+
+		String memActivyn           = "y";
+		String memStartdt           = null;
+		String memEnddt             = null;
+
+		String memComplciyn         = "n";
+		String memCompladryn        = "n";
+		String memPlatitcotizyn     = "n";
+		String memComplSkillsyn     = "n";
+
+		String memSuspendedyn       = "n";
+
+		MemMembru newMemMembru = new MemMembru(memid, memCodunic,
+		                                       memUserid, memUsernume, 
+		                                       memTipid, memTipcod, 
+		                                       memGrupid, memGrupnume, memGrupcodunic,
+		                                       memAdrrezidentayn,
+		                                       memZonataraid, memZonataracod, memJudetid, memJudetcod, 
+		                                       memUatid, memUatcod, 
+		                                       memLocalitateid, memLocalitatecod, 
+		                                       memZonajudetid, memZonajudetcod, 
+		                                       memZonauatid, memZonauatcod, 
+		                                       memZonalocalitateid, memZonalocalitatecod,  
+		                                       memSectievotareid, memSectievotarenr, 
+		                                       memCodpostalid, memCodpostalcod,
+		                                       memActivyn, memStartdt,  memEnddt,
+		                                       memComplciyn, memCompladryn,  memPlatitcotizyn,
+		                                       memComplSkillsyn, memSuspendedyn); 
+		return newMemMembru;
+	}
+
+
+	// -----------------------------------------------------------
+	@Override
+	public MemMembru creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, AutUserRol autUserRol)
+	{
+	  MemMembru newMemMembru  = this.creazaMemMembru(autUser, autUserInfo, autUserRol);
+	  memMembruRepository.save(newMemMembru);
+	  return newMemMembru;
+	}
+
+    //============================================================
+	/** 
+	// -----------------------------------------------------------
+	@Override
+	public AutUserInfo creazaAutUserInfo(Long userId, RegisterRequest registerRequest)
+	{
+	  Long userinfoid          = null; 
+	  Long userid              = userId;
+	  String nume              = registerRequest.getNume().toLowerCase();
+	  String prenume           = registerRequest.getPrenume().toLowerCase();
+	  String telefon           = registerRequest.getTelefon().toLowerCase();
+	  String sex               = registerRequest.getSex().toLowerCase();
+	  Long   datanasterii      = registerRequest.getDatanasterii();
+	  String email             = registerRequest.getEmail().toLowerCase();
+	  Long domZonaTaraid       = registerRequest.getDomZonataraid();
+	  String domZonaTaracod    = registerRequest.getDomZonataracod();
+	  Long domJudetid          = registerRequest.getDomJudetid();
+	  String domJudetcod       = registerRequest.getDomJudetcod();
+	  Long domUatid            = registerRequest.getDomUatid();
+	  Long domUatcod           = registerRequest.getDomUatcod();
+	  Long domLocalitateid     = registerRequest.getDomLocalitateid();
+	  Long domLocalitatecod    = registerRequest.getDomLocalitatecod();
+	  String domCodpostal      = registerRequest.getDomCodpostal();
+	  String domAdresa         = registerRequest.getDomAdresa();
+	  String rezdifdedom       = registerRequest.getRezdifdedom();
+	  Long rezZonaTaraid       = registerRequest.getRezZonataraid();
+	  String rezZonaTaracod    = registerRequest.getRezZonataracod();
+	  Long rezJudetid          = registerRequest.getRezJudetid();
+	  String rezJudetcod       = registerRequest.getRezJudetcod();
+	  Long rezUatid            = registerRequest.getRezUatid();
+	  Long rezUatcod           = registerRequest.getRezUatcod();
+	  Long rezLocalitateid     = registerRequest.getRezLocalitateid();
+	  Long rezLocalitatecod    = registerRequest.getRezLocalitatecod();
+	  String rezCodpostal      = registerRequest.getRezCodpostal();
+	  String rezAdresa         = registerRequest.getRezAdresa();
+  
+	  AutUserInfo autUserInfo = new AutUserInfo(userinfoid, userid, nume, prenume, telefon, sex, email,
+											  domZonaTaraid, domZonaTaracod, domJudetid, domJudetcod, 
+											  domUatid, domUatcod,
+											  domLocalitateid, domLocalitatecod, domCodpostal, domAdresa,
+											  rezdifdedom,
+											  rezZonaTaraid, rezZonaTaracod, rezJudetid, rezJudetcod,
+											  rezUatid, rezUatcod,
+											  rezLocalitateid, rezLocalitatecod, rezCodpostal, rezAdresa,
+											  datanasterii);
+	  return autUserInfo;										
+	}
+  
+  
+	// -----------------------------------------------------------
+	@Override
+	public AutUserInfo creazaSiSalveazaAutUserInfo(Long userId, RegisterRequest registerRequest)
+	{
+	  AutUserInfo newAutUserInfo  = this.creazaAutUserInfo(userId, registerRequest);
+	  autUserInfoRepository.save(newAutUserInfo);
+	  return newAutUserInfo;
+	}
+    */
 	
 }
 

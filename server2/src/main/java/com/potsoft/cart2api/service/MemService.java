@@ -1,5 +1,9 @@
 package com.potsoft.cart2api.service;
 
+import com.potsoft.cart2api.model.aut.AutUser;
+import com.potsoft.cart2api.model.aut.AutUserInfo;
+import com.potsoft.cart2api.model.aut.AutUserRol;
+import com.potsoft.cart2api.model.mem.MemMembru;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembriGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruAdresaRequest_Actualizare;
@@ -91,6 +95,8 @@ public interface MemService {
   MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare    grupRequestVizualizare);
 
 
+  MemMembru creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, AutUserRol autUserRol);
+  MemMembru creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, AutUserRol autUserRol);
 
 }
 

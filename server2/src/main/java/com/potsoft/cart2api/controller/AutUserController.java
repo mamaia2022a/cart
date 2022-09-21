@@ -13,10 +13,13 @@ import com.potsoft.cart2api.payload.response.general.ApiResponse;
 //import com.potsoft.cart2api.payload.response.aut.JwtAuthenticationResponse;
 import com.potsoft.cart2api.payload.request.aut.LoginRequest;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
-
+import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
 
 import com.potsoft.cart2api.payload.response.aut.JwtResponse;
+import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
+import com.potsoft.cart2api.payload.response.aut.ValidateRegistrationResponse;
+import com.potsoft.cart2api.security.CurrentUser;
 //import com.potsoft.cart2api.security.CurrentUser;
 import com.potsoft.cart2api.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +44,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.net.URI;
+//import java.nio.file.attribute.UserPrincipal;
 //import java.nio.file.attribute.UserPrincipal;
 import java.sql.SQLException;
 //import java.util.ArrayList;
@@ -113,13 +118,37 @@ public class AutUserController {
 	@Transactional(rollbackFor = { SQLException.class })
 	public ResponseEntity<ApiResponse> registerUser(@Valid @RequestBody RegisterRequest registerRequest) 
 	{
-        AutUser newUser = autUserService.inregistreazaUser(registerRequest);
-		
-		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{userId}")
+	  //--
+      RegisterResponse registerResponse = autUserService.inregistreazaUser(registerRequest);
+	  AutUser newUser = registerResponse.getAutUser();
+	  //---
+	  URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{userId}")
 				.buildAndExpand(newUser.getAutUserId()).toUri();
 
-		return ResponseEntity.created(location).body(
+	  return ResponseEntity.created(location).body(
 			              new ApiResponse(Boolean.TRUE, "V-ați înregistrat cu succes"));
+	}
+
+
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/validate_registration")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<ValidateRegistrationResponse> registerUser(
+		                                               @Valid @RequestBody ValidateRegistrationRequest validateRegistrationRequest,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+       UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+	  //--
+      ValidateRegistrationResponse validateRegistrationResponse = autUserService.valideazaInregistrareUser(
+		                                                                                crtuser.getId(),
+		                                                                                validateRegistrationRequest);
+	  if (validateRegistrationResponse.getCodValidareAcceptat() == "yes")
+	  {
+		
+	  }
+	  //---
+	  return ResponseEntity.ok(validateRegistrationResponse);
 	}
 
 	/** 

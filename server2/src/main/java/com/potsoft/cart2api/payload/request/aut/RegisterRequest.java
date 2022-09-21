@@ -30,6 +30,8 @@ public class RegisterRequest
 
 	private String email;
 
+	private Long datanasterii;
+
 	private Long   domZonataraid;
 
 	private String domZonataracod;
@@ -38,9 +40,13 @@ public class RegisterRequest
 
 	private String domJudetcod;
 
+	private Long   domUatid;
+
+	private Long   domUatcod;
+
 	private Long   domLocalitateid;
 
-	private String domLocalitatecod;
+	private Long  domLocalitatecod;
 
 	private String domCodpostal;
 
@@ -56,9 +62,13 @@ public class RegisterRequest
 
 	private String rezJudetcod;
 
+	private Long   rezUatid;
+
+	private Long   rezUatcod;
+
 	private Long   rezLocalitateid;
 
-	private String rezLocalitatecod;
+	private Long   rezLocalitatecod;
 
 	private String rezCodpostal;
 
@@ -162,8 +172,19 @@ public class RegisterRequest
 	{
 	  this.email = email;
 	}
+
+	
+	public Long getDatanasterii() 
+	{
+	  return this.datanasterii;
+	}
   
+	public void setDatanasterii(Long datanasterii) 
+	{
+	  this.datanasterii = datanasterii;
+	}
   
+
 	public Long getDomZonataraid() 
 	{
 	  return this.domZonataraid;
@@ -195,14 +216,26 @@ public class RegisterRequest
 	  this.domJudetid = domJudetid;
 	}
   
-	public String getDomJudetcod() 
+
+	public Long getDomUatid() 
 	{
-	  return this.domJudetcod;
+	  return this.domUatid;
 	}
   
-	public void setDomJudetcod(String domJudetcod) 
+	public void setDomUatid(Long domUatid) 
 	{
-	  this.domJudetcod = domJudetcod;
+	  this.domUatid = domUatid;
+	}
+
+
+	public Long getDomUatcod() 
+	{
+	  return this.domUatcod;
+	}
+  
+	public void setDomJudetcod(Long domUatcod) 
+	{
+	  this.domUatcod = domUatcod;
 	}
   
   
@@ -217,12 +250,12 @@ public class RegisterRequest
 	  this.domLocalitateid = domLocalitateid;
 	}
   
-	public String getDomLocalitatecod() 
+	public Long getDomLocalitatecod() 
 	{
 	  return this.domLocalitatecod;
 	}
   
-	public void setDomLocalitatecod(String domLocalitatecod) 
+	public void setDomLocalitatecod(Long domLocalitatecod) 
 	{
 	  this.domLocalitatecod = domLocalitatecod;
 	}
@@ -302,7 +335,27 @@ public class RegisterRequest
 	  this.rezJudetcod = rezJudetcod;
 	}
   
+
+	public Long getRezUatid() 
+	{
+	  return this.rezUatid;
+	}
   
+	public void setRezUatid(Long rezUatid) 
+	{
+	  this.rezUatid = rezUatid;
+	}
+  
+	public Long getRezUatcod() 
+	{
+	  return this.rezUatcod;
+	}
+  
+	public void setRezUatcod(Long rezUatcod) 
+	{
+	  this.rezUatcod = rezUatcod;
+	}
+	
   
 	public Long getRezLocalitateid() 
 	{
@@ -314,12 +367,12 @@ public class RegisterRequest
 	  this.rezLocalitateid = rezLocalitateid;
 	}
   
-	public String getRezLocalitatecod() 
+	public Long getRezLocalitatecod() 
 	{
 	  return this.rezLocalitatecod;
 	}
   
-	public void setRezLocalitatecod(String rezLocalitatecod) 
+	public void setRezLocalitatecod(Long rezLocalitatecod) 
 	{
 	  this.rezLocalitatecod = rezLocalitatecod;
 	}

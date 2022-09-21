@@ -65,10 +65,17 @@ public class MemMembruTip{
   @Column(name = "mem_membrutip_judetcod")
   private String memMembrutipJudetcod;
   
+  @Column(name = "mem_membrutip_uatid")
+  private Long memMembrutipUatid;
+  
+  @Size(max = 10)
+  @Column(name = "mem_membru_uattipcod")
+  private Long memMembrutipUatcod;
+
   @Column(name = "mem_membrutip_localitateid")
   private Long memMembrutipLocalitateid;
   
-  @Size(max = 8)
+  @Size(max = 10)
   @Column(name = "mem_membrutip_localitatecod")
   private String memMembrutipLocalitatecod;
   
@@ -79,6 +86,13 @@ public class MemMembruTip{
   @Size(max = 2)
   @Column(name = "mem_membrutip_zonajudetcod")
   private String memMembrutipZonajudetcod;
+
+  @Column(name = "mem_membrutip_zonauatid")
+  private Long memMembrutipZonauatid;
+  
+  @Size(max = 9)
+  @Column(name = "mem_membrutip_zonauatcod")
+  private String memMembrutipZonauatcod;
 
   @Column(name = "mem_membrutip_zonalocalitateid")
   private Long memMembrutipZonalocalitateid;
@@ -129,8 +143,10 @@ public class MemMembruTip{
                        String memMembruTipActivyn, String memMembruTipStartdt, String memMembruTipEnddt,
                        Long memMembruTipZonataraid, String memMembruTipZonataracod, 
                        Long memMembruTipJudetid, String memMembruTipJudetcod, 
+                       Long memMembruTipUatid, Long memMembruTipUatcod, 
                        Long memMembruTipLocalitateid, String memMembruTipLocalitatecod, 
                        Long memMembruTipZonajudetid, String memMembruTipZonajudetcod, 
+                       Long memMembruTipZonauatid, String memMembruTipZonauatcod, 
                        Long memMembruTipZonalocalitateid, String memMembruTipZonalocalitatecod,  
                        Long memMembruTipSectievotareid, Long memMembruTipSectievotarenr, 
                        Long memMembruTipCodpostalid, String memMembruTipCodpostalcod
@@ -155,6 +171,8 @@ public class MemMembruTip{
     this.memMembrutipZonataracod       = memMembruTipZonataracod;
     this.memMembrutipJudetid           = memMembruTipJudetid;
     this.memMembrutipJudetcod          = memMembruTipJudetcod;
+    this.memMembrutipUatid             = memMembruTipUatid;
+    this.memMembrutipUatcod            = memMembruTipUatcod;
     this.memMembrutipLocalitateid      = memMembruTipLocalitateid;
     this.memMembrutipLocalitatecod     = memMembruTipLocalitatecod;
     this.memMembrutipZonajudetid       = memMembruTipZonajudetid;    

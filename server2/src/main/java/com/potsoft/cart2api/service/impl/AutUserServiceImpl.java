@@ -4,17 +4,23 @@ package com.potsoft.cart2api.service.impl;
 import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutRol;
 import com.potsoft.cart2api.model.aut.AutUser;
+import com.potsoft.cart2api.model.aut.AutValidInreg;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
 import com.potsoft.cart2api.model.aut.AutUserRol;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
+import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
+import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
+import com.potsoft.cart2api.payload.response.aut.ValidateRegistrationResponse;
 import com.potsoft.cart2api.repository.aut.AutRolRepository;
 import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
+import com.potsoft.cart2api.repository.aut.AutValidInregRepository;
 //import com.potsoft.cart2api.security.JwtTokenProvider;
 import com.potsoft.cart2api.service.AutUserService;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +46,9 @@ public class AutUserServiceImpl implements AutUserService
    private AutUserRepository autUserRepository;
    
    @Autowired
+   private AutValidInregRepository autValidInregRepository;
+
+   @Autowired
    private AutUserInfoRepository autUserInfoRepository;
 
    @Autowired
@@ -56,7 +65,7 @@ public class AutUserServiceImpl implements AutUserService
 
 
   @Override
-  public AutUser inregistreazaUser(RegisterRequest registerRequest)
+  public RegisterResponse inregistreazaUser(RegisterRequest registerRequest)
   {
 	if (Boolean.TRUE.equals(autUserRepository.existsByAutUserNume(registerRequest.getUsername()))) 
 	{
@@ -69,26 +78,54 @@ public class AutUserServiceImpl implements AutUserService
 	{
 		throw new CartapiException(HttpStatus.BAD_REQUEST, "Acest Email este deja luat de altcineva");
 	}
+	RegisterResponse registerResponse = new RegisterResponse();
 	//---
 	AutUser user  = creazaSiSalveazaAutUser(registerRequest);
+	registerResponse.setAutUser(user);
     //---
 	Long newuserid       = user.getAutUserId();
 	String aut_user_nume = user.getAutUserNume();
 	//---
+	AutValidInreg newAutValidInreg = creazaSiSalveazaAutValidInreg(newuserid);
+	if (newAutValidInreg == null)
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea AutValidInreg");
+	registerResponse.setAutValidInreg(newAutValidInreg);
+	//---
 	AutUserInfo newAutUserInfo = creazaSiSalveazaAutUserInfo(newuserid, registerRequest);
 	if (newAutUserInfo == null)
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea AutUserInfo");
+	registerResponse.setAutUserInfo(newAutUserInfo);
 	//---
-	int errorNo = createTestUserRoles(newuserid, aut_user_nume);
-	if (errorNo == 0) //not created for test
-	  return user;
+	AutUserRol newTestRol = createTestUserRoles(newuserid, aut_user_nume);
+	if (newTestRol != null) //created for test
+	{
+	  registerResponse.setAutUserRol(newTestRol);
+	  return registerResponse;
+	}  
 	//---
 	AutUserRol newSimpatPendRol = this.creazaSiSalveazaAutUserRol(newuserid, "SIMPATPEND");
 	if (newSimpatPendRol == null)
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea rolul utilizator Simpatizant în Așteptare");
+	registerResponse.setAutUserRol(newSimpatPendRol);
 	//---
-	return user;
+	return registerResponse;
   }
+
+
+  // -----------------------------------------------------------
+  @Override
+  public ValidateRegistrationResponse valideazaInregistrareUser( Long userId, 
+                                                                 ValidateRegistrationRequest validateRegistrationRequest)
+  {
+	ValidateRegistrationResponse validateRegistrationResponse = new ValidateRegistrationResponse();
+	Long codValidare = validateRegistrationRequest.getCodValidare();
+	AutValidInreg autValidInreg = autValidInregRepository.loadValidInreg(userId, codValidare); //"SIMPATPEND");
+    if (autValidInreg == null)
+	  validateRegistrationResponse.setCodValidareAcceptat("n");
+	else 
+	validateRegistrationResponse.setCodValidareAcceptat("y");
+	return validateRegistrationResponse;
+  }  
 
 
   // -----------------------------------------------------------
@@ -114,12 +151,44 @@ public class AutUserServiceImpl implements AutUserService
   @Override
   public AutUser creazaSiSalveazaAutUser(RegisterRequest registerRequest)
   {
-	AutUser newAutUser  = this.creazaAutUser(registerRequest);
-	AutUser savedAutUserInfo = autUserRepository.save(newAutUser);
+	AutUser newAutUser   = this.creazaAutUser(registerRequest);
+	AutUser savedAutUser = autUserRepository.save(newAutUser);
 	//Long newuserid = savedAutUserInfo .getAutUserId();
-	return savedAutUserInfo;
+	return savedAutUser;
   }
 
+
+  // -----------------------------------------------------------
+  @Override
+  public AutValidInreg creazaAutValidInreg(Long userId)
+  {
+	Random random = new Random();
+	Long base = 100000000l;
+    boolean bUseRandom = false;
+	//--------- create  AutUser object
+	Long   aut_validinreg_id           = null;
+	Long   aut_validinreg_userid       = userId;
+	Long   aut_validinreg_codvalidare  = 99999999l;
+	if (bUseRandom)
+	  aut_validinreg_codvalidare = base + random.nextInt(10000000);
+	String aut_validinreg_activ_yn     = "y";
+	String aut_validinreg_startdt      = null;
+	String aut_validinreg_enddt        = null;
+	AutValidInreg newAutValidInreg = new AutValidInreg(aut_validinreg_id, aut_validinreg_userid, aut_validinreg_codvalidare, 
+										               aut_validinreg_activ_yn, aut_validinreg_startdt, aut_validinreg_enddt);
+	return newAutValidInreg;							
+  }
+
+
+  
+  // -----------------------------------------------------------
+  @Override
+  public AutValidInreg creazaSiSalveazaAutValidInreg(Long userId)
+  {
+	AutValidInreg newAutValidInreg  = this.creazaAutValidInreg(userId);
+	AutValidInreg savedAutValidInreg = autValidInregRepository.save(newAutValidInreg);
+	return savedAutValidInreg;
+  }
 
 
   // -----------------------------------------------------------
@@ -127,18 +196,21 @@ public class AutUserServiceImpl implements AutUserService
   public AutUserInfo creazaAutUserInfo(Long userId, RegisterRequest registerRequest)
   {
 	Long userinfoid          = null; 
-	Long userid              = null;
+	Long userid              = userId;
 	String nume              = registerRequest.getNume().toLowerCase();
 	String prenume           = registerRequest.getPrenume().toLowerCase();
 	String telefon           = registerRequest.getTelefon().toLowerCase();
 	String sex               = registerRequest.getSex().toLowerCase();
+	Long   datanasterii      = registerRequest.getDatanasterii();
 	String email             = registerRequest.getEmail().toLowerCase();
 	Long domZonaTaraid       = registerRequest.getDomZonataraid();
 	String domZonaTaracod    = registerRequest.getDomZonataracod();
 	Long domJudetid          = registerRequest.getDomJudetid();
 	String domJudetcod       = registerRequest.getDomJudetcod();
+	Long domUatid            = registerRequest.getDomUatid();
+	Long domUatcod           = registerRequest.getDomUatcod();
 	Long domLocalitateid     = registerRequest.getDomLocalitateid();
-	String domLocalitatecod  = registerRequest.getDomLocalitatecod();
+    Long domLocalitatecod    = registerRequest.getDomLocalitatecod();
 	String domCodpostal      = registerRequest.getDomCodpostal();
 	String domAdresa         = registerRequest.getDomAdresa();
 	String rezdifdedom       = registerRequest.getRezdifdedom();
@@ -146,16 +218,22 @@ public class AutUserServiceImpl implements AutUserService
 	String rezZonaTaracod    = registerRequest.getRezZonataracod();
 	Long rezJudetid          = registerRequest.getRezJudetid();
 	String rezJudetcod       = registerRequest.getRezJudetcod();
+	Long rezUatid            = registerRequest.getRezUatid();
+	Long rezUatcod           = registerRequest.getRezUatcod();
 	Long rezLocalitateid     = registerRequest.getRezLocalitateid();
-	String rezLocalitatecod  = registerRequest.getRezLocalitatecod();
+	Long rezLocalitatecod    = registerRequest.getRezLocalitatecod();
 	String rezCodpostal      = registerRequest.getRezCodpostal();
 	String rezAdresa         = registerRequest.getRezAdresa();
+
 	AutUserInfo autUserInfo = new AutUserInfo(userinfoid, userid, nume, prenume, telefon, sex, email,
 											domZonaTaraid, domZonaTaracod, domJudetid, domJudetcod, 
+											domUatid, domUatcod,
 											domLocalitateid, domLocalitatecod, domCodpostal, domAdresa,
 											rezdifdedom,
 											rezZonaTaraid, rezZonaTaracod, rezJudetid, rezJudetcod,
-											rezLocalitateid, rezLocalitatecod, rezCodpostal, rezAdresa);
+											rezUatid, rezUatcod,
+											rezLocalitateid, rezLocalitatecod, rezCodpostal, rezAdresa,
+											datanasterii);
 	return autUserInfo;										
   }
 
@@ -209,109 +287,110 @@ public class AutUserServiceImpl implements AutUserService
 
 
 
-  private int createTestUserRoles(Long userId, String username)
+  private AutUserRol createTestUserRoles(Long userId, String username)
   {
 	//---
+	AutUserRol autUserRol;
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memincnfl"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memincafl"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memactnfl"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "MEMACTNFL");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMACTNFL");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memactafl"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "MEMACTAFL");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMACTAFL");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memexpnfl"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memexpafl"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("sefgrup"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SEFGRUP");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SEFGRUP");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("coordprinc"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "COORDPRINC");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "COORDPRINC");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("superadmin"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "SUPERADMIN");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SUPERADMIN");
+	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("admin"))
 	{
-	  this.creazaSiSalveazaAutUserRol(userId, "ADMIN");
-	  return 0;
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "ADMIN");
+	  return autUserRol;
 	}
-	return 1;
+	return null;
   }
 }
 
