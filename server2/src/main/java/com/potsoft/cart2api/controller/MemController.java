@@ -1,24 +1,41 @@
 package com.potsoft.cart2api.controller;
 
 
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Dezafiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Dezafiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
 import com.potsoft.cart2api.security.CurrentUser;
 import com.potsoft.cart2api.security.UserDetailsImpl;
 import com.potsoft.cart2api.service.MemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.file.attribute.UserPrincipal;
 //import java.util.List;
 
 import javax.validation.Valid;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.SQLException;
 
 
 @RestController
@@ -39,5 +56,99 @@ public class MemController {
 	}
 
 
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/membru/tip/schimbare")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<MembruTipResponse_Schimbare> validateRegistration(
+		                                               @Valid @RequestBody MembruTipRequest_Schimbare memTipRequestSchimbare,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+       UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+	  //--
+      MembruTipResponse_Schimbare memTipResponseSchimbare = memService.membruTip_Schimbare(crtuser.getId(),
+		                                                                             memTipRequestSchimbare);
+	  //---
+	  return ResponseEntity.ok(memTipResponseSchimbare);
+	}
+
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/creare")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<GrupResponse_Creare> grupCreare(
+		                                               @Valid @RequestBody GrupRequest_Creare memGrupRequestCreare,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+       UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+	  //--
+      GrupResponse_Creare memGrupResponseCreare = memService.grup_Creare(crtuser.getId(), memGrupRequestCreare);
+	  //---
+	  return ResponseEntity.ok(memGrupResponseCreare);
+	}
+
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/stergere")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<GrupResponse_Stergere> grupStergere(
+		                                               @Valid @RequestBody GrupRequest_Stergere memGrupRequestStergere,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+       UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+	  //--
+      GrupResponse_Stergere memGrupResponseStergere = memService.grup_Stergere(crtuser.getId(), memGrupRequestStergere);
+	  //---
+	  return ResponseEntity.ok(memGrupResponseStergere);
+	}
+
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/membru/cerere_afiliere")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<MembruGrupResponse_CerereAfiliere> cerereAfiliereMembru(
+		                                    @Valid @RequestBody MembruGrupRequest_CerereAfiliere memGrupRequestCerereAfiliere,
+		                                    @CurrentUser UserDetails currentUser) 
+    {
+      UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+	  //--
+      MembruGrupResponse_CerereAfiliere membruGrupResponseCerereAfiliere 
+	                                = memService.membruGrup_CerereAfiliere(crtuser.getId(), memGrupRequestCerereAfiliere);
+	  //---
+	  return ResponseEntity.ok(membruGrupResponseCerereAfiliere);
+	}
+
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/membru/acceptare_afiliere")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<MembruGrupResponse_AcceptareAfiliere> acceptareAfiliereMembru(
+		                                    @Valid @RequestBody MembruGrupRequest_AcceptareAfiliere memGrupRequestCerereAfiliere,
+		                                    @CurrentUser UserDetails currentUser) 
+    {
+		UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+		//--
+		MembruGrupResponse_AcceptareAfiliere membruGrupResponseAcceptareAfiliere 
+									= memService.membruGrup_AcceptareAfiliere(crtuser.getId(), memGrupRequestCerereAfiliere);
+		//---
+		return ResponseEntity.ok(membruGrupResponseAcceptareAfiliere);
+	}
+	
+
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/membru/dezafiliere")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<MembruGrupResponse_Dezafiliere> dezafiliereMembru(
+		                                    @Valid @RequestBody MembruGrupRequest_Dezafiliere memGrupRequestDezafiliere,
+		                                    @CurrentUser UserDetails currentUser) 
+    {
+		UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+		//--
+		MembruGrupResponse_Dezafiliere membruGrupResponseDezafiliere 
+									= memService.membruGrup_Dezafiliere(crtuser.getId(), memGrupRequestDezafiliere);
+		//---
+		return ResponseEntity.ok(membruGrupResponseDezafiliere);
+	}
 
 }

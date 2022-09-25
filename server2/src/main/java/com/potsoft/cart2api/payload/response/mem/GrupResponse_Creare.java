@@ -1,34 +1,23 @@
 package com.potsoft.cart2api.payload.response.mem;
 
+import com.potsoft.cart2api.model.mem.MemGrup;
+
 import lombok.Data;
 
 
 @Data
 public class GrupResponse_Creare
 {
-	private String grupnume;
-	private String grupcodunic;
+	private MemGrup memgrup;
 
-
-	public String getGrupnume() 
+	public MemGrup getMemgrup() 
 	{
-	  return this.grupnume;
+	  return this.memgrup;
 	}
   
-	public void setGrupnume(String grupnume) 
+	public void setMemgrup(MemGrup memgrup) 
 	{
-	  this.grupnume = grupnume;
-	}
-
-
-	public String getGrupcodunic() 
-	{
-	  return this.grupcodunic;
-	}
-  
-	public void setGrupcodunic(String grupcodunic) 
-	{
-	  this.grupcodunic = grupcodunic;
+	  this.memgrup = memgrup;
 	}
 	
 }

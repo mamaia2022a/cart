@@ -15,6 +15,7 @@ import com.potsoft.cart2api.model.mem.MemSefGrup;
 import com.potsoft.cart2api.model.mem.MemTip;
 import com.potsoft.cart2api.model.mem.MemTipRol;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembriGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruAdresaRequest_Actualizare;
@@ -26,7 +27,10 @@ import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Actualiza
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Vizualizare;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Dezafiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruRequest_Creare;
@@ -35,10 +39,13 @@ import com.potsoft.cart2api.payload.request.mem.MembruRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruRolRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruRolRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Vizualizare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembriGrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruAdresaResponse_Actualizare;
@@ -50,7 +57,10 @@ import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Actuali
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Vizualizare;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Dezafiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruResponse_Creare;
@@ -59,6 +69,7 @@ import com.potsoft.cart2api.payload.response.mem.MembruResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruRolResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruRolResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Stergere;
@@ -86,13 +97,21 @@ public interface MemService {
   MembruAdresaResponse_Vizualizare membruAdresa_Vizualizare  (Long userid, MembruAdresaRequest_Vizualizare membruCIRequestVizualizare);
 
 
-  MembruTipResponse_Creare   membruTip_Creare  (Long userid, MembruTipRequest_Creare   membruTipRequestCreare);
-  MembruTipResponse_Stergere membruTip_Stergere(Long userid, MembruTipRequest_Stergere membruTipRequestStergere);
+  MembruTipResponse_Creare     membruTip_Creare  (Long userid, MembruTipRequest_Creare   membruTipRequestCreare);
+  MembruTipResponse_Stergere   membruTip_Stergere(Long userid, MembruTipRequest_Stergere membruTipRequestStergere);
+  MembruTipResponse_Schimbare  membruTip_Schimbare(Long userid, MembruTipRequest_Schimbare  membruTipRequestSchimbare);
 
   MembruRolResponse_Creare   membruRol_Creare  (Long userid, MembruRolRequest_Creare   membruRolRequestCreare);
   MembruRolResponse_Stergere membruRol_Stergere(Long userid, MembruRolRequest_Stergere membruRolRequestStergere);
 
 
+  MembruGrupResponse_CerereAfiliere     membruGrup_CerereAfiliere(Long userid, 
+                                             MembruGrupRequest_CerereAfiliere  membruGrupRequestCerereAfiliere);
+  MembruGrupResponse_AcceptareAfiliere  membruGrup_AcceptareAfiliere(Long userid, 
+                                             MembruGrupRequest_AcceptareAfiliere  membruGrupRequestAcceptareAfiliere);
+  MembruGrupResponse_Dezafiliere        membruGrup_Dezafiliere(Long userid, 
+                                             MembruGrupRequest_Dezafiliere  membruGrupRequestDezafiliere);
+                                             
   MembruGrupResponse_Creare      membruGrup_Creare     (Long userid, MembruGrupRequest_Creare   membruGrupRequestCreare);
   MembruGrupResponse_Stergere    membruGrup_Stergere   (Long userid, MembruGrupRequest_Stergere membruGrupRequestStergere);
   MembruGrupResponse_Vizualizare membruGrup_Vizualizare(Long userid, MembruGrupRequest_Vizualizare membruGrupRequestVizualizare);
@@ -101,13 +120,17 @@ public interface MemService {
   SefGrupResponse_Stergere       sefGrup_Stergere   (Long userid, SefGrupRequest_Stergere    sefGrupRequestStergere);
   SefGrupResponse_Vizualizare    sefGrup_Vizualizare(Long userid, SefGrupRequest_Vizualizare sefGrupRequestVizualizare);
 
-  GrupResponse_Vizualizare       grup_Vizualizare   (Long userid, GrupRequest_Vizualizare    grupRequestVizualizare);
+  GrupResponse_Creare            grup_Creare     (Long userid, GrupRequest_Creare grupRequestCreare);
+  GrupResponse_Stergere          grup_Stergere   (Long userid, GrupRequest_Stergere grupRequestStergere);
+  GrupResponse_Vizualizare       grup_Vizualizare(Long userid, GrupRequest_Vizualizare grupRequestVizualizare);
 
   MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare    grupRequestVizualizare);
 
 
-  MemMembru     creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
-  MemMembru     creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
+  MemMembru                    creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
+  MemMembru                    creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
+  MembruTipResponse_Schimbare  schimbaretipMemMembru(Long userid, String crtMemTipCod, String newMemTipCod, 
+                                                                  String crtMemTiprolCod, String newMemTiprolCod);
 
   MemMembruTip  creazaMemMembruTip(MemMembru memMembru, MemTip memTip);
   MemMembruTip  creazaSiSalveazaMemMembruTip(MemMembru memMembru, MemTip memTip);

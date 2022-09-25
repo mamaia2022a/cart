@@ -1,5 +1,6 @@
 package com.potsoft.cart2api.service.impl;
 
+import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
 //import com.potsoft.cart2api.model.aut.AutUserRol;
@@ -15,6 +16,7 @@ import com.potsoft.cart2api.model.mem.MemSefGrup;
 import com.potsoft.cart2api.model.mem.MemTip;
 import com.potsoft.cart2api.model.mem.MemTipRol;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembriGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruAdresaRequest_Actualizare;
@@ -26,7 +28,10 @@ import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Actualiza
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Vizualizare;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Dezafiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruRequest_Creare;
@@ -35,10 +40,13 @@ import com.potsoft.cart2api.payload.request.mem.MembruRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruRolRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruRolRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Vizualizare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembriGrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruAdresaResponse_Actualizare;
@@ -50,7 +58,10 @@ import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Actuali
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Vizualizare;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Dezafiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruResponse_Creare;
@@ -59,6 +70,7 @@ import com.potsoft.cart2api.payload.response.mem.MembruResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruRolResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruRolResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Stergere;
@@ -82,6 +94,7 @@ import com.potsoft.cart2api.service.MemService;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 
 //import java.util.Arrays;
 //import java.util.Collections;
@@ -273,7 +286,67 @@ public class MemServiceImpl implements MemService
 	  MembruTipResponse_Stergere resp = new MembruTipResponse_Stergere();	
 	  return resp;
 	}
-  
+
+	//used
+	@Override
+	public MembruTipResponse_Schimbare  membruTip_Schimbare(Long userid, MembruTipRequest_Schimbare  membruTipRequestSchimbare)
+	{
+	  String crtMemTipCod    = membruTipRequestSchimbare.getCrtmemtipcod();
+	  String newMemTipCod    = membruTipRequestSchimbare.getCrtmemtipcod();
+	  String crtMemTiprolCod = membruTipRequestSchimbare.getCrtmemrolcod();
+	  String newMemTiprolCod = membruTipRequestSchimbare.getCrtmemrolcod();  
+	  return schimbaretipMemMembru(userid, crtMemTipCod, newMemTipCod, crtMemTiprolCod, newMemTiprolCod);
+	}
+
+
+	//used
+	@Override
+	public MembruTipResponse_Schimbare  schimbaretipMemMembru(Long userid, String crtMemTipCod, String newMemTipCod, 
+	                                                         String crtMemTiprolCod, String newMemTiprolCod)
+	{
+	  MembruTipResponse_Schimbare resp = new MembruTipResponse_Schimbare();	
+      //--  
+	  if ( //-- un membru incepator devine membru activ (afiliat sau nu)
+		   (crtMemTipCod == "MEMINCNFL" && newMemTipCod == "MEMACTNFL") ||
+	       (crtMemTipCod == "MEMINCAFL" && newMemTipCod == "MEMACTAFL") ||
+		   //-- un membru activ devine membru experimentat (afiliat sau nu)
+		   (crtMemTipCod == "MEMACTNFL" && newMemTipCod == "MEMEXPNFL") ||
+		   (crtMemTipCod == "MEMACTAFL" && newMemTipCod == "MEMEXPAFL") ||
+		   //-- un membru activ sau experimentat Neafiliat isi formeaza propriul grup
+		   (crtMemTipCod == "MEMACTFNL" && newMemTipCod == "SEFGRUP") ||
+		   (crtMemTipCod == "MEMEXPNFL" && newMemTipCod == "SEFGRUP") ||
+		   //-- un sef de grup isi desfiinteaza grupul 
+		   (crtMemTipCod == "SEFGRUP"   && newMemTipCod == "MEMACTNFL") ||
+		   (crtMemTipCod == "SEFGRUP"   && newMemTipCod == "MEMEXPNFL") ||
+		   //-- un membrul incepator sau activ sau experimentat se dezafiliaza de la grup
+		   (crtMemTipCod == "MEMINCAFL" && newMemTipCod == "MEMINCNFL") ||
+		   (crtMemTipCod == "MEMACTAFL" && newMemTipCod == "MEMACTNFL") ||
+		   (crtMemTipCod == "MEMEXPAFL" && newMemTipCod == "MEMEXPNFL") 
+	     )
+	  {
+		//MemTip memCrtTip = memTipRepository.loadByMemTipCod(crtMemTipCod);
+		MemTip memNewTip = memTipRepository.loadByMemTipCod(newMemTipCod);
+		//--
+		memMembruRepository.schimbaMembruTip(userid, memNewTip.getMemTipId(), memNewTip.getMemTipCod());
+		MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
+		//--
+        memMembruTipRepository.dezactiveazaMemMembruTip(userid, crtMemTipCod);
+		creazaSiSalveazaMemMembruTip(memMembru, memNewTip);
+		//--
+		//MemTipRol memCrtTipRol = memTipRolRepository.loadByMemTiprolCod(crtMemTiprolCod);
+		MemTipRol memNewTipRol = memTipRolRepository.loadByMemTiprolCod(newMemTiprolCod);
+		MemAcoperireGeografica newMemAcoperireGeografica = 
+		                memAcoperireGeograficaRepository.loadByMemAcoperiregeograficaCod("toate");
+
+        memMembruRolRepository.dezactiveazaMemMembruRol(userid, crtMemTiprolCod);
+		creazaSiSalveazaMemMembruRol(memMembru, memNewTipRol, newMemAcoperireGeografica);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu se poate schimba tipul membrului de la : "
+	                                                             + crtMemTipCod + " la: " + newMemTipCod);
+	}
+
+
 	@Override
 	public MembruRolResponse_Creare membruRol_Creare(Long userid, MembruRolRequest_Creare membruRolRequestCreare)
 	{
@@ -288,7 +361,33 @@ public class MemServiceImpl implements MemService
 	  return resp;
 	}
   
-  
+    //used
+	@Override
+	public MembruGrupResponse_CerereAfiliere membruGrup_CerereAfiliere(Long userid, 
+                                             MembruGrupRequest_CerereAfiliere  membruGrupRequestCerereAfiliere)
+	{
+	  MembruGrupResponse_CerereAfiliere resp = new MembruGrupResponse_CerereAfiliere();	
+	  return resp;
+	}
+
+	//used
+	@Override
+	public MembruGrupResponse_AcceptareAfiliere membruGrup_AcceptareAfiliere(Long userid, 
+                                                 MembruGrupRequest_AcceptareAfiliere  membruGrupRequestAcceptareAfiliere)
+	{
+	  MembruGrupResponse_AcceptareAfiliere resp = new MembruGrupResponse_AcceptareAfiliere();	
+	  return resp;
+	}
+
+	//used
+	@Override
+    public MembruGrupResponse_Dezafiliere membruGrup_Dezafiliere(Long userid, 
+	                                                MembruGrupRequest_Dezafiliere  membruGrupRequestDezafiliere)
+  	{
+	  MembruGrupResponse_Dezafiliere resp = new MembruGrupResponse_Dezafiliere();	
+	  return resp;
+	}
+
 	@Override
 	public MembruGrupResponse_Creare membruGrup_Creare(Long userid, MembruGrupRequest_Creare membruGrupRequestCreare)
 	{
@@ -339,6 +438,62 @@ public class MemServiceImpl implements MemService
 	  GrupResponse_Vizualizare resp = new GrupResponse_Vizualizare();	
 	  return resp;
 	}
+
+
+	//used
+	@Override
+	public GrupResponse_Creare grup_Creare(Long userid, GrupRequest_Creare grupRequestCreare)
+  	{
+	  String numeGrup = grupRequestCreare.getGrupnume();
+	  MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
+	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
+	  String   crtMemTiprolCod = crtMemTipCod;
+	  GrupResponse_Creare resp = new GrupResponse_Creare();	
+		//--  
+	  if ( //-- un membru activ sau experimentat neafiliat poate crea un grup
+		  (crtMemTipCod == "MEMACTNFL" && crtMemTipCod == "MEMEXPNFL") 
+		 )		
+	  {
+		//--
+		schimbaretipMemMembru(userid, crtMemTipCod, "SEFGRUP", crtMemTiprolCod, "SEFGRUP");
+		//--
+		MemSefGrup newMemSefGrup = creazaSiSalveazaMemSefGrup(memMembru);
+        //--
+		MemGrup newMemGrup = creazaSiSalveazaMemGrup(newMemSefGrup, grupRequestCreare);
+		resp.setMemgrup(newMemGrup);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa creați Grupul  : "
+																+ numeGrup );
+	}
+
+
+	@Override
+	public GrupResponse_Stergere grup_Stergere(Long userid, GrupRequest_Stergere grupRequestStergere)
+	{
+	  String numeGrup = grupRequestStergere.getGrupnume();
+	  MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
+	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
+	  //String   crtMemTiprolCod = crtMemTipCod;
+	  GrupResponse_Stergere resp = new GrupResponse_Stergere();	
+	  //--  
+	  if ( //-- un sef grup isi desfiinteaza grupul
+		  (crtMemTipCod == "SEFGRUP") 
+		 )		
+	  {
+		//--
+		schimbaretipMemMembru(userid, "SEFGRUP", "MEMEXPNFL", 
+		                              "SEFGRUP", "MEMEXPNFL");
+		//--
+		memSefGrupRepository.dezactiveazaMemSefGrup(userid);
+		//--
+		memGrupRepository.dezactiveazaMemGrup(userid);				  
+	    return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa stergeti Grupul  : "
+	                                                     + numeGrup );
+	}
+  
 
 	@Override
 	public MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare grupRequestVizualizare)

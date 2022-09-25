@@ -1396,6 +1396,24 @@ VALUES
   );
 
 
+DROP TABLE IF EXISTS `mem_recomandatde`;
+CREATE TABLE `mem_recomandatde` (
+  `mem_recomandatde_id`  int NOT NULL AUTO_INCREMENT,
+  
+  `mem_recomandatde_refmembruid` int	not null,
+  `mem_recomandatde_refmembrucodunic` varchar(16) not null,  
+  `mem_recomandatde_refuserid` int	not null,
+  `mem_recomandatde_refusernume` varchar(20)	not null,
+
+  `mem_recomandatde_newmembruid` int	not null,
+  `mem_recomandatde_newmembrucodunic` varchar(16) not null,  
+  `mem_recomandatde_newuserid` int	not null,
+  `mem_recomandatde_newusernume` varchar(20)	not null,
+
+  PRIMARY KEY (`mem_recomandatde_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
 
 DROP TABLE IF EXISTS `mem_membrurol`;
 CREATE TABLE `mem_membrurol` (
@@ -1433,8 +1451,8 @@ CREATE TABLE `mem_membrurol` (
   `mem_membrurol_codpostalid` int not null,  
   `mem_membrurol_codpostalcod` varchar(16)	not null, 
 
-  `mem_membrurol_pending_yn` varchar(1) NOT NULL,
-  `mem_membrurol_accepted_yn` varchar(1) NOT NULL,
+  `mem_membrurol_invited_yn` varchar(1) NULL,
+  `mem_membrurol_accepted_yn` varchar(1) NULL,
 
   `mem_membrurol_activ_yn` varchar(1) NOT NULL,
   `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1518,8 +1536,8 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_codpostalid` int not null,  
   `mem_membrugrup_codpostalcod` varchar(16)	not null, 
 
-  `mem_membrugrup_pending_yn` varchar(1) NOT NULL,
-  `mem_membrugrup_accepted_yn` varchar(1) NOT NULL,
+  `mem_membrugrup_requested_yn` varchar(1) NULL,
+  `mem_membrugrup_accepted_yn` varchar(1) NULL,
 
   `mem_membrugrup_activ_yn` varchar(1) NOT NULL,
   `mem_membrugrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
