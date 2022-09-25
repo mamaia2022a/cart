@@ -74,16 +74,14 @@ public class MemSefGrup{
   @Column(name = "mem_sefgrup_uatid")
   private Long memSefgrupUatid;
   
-  @Size(max = 10)
   @Column(name = "mem_sefgrup_uatcod")
   private Long memSefgrupUatcod;
 
   @Column(name = "mem_sefgrup_localitateid")
   private Long memSefgrupLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "mem_sefgrup_localitatecod")
-  private String memSefgrupLocalitatecod;
+  private Long memSefgrupLocalitatecod;
 
   @Column(name = "mem_sefgrup_zonajudetid")
   private Long memSefgrupZonajudetid;
@@ -109,7 +107,6 @@ public class MemSefGrup{
   @Column(name = "mem_sefgrup_sectievotareid")
   private Long memSefgrupSectievotareid;
   
-  @Size(max = 9)
   @Column(name = "mem_sefgrup_sectievotarenr")
   private Long memSefgrupSectievotarenr;
 
@@ -144,11 +141,12 @@ public class MemSefGrup{
 	public MemSefGrup( Long memSefGrupId, 
                        Long memSefGrupMembruid, String memSefGrupMembrucodunic,
                        Long memSefGrupUserid, String memSefGrupUsernume, 
+                       Long memSefGrupGrupid, String memSefGrupGrupnume, String memSefGrupGrupcodunic,
                        String memSefGrupActivyn, String memSefGrupStartdt,  String memSefGrupEnddt,
                        Long memSefGrupZonataraid, String memSefGrupZonataracod, 
                        Long memSefGrupJudetid, String memSefGrupJudetcod, 
                        Long memSefGrupUatid, Long memSefGrupUatcod, 
-                       Long memSefGrupLocalitateid, String memSefGrupLocalitatecod, 
+                       Long memSefGrupLocalitateid, Long memSefGrupLocalitatecod, 
                        Long memSefGrupZonajudetid, String memSefGrupZonajudetcod, 
                        Long memSefGrupZonauatid, String memSefGrupZonauatcod, 
                        Long memSefGrupZonalocalitateid, String memSefGrupZonalocalitatecod,  
@@ -164,6 +162,10 @@ public class MemSefGrup{
     this.memSefgrupUserid            = memSefGrupUserid;
     this.memSefgrupUsernume          = memSefGrupUsernume;
 
+    this.memSefgrupGrupid            = memSefGrupGrupid;
+    this.memSefgrupGrupnume          = memSefGrupGrupnume;
+    this.memSefgrupGrupcodunic       = memSefGrupGrupcodunic;
+
     this.memSefgrupActivyn           = memSefGrupActivyn;
     this.memSefgrupStartdt           = memSefGrupStartdt;
     this.memSefgrupEnddt             = memSefGrupEnddt;
@@ -178,6 +180,8 @@ public class MemSefGrup{
     this.memSefgrupLocalitatecod     = memSefGrupLocalitatecod;
     this.memSefgrupZonajudetid       = memSefGrupZonajudetid;    
     this.memSefgrupZonajudetcod      = memSefGrupZonajudetcod;  
+    this.memSefgrupZonauatid         = memSefGrupZonauatid;    
+    this.memSefgrupZonauatcod        = memSefGrupZonauatcod;  
     this.memSefgrupZonalocalitateid  = memSefGrupZonalocalitateid;    
     this.memSefgrupZonalocalitatecod = memSefGrupZonalocalitatecod;  
     this.memSefgrupSectievotareid    = memSefGrupSectievotareid;    
@@ -211,12 +215,12 @@ public class MemSefGrup{
   }
 
 
-  public String getMemSefgrupMembruCodunic() 
+  public String getMemSefgrupMembrucodunic() 
   {
     return this.memSefgrupMembrucodunic;
   }
 
-  public void setMemSefgrupMembruCodunic(String memSefgrupMembrucodunic) 
+  public void setMemSefgrupMembrucodunic(String memSefgrupMembrucodunic) 
   {
     this.memSefgrupMembrucodunic = memSefgrupMembrucodunic;
   }
@@ -325,6 +329,28 @@ public class MemSefGrup{
 
 
 
+  public Long getMemSefgrupUatid() 
+  {
+    return this.memSefgrupUatid;
+  }
+
+  public void setMemSefgrupUatid(Long memSefgrupUatid) 
+  {
+    this.memSefgrupUatid = memSefgrupUatid;
+  }
+
+  public Long getMemSefgrupUatcod() 
+  {
+    return this.memSefgrupUatcod;
+  }
+
+  public void setMemSefgrupUatcod(Long memSefgrupUatcod) 
+  {
+    this.memSefgrupUatcod = memSefgrupUatcod;
+  }
+
+
+
   public Long getMemSefgrupLocalitateid() 
   {
     return this.memSefgrupLocalitateid;
@@ -335,12 +361,12 @@ public class MemSefGrup{
     this.memSefgrupLocalitateid = memSefgrupLocalitateid;
   }
 
-  public String getMemSefgrupLocalitatecod() 
+  public Long getMemSefgrupLocalitatecod() 
   {
     return this.memSefgrupLocalitatecod;
   }
 
-  public void setMemSefgrupLocalitatecod(String memSefgrupLocalitatecod) 
+  public void setMemSefgrupLocalitatecod(Long memSefgrupLocalitatecod) 
   {
     this.memSefgrupLocalitatecod = memSefgrupLocalitatecod;
   }
@@ -365,6 +391,27 @@ public class MemSefGrup{
   public void setMemSefgrupZonajudetcod(String memSefgrupZonajudetcod) 
   {
     this.memSefgrupZonajudetcod = memSefgrupZonajudetcod;
+  }
+
+
+  public Long getMemSefgrupZonauatid() 
+  {
+    return this.memSefgrupZonauatid;
+  }
+
+  public void setMemSefgrupZonauatid(Long memSefgrupZonauatid) 
+  {
+    this.memSefgrupZonauatid = memSefgrupZonauatid;
+  }
+
+  public String getMemSefgrupZonauatcod() 
+  {
+    return this.memSefgrupZonauatcod;
+  }
+
+  public void setMemSefgrupZonauatcod(String memSefgrupZonauatcod) 
+  {
+    this.memSefgrupZonauatcod = memSefgrupZonauatcod;
   }
 
 

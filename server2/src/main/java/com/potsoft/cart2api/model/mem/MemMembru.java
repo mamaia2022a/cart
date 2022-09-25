@@ -31,6 +31,7 @@ public class MemMembru {
   @Column(name = "mem_membru_userid")
   private Long memMembruUserid;
   
+  @NotNull
   @Size(max = 20)
   @Column(name = "mem_membru_usernume")
   private String memMembruUsernume;
@@ -45,7 +46,6 @@ public class MemMembru {
   private String memMembruTipcod;
 
 
-  @NotNull
   @Column(name = "mem_membru_grupid")
   private Long memMembruGrupid;
 
@@ -82,14 +82,12 @@ public class MemMembru {
   @Column(name = "mem_membru_uatid")
   private Long memMembruUatid;
   
-  @Size(max = 10)
   @Column(name = "mem_membru_uatcod")
   private Long memMembruUatcod;
 
   @Column(name = "mem_membru_localitateid")
   private Long memMembruLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "mem_membru_localitatecod")
   private Long memMembruLocalitatecod;
   
@@ -118,7 +116,6 @@ public class MemMembru {
   @Column(name = "mem_membru_sectievotareid")
   private Long memMembruSectievotareid;
   
-  @Size(max = 9)
   @Column(name = "mem_membru_sectievotarenr")
   private Long memMembruSectievotarenr;
 
@@ -405,7 +402,7 @@ public class MemMembru {
 
   public void setMemMembruUatid(Long memMembruUatid) 
   {
-    this.memMembruLocalitateid = memMembruUatid;
+    this.memMembruUatid = memMembruUatid;
   }
 
   public Long getMemMembruUatcod() 
@@ -413,9 +410,9 @@ public class MemMembru {
     return this.memMembruUatcod;
   }
 
-  public void setMemMembruUatcod(Long memMembruLocalitatecod) 
+  public void setMemMembruUatcod(Long memMembruUatcod) 
   {
-    this.memMembruLocalitatecod = memMembruLocalitatecod;
+    this.memMembruUatcod = memMembruUatcod;
   }
 
 

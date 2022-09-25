@@ -74,16 +74,14 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_uatid")
   private Long memMembrugrupUatid;
   
-  @Size(max = 10)
   @Column(name = "mem_membrugrup_uatcod")
   private Long memMembrugrupUatcod;
  
   @Column(name = "mem_membrugrup_localitateid")
   private Long memMembrugrupLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "mem_membrugrup_localitatecod")
-  private String memMembrugrupLocalitatecod;
+  private Long memMembrugrupLocalitatecod;
   
 
   @Column(name = "mem_membrugrup_zonajudetid")
@@ -110,7 +108,6 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_sectievotareid")
   private Long memMembrugrupSectievotareid;
   
-  @Size(max = 9)
   @Column(name = "mem_membrugrup_sectievotarenr")
   private Long memMembrugrupSectievotarenr;
 
@@ -149,7 +146,7 @@ public class MemMembruGrup{
                        Long memMembrugrupZonataraid, String memMembrugrupZonataracod, 
                        Long memMembrugrupJudetid, String memMembrugrupJudetcod, 
                        Long memMembrugrupUatid, Long memMembrugrupUatcod, 
-                       Long memMembrugrupLocalitateid, String memMembrugrupLocalitatecod, 
+                       Long memMembrugrupLocalitateid, Long memMembrugrupLocalitatecod, 
                        Long memMembrugrupZonajudetid, String memMembrugrupZonajudetcod, 
                        Long memMembrugrupZonauatid, String memMembrugrupZonauatcod, 
                        Long memMembrugrupZonalocalitateid, String memMembrugrupZonalocalitatecod,  
@@ -179,6 +176,8 @@ public class MemMembruGrup{
     this.memMembrugrupLocalitatecod     = memMembrugrupLocalitatecod;
     this.memMembrugrupZonajudetid       = memMembrugrupZonajudetid;    
     this.memMembrugrupZonajudetcod      = memMembrugrupZonajudetcod;  
+    this.memMembrugrupZonauatid         = memMembrugrupZonauatid;    
+    this.memMembrugrupZonauatcod        = memMembrugrupZonauatcod;  
     this.memMembrugrupZonalocalitateid  = memMembrugrupZonalocalitateid;    
     this.memMembrugrupZonalocalitatecod = memMembrugrupZonalocalitatecod;  
     this.memMembrugrupSectievotareid    = memMembrugrupSectievotareid;    
@@ -326,6 +325,28 @@ public class MemMembruGrup{
 
 
 
+  public Long getMemMembrugrupUatid() 
+  {
+    return this.memMembrugrupUatid;
+  }
+
+  public void setMemMembrugrupUatid(Long memMembrugrupUatid) 
+  {
+    this.memMembrugrupUatid = memMembrugrupUatid;
+  }
+
+  public Long getMemMembrugrupUatcod() 
+  {
+    return this.memMembrugrupUatcod;
+  }
+
+  public void setMemMembrugrupUatcod(Long memMembrugrupUatcod) 
+  {
+    this.memMembrugrupUatcod = memMembrugrupUatcod;
+  }
+
+
+
   public Long getMemMembrugrupLocalitateid() 
   {
     return this.memMembrugrupLocalitateid;
@@ -336,12 +357,12 @@ public class MemMembruGrup{
     this.memMembrugrupLocalitateid = memMembrugrupLocalitateid;
   }
 
-  public String getMemMembrugrupLocalitatecod() 
+  public Long getMemMembrugrupLocalitatecod() 
   {
     return this.memMembrugrupLocalitatecod;
   }
 
-  public void setMemMembrugrupLocalitatecod(String memMembrugrupLocalitatecod) 
+  public void setMemMembrugrupLocalitatecod(Long memMembrugrupLocalitatecod) 
   {
     this.memMembrugrupLocalitatecod = memMembrugrupLocalitatecod;
   }
@@ -368,6 +389,26 @@ public class MemMembruGrup{
     this.memMembrugrupZonajudetcod = memMembrugrupZonajudetcod;
   }
 
+
+  public Long getMemMembrugrupZonauatid() 
+  {
+    return this.memMembrugrupZonauatid;
+  }
+
+  public void setMemMembrugrupZonauatid(Long memMembrugrupZonauatid) 
+  {
+    this.memMembrugrupZonauatid = memMembrugrupZonauatid;
+  }
+
+  public String getMemMembrugrupZonauatcod() 
+  {
+    return this.memMembrugrupZonauatcod;
+  }
+
+  public void setMemMembrugrupZonauatcod(String memMembrugrupZonauatcod) 
+  {
+    this.memMembrugrupZonauatcod = memMembrugrupZonauatcod;
+  }
 
 
   public Long getMemMembrugrupZonalocalitateid() 

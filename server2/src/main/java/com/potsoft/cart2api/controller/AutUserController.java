@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 import com.potsoft.cart2api.security.UserDetailsImpl;
 import com.potsoft.cart2api.service.AutUserService;
+import com.potsoft.cart2api.service.MemService;
 //import com.potsoft.cart2api.exception.AppException;
 //import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
@@ -61,6 +62,9 @@ public class AutUserController {
 	@Autowired
 	private AutUserService autUserService;
 	
+	@Autowired
+	private MemService memService;
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -134,7 +138,7 @@ public class AutUserController {
 	@CrossOrigin(origins = "*")
 	@PostMapping("/validate_registration")
 	@Transactional(rollbackFor = { SQLException.class })
-	public ResponseEntity<ValidateRegistrationResponse> registerUser(
+	public ResponseEntity<ValidateRegistrationResponse> validateRegistration(
 		                                               @Valid @RequestBody ValidateRegistrationRequest validateRegistrationRequest,
 		                                               @CurrentUser UserDetails currentUser) 
     {
@@ -143,9 +147,10 @@ public class AutUserController {
       ValidateRegistrationResponse validateRegistrationResponse = autUserService.valideazaInregistrareUser(
 		                                                                                crtuser.getId(),
 		                                                                                validateRegistrationRequest);
-	  if (validateRegistrationResponse.getCodValidareAcceptat() == "yes")
+	  if (validateRegistrationResponse.getCodValidareAcceptat() == "y")
 	  {
-		
+		autUserService.changeAutUserRol(crtuser.getId(), "SIMPATPEND", "SIMPATIZ");
+		memService.membru_Creare(crtuser.getId(), "SIMPATIZ");
 	  }
 	  //---
 	  return ResponseEntity.ok(validateRegistrationResponse);

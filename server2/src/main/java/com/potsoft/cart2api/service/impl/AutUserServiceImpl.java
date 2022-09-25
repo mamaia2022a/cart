@@ -19,6 +19,7 @@ import com.potsoft.cart2api.repository.aut.AutValidInregRepository;
 //import com.potsoft.cart2api.security.JwtTokenProvider;
 import com.potsoft.cart2api.service.AutUserService;
 
+//import java.util.Date;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -248,6 +249,15 @@ public class AutUserServiceImpl implements AutUserService
   }
 
 
+  // -----------------------------------------------------------
+  @Override
+  public AutUserRol changeAutUserRol(Long userId, String crtRolCod, String newRolCod)
+  {
+    ///Date utcDate = new Date();
+	autUserRolRepository.dezactiveazaAutUserRol(userId, crtRolCod);
+	AutUserRol autUserRol = creazaSiSalveazaAutUserRol(userId, newRolCod);
+	return autUserRol;
+  }
 
   // -----------------------------------------------------------
   @Override

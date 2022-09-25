@@ -67,14 +67,12 @@ public class MemGrup{
   @Column(name = "mem_grup_uatid")
   private Long memGrupUatid;
   
-  @Size(max = 10)
   @Column(name = "mem_grup_uatcod")
   private Long memGrupUatcod;
   
   @Column(name = "mem_grup_localitateid")
   private Long memGrupLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "mem_grup_localitatecod")
   private Long memGrupLocalitatecod;
   
@@ -103,7 +101,6 @@ public class MemGrup{
   @Column(name = "mem_grup_sectievotareid")
   private Long memGrupSectievotareid;
   
-  @Size(max = 9)
   @Column(name = "mem_grup_sectievotarenr")
   private Long memGrupSectievotarenr;
 
@@ -173,6 +170,8 @@ public class MemGrup{
     this.memGrupLocalitatecod     = memGrupLocalitatecod;
     this.memGrupZonajudetid       = memGrupZonajudetid;    
     this.memGrupZonajudetcod      = memGrupZonajudetcod;  
+    this.memGrupZonauatid         = memGrupZonauatid;    
+    this.memGrupZonauatcod        = memGrupZonauatcod;  
     this.memGrupZonalocalitateid  = memGrupZonalocalitateid;    
     this.memGrupZonalocalitatecod = memGrupZonalocalitatecod;  
     this.memGrupSectievotareid    = memGrupSectievotareid;    
@@ -344,6 +343,27 @@ public class MemGrup{
   }
 
 
+  public Long getMemGrupUatid() 
+  {
+    return this.memGrupUatid;
+  }
+
+  public void setMemGrupUatid(Long memGrupUatid) 
+  {
+    this.memGrupUatid = memGrupUatid;
+  }
+
+  public Long getMemGrupUatcod() 
+  {
+    return this.memGrupUatcod;
+  }
+
+  public void setMemGrupUatcod(Long memGrupUatcod) 
+  {
+    this.memGrupUatcod = memGrupUatcod;
+  }
+
+
 
   public Long getMemGrupLocalitateid() 
   {
@@ -385,6 +405,27 @@ public class MemGrup{
   public void setMemGrupZonajudetcod(String memGrupZonajudetcod) 
   {
     this.memGrupZonajudetcod = memGrupZonajudetcod;
+  }
+
+
+  public Long getMemGrupZonauatid() 
+  {
+    return this.memGrupZonauatid;
+  }
+
+  public void setMemGrupZonauatid(Long memGrupZonauatid) 
+  {
+    this.memGrupZonauatid = memGrupZonauatid;
+  }
+
+  public String getMemGrupZonauatcod() 
+  {
+    return this.memGrupZonauatcod;
+  }
+
+  public void setMemGrupZonauatcod(String memGrupZonauatcod) 
+  {
+    this.memGrupZonauatcod = memGrupZonauatcod;
   }
 
 

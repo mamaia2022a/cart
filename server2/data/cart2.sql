@@ -496,29 +496,29 @@ DROP TABLE IF EXISTS cart2.`aut_userinfo`;
 CREATE TABLE cart2.`aut_userinfo` (
   `aut_userinfo_id`	int NOT NULL AUTO_INCREMENT,
   `aut_userinfo_userid`  int NOT NULL,
-  `aut_userinfo_nume`	varchar(32),
-  `aut_userinfo_prenume`	varchar(32),
+  `aut_userinfo_nume`	varchar(32) not null,
+  `aut_userinfo_prenume`	varchar(32) not null,
   `aut_userinfo_telefon`	varchar(12) NOT NULL,
   `aut_userinfo_sex`	varchar(1),
   `aut_userinfo_email`	varchar(32),
   `aut_userinfo_datanasterii`	int(8),
-  `aut_userinfo_dom_zonataraid`	int,
-  `aut_userinfo_dom_zonataracod`	varchar(2),
-  `aut_userinfo_dom_judetid`	int,
-  `aut_userinfo_dom_judetcod`	varchar(2),
+  `aut_userinfo_dom_zonataraid`	int not null,
+  `aut_userinfo_dom_zonataracod`	varchar(2) not null,
+  `aut_userinfo_dom_judetid`	int not null,
+  `aut_userinfo_dom_judetcod`	varchar(2) not null,
   `aut_userinfo_dom_uatid`	  int not null,
   `aut_userinfo_dom_uatcod`	  int	not null,
-  `aut_userinfo_dom_localitateid`	int,
-  `aut_userinfo_dom_localitatecod`	int,
+  `aut_userinfo_dom_localitateid`	int not null,
+  `aut_userinfo_dom_localitatecod`	int not null,
   `aut_userinfo_dom_codpostal`	varchar(16),
-  `aut_userinfo_dom_adresa`	varchar(128),
+  `aut_userinfo_dom_adresa`	varchar(128) not null,
   `aut_userinfo_rez_dif_de_dom`	char(1),
   `aut_userinfo_rez_zonataraid`	int,
   `aut_userinfo_rez_zonataracod`	varchar(2),
   `aut_userinfo_rez_judetid`	int,
   `aut_userinfo_rez_judetcod`	varchar(2),
-  `aut_userinfo_rez_uatid`	  int not null,
-  `aut_userinfo_rez_uatcod`	  int	not null,
+  `aut_userinfo_rez_uatid`	  int,
+  `aut_userinfo_rez_uatcod`	  int,
   `aut_userinfo_rez_localitateid`	int,
   `aut_userinfo_rez_localitatecod`	int,
   `aut_userinfo_rez_codpostal`	varchar(16),
@@ -1179,8 +1179,8 @@ CREATE TABLE `mem_membru` (
   `mem_membru_id` int NOT NULL AUTO_INCREMENT,
   `mem_membru_codunic`	varchar(16),	
 
-  `mem_membrurol_userid` int	not null,
-  `mem_membrurol_usernume` varchar(20)	not null,
+  `mem_membru_userid` int	not null,
+  `mem_membru_usernume` varchar(20)	not null,
 
   `mem_membru_tipid`	int,
   `mem_membru_tipcod`	varchar(10),	
@@ -1433,11 +1433,15 @@ CREATE TABLE `mem_membrurol` (
   `mem_membrurol_codpostalid` int not null,  
   `mem_membrurol_codpostalcod` varchar(16)	not null, 
 
+  `mem_membrurol_pending_yn` varchar(1) NOT NULL,
+  `mem_membrurol_accepted_yn` varchar(1) NOT NULL,
+
   `mem_membrurol_activ_yn` varchar(1) NOT NULL,
   `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membrurol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrurol_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
 
 
 DROP TABLE IF EXISTS `mem_grup`;
@@ -1481,8 +1485,6 @@ CREATE TABLE `mem_grup` (
 
 
 
-
-
 DROP TABLE `mem_membrugrup`;
 CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_id`  int NOT NULL AUTO_INCREMENT,
@@ -1515,6 +1517,9 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_sectievotarenr` int not null, 
   `mem_membrugrup_codpostalid` int not null,  
   `mem_membrugrup_codpostalcod` varchar(16)	not null, 
+
+  `mem_membrugrup_pending_yn` varchar(1) NOT NULL,
+  `mem_membrugrup_accepted_yn` varchar(1) NOT NULL,
 
   `mem_membrugrup_activ_yn` varchar(1) NOT NULL,
   `mem_membrugrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

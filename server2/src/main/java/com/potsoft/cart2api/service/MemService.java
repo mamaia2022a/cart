@@ -2,8 +2,19 @@ package com.potsoft.cart2api.service;
 
 import com.potsoft.cart2api.model.aut.AutUser;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
-import com.potsoft.cart2api.model.aut.AutUserRol;
+//import com.potsoft.cart2api.model.aut.AutUserRol;
+import com.potsoft.cart2api.model.mem.MemAcoperireGeografica;
+import com.potsoft.cart2api.model.mem.MemGrup;
 import com.potsoft.cart2api.model.mem.MemMembru;
+import com.potsoft.cart2api.model.mem.MemMembruCI;
+import com.potsoft.cart2api.model.mem.MemMembruCotizatie;
+import com.potsoft.cart2api.model.mem.MemMembruGrup;
+import com.potsoft.cart2api.model.mem.MemMembruRol;
+import com.potsoft.cart2api.model.mem.MemMembruTip;
+import com.potsoft.cart2api.model.mem.MemSefGrup;
+import com.potsoft.cart2api.model.mem.MemTip;
+import com.potsoft.cart2api.model.mem.MemTipRol;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembriGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruAdresaRequest_Actualizare;
@@ -57,7 +68,7 @@ import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Vizualizare;
 
 public interface MemService {
 	
-
+  MembruResponse_Creare      membru_Creare     (Long userid, String rolCod);
   MembruResponse_Creare      membru_Creare     (Long userid, MembruRequest_Creare      membruRequestCreare);
   MembruResponse_Stergere    membru_Stergere   (Long userid, MembruRequest_Stergere    membruRequestStergere);
   MembruResponse_Vizualizare membru_Vizualizare(Long userid, MembruRequest_Vizualizare membruRequestVizualizare);
@@ -95,8 +106,29 @@ public interface MemService {
   MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare    grupRequestVizualizare);
 
 
-  MemMembru creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, AutUserRol autUserRol);
-  MemMembru creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, AutUserRol autUserRol);
+  MemMembru     creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
+  MemMembru     creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
+
+  MemMembruTip  creazaMemMembruTip(MemMembru memMembru, MemTip memTip);
+  MemMembruTip  creazaSiSalveazaMemMembruTip(MemMembru memMembru, MemTip memTip);
+
+  MemMembruRol  creazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, MemAcoperireGeografica acoperireGeografica);
+  MemMembruRol  creazaSiSalveazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, MemAcoperireGeografica acoperireGeografica);
+
+  MemSefGrup    creazaMemSefGrup(MemMembru memMembru);
+  MemSefGrup    creazaSiSalveazaMemSefGrup(MemMembru memMembru);
+
+  MemGrup       creazaMemGrup(MemSefGrup memSefGrup, GrupRequest_Creare grupRequestCreare);
+  MemGrup       creazaSiSalveazaMemGrup(MemSefGrup memSefGrup, GrupRequest_Creare grupRequestCreare);
+
+  MemMembruGrup creazaMemMembruGrup(MemMembru memMembru, MemGrup memGrup);
+  MemMembruGrup creazaSiSalveazaMemMembruGrup(MemMembru memMembru, MemGrup memGrup);
+
+  MemMembruCI   creazaMemMembruCI(MemMembru memMembru, MembruCIRequest_Creare membruCIRequestCreare);
+  MemMembruCI   creazaSiSalveazaMemMembruCI(MemMembru memMembru, MembruCIRequest_Creare membruCIRequestCreare);
+
+  MemMembruCotizatie  creazaMemMembruCotizatie(MemMembru memMembru, MembruCotizatieRequest_Creare membruCIRequestCreare);
+  MemMembruCotizatie  creazaSiSalveazaMemMembruCotizatie(MemMembru memMembru, MembruCotizatieRequest_Creare membruCIRequestCreare);
 
 }
 

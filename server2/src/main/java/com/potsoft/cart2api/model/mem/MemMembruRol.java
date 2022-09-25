@@ -77,18 +77,16 @@ public class MemMembruRol{
   @Column(name = "mem_membrurol_uatid")
   private Long memMembrurolUatid;
   
-  @Size(max = 10)
   @Column(name = "mem_membrurol_uatcod")
   private Long memMembrurolUatcod;
 
   @Column(name = "mem_membrurol_localitateid")
   private Long memMembrurolLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "mem_membrurol_localitatecod")
-  private String memMembrurolLocalitatecod;
+  private Long memMembrurolLocalitatecod;
 
-  @Column(name = "mem_membru_zonajudetid")
+  @Column(name = "mem_membrurol_zonajudetid")
   private Long memMembrurolZonajudetid;
   
   @Size(max = 2)
@@ -112,7 +110,6 @@ public class MemMembruRol{
   @Column(name = "mem_membrurol_sectievotareid")
   private Long memMembrurolSectievotareid;
   
-  @Size(max = 9)
   @Column(name = "mem_membrurol_sectievotarenr")
   private Long memMembrurolSectievotarenr;
 
@@ -153,7 +150,7 @@ public class MemMembruRol{
                        Long memMembruRolZonataraid, String memMembruRolZonataracod, 
                        Long memMembruRolJudetid, String memMembruRolJudetcod, 
                        Long memMembruRolUatid, Long memMembruRolUatcod, 
-                       Long memMembruRolLocalitateid, String memMembruRolLocalitatecod, 
+                       Long memMembruRolLocalitateid, Long memMembruRolLocalitatecod, 
                        Long memMembruRolZonajudetid, String memMembruRolZonajudetcod, 
                        Long memMembruRolZonauatid, String memMembruRolZonauatcod, 
                        Long memMembruRolZonalocalitateid, String memMembruRolZonalocalitatecod,  
@@ -189,6 +186,8 @@ public class MemMembruRol{
     this.memMembrurolLocalitatecod     = memMembruRolLocalitatecod;
     this.memMembrurolZonajudetid       = memMembruRolZonajudetid;    
     this.memMembrurolZonajudetcod      = memMembruRolZonajudetcod;  
+    this.memMembrurolZonauatid         = memMembruRolZonauatid;    
+    this.memMembrurolZonauatcod        = memMembruRolZonauatcod;  
     this.memMembrurolZonalocalitateid  = memMembruRolZonalocalitateid;    
     this.memMembrurolZonalocalitatecod = memMembruRolZonalocalitatecod;  
     this.memMembrurolSectievotareid    = memMembruRolSectievotareid;    
@@ -346,6 +345,27 @@ public class MemMembruRol{
   }
 
 
+  public Long getMemMembrurolUatid() 
+  {
+    return this.memMembrurolUatid;
+  }
+
+  public void setMemMembrurolUatid(Long memMembrurolUatid) 
+  {
+    this.memMembrurolUatid = memMembrurolUatid;
+  }
+
+  public Long getMemMembrurolUatcod() 
+  {
+    return this.memMembrurolUatcod;
+  }
+
+  public void setMemMembrurolUatcod(Long memMembrurolUatcod) 
+  {
+    this.memMembrurolUatcod = memMembrurolUatcod;
+  }
+
+
 
   public Long getMemMembrurolLocalitateid() 
   {
@@ -357,12 +377,12 @@ public class MemMembruRol{
     this.memMembrurolLocalitateid = memMembrurolLocalitateid;
   }
 
-  public String getMemMembrurolLocalitatecod() 
+  public Long getMemMembrurolLocalitatecod() 
   {
     return this.memMembrurolLocalitatecod;
   }
 
-  public void setMemMembrurolLocalitatecod(String memMembrurolLocalitatecod) 
+  public void setMemMembrurolLocalitatecod(Long memMembrurolLocalitatecod) 
   {
     this.memMembrurolLocalitatecod = memMembrurolLocalitatecod;
   }
@@ -389,6 +409,26 @@ public class MemMembruRol{
     this.memMembrurolZonajudetcod = memMembrurolZonajudetcod;
   }
 
+
+  public Long getMemMembrurolZonauatid() 
+  {
+    return this.memMembrurolZonauatid;
+  }
+
+  public void setMemMembrurolZonauatid(Long memMembrurolZonauatid) 
+  {
+    this.memMembrurolZonauatid = memMembrurolZonauatid;
+  }
+
+  public String getMemMembrurolZonauatcod() 
+  {
+    return this.memMembrurolZonauatcod;
+  }
+
+  public void setMemMembrurolZonauatcod(String memMembrurolZonauatcod) 
+  {
+    this.memMembrurolZonauatcod = memMembrurolZonauatcod;
+  }
 
 
   public Long getMemMembrurolZonalocalitateid() 

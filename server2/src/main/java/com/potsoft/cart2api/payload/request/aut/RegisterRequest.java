@@ -216,6 +216,17 @@ public class RegisterRequest
 	  this.domJudetid = domJudetid;
 	}
   
+	public String getDomJudetcod() 
+	{
+	  return this.domJudetcod;
+	}
+  
+	public void setDomJudetcod(String domJudetcod) 
+	{
+	  this.domJudetcod = domJudetcod;
+	}
+
+
 
 	public Long getDomUatid() 
 	{
@@ -233,7 +244,7 @@ public class RegisterRequest
 	  return this.domUatcod;
 	}
   
-	public void setDomJudetcod(Long domUatcod) 
+	public void setDomUatcod(Long domUatcod) 
 	{
 	  this.domUatcod = domUatcod;
 	}

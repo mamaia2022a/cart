@@ -70,14 +70,13 @@ public class AutUserInfo {
   @Column(name = "aut_userinfo_dom_uatid")
   private Long autUserInfoDomUatid;
   
-  @Size(max = 10)
+
   @Column(name = "aut_userinfo_dom_uatcod")
   private Long autUserInfoDomUatcod;
 
   @Column(name = "aut_userinfo_dom_localitateid")
   private Long autUserInfoDomLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "aut_userinfo_dom_localitatecod")
   private Long autUserInfoDomLocalitatecod;
   
@@ -110,14 +109,12 @@ public class AutUserInfo {
   @Column(name = "aut_userinfo_rez_uatid")
   private Long autUserInfoRezUatid;
   
-  @Size(max = 10)
   @Column(name = "aut_userinfo_rez_uatcod")
   private Long autUserInfoRezUatcod;
 
   @Column(name = "aut_userinfo_rez_localitateid")
   private Long autUserInfoRezLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "aut_userinfo_rez_localitatecod")
   private Long autUserInfoRezLocalitatecod;
   

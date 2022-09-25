@@ -1,0 +1,33 @@
+{
+	"username": "johndoe1",
+	"password": "turda",
+    "nume": "doe1",
+    "prenume": "joe",
+    "telefon": "823723130",
+    "sex": "m",
+    "datanasterii": 19660801,
+    "email": "johndoe1@gmail.com",
+    "domZonataraid": "1",
+    "domZonataracod": "TR",
+    "domJudetid": "1",
+    "domJudetcod": "AB",
+    "domUatid": "1",
+    "domUatcod": "22",
+    "domLocalitateid": "322122",
+    "domLocalitatecod": "322122",
+    "domCodpostal": "344555",
+    "domAdresa": "Calea Moților nr. 33 Bl V5 ap. 3",
+    "rezdifdedom": "n",
+    "rezZonataraid": null,
+    "rezZonataracod": null,
+    "rezJudetid": null,
+    "rezJudetcod": null,
+    "rezUatid": null,
+    "rezUatcod": null,
+    "rezLocalitateid": null,
+    "rezLocalitatecod": null,
+    "rezCodpostal": null,
+    "rezAdresa": null
+}
+
+

@@ -68,16 +68,14 @@ public class MemMembruTip{
   @Column(name = "mem_membrutip_uatid")
   private Long memMembrutipUatid;
   
-  @Size(max = 10)
-  @Column(name = "mem_membru_uattipcod")
+  @Column(name = "mem_membrutip_uatcod")
   private Long memMembrutipUatcod;
 
   @Column(name = "mem_membrutip_localitateid")
   private Long memMembrutipLocalitateid;
   
-  @Size(max = 10)
   @Column(name = "mem_membrutip_localitatecod")
-  private String memMembrutipLocalitatecod;
+  private Long memMembrutipLocalitatecod;
   
 
   @Column(name = "mem_membrutip_zonajudetid")
@@ -104,7 +102,6 @@ public class MemMembruTip{
   @Column(name = "mem_membrutip_sectievotareid")
   private Long memMembrutipSectievotareid;
   
-  @Size(max = 9)
   @Column(name = "mem_membrutip_sectievotarenr")
   private Long memMembrutipSectievotarenr;
 
@@ -144,7 +141,7 @@ public class MemMembruTip{
                        Long memMembruTipZonataraid, String memMembruTipZonataracod, 
                        Long memMembruTipJudetid, String memMembruTipJudetcod, 
                        Long memMembruTipUatid, Long memMembruTipUatcod, 
-                       Long memMembruTipLocalitateid, String memMembruTipLocalitatecod, 
+                       Long memMembruTipLocalitateid, Long memMembruTipLocalitatecod, 
                        Long memMembruTipZonajudetid, String memMembruTipZonajudetcod, 
                        Long memMembruTipZonauatid, String memMembruTipZonauatcod, 
                        Long memMembruTipZonalocalitateid, String memMembruTipZonalocalitatecod,  
@@ -177,6 +174,8 @@ public class MemMembruTip{
     this.memMembrutipLocalitatecod     = memMembruTipLocalitatecod;
     this.memMembrutipZonajudetid       = memMembruTipZonajudetid;    
     this.memMembrutipZonajudetcod      = memMembruTipZonajudetcod;  
+    this.memMembrutipZonauatid         = memMembruTipZonauatid;    
+    this.memMembrutipZonauatcod        = memMembruTipZonauatcod;  
     this.memMembrutipZonalocalitateid  = memMembruTipZonalocalitateid;    
     this.memMembrutipZonalocalitatecod = memMembruTipZonalocalitatecod;  
     this.memMembrutipSectievotareid    = memMembruTipSectievotareid;    
@@ -313,6 +312,27 @@ public class MemMembruTip{
   }
 
 
+  public Long getMemMembrutipUatid() 
+  {
+    return this.memMembrutipUatid;
+  }
+
+  public void setMemMembrutipUatid(Long memMembrutipUatid) 
+  {
+    this.memMembrutipUatid = memMembrutipUatid;
+  }
+
+  public Long getMemMembrutipUatcod() 
+  {
+    return this.memMembrutipUatcod;
+  }
+
+  public void setMemMembrutipUatcod(Long memMembrutipUatcod) 
+  {
+    this.memMembrutipUatcod = memMembrutipUatcod;
+  }
+
+
 
   public Long getMemMembrutipLocalitateid() 
   {
@@ -324,12 +344,12 @@ public class MemMembruTip{
     this.memMembrutipLocalitateid = memMembrutipLocalitateid;
   }
 
-  public String getMemMembrutipLocalitatecod() 
+  public Long getMemMembrutipLocalitatecod() 
   {
     return this.memMembrutipLocalitatecod;
   }
 
-  public void setMemMembrutipLocalitatecod(String memMembrutipLocalitatecod) 
+  public void setMemMembrutipLocalitatecod(Long memMembrutipLocalitatecod) 
   {
     this.memMembrutipLocalitatecod = memMembrutipLocalitatecod;
   }
@@ -354,6 +374,27 @@ public class MemMembruTip{
   public void setMemMembrutipZonajudetcod(String memMembrutipZonajudetcod) 
   {
     this.memMembrutipZonajudetcod = memMembrutipZonajudetcod;
+  }
+
+
+  public Long getMemMembrutipZonauatid() 
+  {
+    return this.memMembrutipZonauatid;
+  }
+
+  public void setMemMembrutipZonauatid(Long memMembrutipZonauatid) 
+  {
+    this.memMembrutipZonauatid = memMembrutipZonauatid;
+  }
+
+  public String getMemMembrutipZonauatcod() 
+  {
+    return this.memMembrutipZonauatcod;
+  }
+
+  public void setMemMembrutipZonauatcod(String memMembrutipZonauatcod) 
+  {
+    this.memMembrutipZonauatcod = memMembrutipZonauatcod;
   }
 
 

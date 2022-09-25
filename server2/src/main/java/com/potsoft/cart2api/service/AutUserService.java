@@ -29,6 +29,7 @@ public interface AutUserService
 
    AutUserRol creazaAutUserRol(Long userId, String rolCod);
    AutUserRol creazaSiSalveazaAutUserRol(Long userId, String rolCod);
+   AutUserRol changeAutUserRol(Long userId, String crtRolCod, String newRolCod);
 
    AutUserInfo creazaAutUserInfo(Long userId, RegisterRequest registerRequest);
    AutUserInfo creazaSiSalveazaAutUserInfo(Long userId, RegisterRequest registerRequest);
