@@ -568,7 +568,7 @@ public class MemMembru {
     return this.memMembruStartdt;
   }
 
-  public void setMemMebruStartdt(String memMembruStartdt) 
+  public void setMemMembruStartdt(String memMembruStartdt) 
   {
     this.memMembruStartdt = memMembruStartdt;
   }

@@ -514,7 +514,7 @@ public class MemMembruRol{
     return this.memMembrurolStartdt;
   }
 
-  public void setMemMebrutipStartdt(String memMembrurolStartdt) 
+  public void setMemMembrurolStartdt(String memMembrurolStartdt) 
   {
     this.memMembrurolStartdt = memMembrurolStartdt;
   }

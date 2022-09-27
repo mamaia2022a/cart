@@ -561,6 +561,45 @@ CREATE TABLE `adm_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+DROP TABLE IF EXISTS `gen_acoperiregeografica`;
+CREATE TABLE `gen_acoperiregeografica` (
+  `gen_acoperiregeografica_id` int NOT NULL AUTO_INCREMENT,	
+  `gen_acoperiregeografica_cod` varchar(16) not null,	
+  `gen_acoperiregeografica_nume` varchar(64) not null,
+  `gen_acoperiregeografica_activ_yn` varchar(1) not null,
+  `gen_acoperiregeografica_rol_yn` varchar(1) not null,
+  `gen_acoperiregeografica_activitate_yn` varchar(1) not null,  
+  `gen_acoperiregeografica_notificari_yn` varchar(1) not null,
+  `gen_acoperiregeografica_displaynume` varchar(128) not null,
+  UNIQUE KEY `gen_acoperiregeografica_cod_unique`  (`gen_acoperiregeografica_cod`),
+  UNIQUE KEY `gen_acoperiregeografica_nume_unique` (`gen_acoperiregeografica_nume`),
+  PRIMARY KEY (`gen_acoperiregeografica_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+INSERT INTO cart2.gen_acoperiregeografica
+                      (`gen_acoperiregeografica_id`,`gen_acoperiregeografica_cod`, `gen_acoperiregeografica_nume`, 
+                       `gen_acoperiregeografica_activ_yn`, `gen_acoperiregeografica_displaynume`,
+                       `gen_acoperiregeografica_rol_yn`, `gen_acoperiregeografica_activitate_yn`, 
+                       `gen_acoperiregeografica_notificari_yn`) 
+VALUES  
+  (1,  'TOATE',        'acoperire la toate nivelele',                       'y', 'Acoperire la toate nivelele: Naționale, Județene și Locale', 'y', 'y', 'y'),
+  (2,  'NIVROMANIA',   'acoperire la nivel de țară și diasporă',            'y', 'Acoperire la nivel întreaga Țară și Diasporă', 'y', 'y', 'y'),
+  (3,  'NIVINTERNTARA','acoperire la nivel de țară',                        'y', 'Acoperire pe întreg Interiorul Țării', 'y', 'y', 'y'),
+  (4,  'NIVDIASPORA',  'acoperire la nivel de diaspora',         'y', 'Acoperire pe întreaga Diaspora', 'y', 'y', 'y'),
+  (5,  'NIVJUDET',     'acoperire la nivel de județ',                       'y', 'Acoperire la nivel de Județ', 'y', 'y', 'y'),
+  (6,  'NIVTARADIASP', 'acoperire pe o țară din diaspora',                  'y', 'Acoperire pe o Țară din Diaspora', 'y', 'y', 'y'),
+  (7,  'NIVUAT',       'acoperire la nivel de unitate administrativ teritoriala','y','Acoperire la nivel Unitate Administrativ Teritoriala', 'y', 'y', 'y'),  
+  (8,  'NIVLOCALIT',   'acoperire la nivel de localitate',                  'y', 'Acoperire la nivel de Localitate', 'y', 'y', 'y'),
+  (9,  'NIVZONAJUDET', 'acoperire la nivel de zona județ',                  'n', 'Acoperire pe o Zonă de Județ', 'n', 'n', 'n'),
+  (10, 'NIVZONAUAT',   'acoperire la nivel de zonă de unitate administrativ teritoriala', 'n', 'Acoperire pe o Zonă a unei Unități Administrativ Teritoriale', 'n', 'n', 'n'),
+  (11, 'NIVZONALOC',   'acoperire la nivel de zonă a unei localități',      'n', 'Acoperire pe o Zonă a unei Localități', 'n', 'n', 'n'),
+  (12, 'NIVSECTVOT',   'acoperire pe zona definită de o secție de votare',  'n', 'Acoperire pe Zona definită de o Secție de Votare', 'n', 'n', 'n'),
+  (13, 'NIVCODPOST',   'acoperire pe zona definită de un cod postal',       'n', 'Acoperire pe Zona definită de un Cod Postal', 'n', 'n', 'n'),
+  (14, 'NIVPERSOANA',  'acoperire pentru o singura persoana',               'n', 'Acoperire pentru o singura persoana', 'n', 'n', 'y'
+  );
+
 
 CREATE TABLE `geo_zonatara` (
   `geo_zonatara_id`	int NOT NULL AUTO_INCREMENT,
@@ -1361,39 +1400,6 @@ CREATE TABLE `mem_membrutip` (
 
 
 
-DROP TABLE IF EXISTS `mem_acoperiregeografica`;
-CREATE TABLE `mem_acoperiregeografica` (
-  `mem_acoperiregeografica_id` int NOT NULL AUTO_INCREMENT,	
-  `mem_acoperiregeografica_cod` varchar(16) not null,	
-  `mem_acoperiregeografica_nume` varchar(64) not null,
-  `mem_acoperiregeografica_activ_yn` varchar(1) not null,
-  `mem_acoperiregeografica_displaynume` varchar(128) not null,
-  UNIQUE KEY `mem_acoperiregeografica_cod_unique`  (`mem_acoperiregeografica_cod`),
-  UNIQUE KEY `mem_acoperiregeografica_nume_unique` (`mem_acoperiregeografica_nume`),
-  PRIMARY KEY (`mem_acoperiregeografica_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
-
-
-TRUNCATE TABLE cart2.mem_acoperiregeografica;
-INSERT INTO cart2.mem_acoperiregeografica
-                      (`mem_acoperiregeografica_id`,`mem_acoperiregeografica_cod`, `mem_acoperiregeografica_nume`, 
-                       `mem_acoperiregeografica_activ_yn`, `mem_acoperiregeografica_displaynume`) 
-VALUES  
-  (1,  'toate',        'acoperire la toate nivelele',                       'y', 'Acoperire la toate nivelele: Naționale, Județene și Locale'),
-  (2,  'nivromania',   'acoperire la nivel de țară și diasporă',            'y', 'Acoperire la nivel întreaga Țară și Diasporă'),
-  (3,  'nivinterntara','acoperire la nivel de țară',                        'y', 'Acoperire pe întreg Interiorul Țării'),
-  (4,  'nivdiaspora',  'acoperire la nivel de diaspora',                    'y', 'Acoperire pe întreaga Diaspora'),
-  (5,  'nivjudet',     'acoperire la nivel de județ',                       'y', 'Acoperire la nivel de Județ'),
-  (6,  'nivtaradiasp', 'acoperire pe o țară din diaspora',                  'y', 'Acoperire pe o Țară din Diaspora'),
-  (7,  'nivuat',       'acoperire la nivel de unitate administrativ teritoriala','y','Acoperire la nivel Unitate Administrativ Teritoriala'),  
-  (8,  'nivlocalit',   'acoperire la nivel de localitate',                  'y', 'Acoperire la nivel de Localitate'),
-  (9,  'nivzonajudet', 'acoperire la nivel de zona județ',                  'n', 'Acoperire pe o Zonă de Județ'),
-  (10, 'nivzonauat',   'acoperire la nivel de zonă de unitate administrativ teritoriala', 'n', 'Acoperire pe o Zonă a unei Unități Administrativ Teritoriale'),
-  (11, 'nivzonaloc',   'acoperire la nivel de zonă a unei localități',      'n', 'Acoperire pe o Zonă a unei Localități'),
-  (12, 'nivsectvot',   'acoperire pe zona definită de o secție de votare',  'n', 'Acoperire pe Zona definită de o Secție de Votare'),
-  (13, 'nivcodpost',   'acoperire pe zona definită de un cod postal',       'n', 'Acoperire pe Zona definită de un Cod Postal'
-  );
 
 
 DROP TABLE IF EXISTS `mem_recomandatde`;
@@ -1588,3 +1594,186 @@ CREATE TABLE `mem_sefgrup` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
+
+
+
+DROP TABLE `mes_tipmesaj`;
+CREATE TABLE `mes_tipmesaj` (
+  `mes_tipmesaj_id` int NOT NULL AUTO_INCREMENT,
+  `mes_tipmesaj_cod` varchar(10)	not null,
+  `mes_tipmesaj_relogin_yn` varchar(1)	not null,
+  `mes_tipmesaj_nume` varchar(128)	not null,	
+  `mes_tipmesaj_displaynume` varchar(128)	not null,
+  PRIMARY KEY (`mes_tipmesaj_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+TRUNCATE TABLE mes_tipmesaj;
+INSERT INTO mes_tipmesaj ( `mes_tipmesaj_id`, `mes_tipmesaj_cod`, `mes_tipmesaj_relogin_yn`, 
+                           `mes_tipmesaj_nume`, `mes_tipmesaj_displaynume` ) 
+        VALUES  
+        (1, 'CERAFLGRUP', 'n',   'Cerere afiliere la Grup',    'Cerere afiliere la Grup'),
+        (2, 'ACCAFLGRUP', 'y',   'Acceptare afiliere la Grup', 'Acceptare afiliere la Grup'),
+        (3, 'REFAFLGRUP', 'n',   'Refuz afiliere la Grup',     'Refuz afiliere la Grup');
+
+
+-- not used yet
+DROP TABLE `mes_tipfrecventa`;
+CREATE TABLE `mes_tipfrecventa` (
+  `mes_tipfrecventa_id` int NOT NULL AUTO_INCREMENT,
+  `mes_tipfrecventa_cod` varchar(9)	not null,
+  `mes_tipfrecventa_nume` varchar(32)	not null,
+  PRIMARY KEY (`mes_tipfrecventa_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+-- not used yet
+DROP TABLE `mes_frecvtipmesaj`;
+CREATE TABLE `mes_frecvtipmesaj` (
+  `mes_frecvtipmesaj_id` int NOT NULL AUTO_INCREMENT,
+  `mes_frecvtipmesaj_tipfrecvid` int	not null,
+  `mes_frecvtipmesaj_tipfrecvcod` varchar(10)	not null,	
+  `mes_frecvtipmesaj_tipmesid` int	not null,
+  `mes_frecvtipmesaj_tipmescod` varchar(10)	not null,	
+  PRIMARY KEY (`mes_frecvtipmesaj_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+DROP TABLE `mes_expeditor`;
+CREATE TABLE `mes_expeditor` (
+  `mes_expeditor_id` int NOT NULL AUTO_INCREMENT,
+
+  `mes_expeditor_userid` int not null,
+  `mes_expeditor_username` varchar(20)  null,
+  `mes_expeditor_rolid` int not null,
+  `mes_expeditor_rolcod` varchar(10) 	not null,
+
+  `mes_expeditor_adrrezidenta_yn`	char(1), 
+  `mes_expeditor_zonataraid` int	not null, 	
+  `mes_expeditor_zonataracod` varchar(2) not null, 
+  `mes_expeditor_judetid` int	not null, 
+  `mes_expeditor_judetcod` varchar(2) not null, 
+  `mes_expeditor_uatid`	     int not null,
+  `mes_expeditor_uatcod`	   int	not null,
+  `mes_expeditor_localitateid` int not null, 
+  `mes_expeditor_localitatecod` int	not null, 
+  `mes_expeditor_zonajudetid` int	not null, 
+  `mes_expeditor_zonajudetcod` varchar(9) not null, 
+  `mes_expeditor_zonauatid` int not null, 
+  `mes_expeditor_zonauatcod` varchar(9) not null, 
+  `mes_expeditor_zonalocalitateid` int not null, 
+  `mes_expeditor_zonalocalitatecod` varchar(9) not null, 
+  `mes_expeditor_sectievotareid` int not null, 
+  `mes_expeditor_sectievotarenr` int not null, 
+  `mes_expeditor_codpostalid` int not null,  
+  `mes_expeditor_codpostalcod` varchar(16)	not null, 
+
+  `mes_expeditor_activ_yn` varchar(1) NOT NULL,
+  `mes_expeditor_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mes_expeditor_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mes_expeditor_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+DROP TABLE `mes_destinatar`;
+CREATE TABLE `mes_destinatar` (
+  `mes_destinatar_id` int NOT NULL AUTO_INCREMENT,
+  
+  `mes_destinatar_userid` int not null,
+  `mes_destinatar_username` int not null,
+  `mes_destinatar_rolid` int not null,
+  `mes_destinatar_rolcod` int	not null,
+
+  `mes_destinatar_adrrezidenta_yn`	char(1), 
+  `mes_destinatar_zonataraid` int	not null, 	
+  `mes_destinatar_zonataracod` varchar(2) not null, 
+  `mes_destinatar_judetid` int	not null, 
+  `mes_destinatar_judetcod` varchar(2) not null, 
+  `mes_destinatar_uatid`	     int not null,
+  `mes_destinatar_uatcod`	   int	not null,
+  `mes_destinatar_localitateid` int not null, 
+  `mes_destinatar_localitatecod` int	not null, 
+  `mes_destinatar_zonajudetid` int	not null, 
+  `mes_destinatar_zonajudetcod` varchar(9) not null, 
+  `mes_destinatar_zonauatid` int not null, 
+  `mes_destinatar_zonauatcod` varchar(9) not null, 
+  `mes_destinatar_zonalocalitateid` int not null, 
+  `mes_destinatar_zonalocalitatecod` varchar(9) not null, 
+  `mes_destinatar_sectievotareid` int not null, 
+  `mes_destinatar_sectievotarenr` int not null, 
+  `mes_destinatar_codpostalid` int not null,  
+  `mes_destinatar_codpostalcod` varchar(16)	not null, 
+
+  `mes_destinatar_activ_yn` varchar(1) NOT NULL,
+  `mes_destinatar_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mes_destinatar_enddt` datetime DEFAULT NULL,
+  PRIMARY KEY (`mes_destinatar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+DROP TABLE `mes_mesaj`;
+CREATE TABLE `mes_mesaj` (
+  `mes_mesaj_id` int NOT NULL AUTO_INCREMENT,
+  `mes_mesaj_tipmesajid` int null,
+  `mes_mesaj_tipmesajcod` varchar(10)	not null,
+
+  `mes_mesaj_relogin_yn` varchar(1)	not null,
+
+  `mes_mesaj_expid` int not null null,
+  `mes_mesaj_expuserid` int not null,
+  `mes_mesaj_expusername` int not null,
+  `mes_mesaj_exprolid` int not null,
+  `mes_mesaj_exprolcod` int	not null,
+
+  `mes_mesaj_acopgeoid` int not null,
+  `mes_mesaj_acopgeocod` varchar(16)	not null,
+
+  `mes_mesaj_zonataraid` int	not null, 	
+  `mes_mesaj_zonataracod` varchar(2) not null, 
+  `mes_mesaj_judetid` int	not null, 
+  `mes_mesaj_judetcod` varchar(2) not null, 
+  `mes_mesaj_uatid`	     int not null,
+  `mes_mesaj_uatcod`	   int	not null,
+  `mes_mesaj_localitateid` int not null, 
+  `mes_mesaj_localitatecod` int	not null, 
+  `mes_mesaj_zonauatid` int not null, 
+  `mes_mesaj_zonauatcod` varchar(9) not null, 
+  `mes_mesaj_zonajudetid` int	not null, 
+  `mes_mesaj_zonajudetcod` varchar(9) not null, 
+  `mes_mesaj_zonalocalitateid` int not null, 
+  `mes_mesaj_zonalocalitatecod` varchar(9) not null, 
+  `mes_mesaj_sectievotareid` int not null, 
+  `mes_mesaj_sectievotarenr` int not null, 
+  `mes_mesaj_codpostalid` int not null,  
+  `mes_mesaj_codpostalcod` varchar(16)	not null, 
+
+  `mes_mesaj_an` int null,
+  `mes_mesaj_luna` int null,
+  `mes_mesaj_zi` int null,
+  `mes_mesaj_datagenerarii` datetime not null,	
+  
+  `mes_mesaj_text` varchar(1024)	null,	
+  PRIMARY KEY (`mes_mesaj_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+DROP TABLE `mes_destinmesaj`;
+CREATE TABLE `mes_destinmesaj` (
+  `mes_destinmesaj_id` int NOT NULL AUTO_INCREMENT,
+  `mes_destinmesaj_mesajid` datetime not null,
+
+  `mes_destinmesaj_destid` int not null null,
+  `mes_destinmesaj_destuserid` int not null,
+  `mes_destinmesaj_destusername` int not null,
+  `mes_destinmesaj_destrolid` int not null,
+  `mes_destinmesaj_destrolcod` int	not null,
+  
+  `mes_destinmesaj_primit_yn` varchar(1) not null,
+  
+  `mes_destinmesaj_an` int null,
+  `mes_destinmesaj_luna` int null,
+  `mes_destinmesaj_zi` int null,
+  `mes_destinmesaj_dataprimirii` datetime	not null,	
+  PRIMARY KEY (`mes_destinmesaj_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;

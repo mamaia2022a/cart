@@ -2,8 +2,8 @@ package com.potsoft.cart2api.service;
 
 import com.potsoft.cart2api.model.aut.AutUser;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
+import com.potsoft.cart2api.model.gen.GenAcoperireGeografica;
 //import com.potsoft.cart2api.model.aut.AutUserRol;
-import com.potsoft.cart2api.model.mem.MemAcoperireGeografica;
 import com.potsoft.cart2api.model.mem.MemGrup;
 import com.potsoft.cart2api.model.mem.MemMembru;
 import com.potsoft.cart2api.model.mem.MemMembruCI;
@@ -135,8 +135,8 @@ public interface MemService {
   MemMembruTip  creazaMemMembruTip(MemMembru memMembru, MemTip memTip);
   MemMembruTip  creazaSiSalveazaMemMembruTip(MemMembru memMembru, MemTip memTip);
 
-  MemMembruRol  creazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, MemAcoperireGeografica acoperireGeografica);
-  MemMembruRol  creazaSiSalveazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, MemAcoperireGeografica acoperireGeografica);
+  MemMembruRol  creazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, GenAcoperireGeografica acoperireGeografica);
+  MemMembruRol  creazaSiSalveazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, GenAcoperireGeografica acoperireGeografica);
 
   MemSefGrup    creazaMemSefGrup(MemMembru memMembru);
   MemSefGrup    creazaSiSalveazaMemSefGrup(MemMembru memMembru);

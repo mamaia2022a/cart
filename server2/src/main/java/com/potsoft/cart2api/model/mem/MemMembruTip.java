@@ -482,7 +482,7 @@ public class MemMembruTip{
     return this.memMembrutipStartdt;
   }
 
-  public void setMemMebrutipStartdt(String memMembrutipStartdt) 
+  public void setMemMembrutipStartdt(String memMembrutipStartdt) 
   {
     this.memMembrutipStartdt = memMembrutipStartdt;
   }

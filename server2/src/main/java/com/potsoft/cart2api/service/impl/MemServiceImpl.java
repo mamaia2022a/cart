@@ -4,7 +4,7 @@ import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
 //import com.potsoft.cart2api.model.aut.AutUserRol;
-import com.potsoft.cart2api.model.mem.MemAcoperireGeografica;
+import com.potsoft.cart2api.model.gen.GenAcoperireGeografica;
 import com.potsoft.cart2api.model.mem.MemGrup;
 import com.potsoft.cart2api.model.mem.MemMembru;
 import com.potsoft.cart2api.model.mem.MemMembruCI;
@@ -79,7 +79,7 @@ import com.potsoft.cart2api.repository.mem.MemMembruRepository;
 import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
 //import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
-import com.potsoft.cart2api.repository.mem.MemAcoperireGeograficaRepository;
+import com.potsoft.cart2api.repository.gen.GenAcoperireGeograficaRepository;
 import com.potsoft.cart2api.repository.mem.MemGrupRepository;
 import com.potsoft.cart2api.repository.mem.MemMembruCIRepository;
 import com.potsoft.cart2api.repository.mem.MemMembruCotizatieRepository;
@@ -123,7 +123,7 @@ public class MemServiceImpl implements MemService
 	private MemTipRolRepository memTipRolRepository;
 
 	@Autowired
-	private MemAcoperireGeograficaRepository memAcoperireGeograficaRepository;
+	private GenAcoperireGeograficaRepository genAcoperireGeograficaRepository;
 
 	@Autowired
 	private MemMembruRepository memMembruRepository;
@@ -163,8 +163,9 @@ public class MemServiceImpl implements MemService
 	  //---
 	  creazaSiSalveazaMemMembruTip(newMemMembru, memTip);
 	  //---
-	  MemAcoperireGeografica newMemAcoperireGeografica = 
-	                        memAcoperireGeograficaRepository.loadByMemAcoperiregeograficaCod("toate");
+	  GenAcoperireGeografica newMemAcoperireGeografica = 
+	                        genAcoperireGeograficaRepository.loadByGenAcoperiregeograficaCod(
+								                                                 "TOATE");
 
 	  //---
 	  MemTipRol memTipRol = memTipRolRepository.loadByMemTiprolCod(rolCod);
@@ -335,11 +336,11 @@ public class MemServiceImpl implements MemService
 		//--
 		//MemTipRol memCrtTipRol = memTipRolRepository.loadByMemTiprolCod(crtMemTiprolCod);
 		MemTipRol memNewTipRol = memTipRolRepository.loadByMemTiprolCod(newMemTiprolCod);
-		MemAcoperireGeografica newMemAcoperireGeografica = 
-		                memAcoperireGeograficaRepository.loadByMemAcoperiregeograficaCod("toate");
+		GenAcoperireGeografica newGenAcoperireGeografica = 
+		                genAcoperireGeograficaRepository.loadByGenAcoperiregeograficaCod("TOATE");
 
         memMembruRolRepository.dezactiveazaMemMembruRol(userid, crtMemTiprolCod);
-		creazaSiSalveazaMemMembruRol(memMembru, memNewTipRol, newMemAcoperireGeografica);
+		creazaSiSalveazaMemMembruRol(memMembru, memNewTipRol, newGenAcoperireGeografica);
 		return resp;
 	  }
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu se poate schimba tipul membrului de la : "
@@ -366,9 +367,34 @@ public class MemServiceImpl implements MemService
 	public MembruGrupResponse_CerereAfiliere membruGrup_CerereAfiliere(Long userid, 
                                              MembruGrupRequest_CerereAfiliere  membruGrupRequestCerereAfiliere)
 	{
+	  //String grupCodUnic = membruGrupRequestCerereAfiliere.getGrupcodunic();
+	  MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
+	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
+	  String   crtMemTiprolCod = crtMemTipCod;
+	  //String   newMemTipCod = null;
+	  //String   newMemTiprolCod = null;
 	  MembruGrupResponse_CerereAfiliere resp = new MembruGrupResponse_CerereAfiliere();	
-	  return resp;
+	  //--  
+	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
+	      (crtMemTipCod == "MEMACTNFL") || 
+		  (crtMemTipCod == "MEMACTNFL") || 
+		  (crtMemTipCod == "MEMEXPNFL") 
+		 )		
+	  {
+		//if (crtMemTipCod == "MEMACTNFL")
+		  //newMemTipCod = "MEMACTAFL";
+		//--
+		schimbaretipMemMembru(userid, crtMemTipCod, "SEFGRUP", crtMemTiprolCod, "SEFGRUP");
+		//--
+		//MemSefGrup newMemSefGrup = creazaSiSalveazaMemSefGrup(memMembru);
+        //--
+		//MemGrup newMemGrup = creazaSiSalveazaMemGrup(newMemSefGrup, grupRequestCreare);
+		//resp.setMemgrup(newMemGrup);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa va afiliati un Grupul");
 	}
+
 
 	//used
 	@Override
@@ -451,7 +477,8 @@ public class MemServiceImpl implements MemService
 	  GrupResponse_Creare resp = new GrupResponse_Creare();	
 		//--  
 	  if ( //-- un membru activ sau experimentat neafiliat poate crea un grup
-		  (crtMemTipCod == "MEMACTNFL" && crtMemTipCod == "MEMEXPNFL") 
+		  (crtMemTipCod == "MEMACTNFL") ||
+		  (crtMemTipCod == "MEMEXPNFL") 
 		 )		
 	  {
 		//--
@@ -710,7 +737,7 @@ public class MemServiceImpl implements MemService
 	
 	// -----------------------------------------------------------
 	@Override
-	public MemMembruRol creazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, MemAcoperireGeografica acoperireGeografica)
+	public MemMembruRol creazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, GenAcoperireGeografica acoperireGeografica)
     {
 		Long memMembruRolId               = null;
 
@@ -723,8 +750,8 @@ public class MemServiceImpl implements MemService
 		Long memMembruRolTiprolid         = memTipRol.getMemTipRolId(); 
 		String memMembruRolTiprolcod      = memTipRol.getMemTipRolCod();
 		
-		Long memMembruRolAcopgeoid        = acoperireGeografica.getMemAcoperiregeograficaId();
-		String memMembruRolAcopgeocod     = acoperireGeografica.getMemAcoperiregeograficaCod();
+		Long memMembruRolAcopgeoid        = acoperireGeografica.getGenAcoperiregeograficaId();
+		String memMembruRolAcopgeocod     = acoperireGeografica.getGenAcoperiregeograficaCod();
 
 		String memMembruRolActivyn        = "y";
 		String memMembruRolStartdt        = null;
@@ -770,7 +797,7 @@ public class MemServiceImpl implements MemService
 	// -----------------------------------------------------------
 	@Override
 	public MemMembruRol creazaSiSalveazaMemMembruRol(MemMembru memMembru, MemTipRol memTipRol, 
-	                                                 MemAcoperireGeografica acoperireGeografica)
+	                                                 GenAcoperireGeografica acoperireGeografica)
 	{
 	  MemMembruRol newMemMembruRol = this.creazaMemMembruRol(memMembru, memTipRol, acoperireGeografica);
 	  memMembruRolRepository.save(newMemMembruRol);
