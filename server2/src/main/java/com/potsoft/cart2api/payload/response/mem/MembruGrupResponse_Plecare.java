@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 @Data
-public class MembruGrupResponse_Dezafiliere 
+public class MembruGrupResponse_Plecare 
 {
 	
 	private String membrucodunic;

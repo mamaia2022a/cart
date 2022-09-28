@@ -5,14 +5,16 @@ import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
-import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Dezafiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Excludere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
-import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Dezafiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Plecare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
 import com.potsoft.cart2api.security.CurrentUser;
@@ -137,18 +139,36 @@ public class MemController {
 
     //-----------------------------------------------------------
 	@CrossOrigin(origins = "*")
-	@PostMapping("/grup/membru/dezafiliere")
+	@PostMapping("/grup/membru/plecare")
 	@Transactional(rollbackFor = { SQLException.class })
-	public ResponseEntity<MembruGrupResponse_Dezafiliere> dezafiliereMembru(
-		                                    @Valid @RequestBody MembruGrupRequest_Dezafiliere memGrupRequestDezafiliere,
+	public ResponseEntity<MembruGrupResponse_Plecare> plecareMembru(
+		                                    @Valid @RequestBody MembruGrupRequest_Plecare memGrupRequestPlecare,
 		                                    @CurrentUser UserDetails currentUser) 
     {
 		UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
 		//--
-		MembruGrupResponse_Dezafiliere membruGrupResponseDezafiliere 
-									= memService.membruGrup_Dezafiliere(crtuser.getId(), memGrupRequestDezafiliere);
+		MembruGrupResponse_Plecare membruGrupResponsePlecare
+									= memService.membruGrup_Plecare(crtuser.getId(), memGrupRequestPlecare);
 		//---
-		return ResponseEntity.ok(membruGrupResponseDezafiliere);
+		return ResponseEntity.ok(membruGrupResponsePlecare);
 	}
+
+
+	//-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/membru/excludere")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<MembruGrupResponse_Excludere> excludereMembru(
+											@Valid @RequestBody MembruGrupRequest_Excludere memGrupRequestExcludere,
+											@CurrentUser UserDetails currentUser) 
+	{
+		UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+		//--
+		MembruGrupResponse_Excludere membruGrupResponseExcludere
+									= memService.membruGrup_Excludere(crtuser.getId(), memGrupRequestExcludere);
+		//---
+		return ResponseEntity.ok(membruGrupResponseExcludere);
+	}
+	
 
 }

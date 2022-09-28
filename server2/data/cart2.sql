@@ -1542,11 +1542,17 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_codpostalid` int not null,  
   `mem_membrugrup_codpostalcod` varchar(16)	not null, 
 
-  `mem_membrugrup_requested_yn` varchar(1) NULL,
-  `mem_membrugrup_accepted_yn` varchar(1) NULL,
+  `mem_membrugrup_cerere_yn`     varchar(1) NOT NULL,
+  `mem_membrugrup_cereredt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+  `mem_membrugrup_acceptare_yn` varchar(1) NULL,
+  `mem_membrugrup_acceptaredt` datetime NOT NULL,
+
+  `mem_membrugrup_plecare_yn` varchar(1) NULL,
+  `mem_membrugrup_excludere_yn` varchar(1) NULL,
 
   `mem_membrugrup_activ_yn` varchar(1) NOT NULL,
-  `mem_membrugrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mem_membrugrup_startdt` datetime NULL,
   `mem_membrugrup_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrugrup_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;

@@ -29,9 +29,11 @@ import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Activare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Creare;
-import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Dezafiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Excludere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruRequest_Creare;
@@ -59,9 +61,11 @@ import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Activare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Creare;
-import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Dezafiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Plecare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruResponse_Creare;
@@ -90,15 +94,13 @@ import com.potsoft.cart2api.repository.mem.MemSefGrupRepository;
 import com.potsoft.cart2api.repository.mem.MemTipRepository;
 import com.potsoft.cart2api.repository.mem.MemTipRolRepository;
 import com.potsoft.cart2api.service.MemService;
+import com.potsoft.cart2api.service.MesService;
 
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
-//import java.util.Arrays;
-//import java.util.Collections;
-//import java.util.List;
 
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -107,6 +109,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemServiceImpl implements MemService 
 {
+
+	@Autowired
+	private MesService mesService;
+
 	@Autowired
 	private AutUserRepository autUserRepository;
 
@@ -362,37 +368,35 @@ public class MemServiceImpl implements MemService
 	  return resp;
 	}
   
+	
     //used
 	@Override
 	public MembruGrupResponse_CerereAfiliere membruGrup_CerereAfiliere(Long userid, 
-                                             MembruGrupRequest_CerereAfiliere  membruGrupRequestCerereAfiliere)
+                                             MembruGrupRequest_CerereAfiliere membruGrupRequestCerereAfiliere)
 	{
-	  //String grupCodUnic = membruGrupRequestCerereAfiliere.getGrupcodunic();
 	  MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
 	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
-	  String   crtMemTiprolCod = crtMemTipCod;
-	  //String   newMemTipCod = null;
-	  //String   newMemTiprolCod = null;
 	  MembruGrupResponse_CerereAfiliere resp = new MembruGrupResponse_CerereAfiliere();	
 	  //--  
 	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMACTNFL") || 
+	      (crtMemTipCod == "MEMINCNFL") || 
 		  (crtMemTipCod == "MEMACTNFL") || 
 		  (crtMemTipCod == "MEMEXPNFL") 
 		 )		
 	  {
-		//if (crtMemTipCod == "MEMACTNFL")
-		  //newMemTipCod = "MEMACTAFL";
-		//--
-		schimbaretipMemMembru(userid, crtMemTipCod, "SEFGRUP", crtMemTiprolCod, "SEFGRUP");
-		//--
-		//MemSefGrup newMemSefGrup = creazaSiSalveazaMemSefGrup(memMembru);
-        //--
-		//MemGrup newMemGrup = creazaSiSalveazaMemGrup(newMemSefGrup, grupRequestCreare);
-		//resp.setMemgrup(newMemGrup);
+		//---
+		String grupCodunic = membruGrupRequestCerereAfiliere.getGrupcodunic();
+		MemGrup memGrup = memGrupRepository.loadByMemgrupCodunic(grupCodunic);
+		//---//ma
+		//MemMembruGrup newMembruGrup = 
+		creazaSiSalveazaMemMembruGrup(memMembru, memGrup);
+		//---
+		mesService.creazaSiSalveazaMesaj( userid,  crtMemTipCod,
+		                                  memGrup.getMemGrupSefgrupuserid(), "SEFGRUP",
+	                                      "CERAFLGRUP");
 		return resp;
 	  }
-	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa va afiliati un Grupul");
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa va afiliati la un Grup");
 	}
 
 
@@ -401,24 +405,144 @@ public class MemServiceImpl implements MemService
 	public MembruGrupResponse_AcceptareAfiliere membruGrup_AcceptareAfiliere(Long userid, 
                                                  MembruGrupRequest_AcceptareAfiliere  membruGrupRequestAcceptareAfiliere)
 	{
+	  Long newMembruId = membruGrupRequestAcceptareAfiliere.getMembruId();
+	  MemMembru memMembru = memMembruRepository.loadByMemMembruId(newMembruId);
+	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
 	  MembruGrupResponse_AcceptareAfiliere resp = new MembruGrupResponse_AcceptareAfiliere();	
-	  return resp;
+	  //--  
+	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
+	      (crtMemTipCod == "MEMINCNFL") || 
+		  (crtMemTipCod == "MEMACTNFL") || 
+		  (crtMemTipCod == "MEMEXPNFL") 
+		 )		
+	  {
+		//---
+		String acceptareyn = membruGrupRequestAcceptareAfiliere.getAcceptareyn();
+		String tipMesajCod;
+		if (acceptareyn == "y")
+		  tipMesajCod = "ACCAFLGRUP";
+		else
+		  tipMesajCod = "REFAFLGRUP";
+        //--
+		Long memMembruUserid = memMembru.getMemMembruUserid();
+		//--
+		memMembruGrupRepository.acceptareAfiliere(memMembruUserid, acceptareyn);
+        //---
+		mesService.creazaSiSalveazaMesaj( userid,  "SEFGRUP",
+		                                  memMembruUserid,  crtMemTipCod,
+	                                      tipMesajCod);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa acceptati afilierea acestui Membru la Grup");
 	}
+
 
 	//used
 	@Override
-    public MembruGrupResponse_Dezafiliere membruGrup_Dezafiliere(Long userid, 
-	                                                MembruGrupRequest_Dezafiliere  membruGrupRequestDezafiliere)
+    public MembruGrupResponse_Activare membruGrup_Activare(Long userid, 
+	                                                MembruGrupRequest_Activare membruGrupRequestActivare)
   	{
-	  MembruGrupResponse_Dezafiliere resp = new MembruGrupResponse_Dezafiliere();	
+	  //Long newMembruId = membruGrupRequestActivare.getMembruId();
+	  MemMembru     memMembru     = memMembruRepository.loadByMemMembruUserid(userid);
+	  MemMembruGrup memMembruGrup = memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
+	  String crtMemTipCod         = memMembru.getMemMembruTipCod();
+	  MemTip memTip               = memTipRepository.loadByMemTipCod(crtMemTipCod);
+	  String crtMemRolCod         = crtMemTipCod;
+	  String newMemTipCod         = null;
+	  String newMemRolCod         = null;
+	  MembruGrupResponse_Activare resp = new MembruGrupResponse_Activare();	
+	  //--  
+	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
+	      (crtMemTipCod == "MEMINCNFL") || 
+		  (crtMemTipCod == "MEMACTNFL") || 
+		  (crtMemTipCod == "MEMEXPNFL") 
+		 )		
+	  {
+		crtMemRolCod = crtMemTipCod;
+		newMemTipCod = null;
+		if (crtMemTipCod == "MEMINCNFL")
+		  newMemTipCod = "MEMINCAFL";
+		if (crtMemTipCod == "MEMACTNFL")
+		  newMemTipCod = "MEMACTAFL";
+		if (crtMemTipCod == "MEMEXPNFL")
+		  newMemTipCod = "MEMEXPAFL";
+	    //--
+		Long    memNewTipid    = memTip.getMemTipId();
+		String  memNewTipcod   = memTip.getMemTipCod();
+		Long    memGrupId      = memMembruGrup.getMemMembrugrupGrupid();
+		String  memGrupNume    = memMembruGrup.getMemMembrugrupGrupnume();
+		String  memGrupCodunic = memMembruGrup.getMemMembrugrupGrupcodunic();
+		memMembruRepository.afiliereGrup(userid, memNewTipid, memNewTipcod, memGrupId, memGrupNume, memGrupCodunic);
+        //memMembruRepository.dezafiliereGrup(userid, memNewTipid, memNewTipcod);
+		//--
+		schimbaretipMemMembru( userid, crtMemTipCod, crtMemRolCod,
+		                               newMemTipCod, newMemRolCod);
+		//--
+		memMembruGrupRepository.activare(userid);
+        //---
+		//mesService.creazaSiSalveazaMesaj( userid,  "SEFGRUP",
+		//                                  memMembruUserid,  crtMemTipCod,
+	    //                                  tipMesajCod);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa activați afilierea la Grup");
+	}
+
+	
+	//used
+	@Override
+    public MembruGrupResponse_Plecare membruGrup_Plecare(Long userid, 
+	                                                MembruGrupRequest_Plecare  membruGrupRequestPlecare)
+  	{
+	  MembruGrupResponse_Plecare resp = new MembruGrupResponse_Plecare();	
 	  return resp;
 	}
+
+
+	//used
+	@Override
+    public MembruGrupResponse_Excludere membruGrup_Excludere(Long userid, 
+	                                                MembruGrupRequest_Excludere  membruGrupRequestExcludere)
+  	{
+	  MembruGrupResponse_Excludere resp = new MembruGrupResponse_Excludere();	
+	  return resp;
+	}
+
 
 	@Override
 	public MembruGrupResponse_Creare membruGrup_Creare(Long userid, MembruGrupRequest_Creare membruGrupRequestCreare)
 	{
 	  MembruGrupResponse_Creare resp = new MembruGrupResponse_Creare();	
 	  return resp;
+	  /**
+	   * 	  //String grupCodUnic = membruGrupRequestCerereAfiliere.getGrupcodunic();
+	  MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
+	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
+	  //String   crtMemTiprolCod = crtMemTipCod;
+	  //String   newMemTipCod = null;
+	  //String   newMemTiprolCod = null;
+	  MembruGrupResponse_CerereAfiliere resp = new MembruGrupResponse_CerereAfiliere();	
+	  //--  
+	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
+	      (crtMemTipCod == "MEMINCNFL") || 
+		  (crtMemTipCod == "MEMACTNFL") || 
+		  (crtMemTipCod == "MEMEXPNFL") 
+		 )		
+	  {
+		//if (crtMemTipCod == "MEMACTNFL")
+		  //newMemTipCod = "MEMACTAFL";
+		//--
+		//schimbaretipMemMembru(userid, crtMemTipCod, "SEFGRUP", crtMemTiprolCod, "SEFGRUP");
+		//--
+		//MemSefGrup newMemSefGrup = creazaSiSalveazaMemSefGrup(memMembru);
+        //--
+		//MemGrup newMemGrup = creazaSiSalveazaMemGrup(newMemSefGrup, grupRequestCreare);
+		//resp.setMemgrup(newMemGrup);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa va afiliati un Grupul");
+
+	   */
 	}
 	
 	@Override
@@ -955,10 +1079,6 @@ public class MemServiceImpl implements MemService
 		Long   memMembrugrupUserid        = memMembru.getMemMembruUserid();
 		String memMembrugrupUsernume      = memMembru.getMemMembruUsernume();
 
-		String memMembrugrupActivyn       = "y";
-		String memMembrugrupStartdt       = null;
-		String memMembrugrupEnddt         = null;
-
 		Long   memMembrugrupZonataraid        = memGrup.getMemGrupZonataraid();
 		String memMembrugrupZonataracod       = memGrup.getMemGrupZonataracod();
 		Long   memMembrugrupJudetid           = memGrup.getMemGrupJudetid();
@@ -978,6 +1098,16 @@ public class MemServiceImpl implements MemService
 		Long   memMembrugrupCodpostalid       = 0l;
 		String memMembrugrupCodpostalcod      = "0";
 
+		String memMembrugrupActivyn       = "n";
+		String memMembrugrupStartdt       = null;
+		String memMembrugrupEnddt         = null;
+
+		String memMembrugrupCerereyn      = "y";
+		String memMembrugrupCereredt      = null;
+		String memMembrugrupAcceptareyn   = null;
+		String memMembrugrupAcceptaredt   = null;
+		String memMembrugrupPlecareyn     = null;
+		String memMembrugrupExcludereyn   = null;
 
 		MemMembruGrup newMemMembruGrup = new MemMembruGrup( memMembrugrupId, 
                                                             memMembrugrupMembruid, memMembrugrupMembrucodunic,
@@ -991,7 +1121,10 @@ public class MemServiceImpl implements MemService
                                                             memMembrugrupZonauatid, memMembrugrupZonauatcod, 
                                                             memMembrugrupZonalocalitateid, memMembrugrupZonalocalitatecod,  
                                                             memMembrugrupSectievotareid, memMembrugrupSectievotarenr, 
-                                                            memMembrugrupCodpostalid, memMembrugrupCodpostalcod
+                                                            memMembrugrupCodpostalid, memMembrugrupCodpostalcod,
+															memMembrugrupCerereyn, memMembrugrupCereredt,
+															memMembrugrupAcceptareyn, memMembrugrupAcceptaredt,
+															memMembrugrupPlecareyn, memMembrugrupExcludereyn												
                                                          ) ;
 	  return newMemMembruGrup;
 	}

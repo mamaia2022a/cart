@@ -118,7 +118,34 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_codpostalcod")
   private String memMembrugrupCodpostalcod;
 
- 
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrugrup_cerere_yn")
+  private String memMembrugrupCerereyn;
+
+  @Size(max = 20)
+  @Column(name = "mem_membrugrup_cereredt", insertable = false, updatable = false)
+  private String memMembrugrupCereredt;
+
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrugrup_acceptare_yn")
+  private String memMembrugrupAcceptareyn;
+
+  @Size(max = 20)
+  @Column(name = "mem_membrugrup_acceptaredt")
+  private String memMembrugrupAcceptaredt;
+
+
+  @Size(max = 1)
+  @Column(name = "mem_membrugrup_plecare_yn")
+  private String memMembrugrupPlecareyn;
+
+  @Size(max = 1)
+  @Column(name = "mem_membrugrup_excludere_yn")
+  private String memMembrugrupExcludereyn;
+
+
   @NotBlank
   @Size(max = 1)
   @Column(name = "mem_membrugrup_activ_yn")
@@ -151,7 +178,10 @@ public class MemMembruGrup{
                        Long memMembrugrupZonauatid, String memMembrugrupZonauatcod, 
                        Long memMembrugrupZonalocalitateid, String memMembrugrupZonalocalitatecod,  
                        Long memMembrugrupSectievotareid, Long memMembrugrupSectievotarenr, 
-                       Long memMembrugrupCodpostalid, String memMembrugrupCodpostalcod
+                       Long memMembrugrupCodpostalid, String memMembrugrupCodpostalcod,
+                       String memMembrugrupCerereyn, String memMembrugrupCereredt,
+                       String memMembrugrupAcceptareyn, String memMembrugrupAcceptaredt,
+                       String memMembrugrupPlecareyn, String memMembrugrupExcludereyn
                      ) 
   {
     this.memMembrugrupId                = memMembrugrupId;
@@ -184,7 +214,16 @@ public class MemMembruGrup{
     this.memMembrugrupSectievotarenr    = memMembrugrupSectievotarenr;
     this.memMembrugrupCodpostalid       = memMembrugrupCodpostalid;
     this.memMembrugrupCodpostalcod      = memMembrugrupCodpostalcod;
-    
+   
+    this.memMembrugrupCerereyn          = memMembrugrupCerereyn;
+    this.memMembrugrupCereredt          = memMembrugrupCereredt;
+
+    this.memMembrugrupAcceptareyn       = memMembrugrupAcceptareyn;
+    this.memMembrugrupAcceptaredt       = memMembrugrupAcceptaredt;
+
+    this.memMembrugrupPlecareyn         = memMembrugrupPlecareyn;
+    this.memMembrugrupExcludereyn       = memMembrugrupExcludereyn;
+
   }
 
 
@@ -509,5 +548,72 @@ public class MemMembruGrup{
   {
     this.memMembrugrupEnddt = memMembrugrupEnddt;
   }
+
+
+  public String getMemMembrugrupCerereyn() 
+  {
+    return this.memMembrugrupActivyn;
+  }
+
+  public void setMemMembrugrupCerereyn(String memMembrugrupCerereyn) 
+  {
+    this.memMembrugrupCerereyn = memMembrugrupCerereyn;
+  }
+
+
+  public String getMemMembrugrupCereredt() 
+  {
+    return this.memMembrugrupCereredt;
+  }
+
+  public void setMemMembrugrupCereredt(String memMembrugrupCereredt) 
+  {
+    this.memMembrugrupEnddt = memMembrugrupCereredt;
+  }
+
+
+  public String getMemMembrugrupAcceptareyn() 
+  {
+    return this.memMembrugrupActivyn;
+  }
+
+  public void setMemMembrugrupAcceptareyn(String memMembrugrupAcceptareyn) 
+  {
+    this.memMembrugrupAcceptareyn = memMembrugrupAcceptareyn;
+  }
+
+
+  public String getMemMembrugrupAcceptaredt() 
+  {
+    return this.memMembrugrupAcceptaredt;
+  }
+
+  public void setMemMembrugrupAcceptaredt(String memMembrugrupAcceptaredt) 
+  {
+    this.memMembrugrupAcceptaredt = memMembrugrupAcceptaredt;
+  }
+
+
+  public String getMemMembrugrupPlecareyn() 
+  {
+    return this.memMembrugrupPlecareyn;
+  }
+
+  public void setMemMembrugrupPlecareyn(String memMembrugrupPlecareyn) 
+  {
+    this.memMembrugrupPlecareyn = memMembrugrupPlecareyn;
+  }
+
+
+  public String getMemMembrugrupExcludereyn() 
+  {
+    return this.memMembrugrupExcludereyn;
+  }
+
+  public void setMemMembrugrupExcludereyn(String memMembrugrupExcludereyn) 
+  {
+    this.memMembrugrupExcludereyn = memMembrugrupExcludereyn;
+  }
+
 
 }

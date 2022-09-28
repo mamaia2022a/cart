@@ -28,9 +28,11 @@ import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruCotizatieRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Activare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Creare;
-import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Dezafiliere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Excludere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruRequest_Creare;
@@ -58,9 +60,11 @@ import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruCotizatieResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Activare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Creare;
-import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Dezafiliere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Plecare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruResponse_Creare;
@@ -105,13 +109,15 @@ public interface MemService {
   MembruRolResponse_Stergere membruRol_Stergere(Long userid, MembruRolRequest_Stergere membruRolRequestStergere);
 
 
-  MembruGrupResponse_CerereAfiliere     membruGrup_CerereAfiliere(Long userid, 
-                                             MembruGrupRequest_CerereAfiliere  membruGrupRequestCerereAfiliere);
-  MembruGrupResponse_AcceptareAfiliere  membruGrup_AcceptareAfiliere(Long userid, 
-                                             MembruGrupRequest_AcceptareAfiliere  membruGrupRequestAcceptareAfiliere);
-  MembruGrupResponse_Dezafiliere        membruGrup_Dezafiliere(Long userid, 
-                                             MembruGrupRequest_Dezafiliere  membruGrupRequestDezafiliere);
-                                             
+  MembruGrupResponse_CerereAfiliere    membruGrup_CerereAfiliere(Long userid,
+                                                     MembruGrupRequest_CerereAfiliere  membruGrupRequestCerereAfiliere);
+  MembruGrupResponse_AcceptareAfiliere membruGrup_AcceptareAfiliere(Long userid, 
+                                                    MembruGrupRequest_AcceptareAfiliere  membruGrupRequestAcceptareAfiliere);
+  MembruGrupResponse_Activare  membruGrup_Activare(Long userid,  MembruGrupRequest_Activare  membruGrupRequestActivare);
+  MembruGrupResponse_Plecare   membruGrup_Plecare (Long userid,  MembruGrupRequest_Plecare   membruGrupRequestPlecare);
+  MembruGrupResponse_Excludere membruGrup_Excludere(Long userid, MembruGrupRequest_Excludere membruGrupRequestActivare);
+
+                                                  
   MembruGrupResponse_Creare      membruGrup_Creare     (Long userid, MembruGrupRequest_Creare   membruGrupRequestCreare);
   MembruGrupResponse_Stergere    membruGrup_Stergere   (Long userid, MembruGrupRequest_Stergere membruGrupRequestStergere);
   MembruGrupResponse_Vizualizare membruGrup_Vizualizare(Long userid, MembruGrupRequest_Vizualizare membruGrupRequestVizualizare);

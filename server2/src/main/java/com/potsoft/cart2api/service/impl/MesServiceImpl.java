@@ -11,6 +11,7 @@ import com.potsoft.cart2api.model.mes.MesDestinMesaj;
 import com.potsoft.cart2api.model.mes.MesDestinatar;
 import com.potsoft.cart2api.model.mes.MesMesaj;
 import com.potsoft.cart2api.model.mes.MesTipMesaj;
+import com.potsoft.cart2api.repository.mes.MesDestinMesajRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinatarRepository;
 import com.potsoft.cart2api.repository.mes.MesExpeditorRepository;
 import com.potsoft.cart2api.repository.mes.MesMesajRepository;
@@ -20,6 +21,7 @@ import com.potsoft.cart2api.repository.mes.MesMesajRepository;
 //import com.potsoft.cart2api.repository.gen.GenAcoperireGeograficaRepository;
 import com.potsoft.cart2api.service.MesService;
 
+import java.util.ArrayList;
 import java.util.List;
 //import java.util.Random;
 
@@ -44,6 +46,8 @@ public class MesServiceImpl implements MesService
 	@Autowired
 	private MesMesajRepository mesMesajRepository;
 	
+	@Autowired
+	private MesDestinMesajRepository mesDestinMesajRepository;
 
 
 	// -----------------------------------------------------------
@@ -327,33 +331,52 @@ public class MesServiceImpl implements MesService
 	// -----------------------------------------------------------
 	@Override
 	public MesMesaj creazaSiSalveazaMesMesaj(String mesText, MesTipMesaj  mesTipMesaj,
-	                                         MesExpeditor mesExpeditor, List<MesDestinatar> mesDestinari,
+	                                         MesExpeditor mesExpeditor, List<MesDestinatar> mesDestinatari,
 	                                         GenAcoperireGeografica genAcoperireGeografica)
 	{
 		MesMesaj newMesMesaj  = this.creazaMesMesaj(mesText, mesTipMesaj,
-		                                                 mesExpeditor, mesDestinari,
+		                                                 mesExpeditor, mesDestinatari,
 		                                                 genAcoperireGeografica);
 		mesMesajRepository.save(newMesMesaj);
+        //---
+		creazaSiSalveazaListaMesDestinMesaj(newMesMesaj, mesDestinatari);
 		return newMesMesaj;
 	}
 
 
 
 
-	public List<MesDestinMesaj> creazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinari)
+	// -----------------------------------------------------------
+	@Override
+	public List<MesDestinMesaj> creazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinatari)
 	{
-	  return null;	
+	  List<MesDestinMesaj> listMesDestinMesaj = new ArrayList<MesDestinMesaj>();
+	  for (MesDestinatar crtMesDestinatar : mesDestinatari)
+	  {
+		MesDestinMesaj crtMesDestinMesaj = creazaMesDestinMesaj(mesMesaj, crtMesDestinatar);
+		listMesDestinMesaj.add(crtMesDestinMesaj);
+	  }
+	  return listMesDestinMesaj;	
 	}
   
-	public List<MesDestinMesaj> creazaSiSalveazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinari)
+
+	// -----------------------------------------------------------
+	@Override
+	public List<MesDestinMesaj> creazaSiSalveazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinatari)
 	{
-	  return null;	
+	  List<MesDestinMesaj> listMesDestinMesaj = new ArrayList<MesDestinMesaj>();
+	  for (MesDestinatar crtMesDestinatar : mesDestinatari)
+	  {
+        MesDestinMesaj crtMesDestinMesaj = creazaSiSalveazaMesDestinMesaj(mesMesaj, crtMesDestinatar);
+		listMesDestinMesaj.add(crtMesDestinMesaj);
+	  }
+	  return listMesDestinMesaj;	
 	}
   
 	
-
-
-	public MesDestinMesaj creazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinar)
+	// -----------------------------------------------------------
+	@Override
+	public MesDestinMesaj creazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinatar)
 	{
 
 		Long mesDestinmesajid = null;
@@ -362,11 +385,11 @@ public class MesServiceImpl implements MesService
 
 		String mesDestinmesajPrimityn = "n";
 
-		Long mesDestinmesajDestid         = mesDestinar.getMesDestinatarId();
-		Long mesDestinmesajDestuserid     = mesDestinar.getMesDestinatarUserid();
-		String mesDestinmesajDestusernume = mesDestinar.getMesDestinatarUsernume();
-		Long mesDestinmesajDestrolid      = mesDestinar.getMesDestinatarRolid();
-		String mesDestinmesajDestrolcod   = mesDestinar.getMesDestinatarRolcod();
+		Long mesDestinmesajDestid         = mesDestinatar.getMesDestinatarId();
+		Long mesDestinmesajDestuserid     = mesDestinatar.getMesDestinatarUserid();
+		String mesDestinmesajDestusernume = mesDestinatar.getMesDestinatarUsernume();
+		Long mesDestinmesajDestrolid      = mesDestinatar.getMesDestinatarRolid();
+		String mesDestinmesajDestrolcod   = mesDestinatar.getMesDestinatarRolcod();
 
 		Long mesDestinmesajAn   = 0l;
 		Long mesDestinmesajLuna = 0l;
@@ -387,12 +410,31 @@ public class MesServiceImpl implements MesService
 	}
 
 	
-	public MesDestinMesaj creazaSiSalveazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinar)
+	// -----------------------------------------------------------
+	@Override
+	public MesDestinMesaj creazaSiSalveazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinatar)
     {
-	  return null;	
+	  MesDestinMesaj newMesDestinMesaj  = this.creazaMesDestinMesaj(mesMesaj, mesDestinatar);
+	  mesDestinMesajRepository.save(newMesDestinMesaj);
+	  return newMesDestinMesaj;
 	}
 
 
+	// -----------------------------------------------------------
+	@Override
+	public MesMesaj creazaSiSalveazaMesaj(Long expUserId,  String expRolcod,
+	                                      Long destUserId, String destRolcod,
+								          String tipMesajCod)
+	{
+	  MesExpeditor mesExpeditor = mesExpeditorRepository.loadByMesExpeditorUseridAndMesExpeditorRolcod(expUserId, expRolcod);
+	  List<MesDestinatar> mesDestinatari = new ArrayList<MesDestinatar>();
+	  MesDestinatar mesDestinatar = mesDestinatarRepository.loadByMesDestinatarUseridAndMesDestinatarRolcod(destUserId, destRolcod);
+	  mesDestinatari.add(mesDestinatar);
+	  MesMesaj newMesaj = creazaSiSalveazaMesMesaj(null, tipMesajCod,
+		                                           mesExpeditor, mesDestinatari, 
+												   "NIVPERSOANA");
+		return newMesaj;											 
+	}
 }
 
 

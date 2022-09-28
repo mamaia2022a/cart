@@ -4,7 +4,7 @@ import lombok.Data;
 
 
 @Data
-public class MembruGrupRequest_Dezafiliere 
+public class MembruGrupRequest_Activare
 {
 	private String membrugrupid;
 	private String membrucodunic;

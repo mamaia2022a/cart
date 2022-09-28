@@ -10,11 +10,36 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
+import com.potsoft.cart2api.exception.ResourceNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+
+import java.util.Optional;
+
+
 @Repository
 public interface MemMembruGrupRepository extends JpaRepository<MemMembruGrup, Long> 
 {
+
+    //memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
+    //memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
     @Modifying
-    @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'n', m.memMembrugrupEnddt = now() where m.memMembrugrupUserid = :userid")
-    void dezactiveazaMemMembruGrup(@Param(value = "userid") Long userid);
+    @Query("update MemMembruGrup m set m.memMembrugrupAcceptareyn = :acceptareyn, m.memMembrugrupAcceptaredt = now() where m.memMembrugrupUserid = :userid")
+    void acceptareAfiliere(@Param(value = "userid") Long userid, @Param(value = "acceptareyn") String acceptareyn);
+
+    @Modifying
+    @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'y', m.memMembrugrupStartdt = now() where m.memMembrugrupUserid = :userid")
+    void activare(@Param(value = "userid") Long userid);
+
+    @Modifying
+    @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'n', m.memMembrugrupPlecareyn = 'y', m.memMembrugrupEnddt = now() where m.memMembrugrupUserid = :userid")
+    void plecare(@Param(value = "userid") Long userid);
+
+    @Modifying
+    @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'n', m.memMembrugrupExcludereyn = 'y', m.memMembrugrupEnddt = now() where m.memMembrugrupUserid = :userid")
+    void excludere(@Param(value = "userid") Long userid);
 
 }

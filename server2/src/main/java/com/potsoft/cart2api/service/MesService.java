@@ -34,6 +34,10 @@ public interface MesService {
                                     String genAcoperireGeograficaCod);
 
 
+	MesMesaj creazaSiSalveazaMesaj(Long expUserId,  String expRolcod,
+	                               Long destUserId, String destRolcod,
+								                 String tipMesajCod);
+
   MesMesaj creazaMesMesaj(String mesText, MesTipMesaj  mesTipMesaj, 
                           MesExpeditor mesExpeditor, List<MesDestinatar> mesDestinari,
                           GenAcoperireGeografica genAcoperireGeografica);
@@ -42,11 +46,11 @@ public interface MesService {
                                     GenAcoperireGeografica genAcoperireGeografica);
       
                                     
-  List<MesDestinMesaj> creazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinari);
-  List<MesDestinMesaj> creazaSiSalveazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinari);
+  List<MesDestinMesaj> creazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinatari);
+  List<MesDestinMesaj> creazaSiSalveazaListaMesDestinMesaj(MesMesaj  mesMesaj, List<MesDestinatar> mesDestinatari);
 
-  MesDestinMesaj creazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinar);
-  MesDestinMesaj creazaSiSalveazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinar);
+  MesDestinMesaj creazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinatar);
+  MesDestinMesaj creazaSiSalveazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinatar);
 
 }
 
