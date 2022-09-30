@@ -13,18 +13,30 @@ import org.springframework.data.repository.query.Param;
 import com.potsoft.cart2api.exception.ResourceNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
+import java.util.List;
 import java.util.Optional;
 
 
 @Repository
 public interface MemMembruGrupRepository extends JpaRepository<MemMembruGrup, Long> 
 {
+    List<MemMembruGrup> findByMemMembrugrupGrupid(Long mem_membrugrup_userid);
 
-    //memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
+    Optional<MemMembruGrup> findByMemMembrugrupUserid(@NotNull Long mem_membrugrup_userid);
+  
+    @Transactional
+    default MemMembruGrup loadByMemMembrugrupUserid(Long mem_membrugrup_userid)
+    {
+      return findByMemMembrugrupUserid(mem_membrugrup_userid)
+      .orElseThrow(() ->
+      new ResourceNotFoundException("MemMembruGrup", 
+                                    "mem_membrugrup_userid", mem_membrugrup_userid));
+    }
+
+
     //memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
     @Modifying
     @Query("update MemMembruGrup m set m.memMembrugrupAcceptareyn = :acceptareyn, m.memMembrugrupAcceptaredt = now() where m.memMembrugrupUserid = :userid")
@@ -43,3 +55,5 @@ public interface MemMembruGrupRepository extends JpaRepository<MemMembruGrup, Lo
     void excludere(@Param(value = "userid") Long userid);
 
 }
+
+

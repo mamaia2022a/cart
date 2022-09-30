@@ -9,8 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
 import java.util.Optional;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 
 @Repository
 public interface MesDestinatarRepository extends JpaRepository<MesDestinatar, Long> 
@@ -28,5 +32,10 @@ public interface MesDestinatarRepository extends JpaRepository<MesDestinatar, Lo
                                   "mes_destinatar_userid, mes_destinatar_rolcod",  
                                   mes_destinatar_userid + " , " + mes_destinatar_rolcod));
   }
+
+  @Modifying
+  @Query("update MesDestinatar m set m.mesDestinatarActivyn = 'n', m.mesDestinatarEnddt = now() where (m.mesDestinatarUserid = :userid) and (m.mesDestinatarRolcod = :rolcod)")
+  void dezactiveazaMesDestinatar(@Param(value = "userid") Long userid,
+                                 @Param(value = "rolcod") String rolcod);
 
 }

@@ -601,6 +601,35 @@ VALUES
   );
 
 
+
+DROP TABLE IF EXISTS `gen_zonageografica`;
+CREATE TABLE `gen_zonageografica` (
+  `gen_zonageografica_id` int NOT NULL AUTO_INCREMENT,	
+  `gen_zonageografica_acopgeoid` int NOT NULL,	
+  `gen_zonageografica_acopgeocod` varchar(16) not null,	
+  `gen_zonageografica_zonataraid` int	not null, 	
+  `gen_zonageografica_zonataracod` varchar(2) not null, 
+  `gen_zonageografica_judetid` int	not null, 
+  `gen_zonageografica_judetcod` varchar(2) not null, 
+  `gen_zonageografica_uatid`	  int not null,
+  `gen_zonageografica_uatcod`	  int	not null,
+  `gen_zonageografica_zonauatid` int not null, 
+  `gen_zonageografica_zonauatcod` varchar(9) not null, 
+  `gen_zonageografica_zonajudetid` int	not null, 
+  `gen_zonageografica_zonajudetcod` varchar(9) not null, 
+  `gen_zonageografica_localitateid` int not null, 
+  `gen_zonageografica_localitatecod` int	not null, 
+  `gen_zonageografica_zonalocalitateid` int not null, 
+  `gen_zonageografica_zonalocalitatecod` varchar(9) not null, 
+  `gen_zonageografica_sectievotareid` int not null, 
+  `gen_zonageografica_sectievotarenr` int not null, 
+  `gen_zonageografica_codpostalid` int not null,  
+  `gen_zonageografica_codpostalcod` varchar(16)	not null, 
+  PRIMARY KEY (`gen_zonageografica_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
 CREATE TABLE `geo_zonatara` (
   `geo_zonatara_id`	int NOT NULL AUTO_INCREMENT,
   `geo_zonatara_cod`	varchar(2) NOT NULL,

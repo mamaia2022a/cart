@@ -182,12 +182,12 @@ public class MemGrup{
   }
 
 
-  public Long getMemSefgrupId() 
+  public Long getMemGrupId() 
   {
     return this.memGrupId;
   }
 
-  public void setMemSefgrupId(Long memGrupId) 
+  public void setMemGrupId(Long memGrupId) 
   {
     this.memGrupId = memGrupId;
   }

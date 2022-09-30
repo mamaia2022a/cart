@@ -17,4 +17,10 @@ public interface MemSefGrupRepository extends JpaRepository<MemSefGrup, Long>
     @Query("update MemSefGrup m set m.memSefgrupActivyn = 'n', m.memSefgrupEnddt = now() where m.memSefgrupUserid = :userid")
     void dezactiveazaMemSefGrup(@Param(value = "userid") Long userid);
 
+    @Modifying
+    @Query("update MemSefGrup m set m.memSefgrupGrupid = :grupid, m.memSefgrupGrupid = :grupnume, m.memSefgrupGrupcodunic = :grupcodunic where m.memSefgrupUserid = :userid")
+    void actualizaregrupMemSefGrup(@Param(value = "userid") Long userid,
+                                   @Param(value = "grupid") Long grupid,
+                                   @Param(value = "grupnume") String grupnume, 
+                                   @Param(value = "grupcodunic") String grupcodeunic);
 }

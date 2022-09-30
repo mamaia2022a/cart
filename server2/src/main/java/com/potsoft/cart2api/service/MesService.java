@@ -9,6 +9,7 @@ import com.potsoft.cart2api.model.mes.MesDestinatar;
 import com.potsoft.cart2api.model.mes.MesExpeditor;
 import com.potsoft.cart2api.model.mes.MesMesaj;
 import com.potsoft.cart2api.model.mes.MesTipMesaj;
+import com.potsoft.cart2api.payload.response.mes.MesExpSiDestResponse_SchimbareRol;
 
 import java.util.List;
 
@@ -24,6 +25,10 @@ public interface MesService {
   MesDestinatar creazaSiSalveazaMesDestinatar(Long userId, String userRolcod);
   MesDestinatar creazaMesDestinatar(AutUser autUser, AutUserInfo autUserInfo, AutRol autRol);                          
   MesDestinatar creazaSiSalveazaMesDestinatar(AutUser autUser, AutUserInfo autUserInfo, AutRol autRol);
+
+	MesDestinatar schimbarerolMesDestinatar(Long destUserId, String destCrtRolcod, String destNewRolcod);
+	MesExpeditor schimbarerolMesExpeditor(Long expUserId, String expCrtRolcod, String expNewRolcod);
+	MesExpSiDestResponse_SchimbareRol schimbarerolMesExpeditorSiDestinatar(Long destUserId, String crtRolcod, String newRolcod);
 
 
   MesMesaj creazaMesMesaj(String mesText, String mesTipMesajCod, 

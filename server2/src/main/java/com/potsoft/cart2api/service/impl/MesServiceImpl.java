@@ -4,13 +4,16 @@ package com.potsoft.cart2api.service.impl;
 import com.potsoft.cart2api.model.aut.AutRol;
 import com.potsoft.cart2api.model.aut.AutUser;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
-//import com.potsoft.cart2api.model.aut.AutUserRol;
 import com.potsoft.cart2api.model.gen.GenAcoperireGeografica;
 import com.potsoft.cart2api.model.mes.MesExpeditor;
 import com.potsoft.cart2api.model.mes.MesDestinMesaj;
 import com.potsoft.cart2api.model.mes.MesDestinatar;
 import com.potsoft.cart2api.model.mes.MesMesaj;
 import com.potsoft.cart2api.model.mes.MesTipMesaj;
+import com.potsoft.cart2api.payload.response.mes.MesExpSiDestResponse_SchimbareRol;
+import com.potsoft.cart2api.repository.aut.AutRolRepository;
+import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
+import com.potsoft.cart2api.repository.aut.AutUserRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinMesajRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinatarRepository;
 import com.potsoft.cart2api.repository.mes.MesExpeditorRepository;
@@ -37,6 +40,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class MesServiceImpl implements MesService 
 {
+	@Autowired
+	private AutUserRepository autUserRepository;
+	
+ 
+	@Autowired
+	private AutUserInfoRepository autUserInfoRepository;
+ 
+	@Autowired
+	private AutRolRepository autRolRepository;
+ 
+
 	@Autowired
 	private MesExpeditorRepository mesExpeditorRepository;
 
@@ -230,9 +244,67 @@ public class MesServiceImpl implements MesService
 	}
 	
   
+
+
+	// -----------------------------------------------------------
+	@Override
+	public MesDestinatar schimbarerolMesDestinatar(Long destUserId,
+	                                             String destCrtRolcod,
+	                                             String destNewRolcod)
+	{
+	  AutUser autUser         = autUserRepository.loadByAutUserId(destUserId); 
+	  AutUserInfo autUserInfo = autUserInfoRepository.loadByAutUserInfoUserid(destUserId); 
+	  AutRol autRol           = autRolRepository.loadByAutRolCod(destNewRolcod);
+	  //--
+      mesDestinatarRepository.dezactiveazaMesDestinatar(destUserId, destCrtRolcod);
+	  MesDestinatar newMesDestinatar = creazaSiSalveazaMesDestinatar(autUser, autUserInfo, autRol);
+	  return newMesDestinatar;
+	}
+
+
+	// -----------------------------------------------------------
+	//used
+	@Override
+	public MesExpeditor schimbarerolMesExpeditor(Long expUserId,  
+	                                           String expCrtRolcod,
+	                                           String expNewRolcod)
+	{
+	  AutUser autUser         = autUserRepository.loadByAutUserId(expUserId); 
+	  AutUserInfo autUserInfo = autUserInfoRepository.loadByAutUserInfoUserid(expUserId); 
+	  AutRol autRol           = autRolRepository.loadByAutRolCod(expNewRolcod);
+	  //--
+      mesExpeditorRepository.dezactiveazaMesExpeditor(expUserId, expCrtRolcod);
+	  MesExpeditor newMesExpeditor = creazaSiSalveazaMesExpeditor(autUser, autUserInfo, autRol);
+	  return newMesExpeditor;
+	}
 	
+
 	
+	// -----------------------------------------------------------
+    //used
+	@Override
+	public MesExpSiDestResponse_SchimbareRol schimbarerolMesExpeditorSiDestinatar(Long userId, 
+	                                                                            String crtRolcod, String newRolcod)
+	{
+	  AutUser autUser         = autUserRepository.loadByAutUserId(userId); 
+	  AutUserInfo autUserInfo = autUserInfoRepository.loadByAutUserInfoUserid(userId); 
+	  AutRol autRol           = autRolRepository.loadByAutRolCod(newRolcod);
+	  //---
+      mesDestinatarRepository.dezactiveazaMesDestinatar(userId, crtRolcod);
+	  MesDestinatar newMesDestinatar = creazaSiSalveazaMesDestinatar(autUser, autUserInfo, autRol);
+	  //---
+      mesExpeditorRepository.dezactiveazaMesExpeditor(userId, crtRolcod);
+	  MesExpeditor newMesExpeditor = creazaSiSalveazaMesExpeditor(autUser, autUserInfo, autRol);
+	  //---
+	  MesExpSiDestResponse_SchimbareRol resp = new MesExpSiDestResponse_SchimbareRol();
+	  resp.setMesExpeditor(newMesExpeditor);
+	  resp.setMesDestinatar(newMesDestinatar);
+	  return resp;
+	}
+
 	
+
+
 	// -----------------------------------------------------------
 	@Override
     public MesMesaj creazaMesMesaj(String mesText, String mesTipMesajCod, 
@@ -433,8 +505,11 @@ public class MesServiceImpl implements MesService
 	  MesMesaj newMesaj = creazaSiSalveazaMesMesaj(null, tipMesajCod,
 		                                           mesExpeditor, mesDestinatari, 
 												   "NIVPERSOANA");
-		return newMesaj;											 
-	}
+		return newMesaj;			
+	}        
+	
+
+
 }
 
 

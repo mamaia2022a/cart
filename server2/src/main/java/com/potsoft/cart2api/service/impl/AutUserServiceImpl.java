@@ -256,6 +256,8 @@ public class AutUserServiceImpl implements AutUserService
     ///Date utcDate = new Date();
 	autUserRolRepository.dezactiveazaAutUserRol(userId, crtRolCod);
 	AutUserRol autUserRol = creazaSiSalveazaAutUserRol(userId, newRolCod);
+	//---
+	mesService.
 	return autUserRol;
   }
 

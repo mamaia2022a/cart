@@ -96,6 +96,7 @@ import com.potsoft.cart2api.repository.mem.MemTipRolRepository;
 import com.potsoft.cart2api.service.MemService;
 import com.potsoft.cart2api.service.MesService;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -386,7 +387,7 @@ public class MemServiceImpl implements MemService
 	  {
 		//---
 		String grupCodunic = membruGrupRequestCerereAfiliere.getGrupcodunic();
-		MemGrup memGrup = memGrupRepository.loadByMemgrupCodunic(grupCodunic);
+		MemGrup memGrup = memGrupRepository.loadByMemGrupCodunic(grupCodunic);
 		//---//ma
 		//MemMembruGrup newMembruGrup = 
 		creazaSiSalveazaMemMembruGrup(memMembru, memGrup);
@@ -442,7 +443,6 @@ public class MemServiceImpl implements MemService
     public MembruGrupResponse_Activare membruGrup_Activare(Long userid, 
 	                                                MembruGrupRequest_Activare membruGrupRequestActivare)
   	{
-	  //Long newMembruId = membruGrupRequestActivare.getMembruId();
 	  MemMembru     memMembru     = memMembruRepository.loadByMemMembruUserid(userid);
 	  MemMembruGrup memMembruGrup = memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
 	  String crtMemTipCod         = memMembru.getMemMembruTipCod();
@@ -494,8 +494,44 @@ public class MemServiceImpl implements MemService
     public MembruGrupResponse_Plecare membruGrup_Plecare(Long userid, 
 	                                                MembruGrupRequest_Plecare  membruGrupRequestPlecare)
   	{
+	  MemMembru memMembru         = memMembruRepository.loadByMemMembruUserid(userid);
+	  String crtMemTipCod         = memMembru.getMemMembruTipCod();
+	  String crtMemRolCod         = crtMemTipCod;
+	  String newMemTipCod         = null;
+	  String newMemRolCod         = null;
 	  MembruGrupResponse_Plecare resp = new MembruGrupResponse_Plecare();	
-	  return resp;
+	  //--  
+	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
+	      (crtMemTipCod == "MEMINCAFL") || 
+		  (crtMemTipCod == "MEMACTAFL") || 
+		  (crtMemTipCod == "MEMEXPAFL") 
+		 )		
+	  {
+		crtMemRolCod = crtMemTipCod;
+		newMemTipCod = null;
+		if (crtMemTipCod == "MEMINCAFL")
+		  newMemTipCod = "MEMINCNFL";
+		if (crtMemTipCod == "MEMACTAFL")
+		  newMemTipCod = "MEMACTNFL";
+		if (crtMemTipCod == "MEMEXPAFL")
+		  newMemTipCod = "MEMEXPNFL";
+	    //--
+		MemTip  newMemTip      = memTipRepository.loadByMemTipCod(newMemTipCod);
+		Long    memNewTipid    = newMemTip.getMemTipId();
+		String  memNewTipcod   = newMemTip.getMemTipCod();
+        memMembruRepository.dezafiliereGrup(userid, memNewTipid, memNewTipcod);
+		//--
+		schimbaretipMemMembru( userid, crtMemTipCod, crtMemRolCod,
+		                               newMemTipCod, newMemRolCod);
+		//--
+		memMembruGrupRepository.plecare(userid);
+        //---
+		//mesService.creazaSiSalveazaMesaj( userid,  "SEFGRUP",
+		//                                  memMembruUserid,  crtMemTipCod,
+	    //                                  tipMesajCod);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa activați plecarea din Grup");	  
 	}
 
 
@@ -504,8 +540,45 @@ public class MemServiceImpl implements MemService
     public MembruGrupResponse_Excludere membruGrup_Excludere(Long userid, 
 	                                                MembruGrupRequest_Excludere  membruGrupRequestExcludere)
   	{
+	  Long membruId = membruGrupRequestExcludere.getMembruId();
+	  MemMembru memMembru         = memMembruRepository.loadByMemMembruId(membruId);
+	  String crtMemTipCod         = memMembru.getMemMembruTipCod();
+	  String crtMemRolCod         = crtMemTipCod;
+	  String newMemTipCod         = null;
+	  String newMemRolCod         = null;
 	  MembruGrupResponse_Excludere resp = new MembruGrupResponse_Excludere();	
-	  return resp;
+	  //--  
+	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
+	      (crtMemTipCod == "MEMINCAFL") || 
+		  (crtMemTipCod == "MEMACTAFL") || 
+		  (crtMemTipCod == "MEMEXPAFL") 
+		 )		
+	  {
+		crtMemRolCod = crtMemTipCod;
+		newMemTipCod = null;
+		if (crtMemTipCod == "MEMINCAFL")
+		  newMemTipCod = "MEMINCNFL";
+		if (crtMemTipCod == "MEMACTAFL")
+		  newMemTipCod = "MEMACTNFL";
+		if (crtMemTipCod == "MEMEXPAFL")
+		  newMemTipCod = "MEMEXPNFL";
+	    //--
+		MemTip  newMemTip      = memTipRepository.loadByMemTipCod(newMemTipCod);
+		Long    memNewTipid    = newMemTip.getMemTipId();
+		String  memNewTipcod   = newMemTip.getMemTipCod();
+        memMembruRepository.dezafiliereGrup(userid, memNewTipid, memNewTipcod);
+		//--
+		schimbaretipMemMembru( userid, crtMemTipCod, crtMemRolCod,
+		                               newMemTipCod, newMemRolCod);
+		//--
+		memMembruGrupRepository.excludere(userid);
+        //---
+		//mesService.creazaSiSalveazaMesaj( userid,  "SEFGRUP",
+		//                                  memMembruUserid,  crtMemTipCod,
+	    //                                  tipMesajCod);
+		return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa activați plecarea din Grup");	  
 	}
 
 
@@ -514,36 +587,8 @@ public class MemServiceImpl implements MemService
 	{
 	  MembruGrupResponse_Creare resp = new MembruGrupResponse_Creare();	
 	  return resp;
-	  /**
-	   * 	  //String grupCodUnic = membruGrupRequestCerereAfiliere.getGrupcodunic();
-	  MemMembru memMembru = memMembruRepository.loadByMemMembruUserid(userid);
-	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
-	  //String   crtMemTiprolCod = crtMemTipCod;
-	  //String   newMemTipCod = null;
-	  //String   newMemTiprolCod = null;
-	  MembruGrupResponse_CerereAfiliere resp = new MembruGrupResponse_CerereAfiliere();	
-	  //--  
-	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMINCNFL") || 
-		  (crtMemTipCod == "MEMACTNFL") || 
-		  (crtMemTipCod == "MEMEXPNFL") 
-		 )		
-	  {
-		//if (crtMemTipCod == "MEMACTNFL")
-		  //newMemTipCod = "MEMACTAFL";
-		//--
-		//schimbaretipMemMembru(userid, crtMemTipCod, "SEFGRUP", crtMemTiprolCod, "SEFGRUP");
-		//--
-		//MemSefGrup newMemSefGrup = creazaSiSalveazaMemSefGrup(memMembru);
-        //--
-		//MemGrup newMemGrup = creazaSiSalveazaMemGrup(newMemSefGrup, grupRequestCreare);
-		//resp.setMemgrup(newMemGrup);
-		return resp;
-	  }
-	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa va afiliati un Grupul");
-
-	   */
 	}
+
 	
 	@Override
 	public MembruGrupResponse_Stergere membruGrup_Stergere(Long userid, MembruGrupRequest_Stergere membruGrupRequestStergere)
@@ -551,6 +596,7 @@ public class MemServiceImpl implements MemService
 	  MembruGrupResponse_Stergere resp = new MembruGrupResponse_Stergere();	
 	  return resp;
 	}
+
 
 	@Override
 	public MembruGrupResponse_Vizualizare membruGrup_Vizualizare(Long userid, MembruGrupRequest_Vizualizare membruGrupRequestVizualizare)
@@ -599,7 +645,7 @@ public class MemServiceImpl implements MemService
 	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
 	  String   crtMemTiprolCod = crtMemTipCod;
 	  GrupResponse_Creare resp = new GrupResponse_Creare();	
-		//--  
+	  //--  
 	  if ( //-- un membru activ sau experimentat neafiliat poate crea un grup
 		  (crtMemTipCod == "MEMACTNFL") ||
 		  (crtMemTipCod == "MEMEXPNFL") 
@@ -611,6 +657,17 @@ public class MemServiceImpl implements MemService
 		MemSefGrup newMemSefGrup = creazaSiSalveazaMemSefGrup(memMembru);
         //--
 		MemGrup newMemGrup = creazaSiSalveazaMemGrup(newMemSefGrup, grupRequestCreare);
+		//--
+	    MemTip  newMemTip      = memTipRepository.loadByMemTipCod("SEFGRUP");
+		Long    memNewTipid    = newMemTip.getMemTipId();
+		String  memNewTipcod   = newMemTip.getMemTipCod();
+		Long    memGrupId      = newMemGrup.getMemGrupId();
+		String  memGrupNume    = newMemGrup.getMemGrupNume();
+		String  memGrupCodunic = newMemGrup.getMemGrupCodunic();
+		memMembruRepository.afiliereGrup(userid, memNewTipid, memNewTipcod, memGrupId, memGrupNume, memGrupCodunic);
+	    //---
+		memSefGrupRepository.actualizaregrupMemSefGrup( userid, memGrupId, memGrupNume, memGrupCodunic);
+		//---
 		resp.setMemgrup(newMemGrup);
 		return resp;
 	  }
@@ -638,7 +695,14 @@ public class MemServiceImpl implements MemService
 		//--
 		memSefGrupRepository.dezactiveazaMemSefGrup(userid);
 		//--
-		memGrupRepository.dezactiveazaMemGrup(userid);				  
+		memGrupRepository.dezactiveazaMemGrup(userid);		
+		//--
+		Long grupId  = memMembru.getMemMembruGrupid();
+		List<MemMembruGrup> listaMembriGrup = memMembruGrupRepository.findByMemMembrugrupGrupid(grupId);	
+		for (MemMembruGrup memMembruGrup : listaMembriGrup)
+		{	
+          membruGrup_Plecare(memMembruGrup.getMemMembrugrupUserid(), null);
+		}	  
 	    return resp;
 	  }
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa stergeti Grupul  : "

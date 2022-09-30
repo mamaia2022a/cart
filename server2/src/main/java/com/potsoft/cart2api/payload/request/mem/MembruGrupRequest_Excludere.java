@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class MembruGrupRequest_Excludere 
 {
-	private String membrugrupid;
+	private Long   membruid;
+	private Long   membrugrupid;
 	private String membrucodunic;
 
 	public String getMembrucodunic() 
@@ -19,14 +20,23 @@ public class MembruGrupRequest_Excludere
 	  this.membrucodunic = membrucodunic;
 	}
   
-	public String getMembrugrupId() 
+	public Long getMembrugrupId() 
 	{
 	  return this.membrugrupid;
 	}
   
-	public void setMembrugrupId(String membrugrupid) 
+	public void setMembrugrupId(Long membrugrupid) 
 	{
 	  this.membrugrupid = membrugrupid;
 	}
 
+	public Long getMembruId() 
+	{
+	  return this.membruid;
+	}
+  
+	public void setMembruId(Long membruid) 
+	{
+	  this.membruid = membruid;
+	}
 }

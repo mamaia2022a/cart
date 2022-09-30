@@ -57,7 +57,7 @@ public interface MemMembruRepository extends JpaRepository<MemMembru, Long>
                         );
 
   @Modifying
-  @Query("update MemMembru m set m.memMembruGrupid = :memgrupid, m.memMembruGrupnume = :memgrupnume, memMembruGrupcodunic = :memGrupCodunic, m.memMembruTipid = :memnewtipid, m.memMembruTipcod = :memnewtipcod where m.memMembruUserid = :userid")
+  @Query("update MemMembru m set m.memMembruGrupid = :memgrupid, m.memMembruGrupnume = :memgrupnume, m.memMembruGrupcodunic = :memgrupcodunic, m.memMembruTipid = :memnewtipid, m.memMembruTipcod = :memnewtipcod where m.memMembruUserid = :userid")
   void afiliereGrup(@Param(value = "userid")         Long   userid,
                     @Param(value = "memnewtipid")    Long   memNewTipid,
                     @Param(value = "memnewtipcod")   String memNewTipcod,
@@ -67,7 +67,7 @@ public interface MemMembruRepository extends JpaRepository<MemMembru, Long>
                     );				  
 
   @Modifying
-  @Query("update MemMembru m set m.memMembruGrupid = null, m.memMembruGrupnume = null, memMembruGrupcodunic = null, m.memMembruTipid = :memnewtipid, m.memMembruTipcod = :memnewtipcod where m.memMembruUserid = :userid")
+  @Query("update MemMembru m set m.memMembruGrupid = null, m.memMembruGrupnume = null, m.memMembruGrupcodunic = null, m.memMembruTipid = :memnewtipid, m.memMembruTipcod = :memnewtipcod where m.memMembruUserid = :userid")
   void dezafiliereGrup(@Param(value = "userid")    Long   userid,
                     @Param(value = "memnewtipid")  Long   memNewTipid,
                     @Param(value = "memnewtipcod") String memNewTipcod
