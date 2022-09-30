@@ -1285,6 +1285,7 @@ CREATE TABLE `mem_membru` (
   `mem_membru_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membru_enddt` datetime DEFAULT NULL,
   `mem_membru_suspended_yn` char(1),	
+
   PRIMARY KEY (`mem_membru_id`),
   UNIQUE KEY `mem_membru_codunique_unique` (`mem_membru_codunic`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -1486,8 +1487,10 @@ CREATE TABLE `mem_membrurol` (
   `mem_membrurol_codpostalid` int not null,  
   `mem_membrurol_codpostalcod` varchar(16)	not null, 
 
-  `mem_membrurol_invited_yn` varchar(1) NULL,
-  `mem_membrurol_accepted_yn` varchar(1) NULL,
+  `mem_membrurol_invitatie_yn` varchar(1) NULL,
+  `mem_membrurol_acceptare_yn` varchar(1) NULL,
+  `mem_membrurol_plecare_yn` varchar(1) NULL,
+  `mem_membrurol_eliberare_yn` varchar(1) NULL,
 
   `mem_membrurol_activ_yn` varchar(1) NOT NULL,
   `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,

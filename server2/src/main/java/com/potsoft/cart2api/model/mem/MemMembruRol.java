@@ -120,7 +120,28 @@ public class MemMembruRol{
   @Column(name = "mem_membrurol_codpostalcod")
   private String memMembrurolCodpostalcod;
 
- 
+
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrurol_invitatie_yn")
+  private String memMembrurolInvitatieyn;
+
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrurol_acceptare_yn")
+  private String memMembrurolAcceptareyn;
+
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrurol_plecare_yn")
+  private String memMembrurolPlecareyn;
+
+  @NotBlank
+  @Size(max = 1)
+  @Column(name = "mem_membrurol_eliberare_yn")
+  private String memMembrurolEliberareyn;
+
+  
   @NotBlank
   @Size(max = 1)
   @Column(name = "mem_membrurol_activ_yn")
@@ -155,7 +176,9 @@ public class MemMembruRol{
                        Long memMembruRolZonauatid, String memMembruRolZonauatcod, 
                        Long memMembruRolZonalocalitateid, String memMembruRolZonalocalitatecod,  
                        Long memMembruRolSectievotareid, Long memMembruRolSectievotarenr, 
-                       Long memMembruRolCodpostalid, String memMembruRolCodpostalcod
+                       Long memMembruRolCodpostalid, String memMembruRolCodpostalcod,
+                       String memMembrurolInvitatieyn, String memMembrurolAcceptareyn,
+                       String memMembrurolPlecareyn, String memMembrurolEliberareyn
                      ) 
   {
     this.memMembrurolId                = memMembruRolId;
@@ -195,6 +218,10 @@ public class MemMembruRol{
     this.memMembrurolCodpostalid       = memMembruRolCodpostalid;
     this.memMembrurolCodpostalcod      = memMembruRolCodpostalcod;
     
+    this.memMembrurolInvitatieyn       = memMembrurolInvitatieyn;
+    this.memMembrurolAcceptareyn       = memMembrurolAcceptareyn;
+    this.memMembrurolPlecareyn         = memMembrurolPlecareyn;
+    this.memMembrurolEliberareyn       = memMembrurolEliberareyn;
   }
 
 
@@ -498,6 +525,53 @@ public class MemMembruRol{
 
 
 
+  public String getMemMembrurolInvitatieyn() 
+  {
+    return this.memMembrurolInvitatieyn;
+  }
+
+  public void setMemMembrurolInvitatieyn(String memMembrurolInvitatieyn) 
+  {
+    this.memMembrurolInvitatieyn = memMembrurolInvitatieyn;
+  }
+
+
+  public String getMemMembrurolAcceptareyn() 
+  {
+    return this.memMembrurolAcceptareyn;
+  }
+
+  public void setMemMembrurolAcceptareyn(String memMembrurolAcceptareyn) 
+  {
+    this.memMembrurolAcceptareyn = memMembrurolAcceptareyn;
+  }
+
+
+  public String getMemMembrurolEliberareyn() 
+  {
+    return this.memMembrurolEliberareyn;
+  }
+
+  public void setMemMembrurolEliberareyn(String memMembrurolEliberareyn) 
+  {
+    this.memMembrurolEliberareyn = memMembrurolEliberareyn;
+  }
+
+
+  public String getMemMembrurolPlecareyn() 
+  {
+    return this.memMembrurolPlecareyn;
+  }
+
+  public void setMemMembrurolPlecareyn(String memMembrurolPlecareyn) 
+  {
+    this.memMembrurolPlecareyn = memMembrurolPlecareyn;
+  }
+
+
+
+
+
   public String getMemMembrurolActivyn() 
   {
     return this.memMembrurolActivyn;
@@ -529,5 +603,7 @@ public class MemMembruRol{
   {
     this.memMembrurolEnddt = memMembrurolEnddt;
   }
+
+
 
 }

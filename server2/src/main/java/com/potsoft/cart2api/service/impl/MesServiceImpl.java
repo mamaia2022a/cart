@@ -10,6 +10,7 @@ import com.potsoft.cart2api.model.mes.MesDestinMesaj;
 import com.potsoft.cart2api.model.mes.MesDestinatar;
 import com.potsoft.cart2api.model.mes.MesMesaj;
 import com.potsoft.cart2api.model.mes.MesTipMesaj;
+import com.potsoft.cart2api.payload.response.mes.MesExpSiDestResponse_CreareRol;
 import com.potsoft.cart2api.payload.response.mes.MesExpSiDestResponse_SchimbareRol;
 import com.potsoft.cart2api.repository.aut.AutRolRepository;
 import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
@@ -302,7 +303,25 @@ public class MesServiceImpl implements MesService
 	  return resp;
 	}
 
-	
+
+	// -----------------------------------------------------------
+    //used
+	@Override
+	public MesExpSiDestResponse_CreareRol crearerolMesExpeditorSiDestinatar(Long userId, String newRolcod)
+	{
+	  AutUser autUser         = autUserRepository.loadByAutUserId(userId); 
+	  AutUserInfo autUserInfo = autUserInfoRepository.loadByAutUserInfoUserid(userId); 
+	  AutRol autRol           = autRolRepository.loadByAutRolCod(newRolcod);
+	  //---
+	  MesDestinatar newMesDestinatar = creazaSiSalveazaMesDestinatar(autUser, autUserInfo, autRol);
+	  //---
+	  MesExpeditor newMesExpeditor = creazaSiSalveazaMesExpeditor(autUser, autUserInfo, autRol);
+	  //---
+	  MesExpSiDestResponse_CreareRol resp = new MesExpSiDestResponse_CreareRol();
+	  resp.setMesExpeditor(newMesExpeditor);
+	  resp.setMesDestinatar(newMesDestinatar);
+	  return resp;
+	}
 
 
 	// -----------------------------------------------------------

@@ -28,7 +28,7 @@ public interface AutUserService
    AutValidInreg creazaSiSalveazaAutValidInreg(Long userId);
 
    AutUserRol creazaAutUserRol(Long userId, String rolCod);
-   AutUserRol creazaSiSalveazaAutUserRol(Long userId, String rolCod);
+   AutUserRol creazaSiSalveazaAutUserRol(Long userId, String rolCod, boolean bActivateRolNotifications);
    AutUserRol changeAutUserRol(Long userId, String crtRolCod, String newRolCod);
 
    AutUserInfo creazaAutUserInfo(Long userId, RegisterRequest registerRequest);

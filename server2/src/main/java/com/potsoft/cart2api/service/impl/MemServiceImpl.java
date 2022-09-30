@@ -964,6 +964,11 @@ public class MemServiceImpl implements MemService
 		Long   memMembruRolCodpostalid       = 0l;
 		String memMembruRolCodpostalcod      = "0";
 
+		String memMembrurolInvitatieyn       = "n";
+		String memMembrurolAcceptareyn       = "n";
+		String memMembrurolPlecareyn         = "n";
+		String memMembrurolEliberareyn       = "n";
+
 		MemMembruRol newMemMembruRol =  new MemMembruRol( memMembruRolId, 
 		                                                  memMembruRolMembruid, memMembruRolMembrucodunic,
 		                                                  memMembruRolUserid, memMembruRolUsernume, 
@@ -978,7 +983,10 @@ public class MemServiceImpl implements MemService
 		                                                  memMembruRolZonauatid, memMembruRolZonauatcod, 
 		                                                  memMembruRolZonalocalitateid, memMembruRolZonalocalitatecod,  
 		                                                  memMembruRolSectievotareid, memMembruRolSectievotarenr, 
-		                                                  memMembruRolCodpostalid, memMembruRolCodpostalcod) ;
+		                                                  memMembruRolCodpostalid, memMembruRolCodpostalcod,
+														  memMembrurolInvitatieyn, memMembrurolAcceptareyn,
+														  memMembrurolPlecareyn, memMembrurolEliberareyn 																										
+														  ) ;
 	    return newMemMembruRol;
 	}
   

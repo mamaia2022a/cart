@@ -7,6 +7,9 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class RegisterRequest 
 {
+	//recomandare
+	String refmembrucodunic;
+
 	@NotBlank
 	private String username;
 
@@ -75,6 +78,17 @@ public class RegisterRequest
 	private String rezAdresa;	
 	
 
+	public String getRefmembrucodunic() 
+	{
+	  return this.refmembrucodunic;
+	}
+  
+	public void setRefmembrucodunic(String refmembrucodunic) 
+	{
+	  this.refmembrucodunic = refmembrucodunic;
+	}
+
+	
 
 	public String getUsername() 
 	{

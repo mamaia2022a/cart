@@ -18,6 +18,7 @@ import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
 import com.potsoft.cart2api.repository.aut.AutValidInregRepository;
 //import com.potsoft.cart2api.security.JwtTokenProvider;
 import com.potsoft.cart2api.service.AutUserService;
+import com.potsoft.cart2api.service.MesService;
 
 //import java.util.Date;
 import java.util.HashSet;
@@ -43,6 +44,9 @@ import org.springframework.stereotype.Service;
 public class AutUserServiceImpl implements AutUserService 
 {
 
+	@Autowired
+	private MesService mesService;
+ 
    @Autowired
    private AutUserRepository autUserRepository;
    
@@ -104,7 +108,7 @@ public class AutUserServiceImpl implements AutUserService
 	  return registerResponse;
 	}  
 	//---
-	AutUserRol newSimpatPendRol = this.creazaSiSalveazaAutUserRol(newuserid, "SIMPATPEND");
+	AutUserRol newSimpatPendRol = this.creazaSiSalveazaAutUserRol(newuserid, "SIMPATPEND", true);
 	if (newSimpatPendRol == null)
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea rolul utilizator Simpatizant în Așteptare");
 	registerResponse.setAutUserRol(newSimpatPendRol);
@@ -255,9 +259,9 @@ public class AutUserServiceImpl implements AutUserService
   {
     ///Date utcDate = new Date();
 	autUserRolRepository.dezactiveazaAutUserRol(userId, crtRolCod);
-	AutUserRol autUserRol = creazaSiSalveazaAutUserRol(userId, newRolCod);
-	//---
-	mesService.
+	AutUserRol autUserRol = creazaSiSalveazaAutUserRol(userId, newRolCod, false);
+	//---/ma
+	mesService.schimbarerolMesExpeditorSiDestinatar(userId, crtRolCod, newRolCod);
 	return autUserRol;
   }
 
@@ -290,10 +294,15 @@ public class AutUserServiceImpl implements AutUserService
 
   // -----------------------------------------------------------
   @Override
-  public AutUserRol creazaSiSalveazaAutUserRol(Long userId, String rolCod)
+  public AutUserRol creazaSiSalveazaAutUserRol(Long userId, String rolCod, boolean bActivateRolNotifications)
   {
 	AutUserRol newAutUserRol = this.creazaAutUserRol(userId, rolCod);
 	autUserRolRepository.save(newAutUserRol);
+	//---
+	if (bActivateRolNotifications)
+	{
+	  mesService.crearerolMesExpeditorSiDestinatar(userId, rolCod);
+	}
 	return newAutUserRol;
   }
 
@@ -305,101 +314,101 @@ public class AutUserServiceImpl implements AutUserService
 	AutUserRol autUserRol;
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memincnfl"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memincafl"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memactnfl"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMACTNFL");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMACTNFL", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memactafl"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMACTAFL");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMACTAFL",true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memexpnfl"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCNFL",true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("memexpafl"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "MEMINCAFL", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("sefgrup"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SEFGRUP");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SEFGRUP", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	//---
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("simpatiz"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SIMPATIZ", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("coordprinc"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "COORDPRINC");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "COORDPRINC", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("superadmin"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SUPERADMIN");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "SUPERADMIN", true);
 	  return autUserRol;
 	}
 	if (username.toLowerCase().startsWith("admin"))
 	{
-	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "ADMIN");
+	  autUserRol = this.creazaSiSalveazaAutUserRol(userId, "ADMIN", true);
 	  return autUserRol;
 	}
 	return null;
