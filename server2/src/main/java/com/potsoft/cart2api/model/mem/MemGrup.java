@@ -48,6 +48,9 @@ public class MemGrup{
   @Column(name = "mem_grup_sefgrupusernume")
   private String memGrupSefgrupusernume;
 
+  @NotNull
+  @Column(name = "mem_grup_sefgrupuserinfoid")
+  private Long memGrupSefgrupuserinfoid;
 
   
   @Column(name = "mem_grup_zonataraid")
@@ -134,7 +137,7 @@ public class MemGrup{
 
 	public MemGrup( Long memGrupId, String memGrupNume, String memGrupCodunic,
                        Long memGrupSefgrupid, String memGrupSefgrupcodunic,
-                       Long memGrupSefgrupuserid, String memGrupSefgrupusernume, 
+                       Long memGrupSefgrupuserid, String memGrupSefgrupusernume, Long memGrupSefgrupuserinfoid,
                        String memGrupActivyn, String memGrupStartdt,  String memGrupEnddt,
                        Long memGrupZonataraid, String memGrupZonataracod, 
                        Long memGrupJudetid, String memGrupJudetcod, 
@@ -155,6 +158,7 @@ public class MemGrup{
     this.memGrupSefgrupcodunic    = memGrupSefgrupcodunic;
     this.memGrupSefgrupuserid     = memGrupSefgrupuserid;
     this.memGrupSefgrupusernume   = memGrupSefgrupusernume;
+    this.memGrupSefgrupuserinfoid = memGrupSefgrupuserinfoid;
 
     this.memGrupActivyn           = memGrupActivyn;
     this.memGrupStartdt           = memGrupStartdt;
@@ -262,6 +266,15 @@ public class MemGrup{
   }
 
 
+  public Long getMemGrupSefgrupuserinfoid() 
+  {
+    return this.memGrupSefgrupuserinfoid;
+  }
+
+  public void setMemGrupSefgrupuserinfoid(Long memGrupSefgrupuserinfoid) 
+  {
+    this.memGrupSefgrupuserid = memGrupSefgrupuserinfoid;
+  }
 
 
   public String getMemGrupActivyn() 

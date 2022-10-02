@@ -3,14 +3,16 @@ package com.potsoft.cart2api.controller;
 
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Excludere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
-import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
-import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
@@ -90,7 +92,11 @@ public class MemController {
 		                                               @Valid @RequestBody GrupRequest_Creare memGrupRequestCreare,
 		                                               @CurrentUser UserDetails currentUser) 
     {
-       UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
+      UserDetailsImpl crtuser = (UserDetailsImpl) currentUser; 
+	  //--
+	  String crtUserRol = memGrupRequestCreare.getCrtmemrolcod();
+	  String newUserRol = memGrupRequestCreare.getNewmemrolcod();
+	  autUserService.changeAutUserRol(crtuser.getId(), crtUserRol, newUserRol);
 	  //--
       GrupResponse_Creare memGrupResponseCreare = memService.grup_Creare(crtuser.getId(), memGrupRequestCreare);
 	  //---
@@ -98,6 +104,23 @@ public class MemController {
 	}
 
     //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/vizualizare")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<GrupResponse_Vizualizare> grupVizualizare(
+		                                               @Valid @RequestBody GrupRequest_Vizualizare memGrupRequestVizualizare,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+      UserDetailsImpl crtuser = (UserDetailsImpl) currentUser; 
+	  //--
+	  //--
+      GrupResponse_Vizualizare memGrupResponseVizualizare = memService.grup_Vizualizare(crtuser.getId(), memGrupRequestVizualizare);
+	  //---
+	  return ResponseEntity.ok(memGrupResponseVizualizare);
+	}
+	
+
+	//-----------------------------------------------------------
 	@CrossOrigin(origins = "*")
 	@PostMapping("/grup/stergere")
 	@Transactional(rollbackFor = { SQLException.class })

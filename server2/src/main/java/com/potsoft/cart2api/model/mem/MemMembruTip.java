@@ -40,6 +40,9 @@ public class MemMembruTip{
   @Column(name = "mem_membrutip_usernume")
   private String memMembrutipUsernume;
 
+  @NotNull
+  @Column(name = "mem_membrutip_userinfoid")
+  private Long memMembrutipUserinfoid;
 
   @NotNull
   @Column(name = "mem_membrutip_tipid")
@@ -135,7 +138,7 @@ public class MemMembruTip{
 
 	public MemMembruTip( Long memMembruTipId, 
                        Long memMembruTipMembruid, String memMembruTipMembrucodunic,
-                       Long memMembruTipUserid, String memMembruTipUsernume, 
+                       Long memMembruTipUserid, String memMembruTipUsernume, Long memMembruTipUserinfoid, 
                        Long memMembruTipTipid, String memMembruTipTipcod, 
                        String memMembruTipActivyn, String memMembruTipStartdt, String memMembruTipEnddt,
                        Long memMembruTipZonataraid, String memMembruTipZonataracod, 
@@ -156,6 +159,7 @@ public class MemMembruTip{
 
     this.memMembrutipUserid            = memMembruTipUserid;
     this.memMembrutipUsernume          = memMembruTipUsernume;
+    this.memMembrutipUserinfoid        = memMembruTipUserinfoid;
 
     this.memMembrutipTipid             = memMembruTipTipid;
     this.memMembrutipTipcod            = memMembruTipTipcod;
@@ -242,6 +246,16 @@ public class MemMembruTip{
     this.memMembrutipUsernume = memMembrutipUsernume;
   }
 
+
+  public Long getMemMembrutipUserinfoid() 
+  {
+    return this.memMembrutipUserinfoid;
+  }
+
+  public void setMemMembrutipUserinfoid(Long memMembrutipUserinfoid) 
+  {
+    this.memMembrutipUserinfoid = memMembrutipUserinfoid;
+  }
 
 
   public Long getMemMembrutipTipid() 

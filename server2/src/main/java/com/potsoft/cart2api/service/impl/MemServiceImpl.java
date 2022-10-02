@@ -633,8 +633,28 @@ public class MemServiceImpl implements MemService
 	@Override
 	public GrupResponse_Vizualizare  grup_Vizualizare(Long userid, GrupRequest_Vizualizare grupRequestVizualizare)
   	{
+	  MemMembru memMembru   = memMembruRepository.loadByMemMembruUserid(userid);
+	  MemSefGrup memSefGrup = memSefGrupRepository.loadByMemSefgrupUserid(userid);
+	  Long grupId           = memSefGrup.getMemSefgrupGrupid();
+	  String   crtMemTipCod = memMembru.getMemMembruTipCod();
 	  GrupResponse_Vizualizare resp = new GrupResponse_Vizualizare();	
-	  return resp;
+	  //--  
+	  if ( //-- un sef grup isi desfiinteaza grupul
+		  (crtMemTipCod.equals("SEFGRUP"))
+		 )		
+	  {
+		//---
+		MemGrup memGrup = memGrupRepository.loadByMemGrupId(grupId);
+		List<MemMembruGrup> membriGrup = memMembruGrupRepository.loadMembriGrup(grupId); //findByMemMembrugrupGrupid(grupId);	
+		//---
+		resp.setMembriGrup(membriGrup);
+		resp.setMembru(memMembru);
+		resp.setGrup(memGrup);
+		resp.setSefGrup(memSefGrup);
+	    return resp;
+	  }
+	  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu aveti dreptul sa Vizualizați Grupul.");
+
 	}
 
 
@@ -669,6 +689,11 @@ public class MemServiceImpl implements MemService
 		memMembruRepository.afiliereGrup(userid, memNewTipid, memNewTipcod, memGrupId, memGrupNume, memGrupCodunic);
 	    //---
 		memSefGrupRepository.actualizaregrupMemSefGrup( userid, memGrupId, memGrupNume, memGrupCodunic);
+        //---
+		MemMembruGrup newMemMembruGrup = creazaMemMembruGrup(memMembru, newMemGrup);
+		newMemMembruGrup.setMemMembrugrupActivyn("y");
+		newMemMembruGrup.setMemMembrugrupCerereyn("n");
+		memMembruGrupRepository.save(newMemMembruGrup);
 		//---
 		resp.setMemgrup(newMemGrup);
 		return resp;
@@ -700,7 +725,7 @@ public class MemServiceImpl implements MemService
 		memGrupRepository.dezactiveazaMemGrup(userid);		
 		//--
 		Long grupId  = memMembru.getMemMembruGrupid();
-		List<MemMembruGrup> listaMembriGrup = memMembruGrupRepository.findByMemMembrugrupGrupid(grupId);	
+		List<MemMembruGrup> listaMembriGrup = memMembruGrupRepository.loadMembriGrup(grupId); //findByMemMembrugrupGrupid(grupId);	
 		for (MemMembruGrup memMembruGrup : listaMembriGrup)
 		{	
           membruGrup_Plecare(memMembruGrup.getMemMembrugrupUserid(), null);
@@ -712,11 +737,12 @@ public class MemServiceImpl implements MemService
 	}
   
 
+	//------------------------------------------------
+	//
 	@Override
 	public MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare grupRequestVizualizare)
 	{
-	  MembriGrupResponse_Vizualizare resp = new MembriGrupResponse_Vizualizare();	
-	  return resp;
+	  return null;
 	}
   
 
@@ -776,6 +802,7 @@ public class MemServiceImpl implements MemService
 
 		Long   memUserid            = autUser.getAutUserId();
 		String memUsernume          = autUser.getAutUserNume();
+		Long   memUserinfoid        = autUserInfo.getAutUserInfoId();
 
 		Long   memTipid             = memTip.getMemTipId();
 		String memTipcod            = memTip.getMemTipCod();
@@ -827,7 +854,7 @@ public class MemServiceImpl implements MemService
 		String memSuspendedyn       = "n";
 
 		MemMembru newMemMembru = new MemMembru(memid, memCodunic,
-		                                       memUserid, memUsernume, 
+		                                       memUserid, memUsernume, memUserinfoid,
 		                                       memTipid, memTipcod, 
 		                                       memGrupid, memGrupnume, memGrupcodunic,
 		                                       memAdrrezidentayn,
@@ -869,7 +896,8 @@ public class MemServiceImpl implements MemService
 
 		Long memMembruTipUserid          = memMembru.getMemMembruUserid();
 		String memMembruTipUsernume      = memMembru.getMemMembruUsernume();
-		
+		Long memMembruTipUserinfoid      = memMembru.getMemMembruUserinfoid();
+
 		Long memMembruTipTipid           = memTip.getMemTipId(); 
 		String memMembruTipTipcod        = memTip.getMemTipCod();
 
@@ -898,7 +926,7 @@ public class MemServiceImpl implements MemService
 
 		MemMembruTip newAutMemMembruTip = new MemMembruTip( memMembruTipId, 
 		                                                memMembruTipMembruid, memMembruTipMembrucodunic,
-		                                                memMembruTipUserid, memMembruTipUsernume, 
+		                                                memMembruTipUserid, memMembruTipUsernume, memMembruTipUserinfoid,
 		                                                memMembruTipTipid, memMembruTipTipcod, 
 		                                                memMembruTipActivyn, memMembruTipStartdt, memMembruTipEnddt,
 		                                                memMembruTipZonataraid, memMembruTipZonataracod, 
@@ -931,12 +959,13 @@ public class MemServiceImpl implements MemService
     {
 		Long memMembruRolId               = null;
 
-		Long memMembruRolMembruid        = memMembru.getMemMembruId();
-		String memMembruRolMembrucodunic = memMembru.getMemMembruCodunic();
+		Long memMembruRolMembruid         = memMembru.getMemMembruId();
+		String memMembruRolMembrucodunic  = memMembru.getMemMembruCodunic();
 
-		Long memMembruRolUserid          = memMembru.getMemMembruUserid();
-		String memMembruRolUsernume      = memMembru.getMemMembruUsernume();
-			
+		Long memMembruRolUserid           = memMembru.getMemMembruUserid();
+		String memMembruRolUsernume       = memMembru.getMemMembruUsernume();
+		Long memMembruRolUserinfoid       = memMembru.getMemMembruUserinfoid();
+
 		Long memMembruRolTiprolid         = memTipRol.getMemTipRolId(); 
 		String memMembruRolTiprolcod      = memTipRol.getMemTipRolCod();
 		
@@ -973,7 +1002,7 @@ public class MemServiceImpl implements MemService
 
 		MemMembruRol newMemMembruRol =  new MemMembruRol( memMembruRolId, 
 		                                                  memMembruRolMembruid, memMembruRolMembrucodunic,
-		                                                  memMembruRolUserid, memMembruRolUsernume, 
+		                                                  memMembruRolUserid, memMembruRolUsernume, memMembruRolUserinfoid, 
 		                                                  memMembruRolTiprolid, memMembruRolTiprolcod, 
 		                                                  memMembruRolAcopgeoid, memMembruRolAcopgeocod, 
 		                                                  memMembruRolActivyn, memMembruRolStartdt, memMembruRolEnddt,
@@ -1015,6 +1044,7 @@ public class MemServiceImpl implements MemService
 
 		Long memSefGrupUserid          = memMembru.getMemMembruUserid();
 		String memSefGrupUsernume      = memMembru.getMemMembruUsernume();
+		Long memSefGrupUserinfoid      = memMembru.getMemMembruUserinfoid();
 
 		Long memSefGrupGrupid          = 0l;
 		String memSefGrupGrupnume      = "0";
@@ -1045,7 +1075,7 @@ public class MemServiceImpl implements MemService
 		
 		MemSefGrup newMemSefGrup = new MemSefGrup( memSefGrupId, 
 		                                           memSefGrupMembruid, memSefGrupMembrucodunic,
-		                                           memSefGrupUserid, memSefGrupUsernume, 
+		                                           memSefGrupUserid, memSefGrupUsernume, memSefGrupUserinfoid,
 												   memSefGrupGrupid, memSefGrupGrupnume, memSefGrupGrupcodunic,
 		                                           memSefGrupActivyn, memSefGrupStartdt, memSefGrupEnddt,
 		                                           memSefGrupZonataraid, memSefGrupZonataracod, 
@@ -1087,6 +1117,7 @@ public class MemServiceImpl implements MemService
 
 		Long memGrupSefgrupuserid     = memSefGrup.getMemSefgrupUserid();
 		String memGrupSefgrupusernume = memSefGrup.getMemSefgrupUsernume();
+		Long memGrupSefgrupuserinfoid = memSefGrup.getMemSefgrupUserinfoid();
 
 		String memGrupActivyn         = "y" ;
 		String memGrupStartdt         = null ;
@@ -1113,7 +1144,7 @@ public class MemServiceImpl implements MemService
 
 		MemGrup newMemGrup = new MemGrup( memGrupId, memGrupNume, memGrupCodunic,
 		                               memGrupSefgrupid, memGrupSefgrupcodunic,
-		                               memGrupSefgrupuserid, memGrupSefgrupusernume, 
+		                               memGrupSefgrupuserid, memGrupSefgrupusernume, memGrupSefgrupuserinfoid, 
 		                               memGrupActivyn, memGrupStartdt, memGrupEnddt,
 		                               memGrupZonataraid, memGrupZonataracod, 
 		                               memGrupJudetid, memGrupJudetcod, 
@@ -1152,6 +1183,17 @@ public class MemServiceImpl implements MemService
 
 		Long   memMembrugrupUserid        = memMembru.getMemMembruUserid();
 		String memMembrugrupUsernume      = memMembru.getMemMembruUsernume();
+		Long   memMembrugrupUserinfoid    = memMembru.getMemMembruUserinfoid();
+
+		Long memMembrugrupGrupid          = memGrup.getMemGrupId();
+		String memMembrugrupGrupnume      = memGrup.getMemGrupNume();
+		String memMembrugrupGrupcodunic   = memGrup.getMemGrupCodunic();
+
+		Long memMembrugrupSefgrupid         = memGrup.getMemGrupSefgrupid();
+		String memMembrugrupSefgrupcodunic  = memGrup.getMemGrupSefgrupcodunic(); 
+		Long memMembrugrupSefgrupuserid     = memGrup.getMemGrupSefgrupuserid();
+		String memMembrugrupSefgrupusernume = memGrup.getMemGrupSefgrupusernume();
+		Long memMembrugrupSefgrupuserinfoid = memGrup.getMemGrupSefgrupuserinfoid();
 
 		Long   memMembrugrupZonataraid        = memGrup.getMemGrupZonataraid();
 		String memMembrugrupZonataracod       = memGrup.getMemGrupZonataracod();
@@ -1185,7 +1227,10 @@ public class MemServiceImpl implements MemService
 
 		MemMembruGrup newMemMembruGrup = new MemMembruGrup( memMembrugrupId, 
                                                             memMembrugrupMembruid, memMembrugrupMembrucodunic,
-                                                            memMembrugrupUserid, memMembrugrupUsernume, 
+                                                            memMembrugrupUserid, memMembrugrupUsernume, memMembrugrupUserinfoid,
+															memMembrugrupGrupid, memMembrugrupGrupnume, memMembrugrupGrupcodunic,
+															memMembrugrupSefgrupid, memMembrugrupSefgrupcodunic,
+															memMembrugrupSefgrupuserid, memMembrugrupSefgrupusernume, memMembrugrupSefgrupuserinfoid,									 
                                                             memMembrugrupActivyn, memMembrugrupStartdt, memMembrugrupEnddt,
                                                             memMembrugrupZonataraid, memMembrugrupZonataracod, 
                                                             memMembrugrupJudetid, memMembrugrupJudetcod, 

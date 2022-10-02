@@ -41,6 +41,9 @@ public class MemSefGrup{
   @Column(name = "mem_sefgrup_usernume")
   private String memSefgrupUsernume;
 
+  @NotNull
+  @Column(name = "mem_sefgrup_userinfoid")
+  private Long memSefgrupUserinfoid;
 
 
   @NotNull
@@ -140,7 +143,7 @@ public class MemSefGrup{
 
 	public MemSefGrup( Long memSefGrupId, 
                        Long memSefGrupMembruid, String memSefGrupMembrucodunic,
-                       Long memSefGrupUserid, String memSefGrupUsernume, 
+                       Long memSefGrupUserid, String memSefGrupUsernume, Long memSefGrupUserinfoid,
                        Long memSefGrupGrupid, String memSefGrupGrupnume, String memSefGrupGrupcodunic,
                        String memSefGrupActivyn, String memSefGrupStartdt,  String memSefGrupEnddt,
                        Long memSefGrupZonataraid, String memSefGrupZonataracod, 
@@ -161,6 +164,7 @@ public class MemSefGrup{
 
     this.memSefgrupUserid            = memSefGrupUserid;
     this.memSefgrupUsernume          = memSefGrupUsernume;
+    this.memSefgrupUserinfoid        = memSefGrupUserinfoid;
 
     this.memSefgrupGrupid            = memSefGrupGrupid;
     this.memSefgrupGrupnume          = memSefGrupGrupnume;
@@ -246,6 +250,17 @@ public class MemSefGrup{
   public void setMemSefgrupUsernume(String memSefgrupUsernume) 
   {
     this.memSefgrupUsernume = memSefgrupUsernume;
+  }
+
+
+  public Long getMemSefgrupUserinfoid() 
+  {
+    return this.memSefgrupUserinfoid;
+  }
+
+  public void setMemSefgrupUserinfoid(Long memSefgrupUserinfoid) 
+  {
+    this.memSefgrupUserinfoid = memSefgrupUserinfoid;
   }
 
 

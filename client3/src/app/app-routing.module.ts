@@ -54,6 +54,14 @@ const routes: Routes = [
   },
 
   //-----------------------------
+  //  Creare Grup
+  //-----------------------------
+  {
+    path: 'commongrupact/crearegrup/memactexpnfl',
+    loadChildren: () => import('./pages/commongrupact/crearegrup/memactexpnfl/memactexpnfl.module').then((m) => m.MemActExpNflPageModule),
+  },
+
+  //-----------------------------
   //  Gestiune Executie Activitati
   //-----------------------------
   {

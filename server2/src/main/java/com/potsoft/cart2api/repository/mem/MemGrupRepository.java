@@ -27,8 +27,18 @@ public interface MemGrupRepository extends JpaRepository<MemGrup, Long>
     @Query("update MemGrup m set m.memGrupActivyn = 'n', m.memGrupEnddt = now() where m.memGrupSefgrupuserid = :sefgrupuserid")
     void dezactiveazaMemGrup(@Param(value = "sefgrupuserid") Long sefgrupuserid);
 
+    Optional<MemGrup> findByMemGrupId(@NotBlank Long mem_grup_id);
     Optional<MemGrup> findByMemGrupCodunic(@NotBlank String mem_grup_codunic);
   
+    @Transactional
+    default MemGrup loadByMemGrupId(Long mem_grup_id)
+    {
+      return findByMemGrupId(mem_grup_id)
+      .orElseThrow(() ->
+      new ResourceNotFoundException("MemGrup", 
+                                    "mem_grup_id", mem_grup_id));
+    }
+
     @Transactional
     default MemGrup loadByMemGrupCodunic(String mem_grup_codunic)
     {

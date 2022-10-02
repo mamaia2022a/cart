@@ -23,7 +23,11 @@ import java.util.Optional;
 @Repository
 public interface MemMembruGrupRepository extends JpaRepository<MemMembruGrup, Long> 
 {
-    List<MemMembruGrup> findByMemMembrugrupGrupid(Long mem_membrugrup_userid);
+
+    @Query("select m from MemMembruGrup m where (m.memMembrugrupActivyn='y') and (m.memMembrugrupGrupid = :grupid)" )
+    List<MemMembruGrup> loadMembriGrup(@Param(value = "grupid") Long grupid);
+
+    //List<MemMembruGrup> findByMemMembrugrupGrupid(Long mem_membrugrup_userid);
 
     Optional<MemMembruGrup> findByMemMembrugrupUserid(@NotNull Long mem_membrugrup_userid);
   

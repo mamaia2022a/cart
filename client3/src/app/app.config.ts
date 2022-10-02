@@ -25,6 +25,9 @@ export const appConfig = {
         listactc : "commongrupact/gestexeact/listactc",
         listactv : "commongrupact/gestexeact/listactv",
         listactt : "commongrupact/gestexeact/listactt",
+      },
+      crearegrup : {
+        memactexpnfl : "commongrupact/crearegrup/memactexpnfl",
       }
     },
     simpatpend : {

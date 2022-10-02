@@ -36,6 +36,10 @@ public class MemMembru {
   @Column(name = "mem_membru_usernume")
   private String memMembruUsernume;
 
+  @NotNull
+  @Column(name = "mem_membru_userinfoid")
+  private Long memMembruUserinfoid;
+
 
   @NotNull
   @Column(name = "mem_membru_tipid")
@@ -168,13 +172,12 @@ public class MemMembru {
   private String memMembruSuspendedyn;
 
 
-
 	public MemMembru() 
   {
 	}
 
 	public MemMembru( Long memid, String memCodunic,
-                    Long memUserid, String memUsernume, 
+                    Long memUserid, String memUsernume, Long memUserinfoid,
                     Long memTipid, String memTipcod, 
                     Long memGrupid, String memGrupnume, String memGrupcodunic,
                     String memAdrrezidentayn,
@@ -196,6 +199,7 @@ public class MemMembru {
 
     this.memMembruUserid            = memUserid;
     this.memMembruUsernume          = memUsernume;
+    this.memMembruUserinfoid        = memUserinfoid;
 
     this.memMembruTipid             = memTipid;
     this.memMembruTipcod            = memTipcod;
@@ -278,6 +282,17 @@ public class MemMembru {
   public void setMemMembruUsernume(String memMembruUsernume) 
   {
     this.memMembruUsernume = memMembruUsernume;
+  }
+
+
+  public Long getMemMembruUserinfoid() 
+  {
+    return this.memMembruUserinfoid;
+  }
+
+  public void setMemMembruUserinfoid(Long memMembruUserinfoid) 
+  {
+    this.memMembruUserid = memMembruUserinfoid;
   }
 
 
@@ -645,5 +660,8 @@ public class MemMembru {
   {
     this.memMembruSuspendedyn = memMembruSuspendedyn;
   }
+
+
+
 
 }

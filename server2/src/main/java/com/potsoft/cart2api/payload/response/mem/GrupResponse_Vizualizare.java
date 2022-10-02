@@ -1,23 +1,69 @@
 package com.potsoft.cart2api.payload.response.mem;
 
+import com.potsoft.cart2api.model.mem.MemMembruGrup;
+import com.potsoft.cart2api.model.mem.MemGrup;
+import com.potsoft.cart2api.model.mem.MemSefGrup;
+import com.potsoft.cart2api.model.mem.MemMembru;
+
+import java.util.List;
 import lombok.Data;
 
 
 @Data
 public class GrupResponse_Vizualizare
 {
-	private String username;
+	private MemGrup     grup; //sef grup ca membru
+	private MemSefGrup  sefgrup;
+	private MemMembru   membru;
+	private List<MemMembruGrup>  membrigrup;
 
 
-	public String getUsername() 
+
+	public MemMembru getMembru() 
 	{
-	  return this.username;
+	  return this.membru;
 	}
   
-	public void setUsername(String username) 
+	public void setMembru(MemMembru membru) 
 	{
-	  this.username = username;
+	  this.membru = membru;
+	}
+
+
+
+	public MemGrup getGrup() 
+	{
+	  return this.grup;
 	}
   
+	public void setGrup(MemGrup grup) 
+	{
+	  this.grup = grup;
+	}
+
+
+
+	public MemSefGrup getSefGrup() 
+	{
+	  return this.sefgrup;
+	}
+  
+	public void setSefGrup(MemSefGrup sefgrup) 
+	{
+	  this.sefgrup = sefgrup;
+	}
+
+
+	
+	public List<MemMembruGrup> getMembriGrup() 
+	{
+	  return this.membrigrup;
+	}
+  
+	public void setMembriGrup(List<MemMembruGrup> membrigrup) 
+	{
+	  this.membrigrup = membrigrup;
+	}
+
 }
 

@@ -61,6 +61,14 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.MemGrupCreare)
+  memGrupCreare(context: StateContext<AuthAction.MemGrupCreare>, action: AuthAction.MemGrupCreare) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }  
 
   @Action(AuthAction.Rolgrupactiunii)
   rolgrupactiunii(context: StateContext<AuthAction.Rolgrupactiunii>, action: AuthAction.Rolgrupactiunii) {

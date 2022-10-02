@@ -40,6 +40,10 @@ public class MemMembruRol{
   @Column(name = "mem_membrurol_usernume")
   private String memMembrurolUsernume;
 
+  @NotNull
+  @Column(name = "mem_membrurol_userinfoid")
+  private Long memMembrurolUserinfoid;
+
 
   @NotNull
   @Column(name = "mem_membrurol_tiprolid")
@@ -164,7 +168,7 @@ public class MemMembruRol{
 
 	public MemMembruRol( Long memMembruRolId, 
                        Long memMembruRolMembruid, String memMembruRolMembrucodunic,
-                       Long memMembruRolUserid, String memMembruRolUsernume, 
+                       Long memMembruRolUserid, String memMembruRolUsernume, Long memMembruRolUserinfoid, 
                        Long memMembruRolTiprolid, String memMembruRolTiprolcod, 
                        Long memMembruRolAcopgeoid, String memMembruRolAcopgeocod, 
                        String memMembruRolActivyn, String memMembruRolStartdt,  String memMembruRolEnddt,
@@ -188,7 +192,8 @@ public class MemMembruRol{
 
     this.memMembrurolUserid            = memMembruRolUserid;
     this.memMembrurolUsernume          = memMembruRolUsernume;
-
+    this.memMembrurolUserinfoid        = memMembruRolUserinfoid;
+ 
     this.memMembrurolTiprolid          = memMembruRolTiprolid;
     this.memMembrurolTiprolcod         = memMembruRolTiprolcod;
 
@@ -279,6 +284,18 @@ public class MemMembruRol{
   public void setMemMembrurolUsernume(String memMembrurolUsernume) 
   {
     this.memMembrurolUsernume = memMembrurolUsernume;
+  }
+
+
+
+  public Long getMemMembrurolUserinfoid() 
+  {
+    return this.memMembrurolUserinfoid;
+  }
+
+  public void setMemMembrurolUserinfoid(Long memMembrurolUserinfoid) 
+  {
+    this.memMembrurolUserinfoid = memMembrurolUserinfoid;
   }
 
 

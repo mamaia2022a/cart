@@ -30,6 +30,8 @@ export class AuthHandler {
   private ApiURLAutValidateRegistration: string               = this.ApiBaseURL + "/api/aut/user/validate_registration"
   //---------------------------------- mem
   private ApiURLMemMembruTipSchimbare: string                 = this.ApiBaseURL + "/api/mem/membru/tip/schimbare";
+  //---------------------------------- grup
+  private ApiURLMemGrupCreare: string                         = this.ApiBaseURL + "/api/mem/grup/creare";
   //---------------------------------- geo
   //zonetara/toate
   private ApiURLGeoZonetara: string                           = this.ApiBaseURL + "/api/geo/zonetara";
@@ -123,6 +125,15 @@ export class AuthHandler {
       console.log(selActiune);
       storage.set("crtactiune", selActiune);
       //-----------------------
+      //  Creare Grup
+      //-----------------------
+      if (selActiune.autActiuneCod == "CREAREGRUPMEMACTEXPNFL")
+      {
+        this.navController.navigateRoot(appConfig.routes.commongrupact.crearegrup.memactexpnfl);
+        return ;
+      }
+      //-----------------------
+      // 
       //-----------------------
       if (selActiune.autActiuneCod == "CONFIRMSIMACT")
       {
@@ -364,6 +375,32 @@ export class AuthHandler {
   
       });
 
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemGrupCreare)).subscribe(data2 => 
+      {
+        let memGrupCreareAction : AuthAction.MemGrupCreare = data2;
+        console.log("memGrupCreare");
+        var memMembruRequestCreare = memGrupCreareAction.memGrupRequestCreare;
+        console.log(memMembruRequestCreare);
+        return this.apiService.post(this.ApiURLMemGrupCreare,
+                                    memGrupCreareAction.memGrupRequestCreare, 
+                                    {"Authorization" : `Bearer ${memGrupCreareAction.token}`}).subscribe(data  => {  
+          let response : MemMembruTipResponse_Schimbare = data;
+          //console.log(data);
+          console.log(response);
+          toastService.default("Felicitări! V-ați creat Propriul Grup cu succes. Vă rugăm să vă Re-Logați");
+          this.navController.navigateRoot(appConfig.routes.auth.login);
+          return;
+          //return of(true);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Creare Grup : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+  
+      });
 
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.Login)).subscribe(data2 => 

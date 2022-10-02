@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.potsoft.cart2api.model.aut.AutUserInfo;
+
 
 @Entity
 @Table(name = "mem_membrugrup")
@@ -41,6 +43,9 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_usernume")
   private String memMembrugrupUsernume;
 
+  @NotNull
+  @Column(name = "mem_membrugrup_userinfoid")
+  private Long memMembrugrupUserinfoid;
 
 
   @NotNull
@@ -55,6 +60,26 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_grupcodunic")
   private String memMembrugrupGrupcodunic;
  
+
+  @NotNull
+  @Column(name = "mem_membrugrup_sefgrupid")
+  private Long memMembrugrupSefgrupid;
+
+  @Size(max = 16)
+  @Column(name = "mem_membrugrup_sefgrupcodunic")
+  private String memMembrugrupSefgrupcodunic;
+
+  @NotNull
+  @Column(name = "mem_membrugrup_sefgrupuserid")
+  private Long memMembrugrupSefgrupuserid;
+  
+  @Size(max = 20)
+  @Column(name = "mem_membrugrup_sefgrupusernume")
+  private String memMembrugrupSefgrupusernume;
+
+  @NotNull
+  @Column(name = "mem_membrugrup_sefgrupuserinfoid")
+  private Long memMembrugrupSefgrupuserinfoid;
 
   
   @Column(name = "mem_membrugrup_zonataraid")
@@ -127,7 +152,6 @@ public class MemMembruGrup{
   @Column(name = "mem_membrugrup_cereredt", insertable = false, updatable = false)
   private String memMembrugrupCereredt;
 
-  @NotBlank
   @Size(max = 1)
   @Column(name = "mem_membrugrup_acceptare_yn")
   private String memMembrugrupAcceptareyn;
@@ -160,6 +184,11 @@ public class MemMembruGrup{
   private String memMembrugrupEnddt;
 
 
+  //@Where(clause = "aut_userrol_activ_yn = 'y'")
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+  //@JoinColumn(name = "mem_membrugrup_userid", referencedColumnName = "aut_userinfo_userid", insertable = false, updatable = false)
+  @JoinColumn(name = "mem_membrugrup_userinfoid", referencedColumnName = "aut_userinfo_id", insertable = false, updatable = false)
+  private AutUserInfo userinfo;
  
 
 	public MemMembruGrup() 
@@ -168,7 +197,10 @@ public class MemMembruGrup{
 
 	public MemMembruGrup( Long memMembrugrupId, 
                        Long memMembrugrupMembruid, String memMembrugrupMembrucodunic,
-                       Long memMembrugrupUserid, String memMembrugrupUsernume, 
+                       Long memMembrugrupUserid, String memMembrugrupUsernume, Long memMembrugrupUserinfoid,
+                       Long memMembrugrupGrupid, String memMembrugrupGrupnume, String memMembrugrupGrupcodunic,
+                       Long memMembrugrupSefgrupid, String memMembrugrupSefgrupcodunic,
+                       Long memMembrugrupSefgrupuserid, String memMembrugrupSefgrupusernume, Long memMembrugrupSefgrupuserinfoid,
                        String memMembrugrupActivyn, String memMembrugrupStartdt,  String memMembrugrupEnddt,
                        Long memMembrugrupZonataraid, String memMembrugrupZonataracod, 
                        Long memMembrugrupJudetid, String memMembrugrupJudetcod, 
@@ -191,6 +223,17 @@ public class MemMembruGrup{
 
     this.memMembrugrupUserid            = memMembrugrupUserid;
     this.memMembrugrupUsernume          = memMembrugrupUsernume;
+    this.memMembrugrupUserinfoid        = memMembrugrupUserinfoid;
+
+    this.memMembrugrupGrupid            = memMembrugrupGrupid;
+    this.memMembrugrupGrupnume          = memMembrugrupGrupnume;
+    this.memMembrugrupGrupcodunic       = memMembrugrupGrupcodunic;
+
+    this.memMembrugrupSefgrupid         = memMembrugrupSefgrupid;
+    this.memMembrugrupSefgrupcodunic    = memMembrugrupSefgrupcodunic;
+    this.memMembrugrupSefgrupuserid     = memMembrugrupSefgrupuserid;
+    this.memMembrugrupSefgrupusernume   = memMembrugrupSefgrupusernume;
+    this.memMembrugrupSefgrupuserinfoid = memMembrugrupSefgrupuserinfoid;
 
     this.memMembrugrupActivyn           = memMembrugrupActivyn;
     this.memMembrugrupStartdt           = memMembrugrupStartdt;
@@ -284,6 +327,16 @@ public class MemMembruGrup{
   }
 
 
+  public Long getMemMembrugrupUserinfoid() 
+  {
+    return this.memMembrugrupUserinfoid;
+  }
+
+  public void setMemMembrugrupUserinfoid(Long memMembrugrupUserinfoid) 
+  {
+    this.memMembrugrupUserinfoid = memMembrugrupUserinfoid;
+  }
+
 
   public Long getMemMembrugrupGrupid() 
   {
@@ -317,6 +370,62 @@ public class MemMembruGrup{
     this.memMembrugrupGrupcodunic = memMembrugrupGrupcodunic;
   }
  
+
+
+  public Long getMemMembrugrupSefgrupid() 
+  {
+    return this.memMembrugrupSefgrupid;
+  }
+
+  public void setMembrugrupSefgrupid(Long memMembrugrupSefgrupid) 
+  {
+    this.memMembrugrupSefgrupid = memMembrugrupSefgrupid;
+  }
+
+
+  public String getMemMembrugrupSefgrupcodunic() 
+  {
+    return this.memMembrugrupSefgrupcodunic;
+  }
+
+  public void setMemMembrugrupSefgrupcodunic(String memMembrugrupSefgrupcodunic) 
+  {
+    this.memMembrugrupSefgrupcodunic = memMembrugrupSefgrupcodunic;
+  }
+
+
+
+  public Long getMemMembrugrupSefgrupuserid() 
+  {
+    return this.memMembrugrupSefgrupuserid;
+  }
+
+  public void setMemMembrugrupSefgrupuserid(Long memMembrugrupSefgrupuserid) 
+  {
+    this.memMembrugrupSefgrupuserid = memMembrugrupSefgrupuserid;
+  }
+
+
+  public String getMemMembrugrupSefgrupusernume() 
+  {
+    return this.memMembrugrupSefgrupusernume;
+  }
+
+  public void setMemMembrugrupSefgrupusernume(String memMembrugrupSefgrupusernume) 
+  {
+    this.memMembrugrupSefgrupusernume = memMembrugrupSefgrupusernume;
+  }
+
+
+  public Long getMemMembrugrupSefgrupuserinfoid() 
+  {
+    return this.memMembrugrupSefgrupuserinfoid;
+  }
+
+  public void setMemMembrugrupSefgrupuserinfoid(Long memMembrugrupSefgrupuserinfoid) 
+  {
+    this.memMembrugrupSefgrupuserinfoid = memMembrugrupSefgrupuserinfoid;
+  }
 
 
   public Long getMemMembrugrupZonataraid() 
@@ -615,5 +724,15 @@ public class MemMembruGrup{
     this.memMembrugrupExcludereyn = memMembrugrupExcludereyn;
   }
 
+
+  public AutUserInfo getUserinfo() 
+  {
+    return this.userinfo;
+  }
+
+  public void setUserinfo(AutUserInfo userinfo) 
+  {
+    this.userinfo = userinfo;
+  }
 
 }

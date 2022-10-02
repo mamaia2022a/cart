@@ -454,7 +454,15 @@ VALUES
                                   'Vizualizare Fază Trecută Activitate Trecută', 'Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)'),
 (210992, 'GESTACTEXEVIZREZFAZTACTT', 'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute',
                                      'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute'
-);
+),
+
+(290905, 'CREAREGRUPMEMACTEXPNFL', 'Creare Grup Propriu', 'Creați-vă Propriul Grup și deveniți Șef de Grup',
+                                   'Creare Grup Propriu', 'Creați-vă Propriul Grup și deveniți Șef de Grup'),
+
+(230905, 'AFILGRPMEMMEMINCACTEXPNFL', 'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat',
+                                      'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat')
+;
+
 
 CREATE TABLE `aut_grupactactiune` (
   `aut_grupactactiune_id` int NOT NULL AUTO_INCREMENT,
@@ -516,8 +524,13 @@ VALUES
 (2030, 240, 'GESTEXEACT', 210990, 'GESTACTEXEVIZFAZTACTT',    24, 210988, 'GESTACTEXELISTFAZACTT'),
 (2031, 240, 'GESTEXEACT', 210992, 'GESTACTEXEVIZREZFAZTACTT', 25, 210992, 'GESTACTEXEVIZREZFAZTACTT'),
 						
-(2032, 110, 'GESTMESAJE', 110910, 'GESTMESAJENOTIFAPP', 1, null, null	
-);
+(2032, 110, 'GESTMESAJE', 110910, 'GESTMESAJENOTIFAPP', 1, null, null	),
+
+(2501, 290, 'CREAREGRUP', 290905, 'CREAREGRUPMEMACTEXPNFL',        1,   null,                null),
+
+(2601, 230, 'AFILGRPMEM', 230905, 'AFILGRPMEMMEMINCACTEXPNFL',        1,   null,                null)
+
+;
 
 
 DROP TABLE IF EXISTS cart2.`aut_userinfo`;
@@ -1277,6 +1290,7 @@ CREATE TABLE `mem_membru` (
 
   `mem_membru_userid` int	not null,
   `mem_membru_usernume` varchar(20)	not null,
+  `mem_membru_userinfoid` int	not null,
 
   `mem_membru_tipid`	int,
   `mem_membru_tipcod`	varchar(10),	
@@ -1327,6 +1341,7 @@ CREATE TABLE `mem_membruci` (
   `mem_membruci_membrucodunic` varchar(16) not null,
   `mem_membruci_userid` int	not null,
   `mem_membruci_usernume` varchar(20)	not null,
+  `mem_membruci_userinfoid` int	not null,
   `mem_membruci_cnp` int not null,
   `mem_membruci_serie` varchar(2)	not null,
   `mem_membruci_nr` int not null,
@@ -1346,6 +1361,7 @@ CREATE TABLE `mem_membrucotizatie` (
   `mem_membrucotizatie_membrucodunic` varchar(16) not null,
   `mem_membrucotizatie_userid` int	not null,
   `mem_membrucotizatie_usernume` varchar(20)	not null,
+  `mem_membrucotizatie_userinfoid` int	not null,
   `mem_membrucotizatie_activ_yn` char(1) not null,
   `mem_membrucotizatie_anul` varchar(16)	not null,
   `mem_membrucotizatie_lunastart` int(2)	not null,
@@ -1398,6 +1414,7 @@ CREATE TABLE `mem_membruskills` (
   `mem_membruskills_membrucodunic` varchar(16) not null,
   `mem_membruskills_userid` int	not null,
   `mem_membruskills_usernume` varchar(20)	not null,
+  `mem_membruskills_userinfoid` int	not null,
   PRIMARY KEY (`mem_membruskills_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -1426,6 +1443,7 @@ CREATE TABLE `mem_membrutip` (
 
   `mem_membrutip_userid` int	not null,
   `mem_membrutip_usernume` varchar(20)	not null,
+  `mem_membrutip_userinfoid` int	not null,
 
   `mem_membrutip_tipid`	int,
   `mem_membrutip_tipcod`	varchar(10),	
@@ -1468,11 +1486,13 @@ CREATE TABLE `mem_recomandatde` (
   `mem_recomandatde_refmembrucodunic` varchar(16) not null,  
   `mem_recomandatde_refuserid` int	not null,
   `mem_recomandatde_refusernume` varchar(20)	not null,
+  `mem_recomandatde_refuserinfoid` int	not null,
 
   `mem_recomandatde_newmembruid` int	not null,
   `mem_recomandatde_newmembrucodunic` varchar(16) not null,  
   `mem_recomandatde_newuserid` int	not null,
   `mem_recomandatde_newusernume` varchar(20)	not null,
+  `mem_recomandatde_newuserinfoid` int	not null,
 
   PRIMARY KEY (`mem_recomandatde_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -1488,6 +1508,7 @@ CREATE TABLE `mem_membrurol` (
   
   `mem_membrurol_userid` int	not null,
   `mem_membrurol_usernume` varchar(20)	not null,
+  `mem_membrurol_userinfoid` int	not null,
 
   `mem_membrurol_tiprolid` int	not null,
   `mem_membrurol_tiprolcod` varchar(10) not null,
@@ -1538,7 +1559,8 @@ CREATE TABLE `mem_grup` (
   `mem_grup_sefgrupcodunic` varchar(16)	not null, 	
   `mem_grup_sefgrupuserid` int	not null,
   `mem_grup_sefgrupusernume` varchar(20)	not null,
-  
+  `mem_grup_sefgrupuserinfoid` int	not null,
+
   `mem_grup_zonataraid` int	not null, 	
   `mem_grup_zonataracod` varchar(2) not null, 
   `mem_grup_judetid` int	not null, 
@@ -1578,10 +1600,17 @@ CREATE TABLE `mem_membrugrup` (
 
   `mem_membrugrup_userid` int	not null, 	
   `mem_membrugrup_usernume` varchar(20)	not null,
+  `mem_membrugrup_userinfoid` int	not null, 	
 
   `mem_membrugrup_grupid` int	not null, 	
   `mem_membrugrup_grupnume` varchar(20)	not null,
   `mem_membrugrup_grupcodunic` varchar(16) not null, 
+
+  `mem_membrugrup_sefgrupid` int	not null, 	
+  `mem_membrugrup_sefgrupcodunic` varchar(16)	not null, 	
+  `mem_membrugrup_sefgrupuserid` int	not null,
+  `mem_membrugrup_sefgrupusernume` varchar(20)	not null,
+  `mem_membrugrup_sefgrupuserinfoid` int	not null,
 
   `mem_membrugrup_zonataraid` int	not null, 	
   `mem_membrugrup_zonataracod` varchar(2) not null, 
@@ -1606,13 +1635,13 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_cereredt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
   `mem_membrugrup_acceptare_yn` varchar(1) NULL,
-  `mem_membrugrup_acceptaredt` datetime NOT NULL,
+  `mem_membrugrup_acceptaredt` datetime NULL,
 
   `mem_membrugrup_plecare_yn` varchar(1) NULL,
   `mem_membrugrup_excludere_yn` varchar(1) NULL,
 
   `mem_membrugrup_activ_yn` varchar(1) NOT NULL,
-  `mem_membrugrup_startdt` datetime NULL,
+  `mem_membrugrup_startdt` datetime NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membrugrup_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrugrup_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -1629,6 +1658,7 @@ CREATE TABLE `mem_sefgrup` (
 
   `mem_sefgrup_userid` int	not null, 	
   `mem_sefgrup_usernume` varchar(20)	not null,
+  `mem_sefgrup_userinfoid` int	not null, 	
 
   `mem_sefgrup_grupid` int	not null, 	
   `mem_sefgrup_grupnume` varchar(20)	not null,
