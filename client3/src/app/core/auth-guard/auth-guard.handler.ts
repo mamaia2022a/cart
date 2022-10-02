@@ -16,6 +16,8 @@ import { ApiService } from '../../../app/services/api/api.service';
 import { Storage } from '@ionic/storage';
 import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
 import { promise } from 'protractor';
+import { ValidateRegistrationAnswer } from '../../payloads/aut/ValidateRegistrationAnswer';
+import { MemMembruTipResponse_Schimbare } from '../../payloads/mem/MemMembruTipResponse_Schimbare';
 
 @Injectable({ providedIn: 'root' })
 export class AuthHandler {
@@ -25,6 +27,9 @@ export class AuthHandler {
   //---------------------------------- out
   private ApiURLAutLogin: string                              = this.ApiBaseURL + "/api/aut/user/login";
   private ApiURLAutRegister: string                           = this.ApiBaseURL + "/api/aut/user/register";
+  private ApiURLAutValidateRegistration: string               = this.ApiBaseURL + "/api/aut/user/validate_registration"
+  //---------------------------------- mem
+  private ApiURLMemMembruTipSchimbare: string                 = this.ApiBaseURL + "/api/mem/membru/tip/schimbare";
   //---------------------------------- geo
   //zonetara/toate
   private ApiURLGeoZonetara: string                           = this.ApiBaseURL + "/api/geo/zonetara";
@@ -152,6 +157,38 @@ export class AuthHandler {
         return ;
       }
       //-----------------------
+      // MEM INC NFL
+      //-----------------------
+      if (selActiune.autActiuneCod == "CEREREMEMACTNTRICER")
+      {
+        this.navController.navigateRoot(appConfig.routes.memincnfl.cereremem.actntricer);
+        return ;
+      }
+      //-----------------------
+      // MEM INC AFL
+      //-----------------------
+      if (selActiune.autActiuneCod == "CEREREMEMACTATRICER")
+      {
+        this.navController.navigateRoot(appConfig.routes.memincafl.cereremem.actatricer);
+        return ;
+      }
+      //-----------------------
+      // MEM ACT NFL
+      //-----------------------
+      if (selActiune.autActiuneCod == "CEREREMEMEXPNTRICER")
+      {
+        this.navController.navigateRoot(appConfig.routes.memactnfl.cereremem.expntricer);
+        return ;
+      }
+      //-----------------------
+      // MEM ACT AFL
+      //-----------------------
+      if (selActiune.autActiuneCod == "CEREREMEMEXPATRICER")
+      {
+        this.navController.navigateRoot(appConfig.routes.memactafl.cereremem.expatricer);
+        return ;
+      }
+      //-----------------------
       //-----------------------
       if (selActiune.autActiuneCod == "GESTACTEXELISTACTC")
       {
@@ -252,8 +289,81 @@ export class AuthHandler {
       console.log("Register");
       var registerRequest = registerAction.registerRequest;
       console.log(registerRequest);
-      this.navController.navigateRoot(appConfig.routes.auth.login);
+      return this.apiService.post(this.ApiURLAutRegister, registerAction.registerRequest).subscribe(data  => {  
+        let response : any = data;
+        //console.log(data);
+        console.log(response);
+        toastService.default("Felicitări! V-ați Înregistrat cu Succes. Vă rugăm să vă Logați");
+        this.navController.navigateRoot(appConfig.routes.auth.login);
+        return;
+        //return of(true);
+      },
+      (error) => {
+        console.log("Error" + error);
+        toastService.default("Eroare înregistrare : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+        //return this.navController.navigateRoot(appConfig.routes.auth.login);
+      })
+
     });
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.ValidateRegistration)).subscribe(data2 => 
+      {
+        let validateRegistrationAction : AuthAction.ValidateRegistration = data2;
+        console.log("Register");
+        var validateRegistrationRequest = validateRegistrationAction.validateRegistrationRequest;
+        console.log(validateRegistrationRequest);
+        return this.apiService.post(this.ApiURLAutValidateRegistration,
+                                    validateRegistrationAction.validateRegistrationRequest,
+                                    {"Authorization" : `Bearer ${validateRegistrationAction.token}`}).subscribe(data  => {  
+          let response : ValidateRegistrationAnswer = data;
+          //console.log(data);
+          console.log(response);
+          if (response.codValidareAcceptat == "y")
+          {
+            toastService.default("Felicitări! V-ați Validat Înregistrarea cu succes. Vă rugăm să vă Logați");
+            this.navController.navigateRoot(appConfig.routes.auth.login);
+          }else{
+            toastService.default("Cod validare Invalid! Vă rugăm să introduceți Codul de Validare corect");
+            //this.navController.navigateRoot(appConfig.routes.auth.login);
+          }
+          return;
+          //return of(true);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare înregistrare : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+  
+      });
+  
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemMembruTipSchimbare)).subscribe(data2 => 
+      {
+        let memMembruTipSchimbareAction : AuthAction.MemMembruTipSchimbare = data2;
+        console.log("MemMembruTipSchimbare");
+        var memMembruTipRequestSchimbare = memMembruTipSchimbareAction.memMembruTipRequestSchimbare;
+        console.log(memMembruTipRequestSchimbare);
+        return this.apiService.post(this.ApiURLMemMembruTipSchimbare,
+                                    memMembruTipSchimbareAction.memMembruTipRequestSchimbare,
+                                    {"Authorization" : `Bearer ${memMembruTipSchimbareAction.token}`}).subscribe(data  => {  
+          let response : MemMembruTipResponse_Schimbare = data;
+          //console.log(data);
+          console.log(response);
+          toastService.default("Felicitări! Cererea a fost trimis cu succes. Vă rugăm să vă Re-Logați");
+          this.navController.navigateRoot(appConfig.routes.auth.login);
+          return;
+          //return of(true);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare înregistrare : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+  
+      });
+
 
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.Login)).subscribe(data2 => 
@@ -276,6 +386,7 @@ export class AuthHandler {
         //console.log(decodedUser);
         console.log(response);
         storage.set("loginresponse", response);
+        storage.set("token", response.accessToken);
         var a = 1
         //loginAction.loginAnswer.response = response;
         //auth.isAuth = true;
@@ -299,7 +410,7 @@ export class AuthHandler {
       },
       (error) => {
         console.log("Error" + error);
-        toastService.default("Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+        toastService.default("Login eșuat ! " + error.error.message);
         return this.navController.navigateRoot(appConfig.routes.auth.login);
       })
     });

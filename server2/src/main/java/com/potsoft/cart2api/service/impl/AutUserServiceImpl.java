@@ -5,6 +5,10 @@ import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutRol;
 import com.potsoft.cart2api.model.aut.AutUser;
 import com.potsoft.cart2api.model.aut.AutValidInreg;
+import com.potsoft.cart2api.model.geo.GeoJudet;
+import com.potsoft.cart2api.model.geo.GeoLocalitate;
+import com.potsoft.cart2api.model.geo.GeoUat;
+import com.potsoft.cart2api.model.geo.GeoZonaTara;
 import com.potsoft.cart2api.model.aut.AutUserInfo;
 import com.potsoft.cart2api.model.aut.AutUserRol;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
@@ -16,6 +20,10 @@ import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
 import com.potsoft.cart2api.repository.aut.AutValidInregRepository;
+import com.potsoft.cart2api.repository.geo.GeoJudetRepository;
+import com.potsoft.cart2api.repository.geo.GeoLocalitateRepository;
+import com.potsoft.cart2api.repository.geo.GeoUatRepository;
+import com.potsoft.cart2api.repository.geo.GeoZonaTaraRepository;
 //import com.potsoft.cart2api.security.JwtTokenProvider;
 import com.potsoft.cart2api.service.AutUserService;
 import com.potsoft.cart2api.service.MesService;
@@ -47,6 +55,19 @@ public class AutUserServiceImpl implements AutUserService
 	@Autowired
 	private MesService mesService;
  
+	@Autowired
+	private GeoZonaTaraRepository geoZonaTaraRepository;
+
+	@Autowired
+	private GeoJudetRepository geoJudetRepository;
+
+	@Autowired
+	private GeoUatRepository geoUatRepository;
+
+	@Autowired
+	private GeoLocalitateRepository geoLocalitateRepository;
+
+	
    @Autowired
    private AutUserRepository autUserRepository;
    
@@ -85,6 +106,8 @@ public class AutUserServiceImpl implements AutUserService
 	}
 	RegisterResponse registerResponse = new RegisterResponse();
 	//---
+	this.completeazaGeoInfos(registerRequest);
+	//---
 	AutUser user  = creazaSiSalveazaAutUser(registerRequest);
 	registerResponse.setAutUser(user);
     //---
@@ -116,6 +139,31 @@ public class AutUserServiceImpl implements AutUserService
 	return registerResponse;
   }
 
+  // -----------------------------------------------------------
+  public void completeazaGeoInfos(RegisterRequest registerRequest)
+  {
+	GeoZonaTara    domZonaTara   = geoZonaTaraRepository.loadByGeoZonaTaraId(registerRequest.getDomZonataraid());
+	GeoJudet       domJudet      = geoJudetRepository.loadByGeoJudetId(registerRequest.getDomJudetid());
+	GeoUat         domUat        = geoUatRepository.loadByGeoUatId(registerRequest.getDomUatid());
+	GeoLocalitate  domLocalitate = geoLocalitateRepository.loadByGeoLocalitateId(registerRequest.getDomLocalitateid());
+	registerRequest.setDomZonataracod(domZonaTara.getGeoZonaTaraCod());
+	registerRequest.setDomJudetcod(domJudet.getGeoJudetCod());
+	registerRequest.setDomUatcod(domUat.getGeoUatCod());
+	registerRequest.setDomLocalitatecod(domLocalitate.getGeoLocalitateCod());
+    //---
+	String rezdifdedom       = registerRequest.getRezdifdedom();
+	if (rezdifdedom == "y")
+	{
+		GeoZonaTara    rezZonaTara   = geoZonaTaraRepository.loadByGeoZonaTaraId(registerRequest.getRezZonataraid());
+		GeoJudet       rezJudet      = geoJudetRepository.loadByGeoJudetId(registerRequest.getRezJudetid());
+		GeoUat         rezUat        = geoUatRepository.loadByGeoUatId(registerRequest.getRezUatid());
+		GeoLocalitate  rezLocalitate = geoLocalitateRepository.loadByGeoLocalitateId(registerRequest.getRezLocalitateid());
+		registerRequest.setRezZonataracod(rezZonaTara.getGeoZonaTaraCod());
+		registerRequest.setRezJudetcod(rezJudet.getGeoJudetCod());
+		registerRequest.setRezUatcod(rezUat.getGeoUatCod());
+		registerRequest.setRezLocalitatecod(rezLocalitate.getGeoLocalitateCod());	
+	}
+  }
 
   // -----------------------------------------------------------
   @Override

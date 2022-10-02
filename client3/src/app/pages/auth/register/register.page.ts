@@ -24,7 +24,7 @@ export class RegisterPage implements OnInit {
     {
        username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
        password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
-       passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
+       passwordConfirm: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
        nume: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        prenume: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        telefon: new FormControl('', [Validators.required, Validators.maxLength(150)]),
@@ -37,13 +37,14 @@ export class RegisterPage implements OnInit {
        domlocalitate: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domcodpostal: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        domadresa: new FormControl('', [Validators.required, Validators.maxLength(150)]),
-       rezdifdom: new FormControl('0', [Validators.required, Validators.maxLength(150)]),
+       rezdifdom: new FormControl('n', [Validators.required, Validators.maxLength(150)]),
        rezzonatara: new FormControl('', [Validators.maxLength(150)]),
        rezjudet: new FormControl('', [Validators.maxLength(150)]),
        rezuat: new FormControl('', [Validators.maxLength(150)]),
        rezlocalitate: new FormControl('', [Validators.maxLength(150)]),
        rezcodpostal: new FormControl('', [Validators.maxLength(150)]),
        rezadresa: new FormControl('', [Validators.maxLength(150)]),
+       refmembrucodunic: new FormControl('', [Validators.maxLength(150)]),
     },
     { validators: [this.passwordConfirmMatchValidator]
     },
@@ -91,7 +92,7 @@ export class RegisterPage implements OnInit {
 
   selRezLocalitateid : number ;
 
-  selDomDifRez : number;
+  selDomDifRez : string;
   showRezidenta : boolean ;
 
   
@@ -281,7 +282,7 @@ export class RegisterPage implements OnInit {
     console.log("selectie dom dif rez:" + event.detail.value);
     this.selDomDifRez  = event.detail.value; //this.register.get("domjudet").value;
     console.log(this.selDomDifRez);
-    if (this.selDomDifRez == 0)
+    if (this.selDomDifRez == "n")
       this.showRezidenta = false;
     else
       this.showRezidenta  = true;
@@ -358,19 +359,43 @@ export class RegisterPage implements OnInit {
     if (this.register.valid) {
       console.log(this.register.value);
       var registerRequest : RegisterRequest = new RegisterRequest();
-      registerRequest.username         = this.register.get("username").value;
-      registerRequest.password         = this.register.get("password").value;
-      registerRequest.nume             = this.register.get("nume").value;
-      registerRequest.prenume          = this.register.get("prenume").value;
-      registerRequest.telefon          = this.register.get("telefon").value;
-      registerRequest.email            = this.register.get("email").value;
-      registerRequest.sex              = this.register.get("sex").value;
-      registerRequest.domZonataraid    = this.register.get("domzonatara").value;
-      registerRequest.domJudetid       = this.register.get("domjudet").value;
-      registerRequest.domLocalitateid  = this.register.get("domlocalitate").value;
-      registerRequest.domCodpostal     = this.register.get("domcodpostal").value;
-      registerRequest.domAdresa        = this.register.get("domadresa").value;
-
+      registerRequest.username         = this.register.value["username"];
+      registerRequest.password         = this.register.value["password"];
+      registerRequest.nume             = this.register.value["nume"];
+      registerRequest.prenume          = this.register.value["prenume"];
+      registerRequest.telefon          = this.register.value["telefon"];
+      registerRequest.email            = this.register.value["email"];
+      registerRequest.sex              = this.register.value["sex"];
+      var strdatanasterii              = this.register.value["datanasterii"];
+      registerRequest.datanasterii     = parseInt(strdatanasterii.toString().substring(0,4))*10000 + 
+                                         parseInt(strdatanasterii.toString().substring(5,7))*100 +
+                                         parseInt(strdatanasterii.toString().substring(9,10)) ;
+      registerRequest.domZonataraid    = this.register.value["domzonatara"];
+      registerRequest.domJudetid       = this.register.value["domjudet"];
+      registerRequest.domUatid         = this.register.value["domuat"];
+      registerRequest.domLocalitateid  = this.register.value["domlocalitate"];
+      registerRequest.domCodpostal     = this.register.value["domcodpostal"];
+      registerRequest.domAdresa        = this.register.value["domadresa"];
+      registerRequest.rezdifdedom      = this.register.value["rezdifdom"];
+      if (registerRequest.rezdifdedom == "y")
+      {
+        registerRequest.rezZonataraid    = this.register.value["rezzonatara"];
+        registerRequest.rezJudetid       = this.register.value["rezjudet"];
+        registerRequest.rezUatid         = this.register.value["rezuat"];
+        registerRequest.rezLocalitateid  = this.register.value["rezlocalitate"];
+        registerRequest.rezCodpostal     = this.register.value["rezcodpostal"];
+        registerRequest.rezAdresa        = this.register.value["rezadresa"];
+      }else{
+        registerRequest.rezZonataraid    = null;
+        registerRequest.rezJudetid       = null;
+        registerRequest.rezUatid         = null;
+        registerRequest.rezLocalitateid  = null;
+        registerRequest.rezCodpostal     = null;
+        registerRequest.rezAdresa        = null;
+      }
+      registerRequest.refmembrucodunic   = this.register.value["rezmembrucodunic"];
+      if (registerRequest.refmembrucodunic === null)
+        registerRequest.refmembrucodunic = null;
       this.store.dispatch(new AuthAction.Register(registerRequest));
       //this.obsActionRegister = this.store.dispatch(new AuthAction.Register(registerRequest));
       /** 

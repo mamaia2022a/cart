@@ -43,6 +43,25 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.ValidateRegistration)
+  validateRegistration(context: StateContext<AuthAction.ValidateRegistration>, action: AuthAction.ValidateRegistration) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+  @Action(AuthAction.MemMembruTipSchimbare)
+  memMembruTipSchimbare(context: StateContext<AuthAction.MemMembruTipSchimbare>, action: AuthAction.MemMembruTipSchimbare) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
   @Action(AuthAction.Rolgrupactiunii)
   rolgrupactiunii(context: StateContext<AuthAction.Rolgrupactiunii>, action: AuthAction.Rolgrupactiunii) {
     const state = context.getState();

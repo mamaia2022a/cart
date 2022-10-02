@@ -300,9 +300,9 @@ public class MemServiceImpl implements MemService
 	public MembruTipResponse_Schimbare  membruTip_Schimbare(Long userid, MembruTipRequest_Schimbare  membruTipRequestSchimbare)
 	{
 	  String crtMemTipCod    = membruTipRequestSchimbare.getCrtmemtipcod();
-	  String newMemTipCod    = membruTipRequestSchimbare.getCrtmemtipcod();
+	  String newMemTipCod    = membruTipRequestSchimbare.getNewmemtipcod();
 	  String crtMemTiprolCod = membruTipRequestSchimbare.getCrtmemrolcod();
-	  String newMemTiprolCod = membruTipRequestSchimbare.getCrtmemrolcod();  
+	  String newMemTiprolCod = membruTipRequestSchimbare.getNewmemrolcod();  
 	  return schimbaretipMemMembru(userid, crtMemTipCod, newMemTipCod, crtMemTiprolCod, newMemTiprolCod);
 	}
 
@@ -314,22 +314,24 @@ public class MemServiceImpl implements MemService
 	{
 	  MembruTipResponse_Schimbare resp = new MembruTipResponse_Schimbare();	
       //--  
-	  if ( //-- un membru incepator devine membru activ (afiliat sau nu)
-		   (crtMemTipCod == "MEMINCNFL" && newMemTipCod == "MEMACTNFL") ||
-	       (crtMemTipCod == "MEMINCAFL" && newMemTipCod == "MEMACTAFL") ||
+	  if ( 
+		   ( crtMemTipCod.equals("SIMPATIZ") && newMemTipCod.equals("MEMINCNFL") ) ||
+		   //-- un membru incepator devine membru activ (afiliat sau nu)
+		   (crtMemTipCod.equals("MEMINCNFL") && newMemTipCod.equals("MEMACTNFL")) ||
+	       (crtMemTipCod.equals("MEMINCAFL") && newMemTipCod.equals("MEMACTAFL")) ||
 		   //-- un membru activ devine membru experimentat (afiliat sau nu)
-		   (crtMemTipCod == "MEMACTNFL" && newMemTipCod == "MEMEXPNFL") ||
-		   (crtMemTipCod == "MEMACTAFL" && newMemTipCod == "MEMEXPAFL") ||
+		   (crtMemTipCod.equals("MEMACTNFL") && newMemTipCod.equals("MEMEXPNFL")) ||
+		   (crtMemTipCod.equals("MEMACTAFL") && newMemTipCod.equals("MEMEXPAFL")) ||
 		   //-- un membru activ sau experimentat Neafiliat isi formeaza propriul grup
-		   (crtMemTipCod == "MEMACTFNL" && newMemTipCod == "SEFGRUP") ||
-		   (crtMemTipCod == "MEMEXPNFL" && newMemTipCod == "SEFGRUP") ||
+		   (crtMemTipCod.equals("MEMACTFNL") && newMemTipCod.equals("SEFGRUP")) ||
+		   (crtMemTipCod.equals("MEMEXPNFL") && newMemTipCod.equals("SEFGRUP")) ||
 		   //-- un sef de grup isi desfiinteaza grupul 
-		   (crtMemTipCod == "SEFGRUP"   && newMemTipCod == "MEMACTNFL") ||
-		   (crtMemTipCod == "SEFGRUP"   && newMemTipCod == "MEMEXPNFL") ||
+		   (crtMemTipCod.equals("SEFGRUP")  && newMemTipCod.equals("MEMACTNFL")) ||
+		   (crtMemTipCod.equals("SEFGRUP")  && newMemTipCod.equals("MEMEXPNFL")) ||
 		   //-- un membrul incepator sau activ sau experimentat se dezafiliaza de la grup
-		   (crtMemTipCod == "MEMINCAFL" && newMemTipCod == "MEMINCNFL") ||
-		   (crtMemTipCod == "MEMACTAFL" && newMemTipCod == "MEMACTNFL") ||
-		   (crtMemTipCod == "MEMEXPAFL" && newMemTipCod == "MEMEXPNFL") 
+		   (crtMemTipCod.equals("MEMINCAFL") && newMemTipCod.equals("MEMINCNFL")) ||
+		   (crtMemTipCod.equals("MEMACTAFL") && newMemTipCod.equals("MEMACTNFL")) ||
+		   (crtMemTipCod.equals("MEMEXPAFL") && newMemTipCod.equals("MEMEXPNFL"))
 	     )
 	  {
 		//MemTip memCrtTip = memTipRepository.loadByMemTipCod(crtMemTipCod);
@@ -380,9 +382,9 @@ public class MemServiceImpl implements MemService
 	  MembruGrupResponse_CerereAfiliere resp = new MembruGrupResponse_CerereAfiliere();	
 	  //--  
 	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMINCNFL") || 
-		  (crtMemTipCod == "MEMACTNFL") || 
-		  (crtMemTipCod == "MEMEXPNFL") 
+	      (crtMemTipCod.equals("MEMINCNFL")) || 
+		  (crtMemTipCod.equals("MEMACTNFL")) || 
+		  (crtMemTipCod.equals("MEMEXPNFL"))
 		 )		
 	  {
 		//---
@@ -412,15 +414,15 @@ public class MemServiceImpl implements MemService
 	  MembruGrupResponse_AcceptareAfiliere resp = new MembruGrupResponse_AcceptareAfiliere();	
 	  //--  
 	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMINCNFL") || 
-		  (crtMemTipCod == "MEMACTNFL") || 
-		  (crtMemTipCod == "MEMEXPNFL") 
+	      (crtMemTipCod.equals("MEMINCNFL")) || 
+		  (crtMemTipCod.equals("MEMACTNFL")) || 
+		  (crtMemTipCod.equals("MEMEXPNFL"))
 		 )		
 	  {
 		//---
 		String acceptareyn = membruGrupRequestAcceptareAfiliere.getAcceptareyn();
 		String tipMesajCod;
-		if (acceptareyn == "y")
+		if (acceptareyn.equals("y"))
 		  tipMesajCod = "ACCAFLGRUP";
 		else
 		  tipMesajCod = "REFAFLGRUP";
@@ -453,18 +455,18 @@ public class MemServiceImpl implements MemService
 	  MembruGrupResponse_Activare resp = new MembruGrupResponse_Activare();	
 	  //--  
 	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMINCNFL") || 
-		  (crtMemTipCod == "MEMACTNFL") || 
-		  (crtMemTipCod == "MEMEXPNFL") 
+	      (crtMemTipCod.equals("MEMINCNFL")) || 
+		  (crtMemTipCod.equals("MEMACTNFL")) || 
+		  (crtMemTipCod.equals("MEMEXPNFL"))
 		 )		
 	  {
 		crtMemRolCod = crtMemTipCod;
 		newMemTipCod = null;
-		if (crtMemTipCod == "MEMINCNFL")
+		if (crtMemTipCod.equals("MEMINCNFL"))
 		  newMemTipCod = "MEMINCAFL";
-		if (crtMemTipCod == "MEMACTNFL")
+		if (crtMemTipCod.equals("MEMACTNFL"))
 		  newMemTipCod = "MEMACTAFL";
-		if (crtMemTipCod == "MEMEXPNFL")
+		if (crtMemTipCod.equals("MEMEXPNFL"))
 		  newMemTipCod = "MEMEXPAFL";
 	    //--
 		Long    memNewTipid    = memTip.getMemTipId();
@@ -502,18 +504,18 @@ public class MemServiceImpl implements MemService
 	  MembruGrupResponse_Plecare resp = new MembruGrupResponse_Plecare();	
 	  //--  
 	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMINCAFL") || 
-		  (crtMemTipCod == "MEMACTAFL") || 
-		  (crtMemTipCod == "MEMEXPAFL") 
+	      (crtMemTipCod.equals("MEMINCAFL")) || 
+		  (crtMemTipCod.equals("MEMACTAFL")) || 
+		  (crtMemTipCod.equals("MEMEXPAFL"))
 		 )		
 	  {
 		crtMemRolCod = crtMemTipCod;
 		newMemTipCod = null;
-		if (crtMemTipCod == "MEMINCAFL")
+		if (crtMemTipCod.equals("MEMINCAFL"))
 		  newMemTipCod = "MEMINCNFL";
-		if (crtMemTipCod == "MEMACTAFL")
+		if (crtMemTipCod.equals("MEMACTAFL"))
 		  newMemTipCod = "MEMACTNFL";
-		if (crtMemTipCod == "MEMEXPAFL")
+		if (crtMemTipCod.equals("MEMEXPAFL"))
 		  newMemTipCod = "MEMEXPNFL";
 	    //--
 		MemTip  newMemTip      = memTipRepository.loadByMemTipCod(newMemTipCod);
@@ -549,18 +551,18 @@ public class MemServiceImpl implements MemService
 	  MembruGrupResponse_Excludere resp = new MembruGrupResponse_Excludere();	
 	  //--  
 	  if ( //-- un membru incepator sau activ sau experimentat Neafiliat se poate afilia la un grup
-	      (crtMemTipCod == "MEMINCAFL") || 
-		  (crtMemTipCod == "MEMACTAFL") || 
-		  (crtMemTipCod == "MEMEXPAFL") 
+	      (crtMemTipCod.equals("MEMINCAFL")) || 
+		  (crtMemTipCod.equals("MEMACTAFL")) || 
+		  (crtMemTipCod.equals("MEMEXPAFL"))
 		 )		
 	  {
 		crtMemRolCod = crtMemTipCod;
 		newMemTipCod = null;
-		if (crtMemTipCod == "MEMINCAFL")
+		if (crtMemTipCod.equals("MEMINCAFL"))
 		  newMemTipCod = "MEMINCNFL";
-		if (crtMemTipCod == "MEMACTAFL")
+		if (crtMemTipCod.equals("MEMACTAFL"))
 		  newMemTipCod = "MEMACTNFL";
-		if (crtMemTipCod == "MEMEXPAFL")
+		if (crtMemTipCod.equals("MEMEXPAFL"))
 		  newMemTipCod = "MEMEXPNFL";
 	    //--
 		MemTip  newMemTip      = memTipRepository.loadByMemTipCod(newMemTipCod);
@@ -647,8 +649,8 @@ public class MemServiceImpl implements MemService
 	  GrupResponse_Creare resp = new GrupResponse_Creare();	
 	  //--  
 	  if ( //-- un membru activ sau experimentat neafiliat poate crea un grup
-		  (crtMemTipCod == "MEMACTNFL") ||
-		  (crtMemTipCod == "MEMEXPNFL") 
+		  (crtMemTipCod.equals("MEMACTNFL")) ||
+		  (crtMemTipCod.equals("MEMEXPNFL"))
 		 )		
 	  {
 		//--
@@ -686,7 +688,7 @@ public class MemServiceImpl implements MemService
 	  GrupResponse_Stergere resp = new GrupResponse_Stergere();	
 	  //--  
 	  if ( //-- un sef grup isi desfiinteaza grupul
-		  (crtMemTipCod == "SEFGRUP") 
+		  (crtMemTipCod.equals("SEFGRUP"))
 		 )		
 	  {
 		//--
@@ -801,7 +803,7 @@ public class MemServiceImpl implements MemService
 		Long   memSectievotarenr    = 0l;
 		Long   memCodpostalid       = 0l;
 		String memCodpostalcod      = "0";
-        if (autUserInfo.getAutUserInfoRezdifdedom() == "y")
+        if (autUserInfo.getAutUserInfoRezdifdedom().equals("y"))
 		{
 		  memZonataraid    = autUserInfo.getAutUserInfoRezZonaTaraid();
 		  memZonataracod   = autUserInfo.getAutUserInfoRezZonaTaracod();

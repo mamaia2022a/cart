@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 public class ValidateRegistrationResponse
 {
 	@NotBlank
-	private String codValidareAcceptat; //yes/no
+	private String codValidareAcceptat; //"y"/"n"
 
 	public String getCodValidareAcceptat() 
 	{

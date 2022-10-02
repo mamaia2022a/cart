@@ -104,6 +104,37 @@ const routes: Routes = [
     loadChildren: () => import('./pages/simpatiz/cereremem/trimitecer/trimitecer.module').then((m) => m.TrimiteCerPageModule),
   },
   
+  //-----------------------------
+  //  Membru Incepator Neafiliat
+  //-----------------------------
+  {
+    path: 'memincnfl/cereremem/actntricer',
+    loadChildren: () => import('./pages/memincnfl/cereremem/actntricer/actntricer.module').then((m) => m.ActNTriCerPageModule),
+  },
+  //-----------------------------
+  //  Membru Incepator Afiliat
+  //-----------------------------
+  {
+    path: 'memincafl/cereremem/actatricer',
+    loadChildren: () => import('./pages/memincafl/cereremem/actatricer/actatricer.module').then((m) => m.ActATriCerPageModule),
+  },
+
+
+  //-----------------------------
+  //  Membru Activ Neafiliat
+  //-----------------------------
+  {
+    path: 'memactnfl/cereremem/expntricer',
+    loadChildren: () => import('./pages/memactnfl/cereremem/expntricer/expntricer.module').then((m) => m.ExpNTriCerPageModule),
+  },
+  //-----------------------------
+  //  Membru Activ Afiliat
+  //-----------------------------
+  {
+    path: 'memactafl/cereremem/expatricer',
+    loadChildren: () => import('./pages/memactafl/cereremem/expatricer/expatricer.module').then((m) => m.ExpATriCerPageModule),
+  },
+
   /* Other routes */
   /** 
   {

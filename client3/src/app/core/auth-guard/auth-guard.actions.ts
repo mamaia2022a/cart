@@ -4,6 +4,9 @@ import { LoginAnswer } from '../../../app/payloads/aut/LoginAnswer';
 import { LoginRequest } from '../../../app/payloads/aut/LoginRequest';
 import {ApiService} from '../../../app/services/api/api.service'
 import { RegisterRequest } from '../../payloads/aut/RegisterRequest';
+import { MemMembruTipRequest_Schimbare } from '../../payloads/mem/MemMembruTipRequest_Schimbare';
+import { ValidateRegistrationRequest} from '../../payloads/aut/ValidateRegistrationRequest';
+
 
 export namespace AuthAction {
   export class Login {
@@ -22,6 +25,16 @@ export namespace AuthAction {
   export class Register {
     static readonly type = '[Register] Register user';
     constructor(public registerRequest: RegisterRequest) {}
+  }
+
+  export class ValidateRegistration {
+    static readonly type = '[ValidateRegistration] Validate registration';
+    constructor(public validateRegistrationRequest: ValidateRegistrationRequest, public token: string) {}
+  }
+
+  export class MemMembruTipSchimbare {
+    static readonly type = '[MemMembruTipSchimbare] Membru Tip Schimbare';
+    constructor(public memMembruTipRequestSchimbare: MemMembruTipRequest_Schimbare, public token: string) {}
   }
 
   export class Rolgrupactiunii {

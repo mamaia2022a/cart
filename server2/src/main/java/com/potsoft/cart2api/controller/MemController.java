@@ -19,6 +19,7 @@ import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
 import com.potsoft.cart2api.security.CurrentUser;
 import com.potsoft.cart2api.security.UserDetailsImpl;
+import com.potsoft.cart2api.service.AutUserService;
 import com.potsoft.cart2api.service.MemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,9 @@ import java.sql.SQLException;
 public class MemController {
 
 	@Autowired
+	private AutUserService autUserService;
+
+	@Autowired
 	private MemService memService;
 
 	@CrossOrigin(origins = "*")
@@ -66,8 +70,12 @@ public class MemController {
 		                                               @Valid @RequestBody MembruTipRequest_Schimbare memTipRequestSchimbare,
 		                                               @CurrentUser UserDetails currentUser) 
     {
-       UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;    		
-	  //--
+      UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;   
+	  //---
+	  String crtUserRol = memTipRequestSchimbare.getCrtmemrolcod();
+	  String newUserRol = memTipRequestSchimbare.getNewmemrolcod();
+	  autUserService.changeAutUserRol(crtuser.getId(), crtUserRol, newUserRol);
+	  //---
       MembruTipResponse_Schimbare memTipResponseSchimbare = memService.membruTip_Schimbare(crtuser.getId(),
 		                                                                             memTipRequestSchimbare);
 	  //---

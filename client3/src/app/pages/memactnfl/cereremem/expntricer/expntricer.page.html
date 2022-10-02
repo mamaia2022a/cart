@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/grupactactiuni"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   
+  <!-- List of Text Items -->
+      <ng-container *ngIf="crtactiune">
+        <h3>{{crtactiune.autActiuneDisplaynume}}</h3>
+     </ng-container>
+  
+     <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+          <form [formGroup]="frmExpNTriCererea" (ngSubmit)="onExpNTriCererea()">
+            <ion-card color="light" class="auth-card ion-margin">
+              <ion-item color="light" class="ion-no-inner-padding-end">
+                <ion-input type="text" [readonly]="true" placeholder="Trimite Confirmarea pentru a deveni Membru Experimentat Neafiliat" formControlName="mesaj"></ion-input>
+              </ion-item>
+            </ion-card>
+  
+            <ion-button
+              expand="block"
+              class="ion-margin-start ion-margin-end ion-margin-bottom"
+              type="submit"
+              [disabled]="!frmExpNTriCererea.valid"
+            >
+              Confirmare Cerere Membru Experimentat
+            </ion-button>
+            <span class="ion-margin"></span>
+          </form>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+
+
+
+</ion-content>

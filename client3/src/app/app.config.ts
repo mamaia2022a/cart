@@ -43,6 +43,28 @@ export const appConfig = {
         trimitecer : "simpatiz/cereremem/trimitecer",
       },      
     },
+
+    memincnfl: {
+      cereremem: {
+        actntricer : "memincnfl/cereremem/actntricer",
+      },      
+    },
+    memincafl: {
+      cereremem: {
+        actatricer : "memincnfl/cereremem/actatricer",
+      },      
+    },
+    memactnfl: {
+      cereremem: {
+        expntricer : "memactnfl/cereremem/expntricer",
+      },      
+    },
+    memactafl: {
+      cereremem: {
+        expatricer : "memactafl/cereremem/expatricer",
+      },      
+    },
+    
     auth: {
       login: 'auth/login',
       register: 'auth/register',

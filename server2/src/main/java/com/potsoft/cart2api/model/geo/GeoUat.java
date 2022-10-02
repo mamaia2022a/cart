@@ -53,10 +53,9 @@ public class GeoUat {
   @Column(name = "geo_uat_judetnume")
   private String geoUatJudetnume;
 
-  @NotBlank
-  @Size(max = 2)
+  @NotNull
   @Column(name = "geo_uat_cod")
-  private String geoUatCod;
+  private Long geoUatCod;
 
   @NotBlank
   @Size(max = 32)
@@ -85,7 +84,7 @@ public class GeoUat {
 	public GeoUat( Long   geo_uat_id, 
                    Long   geo_uat_zonataraid, String geo_uat_zonataracod, String geo_uat_zonataranume,
                    Long   geo_uat_judetid, String geo_uat_judetcod, String geo_uat_judetnume,
-                   String geo_uat_cod, String geo_uat_nume,
+                   Long   geo_uat_cod, String geo_uat_nume,
                    Double geo_uat_latitudine, Double geo_uat_longitudine, Long geo_uat_regiuneid) 
   {
 		this.geoUatId           = geo_uat_id;
@@ -179,12 +178,12 @@ public class GeoUat {
   }
 
 
-  public String getGeoUatCod() 
+  public Long getGeoUatCod() 
   {
     return this.geoUatCod;
   }
 
-  public void setGeoUatCod(String geo_uat_cod) 
+  public void setGeoUatCod(Long geo_uat_cod) 
   {
     this.geoUatCod = geo_uat_cod;
   }

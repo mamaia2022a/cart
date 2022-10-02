@@ -58,10 +58,9 @@ public class GeoLocalitate {
   @Column(name = "geo_localitate_uatid")
   private Long geoLocalitateUatid;
 
-  @NotBlank
-  @Size(max = 2)
+  @NotNull
   @Column(name = "geo_localitate_uatcod")
-  private String geoLocalitateUatcod;
+  private Long geoLocalitateUatcod;
 
   @NotBlank
   @Size(max = 64)
@@ -69,10 +68,9 @@ public class GeoLocalitate {
   private String geoLocalitateUatnume;
   
 
-  @NotBlank
-  @Size(max = 2)
+  @NotNull
   @Column(name = "geo_localitate_cod")
-  private String geoLocalitateCod;
+  private Long geoLocalitateCod;
 
   @NotBlank
   @Size(max = 32)
@@ -101,8 +99,8 @@ public class GeoLocalitate {
 	public GeoLocalitate( Long   geo_localitate_id, 
                    Long   geo_localitate_zonataraid, String geo_localitate_zonataracod, String geo_localitate_zonataranume,
                    Long   geo_localitate_judetid, String geo_localitate_judetcod, String geo_localitate_judetnume,
-                   Long   geo_localitate_uatid, String geo_localitate_uatcod, String geo_localitate_uatnume,
-                   String geo_localitate_cod, String geo_localitate_nume,
+                   Long   geo_localitate_uatid, Long geo_localitate_uatcod, String geo_localitate_uatnume,
+                   Long   geo_localitate_cod, String geo_localitate_nume,
                    Double geo_localitate_latitudine, Double geo_localitate_longitudine, String geo_localitate_regiuneid) 
   {
 		this.geoLocalitateId           = geo_localitate_id;
@@ -211,12 +209,12 @@ public class GeoLocalitate {
   }
 
 
-  public String getGeoLocalitateUatcod() 
+  public Long getGeoLocalitateUatcod() 
   {
     return this.geoLocalitateUatcod;
   }
 
-  public void setGeoLocalitateUatcod(String geo_localitate_uatcod) 
+  public void setGeoLocalitateUatcod(Long geo_localitate_uatcod) 
   {
     this.geoLocalitateUatcod = geo_localitate_uatcod;
   }
@@ -233,12 +231,12 @@ public class GeoLocalitate {
   }
 
 
-  public String getGeoLocalitateCod() 
+  public Long getGeoLocalitateCod() 
   {
     return this.geoLocalitateCod;
   }
 
-  public void setGeoLocalitateCod(String geo_localitate_cod) 
+  public void setGeoLocalitateCod(Long geo_localitate_cod) 
   {
     this.geoLocalitateCod = geo_localitate_cod;
   }

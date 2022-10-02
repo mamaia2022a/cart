@@ -29,6 +29,30 @@
         <h3>{{crtactiune.autActiuneDisplaynume}}</h3>
      </ng-container>
   
-
+     <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+          <form [formGroup]="frmValidateRegistration" (ngSubmit)="onValidateRegistration()">
+            <ion-card color="light" class="auth-card ion-margin">
+              <ion-item color="light" class="ion-no-inner-padding-end">
+                <ion-input type="text" placeholder="Introduceți Codul de Validare Primit" formControlName="codvalidare"></ion-input>
+              </ion-item>
+            </ion-card>
+  
+            <ion-button
+              expand="block"
+              class="ion-margin-start ion-margin-end ion-margin-bottom"
+              type="submit"
+              [disabled]="!frmValidateRegistration.valid"
+            >
+              Validare Înregistrare
+            </ion-button>
+            <span class="ion-margin"></span>
+          </form>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
 
 </ion-content>

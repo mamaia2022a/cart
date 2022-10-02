@@ -209,8 +209,8 @@ VALUES
                    'Confirmă Înregistrare ca Simpatizant', 'Confirmă Inregistrarea ca Simpatizant al Partidului'),
 (190, 'INDRUMMEM',  'Cum Poți Deveni Membru?', 'Îndrumător pentru a deveni Membru al Partidului',
                    'Cum Poți Deveni Membru?', 'Îndrumător pentru a deveni Membru al Partidului'),
-(200, 'CEREREMEM',  'Cerere Membru', 'Gestionează Cererea și Condițiile pentru a Deveni Membru	Cerere Membru',
-                   'Cerere Membru', 'Gestionează Cererea și Condițiile pentru a Deveni Membru	Cerere Membru'),
+(200, 'CEREREMEM',  'Cerere Membru', 'Gestionează Cererea și Condițiile pentru a Deveni Membru',
+                    'Cerere Membru', 'Gestionează Cererea și Condițiile pentru a Deveni Membru'),
 			
 (220, 'INDRMEMACT', 'Cum Poți Deveni Membru Activ?', 'Îndrumător pentru a deveni Membru Activ al Partidului',
                     'Cum Poți Deveni Membru Activ?', 'Îndrumător pentru a deveni Membru Activ al Partidului'),
@@ -221,15 +221,24 @@ VALUES
 (250, 'GESTEXEVOT', 'Participă la Votări', 'Înscrie-te și Participă la la Votările Partidului',
                     'Participă la Votări', 'Înscrie-te și Participă la la Votările Partidului'),
 
+(255, 'CERMEMACTN',  'TEST Cerere Membru Activ Neafiliat', 'TEST Gestionează Cererea de a Deveni Membru	Activ Neafiliat',
+                     'TEST Cerere Membru Activ Neafiliat', 'TEST Gestionează Cererea de a Deveni Membru	Activ Neafiliat'),
+(256, 'CERMEMACTA',  'TEST Cerere Membru Activ Afiliat', 'TEST Gestionează Cererea de a Deveni Membru	Activ Afiliat',
+                     'TEST Cerere Membru Activ Afiliat', 'TEST Gestionează Cererea de a Deveni Membru	Activ Afiliat'),
+(257, 'CERMEMEXPN',  'TEST Cerere Membru Experimentat Neafiliat', 'TEST Gestionează Cererea de a Deveni Membru Experimentat Neafiliat',
+                     'TEST Cerere Membru Experimentat Neafiliat', 'TEST Gestionează Cererea de a Deveni Membru Experimentat Neafiliat'),
+(258, 'CERMEMEXPA',  'TEST Cerere Membru Experimentat Afiliat', 'TEST Gestionează Cererea de a Deveni Membru Experimentat Afiliat',
+                     'TEST Cerere Membru Experimentat Afiliat', 'TEST Gestionează Cererea de a Deveni Membru Experimentat Afiliat'),
+
+
 (260, 'INDRMEMEXP', 'Cum Poți Deveni Membru Experimentat?', 'Îndrumător pentru a deveni Membru Experimentat al Partidului',
                     'Cum Poți Deveni Membru Experimentat?', 'Îndrumător pentru a deveni Membru Experimentat al Partidului'),
-
 (270, 'DAFLGRPMEM', 'Dezafiliază-te de la Grup', 'Dezafiliază-te de la Grupul Tău',
-                   'Dezafiliază-te de la Grup', 'Dezafiliază-te de la Grupul Tău'),
+                    'Dezafiliază-te de la Grup', 'Dezafiliază-te de la Grupul Tău'),
 (280, 'VIZGRUPMEM', 'Grupul Meu', 'Vizualizează și Participă la Activitatea Grupului din care faci parte',
-                   'Grupul Meu', 'Vizualizează și Participă la Activitatea Grupului din care faci parte'),
+                    'Grupul Meu', 'Vizualizează și Participă la Activitatea Grupului din care faci parte'),
 			
-(290, 'CREAREGRUP', 'Creare Grup', 'Crează-ți Propriul Tău Grup',
+(290, 'CREAREGRUP',  'Creare Grup', 'Crează-ți Propriul Tău Grup',
                    	 'Creare Grup', 'Crează-ți Propriul Tău Grup'),
 			
 (300, 'GESTGRUP', 'Gestiune Grup', 'Gestionează Grupul pe care l-ai înființat',
@@ -305,6 +314,7 @@ VALUES
 (330,  16, 'MEMINCNFL', 240, 'GESTEXEACT', 2),
 (340,  16, 'MEMINCNFL', 250, 'GESTEXEVOT', 3),
 (350,  16, 'MEMINCNFL', 110, 'GESTMESAJE', 5),
+(355,  16, 'MEMINCNFL', 255, 'CERMEMACTN', 6),
 				
 (360,  15, 'MEMINCAFL', 220, 'INDRMEMACT', 1),
 (370,  15, 'MEMINCAFL', 240, 'GESTEXEACT', 2),
@@ -312,6 +322,7 @@ VALUES
 (390,  15, 'MEMINCAFL', 280, 'VIZGRUPMEM', 4),
 (400,  15, 'MEMINCAFL', 270, 'DAFLGRPMEM', 5),
 (410,  15, 'MEMINCAFL', 110, 'GESTMESAJE', 6),
+(415,  15, 'MEMINCAFL', 256, 'CERMEMACTA', 7),
 				
 (420,  18, 'MEMACTNFL', 260, 'INDRMEMEXP', 1),
 (430,  18, 'MEMACTNFL', 290, 'CREAREGRUP', 4),
@@ -319,6 +330,7 @@ VALUES
 (450,  18, 'MEMACTNFL', 240, 'GESTEXEACT', 2),
 (460,  18, 'MEMACTNFL', 250, 'GESTEXEVOT', 3),
 (470,  18, 'MEMACTNFL', 110, 'GESTMESAJE', 6),
+(475,  18, 'MEMACTNFL', 257, 'CERMEMEXPN', 7),
 				
 (480,  17, 'MEMACTAFL', 260, 'INDRMEMEXP', 1),
 (490,  17, 'MEMACTAFL', 240, 'GESTEXEACT', 2),
@@ -326,6 +338,7 @@ VALUES
 (510,  17, 'MEMACTAFL', 280, 'VIZGRUPMEM', 4),
 (520,  17, 'MEMACTAFL', 270, 'DAFLGRPMEM', 5),
 (530,  17, 'MEMACTAFL', 110, 'GESTMESAJE', 6),
+(535,  17, 'MEMACTAFL', 258, 'CERMEMEXPA', 7),
 				
 (550,  20, 'MEMEXPNFL', 290, 'CREAREGRUP', 3),
 (560,  20, 'MEMEXPNFL', 230, 'AFILMEMGRP', 4),
@@ -377,9 +390,19 @@ VALUES
                                 'Completează Adresa de Domiciliu', 'Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență'),
 (200940, 'CEREREMEMDOVADACOT', 'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent',
                                'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent'),
-(200950, 'CEREREMEMTRIMITECER', 'Trimite Cererea de Membru', 'Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)',
-                                'Trimite Cererea de Membru', 'Trimiteți cererea de membru indicând Codul Persoanei care l-a recomandat (opțional) și Codul Grupului din care doriți să faceți parte (opțional)'),
-			
+(200950, 'CEREREMEMTRIMITECER', 'Trimite Cererea de Membru', 'Trimiteți cererea de a deveni Membru',
+                                'Trimite Cererea de Membru', 'Trimiteți cererea de a deveni Membru'),
+
+(200955, 'CEREREMEMACTNTRICER', 'TEST Trimite Cererea de Membru Activ Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Neafiliat',
+                                'TEST Trimite Cererea de Membru Activ Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Neafiliat'),
+(200956, 'CEREREMEMACTATRICER', 'TEST Trimite Cererea de Membru Activ Afiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Afiliat',
+                                'TEST Trimite Cererea de Membru Activ Afiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Afiliat'),
+(200957, 'CEREREMEMEXPNTRICER', 'TEST Trimite Cererea de Membru Experimentat Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat',
+                                'TEST Trimite Cererea de Membru Experimentat Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat'),
+(200958, 'CEREREMEMEXPATRICER', 'TEST Trimite Cererea de Membru Experimentat Afiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat',
+                                'TEST Trimite Cererea de Membru Experimentat Afiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat'),
+
+
 (210905, 'GESTACTEXELISTACTC', 'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris',
                                'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris'),
 (210910, 'GESTACTEXELISTACTV', 'Lista activități viitoare', 'Lista de Activități  noi la care vă puteți înscrie',
@@ -461,6 +484,11 @@ VALUES
 (2004, 200, 'CEREREMEM', 200930, 'CEREREMEMCOMPLETADR', 2, null, null),	
 (2005, 200, 'CEREREMEM', 200940, 'CEREREMEMDOVADACOT',  3, null, null),	
 (2006, 200, 'CEREREMEM', 200950, 'CEREREMEMTRIMITECER', 4, null, null),
+
+(3001, 255, 'CERMEMACTN', 200955, 'CEREREMEMACTNTRICER', 1, null, null),
+(3002, 256, 'CERMEMACTA', 200956, 'CEREREMEMACTATRICER', 1, null, null),
+(3003, 257, 'CERMEMEXPN', 200957, 'CEREREMEMEXPNTRICER', 1, null, null),
+(3004, 258, 'CERMEMEXPA', 200958, 'CEREREMEMEXPATRICER', 1, null, null),
 						
 (2007, 240, 'GESTEXEACT', 210905, 'GESTACTEXELISTACTC',        1,   null,                null),		
 (2008, 240, 'GESTEXEACT', 210910, 'GESTACTEXELISTACTV',        2,   null,                null),	
@@ -1682,7 +1710,7 @@ CREATE TABLE `mes_expeditor` (
   `mes_expeditor_id` int NOT NULL AUTO_INCREMENT,
 
   `mes_expeditor_userid` int not null,
-  `mes_expeditor_username` varchar(20)  null,
+  `mes_expeditor_usernume` varchar(20)  null,
   `mes_expeditor_rolid` int not null,
   `mes_expeditor_rolcod` varchar(10) 	not null,
 
@@ -1718,9 +1746,9 @@ CREATE TABLE `mes_destinatar` (
   `mes_destinatar_id` int NOT NULL AUTO_INCREMENT,
   
   `mes_destinatar_userid` int not null,
-  `mes_destinatar_username` int not null,
+  `mes_destinatar_usernume` varchar(20)	not null,
   `mes_destinatar_rolid` int not null,
-  `mes_destinatar_rolcod` int	not null,
+  `mes_destinatar_rolcod` varchar(10)	not null,
 
   `mes_destinatar_adrrezidenta_yn`	char(1), 
   `mes_destinatar_zonataraid` int	not null, 	
@@ -1759,9 +1787,9 @@ CREATE TABLE `mes_mesaj` (
 
   `mes_mesaj_expid` int not null null,
   `mes_mesaj_expuserid` int not null,
-  `mes_mesaj_expusername` int not null,
+  `mes_mesaj_expusernume` varchar(20)	not null,
   `mes_mesaj_exprolid` int not null,
-  `mes_mesaj_exprolcod` int	not null,
+  `mes_mesaj_exprolcod` varchar(10)	not null,
 
   `mes_mesaj_acopgeoid` int not null,
   `mes_mesaj_acopgeocod` varchar(16)	not null,
@@ -1803,9 +1831,9 @@ CREATE TABLE `mes_destinmesaj` (
 
   `mes_destinmesaj_destid` int not null null,
   `mes_destinmesaj_destuserid` int not null,
-  `mes_destinmesaj_destusername` int not null,
+  `mes_destinmesaj_destusernume` varchar(20) not null,
   `mes_destinmesaj_destrolid` int not null,
-  `mes_destinmesaj_destrolcod` int	not null,
+  `mes_destinmesaj_destrolcod` varchar(10) not null,
   
   `mes_destinmesaj_primit_yn` varchar(1) not null,
   

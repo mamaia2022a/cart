@@ -7,8 +7,14 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-//import javax.validation.constraints.NotBlank;
-//import java.util.Optional;
+import com.potsoft.cart2api.exception.ResourceNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.validation.constraints.NotNull;
+
+
+import java.util.Optional;
+
 
 @Repository
 public interface GeoUatRepository extends JpaRepository<GeoUat, Long> 
@@ -16,6 +22,19 @@ public interface GeoUatRepository extends JpaRepository<GeoUat, Long>
    List<GeoUat> findAll();
    List<GeoUat> findByGeoUatZonataraidAndGeoUatJudetidOrderByGeoUatNume(Long zonataraid, Long judetid);
    List<GeoUat> findByGeoUatZonataraidAndGeoUatJudetcodOrderByGeoUatNume(Long zonataraid, String judetcod);
+
+   Optional<GeoUat> findByGeoUatId(@NotNull Long geo_uat_id);
+
+   @Transactional
+   default GeoUat loadByGeoUatId(Long geo_uat_id)
+   {
+     return findByGeoUatId(geo_uat_id)
+     .orElseThrow(() ->
+     new ResourceNotFoundException("GeoUat", 
+                                   "geo_uat_id", geo_uat_id));
+   }
+
+
 }
 
 

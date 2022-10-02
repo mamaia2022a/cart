@@ -11,3 +11,9 @@ truncate table cart2.mem_membrurol;
 truncate table cart2.mem_sefgrup;
 truncate table cart2.mem_membrugrup;
 truncate table cart2.mem_grup;
+truncate table cart2.mem_recomandatde;
+
+truncate table cart2.mes_destinatar;
+truncate table cart2.mes_expeditor;
+truncate table cart2.mes_mesaj;
+truncate table cart2.mes_destinmesaj;

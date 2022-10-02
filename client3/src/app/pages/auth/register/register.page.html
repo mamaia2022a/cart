@@ -79,9 +79,9 @@
               <ion-input type="text" placeholder="Adresa de Domiciliu" formControlName="domadresa"></ion-input>
             </ion-item>
             <ion-item color="light">
-              <ion-select placeholder="Locuiți la o adresa de rezindență alte decât cea din CI?" formControlName="rezdifdom" (ionChange)="selectieDomDifRez($event)">
-                <ion-select-option value="0">Locuiesc la Adresa de Domiciliu din Cartea de Identitate</ion-select-option>
-                <ion-select-option value="1">Locuiesc la o Adresă de Rezidență alta decât cea de Domiciliu</ion-select-option>
+              <ion-select placeholder="Rezidența e diferită decât domiciliu din CI?" formControlName="rezdifdom" (ionChange)="selectieDomDifRez($event)">
+                <ion-select-option value="y">Rezidența e diferită decât Domiciliu din CI</ion-select-option>
+                <ion-select-option value="n">Rezidența nu e diferită decât Domiciliu din CI</ion-select-option>
               </ion-select>
             </ion-item>
 
@@ -122,6 +122,9 @@
                 <ion-input type="text" placeholder="Adresa de Rezidență" formControlName="rezadresa"></ion-input>
               </ion-item>
             </div>
+            <ion-item color="light">
+              <ion-input type="text" placeholder="Codul unic al Membrului care te-a recomandat (Opțional)" formControlName="refmembrucodunic"></ion-input>
+            </ion-item>
           </ion-card>
 
           <ion-button
