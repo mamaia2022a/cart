@@ -32,6 +32,8 @@ export class AuthHandler {
   private ApiURLMemMembruTipSchimbare: string                 = this.ApiBaseURL + "/api/mem/membru/tip/schimbare";
   //---------------------------------- grup
   private ApiURLMemGrupCreare: string                         = this.ApiBaseURL + "/api/mem/grup/creare";
+  private ApiURLMemGrupVizualizare: string                    = this.ApiBaseURL + "/api/mem/grup/vizualizare";
+  private ApiURLMemGrupPendingMembri: string                  = this.ApiBaseURL + "/api/mem/grup/pendingmembri";
   //---------------------------------- geo
   //zonetara/toate
   private ApiURLGeoZonetara: string                           = this.ApiBaseURL + "/api/geo/zonetara";
@@ -124,6 +126,22 @@ export class AuthHandler {
       console.log("Actiune selected");
       console.log(selActiune);
       storage.set("crtactiune", selActiune);
+      //-----------------------
+      //  Vizualizare Grup
+      //-----------------------
+      if (selActiune.autActiuneCod == "GESTGRUPVIZUALIZGRUP")
+      {
+        this.navController.navigateRoot(appConfig.routes.sefgrup.gestgrup.vizualizgrup);
+        return ;
+      }
+      //-----------------------
+      //  Sef Grup - Pending Membri
+      //-----------------------
+      if (selActiune.autActiuneCod == "GESTGRUPPENDINGMEM")
+      {
+        this.navController.navigateRoot(appConfig.routes.sefgrup.gestgrup.pendingmem);
+        return ;
+      }
       //-----------------------
       //  Creare Grup
       //-----------------------
@@ -401,6 +419,47 @@ export class AuthHandler {
         })
   
       });
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemGrupVizualizare)).subscribe(async data2 => 
+      {
+        let memGrupVizualizareAction : AuthAction.MemGrupVizualizare = data2;
+        console.log("memGrupVizualizare");
+        var memMembruRequestVizualizare = memGrupVizualizareAction.memGrupRequestVizualizare;
+        var storageResultKey = memGrupVizualizareAction.storageResultKey;
+        console.log(memMembruRequestVizualizare);
+        return this.apiService.post(this.ApiURLMemGrupVizualizare,
+                                    memGrupVizualizareAction.memGrupRequestVizualizare, 
+                                    {"Authorization" : `Bearer ${memGrupVizualizareAction.token}`}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Vizualizare Grup : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+
+        /**
+          let geoZonetaraAction : AuthAction.GeoZonetara = data2;
+          var storageResultKey = geoZonetaraAction.storageResultKey;
+          console.log("Action Geo Zone Tara [storageResultKey=" + storageResultKey + "]");
+          // ----
+          this.apiService.get(this.ApiURLGeoZonetara + this.Toate, {}).subscribe(data  => {  
+            let response : any = data;
+            console.log(response);
+            storage.set(storageResultKey, response);
+            return of(response);
+          },
+          (error) => {
+            console.log("Error" + error);
+            toastService.default("Eroare: Nu se pote obține lista de Zonetara");
+            return of(false);
+          })*/  
+      });
+  
 
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.Login)).subscribe(data2 => 

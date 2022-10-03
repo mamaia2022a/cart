@@ -6,6 +6,7 @@ import {ApiService} from '../../../app/services/api/api.service'
 import { RegisterRequest } from '../../payloads/aut/RegisterRequest';
 import { MemMembruTipRequest_Schimbare } from '../../payloads/mem/MemMembruTipRequest_Schimbare';
 import { MemGrupRequest_Creare } from '../../payloads/mem/MemGrupRequest_Creare';
+import { MemGrupRequest_Vizualizare} from '../../payloads/mem/MemGrupRequest_Vizualizare';
 
 import { ValidateRegistrationRequest} from '../../payloads/aut/ValidateRegistrationRequest';
 
@@ -42,6 +43,11 @@ export namespace AuthAction {
   export class MemGrupCreare {
     static readonly type = '[MemGrupCreare] Mem Grup Creare';
     constructor(public memGrupRequestCreare: MemGrupRequest_Creare, public token: string) {}
+  }
+
+  export class MemGrupVizualizare {
+    static readonly type = '[MemGrupVizualizare] Mem Grup Vizualizare';
+    constructor(public memGrupRequestVizualizare: MemGrupRequest_Vizualizare, public token: string, public storageResultKey: string) {}
   }
 
   export class Rolgrupactiunii {

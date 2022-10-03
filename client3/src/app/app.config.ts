@@ -67,6 +67,12 @@ export const appConfig = {
         expatricer : "memactafl/cereremem/expatricer",
       },      
     },
+    sefgrup: {
+      gestgrup: {
+        vizualizgrup : "sefgrup/gestgrup/vizualizgrup",
+        pendingmem   : "sefgrup/gestgrup/pendingmem",
+      },      
+    },
     
     auth: {
       login: 'auth/login',

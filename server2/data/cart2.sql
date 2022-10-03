@@ -460,7 +460,13 @@ VALUES
                                    'Creare Grup Propriu', 'Creați-vă Propriul Grup și deveniți Șef de Grup'),
 
 (230905, 'AFILGRPMEMMEMINCACTEXPNFL', 'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat',
-                                      'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat')
+                                      'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat'),
+
+(300901, 'GESTGRUPVIZUALIZGRUP', 'Vizualizare Grup', 'Vizualizează Grupul și Membri săi',
+                                 'Vizualizare Grup', 'Vizualizează Grupul și Membri săi'),
+(300905, 'GESTGRUPPENDINGMEM', 'Cereri Noi de Afiliere la Grup', 'Vizualizează și Aprobă Noile Cereri de Înscriere la Grup',
+                               'Cereri Noi de Afiliere la Grup', 'Vizualizează și Aprobă Noile Cereri de Înscriere la Grup')
+
 ;
 
 
@@ -528,7 +534,10 @@ VALUES
 
 (2501, 290, 'CREAREGRUP', 290905, 'CREAREGRUPMEMACTEXPNFL',        1,   null,                null),
 
-(2601, 230, 'AFILGRPMEM', 230905, 'AFILGRPMEMMEMINCACTEXPNFL',        1,   null,                null)
+(2601, 230, 'AFILGRPMEM', 230905, 'AFILGRPMEMMEMINCACTEXPNFL',        1,   null,                null),
+
+(2701, 300, 'GESTGRUP', 300901, 'GESTGRUPVIZUALIZGRUP',      1,   null,                null),
+(2705, 300, 'GESTGRUP', 300905, 'GESTGRUPPENDINGMEM',        2,   null,                null)
 
 ;
 

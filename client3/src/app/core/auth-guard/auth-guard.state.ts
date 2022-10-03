@@ -70,6 +70,16 @@ export class AuthGuardState {
     });
   }  
 
+
+  @Action(AuthAction.MemGrupVizualizare)
+  memGrupVizualizare(context: StateContext<AuthAction.MemGrupVizualizare>, action: AuthAction.MemGrupVizualizare) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
   @Action(AuthAction.Rolgrupactiunii)
   rolgrupactiunii(context: StateContext<AuthAction.Rolgrupactiunii>, action: AuthAction.Rolgrupactiunii) {
     const state = context.getState();

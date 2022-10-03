@@ -143,6 +143,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/memactafl/cereremem/expatricer/expatricer.module').then((m) => m.ExpATriCerPageModule),
   },
 
+
+  //-----------------------------
+  //  Sef Grup
+  //-----------------------------
+  {
+    path: 'sefgrup/gestgrup/vizualizgrup',
+    loadChildren: () => import('./pages/sefgrup/gestgrup/vizualizgrup/vizualizgrup.module').then((m) => m.VizualizGrupPageModule),
+  },
+  {
+    path: 'sefgrup/gestgrup/pendingmem',
+    loadChildren: () => import('./pages/sefgrup/gestgrup/pendingmem/pendingmem.module').then((m) => m.PendingMemPageModule),
+  },
+
   /* Other routes */
   /** 
   {
