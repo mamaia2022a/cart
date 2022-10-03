@@ -29,7 +29,7 @@ CREATE TABLE `adm_admin` (
   `adm_admin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_admin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `adm_superadmin` (
   `adm_superadmin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_superadmin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_superadmin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `aut_user` (
   `aut_user_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_user_id`),
   UNIQUE KEY `aut_user_nume_unique` (`aut_user_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,6 +240,7 @@ CREATE TABLE `aut_user` (
 
 LOCK TABLES `aut_user` WRITE;
 /*!40000 ALTER TABLE `aut_user` DISABLE KEYS */;
+INSERT INTO `aut_user` VALUES (1,'aaaaa','$2a$10$0vIY6IcjyaylXza/HbAanujWDO4aFWq5sZjGqYHKK6kwxUnO2L6U2','y','2022-10-03 00:01:27',NULL);
 /*!40000 ALTER TABLE `aut_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +282,7 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_rez_codpostal` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
   `aut_userinfo_rez_adresa` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`aut_userinfo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,6 +291,7 @@ CREATE TABLE `aut_userinfo` (
 
 LOCK TABLES `aut_userinfo` WRITE;
 /*!40000 ALTER TABLE `aut_userinfo` DISABLE KEYS */;
+INSERT INTO `aut_userinfo` VALUES (1,1,'alex','marius','334344444','m','al@gmail.com',19821003,1,'TR',3,'AG',171,13999,1068,14030,'333333','str Albesti nr 44','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `aut_userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,7 +311,7 @@ CREATE TABLE `aut_userrol` (
   `aut_userrol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_userrol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_userrol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,6 +320,7 @@ CREATE TABLE `aut_userrol` (
 
 LOCK TABLES `aut_userrol` WRITE;
 /*!40000 ALTER TABLE `aut_userrol` DISABLE KEYS */;
+INSERT INTO `aut_userrol` VALUES (1,23,'SIMPATPEND',1,'n','2022-10-03 00:01:27','2022-10-03 00:01:58'),(2,14,'SIMPATIZ',1,'n','2022-10-03 00:01:58','2022-10-03 00:02:41'),(3,16,'MEMINCNFL',1,'n','2022-10-03 00:02:41','2022-10-03 00:03:15'),(4,18,'MEMACTNFL',1,'n','2022-10-03 00:03:15','2022-10-03 00:03:51'),(5,20,'MEMEXPNFL',1,'n','2022-10-03 00:03:51','2022-10-03 00:10:04'),(6,21,'SEFGRUP',1,'y','2022-10-03 00:10:04',NULL);
 /*!40000 ALTER TABLE `aut_userrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +339,7 @@ CREATE TABLE `aut_validinreg` (
   `aut_validinreg_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_validinreg_enddt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`aut_validinreg_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,6 +348,7 @@ CREATE TABLE `aut_validinreg` (
 
 LOCK TABLES `aut_validinreg` WRITE;
 /*!40000 ALTER TABLE `aut_validinreg` DISABLE KEYS */;
+INSERT INTO `aut_validinreg` VALUES (1,1,99999999,'y','2022-10-03 00:01:27','2022-10-03 00:01:27');
 /*!40000 ALTER TABLE `aut_validinreg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,7 +459,7 @@ CREATE TABLE `geo_codpostal` (
   `geo_codpostal_numerebloc` varchar(128) NOT NULL,
   PRIMARY KEY (`geo_codpostal_id`),
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -571,7 +575,7 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -638,7 +642,7 @@ CREATE TABLE `geo_zonajudet` (
   PRIMARY KEY (`geo_zonajudet_id`),
   UNIQUE KEY `geo_zonajudet_cod_unique` (`geo_zonajudet_cod`),
   UNIQUE KEY `geo_zonajudet_nume_unique` (`geo_zonajudet_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -676,7 +680,7 @@ CREATE TABLE `geo_zonalocalitate` (
   PRIMARY KEY (`geo_zonalocalitate_id`),
   UNIQUE KEY `geo_zonalocalitate_cod_unique` (`geo_zonalocalitate_cod`),
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -702,7 +706,7 @@ CREATE TABLE `geo_zonatara` (
   PRIMARY KEY (`geo_zonatara_id`),
   UNIQUE KEY `geo_zonatara_cod_unique` (`geo_zonatara_cod`),
   UNIQUE KEY `geo_zonatara_nume_unique` (`geo_zonatara_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -755,7 +759,7 @@ CREATE TABLE `mem_grup` (
   PRIMARY KEY (`mem_grup_id`),
   UNIQUE KEY `mem_grup_codunic_unique` (`mem_grup_codunic`),
   UNIQUE KEY `mem_grup_nume_unique` (`mem_grup_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -764,6 +768,7 @@ CREATE TABLE `mem_grup` (
 
 LOCK TABLES `mem_grup` WRITE;
 /*!40000 ALTER TABLE `mem_grup` DISABLE KEYS */;
+INSERT INTO `mem_grup` VALUES (1,'Gzama256724','zamolxis',1,'Malem985774',1,'aaaaa',1,1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','y','2022-10-03 00:10:21',NULL);
 /*!40000 ALTER TABLE `mem_grup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -814,7 +819,7 @@ CREATE TABLE `mem_membru` (
   `mem_membru_suspended_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`mem_membru_id`),
   UNIQUE KEY `mem_membru_codunique_unique` (`mem_membru_codunic`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -823,6 +828,7 @@ CREATE TABLE `mem_membru` (
 
 LOCK TABLES `mem_membru` WRITE;
 /*!40000 ALTER TABLE `mem_membru` DISABLE KEYS */;
+INSERT INTO `mem_membru` VALUES (1,'Malem985774',1,'aaaaa',1,21,'SEFGRUP',1,'zamolxis','Gzama256724','n',1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','n','n','n','y','2022-10-03 00:02:00',NULL,'n');
 /*!40000 ALTER TABLE `mem_membru` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -946,7 +952,7 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_startdt` datetime DEFAULT CURRENT_TIMESTAMP,
   `mem_membrugrup_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrugrup_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -955,6 +961,7 @@ CREATE TABLE `mem_membrugrup` (
 
 LOCK TABLES `mem_membrugrup` WRITE;
 /*!40000 ALTER TABLE `mem_membrugrup` DISABLE KEYS */;
+INSERT INTO `mem_membrugrup` VALUES (1,1,'Malem985774',1,'aaaaa',1,1,'zamolxis','Gzama256724',1,'Malem985774',1,'aaaaa',1,1,'TR',3,'AG',171,13999,0,'0',0,'0',1068,14030,0,'0',0,0,0,'0','n','2022-10-03 00:10:45',NULL,NULL,NULL,NULL,'y','2022-10-03 00:10:45',NULL);
 /*!40000 ALTER TABLE `mem_membrugrup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1031,7 +1038,7 @@ CREATE TABLE `mem_membrurol` (
   `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membrurol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrurol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1040,6 +1047,7 @@ CREATE TABLE `mem_membrurol` (
 
 LOCK TABLES `mem_membrurol` WRITE;
 /*!40000 ALTER TABLE `mem_membrurol` DISABLE KEYS */;
+INSERT INTO `mem_membrurol` VALUES (1,1,'Malem985774',1,'aaaaa',1,14,'SIMPATIZ',1,'TOATE',NULL,1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-03 00:02:02','2022-10-03 00:02:43'),(2,1,'Malem985774',1,'aaaaa',1,16,'MEMINCNFL',1,'TOATE',NULL,1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-03 00:02:43','2022-10-03 00:03:16'),(3,1,'Malem985774',1,'aaaaa',1,18,'MEMACTNFL',1,'TOATE',NULL,1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-03 00:03:16','2022-10-03 00:03:52'),(4,1,'Malem985774',1,'aaaaa',1,20,'MEMEXPNFL',1,'TOATE',NULL,1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-03 00:03:52','2022-10-03 00:10:17'),(5,1,'Malem985774',1,'aaaaa',1,21,'SEFGRUP',1,'TOATE',NULL,1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','n','n','n','y','2022-10-03 00:10:18',NULL);
 /*!40000 ALTER TABLE `mem_membrurol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1108,7 +1116,7 @@ CREATE TABLE `mem_membrutip` (
   `mem_membrutip_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membrutip_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrutip_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1117,6 +1125,7 @@ CREATE TABLE `mem_membrutip` (
 
 LOCK TABLES `mem_membrutip` WRITE;
 /*!40000 ALTER TABLE `mem_membrutip` DISABLE KEYS */;
+INSERT INTO `mem_membrutip` VALUES (1,1,'Malem985774',1,'aaaaa',1,14,'SIMPATIZ',1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','2022-10-03 00:02:00','2022-10-03 00:02:43'),(2,1,'Malem985774',1,'aaaaa',1,16,'MEMINCNFL',1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','2022-10-03 00:02:43','2022-10-03 00:03:16'),(3,1,'Malem985774',1,'aaaaa',1,18,'MEMACTNFL',1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','2022-10-03 00:03:16','2022-10-03 00:03:52'),(4,1,'Malem985774',1,'aaaaa',1,20,'MEMEXPNFL',1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','n','2022-10-03 00:03:52','2022-10-03 00:10:17'),(5,1,'Malem985774',1,'aaaaa',1,21,'SEFGRUP',1,'TR',3,'AG',0,'0',171,13999,0,'0',1068,14030,0,'0',0,0,0,'0','y','2022-10-03 00:10:17',NULL);
 /*!40000 ALTER TABLE `mem_membrutip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1191,7 +1200,7 @@ CREATE TABLE `mem_sefgrup` (
   `mem_sefgrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_sefgrup_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_sefgrup_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1200,6 +1209,7 @@ CREATE TABLE `mem_sefgrup` (
 
 LOCK TABLES `mem_sefgrup` WRITE;
 /*!40000 ALTER TABLE `mem_sefgrup` DISABLE KEYS */;
+INSERT INTO `mem_sefgrup` VALUES (1,1,'Malem985774',1,'aaaaa',1,1,'zamolxis','Gzama256724',1,'TR',3,'AG',171,13999,0,'0',0,'0',1068,14030,0,'0',0,0,0,'0','y','2022-10-03 00:10:19',NULL);
 /*!40000 ALTER TABLE `mem_sefgrup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1361,7 +1371,7 @@ CREATE TABLE `mes_destinatar` (
   `mes_destinatar_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mes_destinatar_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mes_destinatar_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1370,6 +1380,7 @@ CREATE TABLE `mes_destinatar` (
 
 LOCK TABLES `mes_destinatar` WRITE;
 /*!40000 ALTER TABLE `mes_destinatar` DISABLE KEYS */;
+INSERT INTO `mes_destinatar` VALUES (1,1,'aaaaa',23,'SIMPATPEND','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:01:27','2022-10-03 00:01:58'),(2,1,'aaaaa',14,'SIMPATIZ','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:01:58','2022-10-03 00:02:41'),(3,1,'aaaaa',16,'MEMINCNFL','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:02:41','2022-10-03 00:03:15'),(4,1,'aaaaa',18,'MEMACTNFL','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:03:15','2022-10-03 00:03:51'),(5,1,'aaaaa',20,'MEMEXPNFL','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:03:51','2022-10-03 00:10:05'),(6,1,'aaaaa',21,'SEFGRUP','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','y','2022-10-03 00:10:05',NULL);
 /*!40000 ALTER TABLE `mes_destinatar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1442,7 +1453,7 @@ CREATE TABLE `mes_expeditor` (
   `mes_expeditor_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mes_expeditor_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mes_expeditor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1451,6 +1462,7 @@ CREATE TABLE `mes_expeditor` (
 
 LOCK TABLES `mes_expeditor` WRITE;
 /*!40000 ALTER TABLE `mes_expeditor` DISABLE KEYS */;
+INSERT INTO `mes_expeditor` VALUES (1,1,'aaaaa',23,'SIMPATPEND','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:01:27','2022-10-03 00:01:58'),(2,1,'aaaaa',14,'SIMPATIZ','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:01:58','2022-10-03 00:02:41'),(3,1,'aaaaa',16,'MEMINCNFL','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:02:41','2022-10-03 00:03:15'),(4,1,'aaaaa',18,'MEMACTNFL','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:03:15','2022-10-03 00:03:51'),(5,1,'aaaaa',20,'MEMEXPNFL','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 00:03:51','2022-10-03 00:10:05'),(6,1,'aaaaa',21,'SEFGRUP','n',1,'TR',3,'AG',171,13999,1068,14030,0,'0',0,'0',0,'0',0,0,0,'0','y','2022-10-03 00:10:05',NULL);
 /*!40000 ALTER TABLE `mes_expeditor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1545,4 +1557,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-03 12:22:12
+-- Dump completed on 2022-10-03  1:05:49
