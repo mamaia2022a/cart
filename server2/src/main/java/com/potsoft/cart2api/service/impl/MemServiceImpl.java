@@ -323,7 +323,7 @@ public class MemServiceImpl implements MemService
 		   (crtMemTipCod.equals("MEMACTNFL") && newMemTipCod.equals("MEMEXPNFL")) ||
 		   (crtMemTipCod.equals("MEMACTAFL") && newMemTipCod.equals("MEMEXPAFL")) ||
 		   //-- un membru activ sau experimentat Neafiliat isi formeaza propriul grup
-		   (crtMemTipCod.equals("MEMACTFNL") && newMemTipCod.equals("SEFGRUP")) ||
+		   (crtMemTipCod.equals("MEMACTNFL") && newMemTipCod.equals("SEFGRUP")) ||
 		   (crtMemTipCod.equals("MEMEXPNFL") && newMemTipCod.equals("SEFGRUP")) ||
 		   //-- un sef de grup isi desfiinteaza grupul 
 		   (crtMemTipCod.equals("SEFGRUP")  && newMemTipCod.equals("MEMACTNFL")) ||

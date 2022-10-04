@@ -1,0 +1,102 @@
+
+
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/grupactactiuni"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   
+  <!-- List of Text Items -->
+      <ng-container *ngIf="crtactiune">
+        <h3>{{crtactiune.autActiuneDisplaynume}}</h3>
+     </ng-container>
+  
+     <!--
+     <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+          <form [formGroup]="frmGetLatLongerea" (ngSubmit)="onGetLatLongerea()">
+            <ion-card color="light" class="auth-card ion-margin">
+              <ion-item color="light" class="ion-no-inner-padding-end">
+                <ion-input type="text" [readonly]="true" placeholder="Trimite Confirmarea pentru a deveni Membru Activ Neafiliat" formControlName="mesaj"></ion-input>
+              </ion-item>
+            </ion-card>
+  
+            <ion-button
+              expand="block"
+              class="ion-margin-start ion-margin-end ion-margin-bottom"
+              type="submit"
+              [disabled]="!frmGetLatLongerea.valid"
+            >
+              Confirmare Cerere Membru Activ
+            </ion-button>
+            <span class="ion-margin"></span>
+          </form>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  -->
+  
+  <div class="container">
+    <!-- 
+    <div style="text-align:center">
+      <h1>
+        Google Map Geolocation
+      </h1>
+    </div>
+  -->
+  <!--
+    <div class="alert alert-warning">
+      Nota: Daca "Track me" este activ, refresh page ca sa recativati Find me !
+    </div>
+  -->
+    <div>
+      <div>
+        <ion-button [disabled]="isTracking" (click)="findMe()">Click pentru Locația mea</ion-button>
+        <!-- <button  (click)="trackMe()">Track me</button> -->
+      </div>
+      <div class="text-white">
+        <span>Latitude: {{currentLat}}</span>
+        <span> - Longitudine: {{currentLong}}</span>
+      </div>
+      <iframe #framemap id="framemapid" style="width:100%;height:400px"
+             src="http://maps.google.com/maps?q=44.439663%2C26.096306&z=18&output=embed"></iframe>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center">
+            <h3>
+              <div #gmap [hidden]="true" style="width:100%;height:600px"></div>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+  
+ 
+
+
+</ion-content>

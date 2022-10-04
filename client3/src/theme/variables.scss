@@ -227,3 +227,27 @@
 
   --ion-card-background: #1e1e1e;
 }
+
+.alert-wrapper{
+  max-width: unset !important;
+  width: 100% !important;
+}
+
+ion-select {
+  width: 100%;
+  max-width: 100%;
+  display: flex;;
+  overflow: hidden;
+  color: #808080;
+}
+
+
+.alert-ios .alert-wrapper{
+  max-width: unset !important;
+  width: 100% !important;
+}
+
+.alert-md .alert-wrapper{
+  max-width: unset !important;
+  width: 100% !important;
+}

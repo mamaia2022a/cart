@@ -73,7 +73,11 @@ export const appConfig = {
         pendingmem   : "sefgrup/gestgrup/pendingmem",
       },      
     },
-    
+    loc: {
+      gestpos: {
+        getlatlong : "loc/gestpos/getlatlong",
+      },      
+    },    
     auth: {
       login: 'auth/login',
       register: 'auth/register',

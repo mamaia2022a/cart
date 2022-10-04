@@ -156,6 +156,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sefgrup/gestgrup/pendingmem/pendingmem.module').then((m) => m.PendingMemPageModule),
   },
 
+  //-----------------------------
+  //  Location
+  //-----------------------------
+  {
+    path: 'loc/gestpos/getlatlong',
+    loadChildren: () => import('./pages/loc/gestpos/getlatlong/getlatlong.module').then((m) => m.GetLatLongPageModule),
+  },
+
   /* Other routes */
   /** 
   {

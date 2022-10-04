@@ -16,6 +16,10 @@
         <ion-item>Clasament Grupuri</ion-item>
         <ion-item-divider></ion-item-divider>        
         <ion-menu-toggle>
+          <ion-item [routerLink]="['/loc/gestpos/getlatlong']">Geo-Locație</ion-item>
+        </ion-menu-toggle>
+        <ion-item-divider></ion-item-divider>        
+        <ion-menu-toggle>
           <ion-item [routerLink]="['/aut/logout']">Logout</ion-item>
         </ion-menu-toggle>
       </ion-list>
