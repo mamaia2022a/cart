@@ -22,7 +22,7 @@ import { MemMembruTipResponse_Schimbare } from '../../payloads/mem/MemMembruTipR
 @Injectable({ providedIn: 'root' })
 export class AuthHandler {
 
-  private ApiBaseURL: string = "http://www.fluierul.ro:8080";
+  private ApiBaseURL: string = "http://localhost:8080"; //"http://www.fluierul.ro:8080";
 
   //---------------------------------- out
   private ApiURLAutLogin: string                              = this.ApiBaseURL + "/api/aut/user/login";
@@ -95,6 +95,47 @@ export class AuthHandler {
     
     //var token = storage.get("token");
     //storage.set("token", "TEST");
+
+    //__________________________________________________________________________
+    //  Actiune - Subactiuni
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.ActiuneSubactiuni)).subscribe(data2 => 
+    {
+      console.log("Handler Actiune Subactiune 6");
+      var crtActiune : AuthAction.ActiuneSubactiuni = data2;
+      var grupact : any = crtActiune.crtGrupAct;
+      var grupactactiuneid = crtActiune.grupactactiuneid ;
+      var parentactiuneid = crtActiune.parentactiuneid;
+      var crtGrupActActiune = null;
+      var selActiune = null;
+      console.log(grupact);
+      console.log(grupactactiuneid);
+      console.log(parentactiuneid);
+      var selSubactiuni = [];
+      for (let idx in grupact.grupactactiunisec)
+      {
+        crtGrupActActiune = grupact.grupactactiunisec[idx];
+        if (crtGrupActActiune.autGrupactactiuneGrupactid == crtActiune.grupactactiuneid)
+        {
+          if (crtGrupActActiune.autGrupactactiuneParentactid == crtActiune.parentactiuneid)
+          {
+            selSubactiuni.push(crtGrupActActiune.actiune);
+          }
+        }
+      }
+      if (selSubactiuni.length == 0)
+      {
+        console.log("Cannot find selSubactiuni");
+        return;
+      }
+      //console.log("Actiune selected");
+      console.log(selSubactiuni);
+      storage.set("crtsubactiuni", selSubactiuni);
+      this.navController.navigateRoot(appConfig.routes.aut.actiunesubactiuni);
+      return;
+    });
+
+    
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.Actiune)).subscribe(data2 => 
     {
@@ -236,6 +277,9 @@ export class AuthHandler {
       }
       return;    
     });
+
+
+  
 
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.Grupactactiuni)).subscribe(data2 => 
@@ -441,23 +485,6 @@ export class AuthHandler {
           toastService.default("Eroare Vizualizare Grup : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
           //return this.navController.navigateRoot(appConfig.routes.auth.login);
         })
-
-        /**
-          let geoZonetaraAction : AuthAction.GeoZonetara = data2;
-          var storageResultKey = geoZonetaraAction.storageResultKey;
-          console.log("Action Geo Zone Tara [storageResultKey=" + storageResultKey + "]");
-          // ----
-          this.apiService.get(this.ApiURLGeoZonetara + this.Toate, {}).subscribe(data  => {  
-            let response : any = data;
-            console.log(response);
-            storage.set(storageResultKey, response);
-            return of(response);
-          },
-          (error) => {
-            console.log("Error" + error);
-            toastService.default("Eroare: Nu se pote obține lista de Zonetara");
-            return of(false);
-          })*/  
       });
   
 

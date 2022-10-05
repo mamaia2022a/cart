@@ -8,6 +8,7 @@ import { Storage } from '@ionic/storage';
 import { MemMembruTipRequest_Schimbare } from '../../../../payloads/mem/MemMembruTipRequest_Schimbare';
 import { AuthAction } from '../../../../core/auth-guard/auth-guard.actions';
 import { MemGrupRequest_Vizualizare } from '../../../../payloads/mem/MemGrupRequest_Vizualizare';
+import { ActiuneParametri } from '../../../../payloads/aut/ActiuneParametri';
 
 
 @Component({
@@ -21,10 +22,12 @@ export class VizualizGrupPage implements OnInit {
     {
        mesaj: new FormControl('Trimite Confirmarea Cererii de a deveni Membru',[]),// [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     });
+  crtgrupact = null;
   crtactiune : any = null;
   loginResponse : any;
   token : string;
   grupmembri$ : Observable<any> = null;
+  grupmembri  : any = null;
   memGrupRequestVizualizare : MemGrupRequest_Vizualizare = new MemGrupRequest_Vizualizare();
   
   constructor(private store: Store, private navController: NavController, private platform: Platform, private storage: Storage)  
@@ -52,8 +55,15 @@ export class VizualizGrupPage implements OnInit {
                 while (data == null) 
                   data = await this.storage.get(storageResultKey);
                 //---
+                self.grupmembri = data.membriGrup;
                 self.grupmembri$ = of(data.membriGrup);
           
+                var data = await this.storage.get("crtgrupact");
+                while (data == null) 
+                  data = await this.storage.get("crtgrupact");
+                //---
+                self.crtgrupact = data;
+
               },
               error => {
                 console.log('Error Calling Action Vizualizare Grup: ' + error);
@@ -88,10 +98,33 @@ export class VizualizGrupPage implements OnInit {
       console.log("selectie fa actiune : " + actiuneid);
   }
 
-  selectieMembruGrup(event : any) 
+  selectieMembruGrup(memMembrugrupId : number) 
   {
-    console.log("selectie memmbru grup id:" + event.detail.value);
+    console.log("selectie membru grup id:" + memMembrugrupId);
     //this.selDomZonataraid  = event.detail.value; //this.register.get("domzonatara").value;
+    var parentactiuneid : number = this.crtactiune.autActiuneId;
+    var grupactactiuniid : number = this.crtgrupact.autGrupactiuniId;
+    var actiuneParams = new ActiuneParametri();
+    var memMembruGrup = this.getSelectedMembruGrup(memMembrugrupId, this.grupmembri);
+    actiuneParams.setData(memMembruGrup);
+    this.store.dispatch(new AuthAction.ActiuneSubactiuni(parentactiuneid, grupactactiuniid, this.crtgrupact, actiuneParams));
+  }
+
+
+  getSelectedMembruGrup(memMembrugrupId : number, arrmembrigrup : any) : any
+  {
+    var selMembruGrup = null;
+    //var crtMembruGrup = null;
+    for (let idx in arrmembrigrup)
+    {
+      var crtMembruGrup = arrmembrigrup[idx];
+      if (crtMembruGrup.memMembrugrupId == memMembrugrupId)
+      {
+        selMembruGrup = crtMembruGrup;
+        break;
+      }
+    }
+    return selMembruGrup;
   }
 
 

@@ -29,7 +29,7 @@ CREATE TABLE `adm_admin` (
   `adm_admin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_admin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `adm_superadmin` (
   `adm_superadmin_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adm_superadmin_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`adm_superadmin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,8 +81,12 @@ CREATE TABLE `aut_actiune` (
   `aut_actiune_descriere` varchar(256) COLLATE utf8mb4_bin NOT NULL,
   `aut_actiune_displaynume` varchar(128) COLLATE utf8mb4_bin NOT NULL,
   `aut_actiune_displaydescriere` varchar(256) COLLATE utf8mb4_bin NOT NULL,
+  `aut_actiune_subactiuninume` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
+  `aut_actiune_subactiunidescriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
+  `aut_actiune_subactiunidisplaynume` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
+  `aut_actiune_subactiunidisplaydescriere` varchar(256) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`aut_actiune_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=300906 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=300926 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +95,7 @@ CREATE TABLE `aut_actiune` (
 
 LOCK TABLES `aut_actiune` WRITE;
 /*!40000 ALTER TABLE `aut_actiune` DISABLE KEYS */;
-INSERT INTO `aut_actiune` VALUES (110910,'GESTMESAJENOTIFAPP','Notificări Aplicație','Vizualizează și Gestionează Notificările Aplicației','Notificări Aplicație','Vizualizează și Gestionează Notificările Aplicației'),(180910,'CONFIRMSIMACT','Validare Înregistrare','Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit','Validare Înregistrare','Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit'),(190910,'INDRUMMEMACT','Îndrumător cum Poți Deveni Membru','Îndrumător pentru a deveni Membru al Partidului','Îndrumător cum Poți Deveni Membru','Îndrumător pentru a deveni Membru al Partidului'),(200920,'CEREREMEMCOMPLETCNP','Completează CNP, Nr. și Seria CI','Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI','Completează CNP, Nr. și Seria CI','Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI'),(200930,'CEREREMEMCOMPLETADR','Completează Adresa de Domiciliu','Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență','Completează Adresa de Domiciliu','Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență'),(200940,'CEREREMEMDOVADACOT','Dovadă Plată Cotizație Anuală','Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent','Dovadă Plată Cotizație Anuală','Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent'),(200950,'CEREREMEMTRIMITECER','Trimite Cererea de Membru','Trimiteți cererea de a deveni Membru','Trimite Cererea de Membru','Trimiteți cererea de a deveni Membru'),(200955,'CEREREMEMACTNTRICER','TEST Trimite Cererea de Membru Activ Neafiliat','TEST Trimiteți cererea de a deveni Membru Activ Neafiliat','TEST Trimite Cererea de Membru Activ Neafiliat','TEST Trimiteți cererea de a deveni Membru Activ Neafiliat'),(200956,'CEREREMEMACTATRICER','TEST Trimite Cererea de Membru Activ Afiliat','TEST Trimiteți cererea de a deveni Membru Activ Afiliat','TEST Trimite Cererea de Membru Activ Afiliat','TEST Trimiteți cererea de a deveni Membru Activ Afiliat'),(200957,'CEREREMEMEXPNTRICER','TEST Trimite Cererea de Membru Experimentat Neafiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat','TEST Trimite Cererea de Membru Experimentat Neafiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat'),(200958,'CEREREMEMEXPATRICER','TEST Trimite Cererea de Membru Experimentat Afiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat','TEST Trimite Cererea de Membru Experimentat Afiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat'),(210905,'GESTACTEXELISTACTC','Lista activități în curs de desfășurare','Lista de Activități  în curs de desfășurare la care sunteți înscris','Lista activități în curs de desfășurare','Lista de Activități  în curs de desfășurare la care sunteți înscris'),(210910,'GESTACTEXELISTACTV','Lista activități viitoare','Lista de Activități  noi la care vă puteți înscrie','Lista activități viitoare','Lista de Activități  noi la care vă puteți înscrie'),(210915,'GESTACTEXELISTACTT','Listă activități trecute','Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate','Listă activități trecute','Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate'),(210920,'GESTACTEXEVIZACTC','Vizualizare Activitate Curentă','Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați','Vizualizare Activitate Curentă','Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați'),(210925,'GESTACTEXEVIZACTV','Vizualizare Activitate Viitoare','Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie','Vizualizare Activitate Viitoare','Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie'),(210930,'GESTACTEXEVIZACTT','Vizualizare Activitate Trecute','Vizualizarea unei Activități Trecute la care ați participat','Vizualizare Activitate Trecute','Vizualizarea unei Activități Trecute la care ați participat'),(210935,'GESTACTEXEINSCACTV','Înscrierea la o Activitate Nouă','Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare','Înscrierea la o Activitate Nouă','Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare'),(210940,'GESTACTEXERENUACTV','Renunțați la o Activitate Nouă','Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare','Renunțați la o Activitate Nouă','Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare'),(210945,'GESTACTEXEADDREZACTC','Adăugare Rezultat Activitate','Adăugarea unui Rezultat pentru o Activitate la care participați','Adăugare Rezultat Activitate','Adăugarea unui Rezultat pentru o Activitate la care participați'),(210950,'GESTACTEXEMODREZACTC','Modificare Rezultat Activitate','Modificare unui Rezultat pentru o Activitate la care participați','Modificare Rezultat Activitate','Modificare unui Rezultat pentru o Activitate la care participați'),(210955,'GESTACTEXEDELREZACTC','Ștergere Rezultat Activitate','Ștergerea unui Rezultat pentru o Activitate la care participați','Ștergere Rezultat Activitate','Ștergerea unui Rezultat pentru o Activitate la care participați'),(210960,'GESTACTEXEVIZREZACTT','Vizualizare Rezultat Activitate','Vizualizați Rezultatul pentru o Activitate la care ați participat','Vizualizare Rezultat Activitate','Vizualizați Rezultatul pentru o Activitate la care ați participat'),(210965,'GESTACTEXELISTFAZVACTV','Listă Faze Activitate Viitoare','Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)','Listă Faze Activitate Viitoare','Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)'),(210970,'GESTACTEXEVIZFAZVACTV','Vizualizare Fază Viitoare','Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)','Vizualizare Fază Viitoare','Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)'),(210972,'GESTACTEXEINSCFAZVACTV','Înscrierea Participare Fază Activitate','Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare','Înscrierea Participare Fază Activitate','Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare'),(210974,'GESTACTEXERENUFAZVACTV','Renunțare Participare Fază Activitate','Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare','Renunțare Participare Fază Activitate','Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare'),(210976,'GESTACTEXELISTFAZACTC','Listă Faze Activitate CurentăVi','zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)','Listă Faze Activitate CurentăVi','zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)'),(210978,'GESTACTEXEVIZFAZACTC','Vizualizare Fază Activitate Curentă','Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)','Vizualizare Fază Activitate Curentă','Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)'),(210980,'GESTACTEXEADDREZFAZC','Adăugare Rezultat Fază în Desfășurare','Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Adăugare Rezultat Fază în Desfășurare','Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),(210982,'GESTACTEXEMODREZFAZC','Modificare Rezultat Fază în Desfășurare','Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Modificare Rezultat Fază în Desfășurare','Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),(210984,'GESTACTEXEDELREZFAZC','Ștergere Rezultat Fază în Desfășurare','Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Ștergere Rezultat Fază în Desfășurare','Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),(210986,'GESTACTEXEVIZREZFAZTACTC','Vizualizare Rezultat Fază Trecută Activitate Curentă','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente','Vizualizare Rezultat Fază Trecută Activitate Curentă','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente'),(210988,'GESTACTEXELISTFAZACTT','Listă Faze Activitate Trecută','Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)','Listă Faze Activitate Trecută','Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)'),(210990,'GESTACTEXEVIZFAZTACTT','Vizualizare Fază Trecută Activitate Trecută','Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)','Vizualizare Fază Trecută Activitate Trecută','Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)'),(210992,'GESTACTEXEVIZREZFAZTACTT','Vizualizare Rezultat Fază Activitate Trecută','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute','Vizualizare Rezultat Fază Activitate Trecută','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute'),(230905,'AFILGRPMEMMEMINCACTEXPNFL','Afiliere la un Grup','Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat','Afiliere la un Grup','Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat'),(290905,'CREAREGRUPMEMACTEXPNFL','Creare Grup Propriu','Creați-vă Propriul Grup și deveniți Șef de Grup','Creare Grup Propriu','Creați-vă Propriul Grup și deveniți Șef de Grup'),(300901,'GESTGRUPVIZUALIZGRUP','Vizualizare Grup','Vizualizează Grupul și Membri săi','Vizualizare Grup','Vizualizează Grupul și Membri săi'),(300905,'GESTGRUPPENDINGMEM','Cereri Noi de Afiliere la Grup','Vizualizează și Aprobă Noile Cereri de Înscriere la Grup','Cereri Noi de Afiliere la Grup','Vizualizează și Aprobă Noile Cereri de Înscriere la Grup');
+INSERT INTO `aut_actiune` VALUES (110910,'GESTMESAJENOTIFAPP','Notificări Aplicație','Vizualizează și Gestionează Notificările Aplicației','Notificări Aplicație','Vizualizează și Gestionează Notificările Aplicației',NULL,NULL,NULL,NULL),(180910,'CONFIRMSIMACT','Validare Înregistrare','Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit','Validare Înregistrare','Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit',NULL,NULL,NULL,NULL),(190910,'INDRUMMEMACT','Îndrumător cum Poți Deveni Membru','Îndrumător pentru a deveni Membru al Partidului','Îndrumător cum Poți Deveni Membru','Îndrumător pentru a deveni Membru al Partidului',NULL,NULL,NULL,NULL),(200920,'CEREREMEMCOMPLETCNP','Completează CNP, Nr. și Seria CI','Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI','Completează CNP, Nr. și Seria CI','Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI',NULL,NULL,NULL,NULL),(200930,'CEREREMEMCOMPLETADR','Completează Adresa de Domiciliu','Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență','Completează Adresa de Domiciliu','Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență',NULL,NULL,NULL,NULL),(200940,'CEREREMEMDOVADACOT','Dovadă Plată Cotizație Anuală','Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent','Dovadă Plată Cotizație Anuală','Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent',NULL,NULL,NULL,NULL),(200950,'CEREREMEMTRIMITECER','Trimite Cererea de Membru','Trimiteți cererea de a deveni Membru','Trimite Cererea de Membru','Trimiteți cererea de a deveni Membru',NULL,NULL,NULL,NULL),(200955,'CEREREMEMACTNTRICER','TEST Trimite Cererea de Membru Activ Neafiliat','TEST Trimiteți cererea de a deveni Membru Activ Neafiliat','TEST Trimite Cererea de Membru Activ Neafiliat','TEST Trimiteți cererea de a deveni Membru Activ Neafiliat',NULL,NULL,NULL,NULL),(200956,'CEREREMEMACTATRICER','TEST Trimite Cererea de Membru Activ Afiliat','TEST Trimiteți cererea de a deveni Membru Activ Afiliat','TEST Trimite Cererea de Membru Activ Afiliat','TEST Trimiteți cererea de a deveni Membru Activ Afiliat',NULL,NULL,NULL,NULL),(200957,'CEREREMEMEXPNTRICER','TEST Trimite Cererea de Membru Experimentat Neafiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat','TEST Trimite Cererea de Membru Experimentat Neafiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat',NULL,NULL,NULL,NULL),(200958,'CEREREMEMEXPATRICER','TEST Trimite Cererea de Membru Experimentat Afiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat','TEST Trimite Cererea de Membru Experimentat Afiliat','TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat',NULL,NULL,NULL,NULL),(210905,'GESTACTEXELISTACTC','Lista activități în curs de desfășurare','Lista de Activități  în curs de desfășurare la care sunteți înscris','Lista activități în curs de desfășurare','Lista de Activități  în curs de desfășurare la care sunteți înscris',NULL,NULL,NULL,NULL),(210910,'GESTACTEXELISTACTV','Lista activități viitoare','Lista de Activități  noi la care vă puteți înscrie','Lista activități viitoare','Lista de Activități  noi la care vă puteți înscrie',NULL,NULL,NULL,NULL),(210915,'GESTACTEXELISTACTT','Listă activități trecute','Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate','Listă activități trecute','Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate',NULL,NULL,NULL,NULL),(210920,'GESTACTEXEVIZACTC','Vizualizare Activitate Curentă','Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați','Vizualizare Activitate Curentă','Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați',NULL,NULL,NULL,NULL),(210925,'GESTACTEXEVIZACTV','Vizualizare Activitate Viitoare','Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie','Vizualizare Activitate Viitoare','Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie',NULL,NULL,NULL,NULL),(210930,'GESTACTEXEVIZACTT','Vizualizare Activitate Trecute','Vizualizarea unei Activități Trecute la care ați participat','Vizualizare Activitate Trecute','Vizualizarea unei Activități Trecute la care ați participat',NULL,NULL,NULL,NULL),(210935,'GESTACTEXEINSCACTV','Înscrierea la o Activitate Nouă','Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare','Înscrierea la o Activitate Nouă','Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare',NULL,NULL,NULL,NULL),(210940,'GESTACTEXERENUACTV','Renunțați la o Activitate Nouă','Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare','Renunțați la o Activitate Nouă','Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare',NULL,NULL,NULL,NULL),(210945,'GESTACTEXEADDREZACTC','Adăugare Rezultat Activitate','Adăugarea unui Rezultat pentru o Activitate la care participați','Adăugare Rezultat Activitate','Adăugarea unui Rezultat pentru o Activitate la care participați',NULL,NULL,NULL,NULL),(210950,'GESTACTEXEMODREZACTC','Modificare Rezultat Activitate','Modificare unui Rezultat pentru o Activitate la care participați','Modificare Rezultat Activitate','Modificare unui Rezultat pentru o Activitate la care participați',NULL,NULL,NULL,NULL),(210955,'GESTACTEXEDELREZACTC','Ștergere Rezultat Activitate','Ștergerea unui Rezultat pentru o Activitate la care participați','Ștergere Rezultat Activitate','Ștergerea unui Rezultat pentru o Activitate la care participați',NULL,NULL,NULL,NULL),(210960,'GESTACTEXEVIZREZACTT','Vizualizare Rezultat Activitate','Vizualizați Rezultatul pentru o Activitate la care ați participat','Vizualizare Rezultat Activitate','Vizualizați Rezultatul pentru o Activitate la care ați participat',NULL,NULL,NULL,NULL),(210965,'GESTACTEXELISTFAZVACTV','Listă Faze Activitate Viitoare','Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)','Listă Faze Activitate Viitoare','Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)',NULL,NULL,NULL,NULL),(210970,'GESTACTEXEVIZFAZVACTV','Vizualizare Fază Viitoare','Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)','Vizualizare Fază Viitoare','Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)',NULL,NULL,NULL,NULL),(210972,'GESTACTEXEINSCFAZVACTV','Înscrierea Participare Fază Activitate','Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare','Înscrierea Participare Fază Activitate','Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare',NULL,NULL,NULL,NULL),(210974,'GESTACTEXERENUFAZVACTV','Renunțare Participare Fază Activitate','Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare','Renunțare Participare Fază Activitate','Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare',NULL,NULL,NULL,NULL),(210976,'GESTACTEXELISTFAZACTC','Listă Faze Activitate CurentăVi','Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)','Listă Faze Activitate CurentăVi','Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',NULL,NULL,NULL,NULL),(210978,'GESTACTEXEVIZFAZACTC','Vizualizare Fază Activitate Curentă','Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)','Vizualizare Fază Activitate Curentă','Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)',NULL,NULL,NULL,NULL),(210980,'GESTACTEXEADDREZFAZC','Adăugare Rezultat Fază în Desfășurare','Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Adăugare Rezultat Fază în Desfășurare','Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',NULL,NULL,NULL,NULL),(210982,'GESTACTEXEMODREZFAZC','Modificare Rezultat Fază în Desfășurare','Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Modificare Rezultat Fază în Desfășurare','Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',NULL,NULL,NULL,NULL),(210984,'GESTACTEXEDELREZFAZC','Ștergere Rezultat Fază în Desfășurare','Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați','Ștergere Rezultat Fază în Desfășurare','Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',NULL,NULL,NULL,NULL),(210986,'GESTACTEXEVIZREZFAZTACTC','Vizualizare Rezultat Fază Trecută Activitate Curentă','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente','Vizualizare Rezultat Fază Trecută Activitate Curentă','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente',NULL,NULL,NULL,NULL),(210988,'GESTACTEXELISTFAZACTT','Listă Faze Activitate Trecută','Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)','Listă Faze Activitate Trecută','Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)',NULL,NULL,NULL,NULL),(210990,'GESTACTEXEVIZFAZTACTT','Vizualizare Fază Trecută Activitate Trecută','Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)','Vizualizare Fază Trecută Activitate Trecută','Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)',NULL,NULL,NULL,NULL),(210992,'GESTACTEXEVIZREZFAZTACTT','Vizualizare Rezultat Fază Activitate Trecută','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute','Vizualizare Rezultat Fază Activitate Trecută','Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute',NULL,NULL,NULL,NULL),(230905,'AFILGRPMEMMEMINCACTEXPNFL','Afiliere la un Grup','Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat','Afiliere la un Grup','Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat',NULL,NULL,NULL,NULL),(290905,'CREAREGRUPMEMACTEXPNFL','Creare Grup Propriu','Creați-vă Propriul Grup și deveniți Șef de Grup','Creare Grup Propriu','Creați-vă Propriul Grup și deveniți Șef de Grup',NULL,NULL,NULL,NULL),(300901,'GESTGRUPVIZUALIZGRUP','Vizualizare Grup','Vizualizează Grupul și Membri săi','Vizualizare Grup','Vizualizează Grupul și Membri săi','Gestiune Membru','Informatii Membru, Activități, Punctaje, Excludere','Gestiune Membru','Informatii Membru, Activități, Punctaje, Excludere'),(300905,'GESTGRUPPENDINGMEM','Cereri Noi de Afiliere la Grup','Vizualizează și Aprobă Noile Cereri de Înscriere la Grup','Cereri Noi de Afiliere la Grup','Vizualizează și Aprobă Noile Cereri de Înscriere la Grup','Gestiune Cerere Membru','Gestioneaza cererea de afiliere la grup','Gestiune Cerere Membru','Gestioneaza cererea de afiliere la grup'),(300910,'GESTGRUPVIZUALIZMEM','Vizualizare Membru','Vizualizează Membrul Grupului și Informațiile Sale','Vizualizare Membru','Vizualizează Membrul Grupului și Informațiile Sale',NULL,NULL,NULL,NULL),(300915,'GESTGRUPEXCLUDEREMEM','Excludere Membru','Exclude Membrul din Grup','Excludere Membru','Exclude Membrul din Grup',NULL,NULL,NULL,NULL),(300920,'GESTGRUPVIZPENDMEM','Vizualizare Membru în așteptare','Vizualizează Membrul care dorește să se înscrie în grup și Informațiile Sale','Vizualizare Membru în așteptare','Vizualizează Membrul care dorește să se înscrie în grup și Informațiile Sale',NULL,NULL,NULL,NULL),(300925,'GESTGRUPACCPENDMEM','Acceptare sau Respingere Membru în Așteptare','Acceptă sau Respinge afilierea unei cereri de înscriere în grup','Acceptare sau Respingere Membru în Așteptare','Acceptă sau Respinge afilierea unei cereri de înscriere în grup',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `aut_actiune` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +125,7 @@ CREATE TABLE `aut_grupactactiune` (
 
 LOCK TABLES `aut_grupactactiune` WRITE;
 /*!40000 ALTER TABLE `aut_grupactactiune` DISABLE KEYS */;
-INSERT INTO `aut_grupactactiune` VALUES (2001,180,'CONFIRMSIM',180910,'CONFIRMSIMACT',1,NULL,NULL),(2002,190,'INDRUMMEM',190910,'INDRUMMEMACT',1,NULL,NULL),(2003,200,'CEREREMEM',200920,'CEREREMEMCOMPLETCNP',1,NULL,NULL),(2004,200,'CEREREMEM',200930,'CEREREMEMCOMPLETADR',2,NULL,NULL),(2005,200,'CEREREMEM',200940,'CEREREMEMDOVADACOT',3,NULL,NULL),(2006,200,'CEREREMEM',200950,'CEREREMEMTRIMITECER',4,NULL,NULL),(2007,240,'GESTEXEACT',210905,'GESTACTEXELISTACTC',1,NULL,NULL),(2008,240,'GESTEXEACT',210910,'GESTACTEXELISTACTV',2,NULL,NULL),(2009,240,'GESTEXEACT',210915,'GESTACTEXELISTACTT',3,NULL,NULL),(2010,240,'GESTEXEACT',210920,'GESTACTEXEVIZACTC',4,210905,'GESTACTEXELISTACTC'),(2011,240,'GESTEXEACT',210925,'GESTACTEXEVIZACTV',5,210910,'GESTACTEXELISTACTV'),(2012,240,'GESTEXEACT',210930,'GESTACTEXEVIZACTT',6,210915,'GESTACTEXELISTACTT'),(2013,240,'GESTEXEACT',210935,'GESTACTEXEINSCACTV',7,210925,'GESTACTEXEVIZACTV'),(2014,240,'GESTEXEACT',210940,'GESTACTEXERENUACTV',8,210925,'GESTACTEXEVIZACTV'),(2015,240,'GESTEXEACT',210945,'GESTACTEXEADDREZACTC',9,210920,'GESTACTEXEVIZACTC'),(2016,240,'GESTEXEACT',210950,'GESTACTEXEMODREZACTC',10,210920,'GESTACTEXEVIZACTC'),(2017,240,'GESTEXEACT',210955,'GESTACTEXEDELREZACTC',11,210920,'GESTACTEXEVIZACTC'),(2018,240,'GESTEXEACT',210960,'GESTACTEXEVIZREZACTT',12,210930,'GESTACTEXEVIZACTT'),(2019,240,'GESTEXEACT',210965,'GESTACTEXELISTFAZVACTV',13,210925,'GESTACTEXEVIZACTV'),(2020,240,'GESTEXEACT',210970,'GESTACTEXEVIZFAZVACTV',14,210965,'GESTACTEXELISTFAZVACTV'),(2021,240,'GESTEXEACT',210972,'GESTACTEXEINSCFAZVACTV',15,210970,'GESTACTEXEVIZFAZVACTV'),(2022,240,'GESTEXEACT',210974,'GESTACTEXERENUFAZVACTV',16,210970,'GESTACTEXEVIZFAZVACTV'),(2023,240,'GESTEXEACT',210976,'GESTACTEXELISTFAZACTC',17,210905,'GESTACTEXELISTACTC'),(2024,240,'GESTEXEACT',210978,'GESTACTEXEVIZFAZACTC',18,210976,'GESTACTEXELISTFAZACTC'),(2025,240,'GESTEXEACT',210980,'GESTACTEXEADDREZFAZC',19,210978,'GESTACTEXEVIZFAZACTC'),(2026,240,'GESTEXEACT',210982,'GESTACTEXEMODREZFAZC',20,210978,'GESTACTEXEVIZFAZACTC'),(2027,240,'GESTEXEACT',210984,'GESTACTEXEDELREZFAZC',21,210978,'GESTACTEXEVIZFAZACTC'),(2028,240,'GESTEXEACT',210986,'GESTACTEXEVIZREZFAZTACTC',22,210978,'GESTACTEXEVIZFAZACTC'),(2029,240,'GESTEXEACT',210988,'GESTACTEXELISTFAZACTT',23,210915,'GESTACTEXELISTACTT'),(2030,240,'GESTEXEACT',210990,'GESTACTEXEVIZFAZTACTT',24,210988,'GESTACTEXELISTFAZACTT'),(2031,240,'GESTEXEACT',210992,'GESTACTEXEVIZREZFAZTACTT',25,210992,'GESTACTEXEVIZREZFAZTACTT'),(2032,110,'GESTMESAJE',110910,'GESTMESAJENOTIFAPP',1,NULL,NULL),(2501,290,'CREAREGRUP',290905,'CREAREGRUPMEMACTEXPNFL',1,NULL,NULL),(2601,230,'AFILGRPMEM',230905,'AFILGRPMEMMEMINCACTEXPNFL',1,NULL,NULL),(2701,300,'GESTGRUP',300901,'GESTGRUPVIZUALIZGRUP',1,NULL,NULL),(2705,300,'GESTGRUP',300905,'GESTGRUPPENDINGMEM',2,NULL,NULL),(3001,255,'CERMEMACTN',200955,'CEREREMEMACTNTRICER',1,NULL,NULL),(3002,256,'CERMEMACTA',200956,'CEREREMEMACTATRICER',1,NULL,NULL),(3003,257,'CERMEMEXPN',200957,'CEREREMEMEXPNTRICER',1,NULL,NULL),(3004,258,'CERMEMEXPA',200958,'CEREREMEMEXPATRICER',1,NULL,NULL);
+INSERT INTO `aut_grupactactiune` VALUES (2001,180,'CONFIRMSIM',180910,'CONFIRMSIMACT',1,NULL,NULL),(2002,190,'INDRUMMEM',190910,'INDRUMMEMACT',1,NULL,NULL),(2003,200,'CEREREMEM',200920,'CEREREMEMCOMPLETCNP',1,NULL,NULL),(2004,200,'CEREREMEM',200930,'CEREREMEMCOMPLETADR',2,NULL,NULL),(2005,200,'CEREREMEM',200940,'CEREREMEMDOVADACOT',3,NULL,NULL),(2006,200,'CEREREMEM',200950,'CEREREMEMTRIMITECER',4,NULL,NULL),(2007,240,'GESTEXEACT',210905,'GESTACTEXELISTACTC',1,NULL,NULL),(2008,240,'GESTEXEACT',210910,'GESTACTEXELISTACTV',2,NULL,NULL),(2009,240,'GESTEXEACT',210915,'GESTACTEXELISTACTT',3,NULL,NULL),(2010,240,'GESTEXEACT',210920,'GESTACTEXEVIZACTC',4,210905,'GESTACTEXELISTACTC'),(2011,240,'GESTEXEACT',210925,'GESTACTEXEVIZACTV',5,210910,'GESTACTEXELISTACTV'),(2012,240,'GESTEXEACT',210930,'GESTACTEXEVIZACTT',6,210915,'GESTACTEXELISTACTT'),(2013,240,'GESTEXEACT',210935,'GESTACTEXEINSCACTV',7,210925,'GESTACTEXEVIZACTV'),(2014,240,'GESTEXEACT',210940,'GESTACTEXERENUACTV',8,210925,'GESTACTEXEVIZACTV'),(2015,240,'GESTEXEACT',210945,'GESTACTEXEADDREZACTC',9,210920,'GESTACTEXEVIZACTC'),(2016,240,'GESTEXEACT',210950,'GESTACTEXEMODREZACTC',10,210920,'GESTACTEXEVIZACTC'),(2017,240,'GESTEXEACT',210955,'GESTACTEXEDELREZACTC',11,210920,'GESTACTEXEVIZACTC'),(2018,240,'GESTEXEACT',210960,'GESTACTEXEVIZREZACTT',12,210930,'GESTACTEXEVIZACTT'),(2019,240,'GESTEXEACT',210965,'GESTACTEXELISTFAZVACTV',13,210925,'GESTACTEXEVIZACTV'),(2020,240,'GESTEXEACT',210970,'GESTACTEXEVIZFAZVACTV',14,210965,'GESTACTEXELISTFAZVACTV'),(2021,240,'GESTEXEACT',210972,'GESTACTEXEINSCFAZVACTV',15,210970,'GESTACTEXEVIZFAZVACTV'),(2022,240,'GESTEXEACT',210974,'GESTACTEXERENUFAZVACTV',16,210970,'GESTACTEXEVIZFAZVACTV'),(2023,240,'GESTEXEACT',210976,'GESTACTEXELISTFAZACTC',17,210905,'GESTACTEXELISTACTC'),(2024,240,'GESTEXEACT',210978,'GESTACTEXEVIZFAZACTC',18,210976,'GESTACTEXELISTFAZACTC'),(2025,240,'GESTEXEACT',210980,'GESTACTEXEADDREZFAZC',19,210978,'GESTACTEXEVIZFAZACTC'),(2026,240,'GESTEXEACT',210982,'GESTACTEXEMODREZFAZC',20,210978,'GESTACTEXEVIZFAZACTC'),(2027,240,'GESTEXEACT',210984,'GESTACTEXEDELREZFAZC',21,210978,'GESTACTEXEVIZFAZACTC'),(2028,240,'GESTEXEACT',210986,'GESTACTEXEVIZREZFAZTACTC',22,210978,'GESTACTEXEVIZFAZACTC'),(2029,240,'GESTEXEACT',210988,'GESTACTEXELISTFAZACTT',23,210915,'GESTACTEXELISTACTT'),(2030,240,'GESTEXEACT',210990,'GESTACTEXEVIZFAZTACTT',24,210988,'GESTACTEXELISTFAZACTT'),(2031,240,'GESTEXEACT',210992,'GESTACTEXEVIZREZFAZTACTT',25,210992,'GESTACTEXEVIZREZFAZTACTT'),(2032,110,'GESTMESAJE',110910,'GESTMESAJENOTIFAPP',1,NULL,NULL),(2501,290,'CREAREGRUP',290905,'CREAREGRUPMEMACTEXPNFL',1,NULL,NULL),(2601,230,'AFILGRPMEM',230905,'AFILGRPMEMMEMINCACTEXPNFL',1,NULL,NULL),(2701,300,'GESTGRUP',300901,'GESTGRUPVIZUALIZGRUP',1,NULL,NULL),(2705,300,'GESTGRUP',300905,'GESTGRUPPENDINGMEM',2,NULL,NULL),(2720,300,'GESTGRUP',300910,'GESTGRUPVIZUALIZMEM',3,300901,'GESTGRUPVIZUALIZGRUP'),(2725,300,'GESTGRUP',300915,'GESTGRUPEXCLUDEREMEM',4,300901,'GESTGRUPVIZUALIZGRUP'),(2730,300,'GESTGRUP',300920,'GESTGRUPVIZPENDMEM',3,300905,'GESTGRUPPENDINGMEM'),(2735,300,'GESTGRUP',300925,'GESTGRUPACCPENDMEM',4,300905,'GESTGRUPPENDINGMEM'),(3001,255,'CERMEMACTN',200955,'CEREREMEMACTNTRICER',1,NULL,NULL),(3002,256,'CERMEMACTA',200956,'CEREREMEMACTATRICER',1,NULL,NULL),(3003,257,'CERMEMEXPN',200957,'CEREREMEMEXPNTRICER',1,NULL,NULL),(3004,258,'CERMEMEXPA',200958,'CEREREMEMEXPATRICER',1,NULL,NULL);
 /*!40000 ALTER TABLE `aut_grupactactiune` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +235,7 @@ CREATE TABLE `aut_user` (
   `aut_user_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_user_id`),
   UNIQUE KEY `aut_user_nume_unique` (`aut_user_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,6 +244,7 @@ CREATE TABLE `aut_user` (
 
 LOCK TABLES `aut_user` WRITE;
 /*!40000 ALTER TABLE `aut_user` DISABLE KEYS */;
+INSERT INTO `aut_user` VALUES (1,'aaaaa','$2a$10$RexSHbgRoId7hptiHArAle/iEdpXGBWKbF1kCbx0akLnpxpoh4DVi','y','2022-10-03 20:49:50',NULL),(4,'ddddd','$2a$10$uIJxDwtDaKgS3yefiJ5i8eCdlYDh6R5fuI8GYtBzxcpq6avgXbh4i','y','2022-10-04 16:56:08',NULL);
 /*!40000 ALTER TABLE `aut_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +286,7 @@ CREATE TABLE `aut_userinfo` (
   `aut_userinfo_rez_codpostal` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL,
   `aut_userinfo_rez_adresa` varchar(128) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`aut_userinfo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,6 +295,7 @@ CREATE TABLE `aut_userinfo` (
 
 LOCK TABLES `aut_userinfo` WRITE;
 /*!40000 ALTER TABLE `aut_userinfo` DISABLE KEYS */;
+INSERT INTO `aut_userinfo` VALUES (1,1,'aaaaa','aaaaa','222222','m','aaa@yahoo.com',20221003,1,'TR',5,'BH',365,27212,2143,27258,'333333','eeeeeeeeee','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,4,'ddddd','ddddd','0723906431','m','al@yahoo.com',20081004,1,'TR',3,'AG',170,13935,1063,13971,'3333','str albesti 33','n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `aut_userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,7 +315,7 @@ CREATE TABLE `aut_userrol` (
   `aut_userrol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_userrol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`aut_userrol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,6 +324,7 @@ CREATE TABLE `aut_userrol` (
 
 LOCK TABLES `aut_userrol` WRITE;
 /*!40000 ALTER TABLE `aut_userrol` DISABLE KEYS */;
+INSERT INTO `aut_userrol` VALUES (1,23,'SIMPATPEND',1,'n','2022-10-03 20:49:50','2022-10-04 20:55:10'),(4,23,'SIMPATPEND',4,'n','2022-10-04 16:56:08','2022-10-04 17:07:28'),(5,14,'SIMPATIZ',4,'y','2022-10-04 17:07:28',NULL),(6,14,'SIMPATIZ',1,'n','2022-10-04 20:55:10','2022-10-04 20:56:29'),(7,16,'MEMINCNFL',1,'n','2022-10-04 20:56:29','2022-10-04 20:56:59'),(8,18,'MEMACTNFL',1,'n','2022-10-04 20:56:59','2022-10-04 20:57:38'),(9,21,'SEFGRUP',1,'y','2022-10-04 20:57:38',NULL);
 /*!40000 ALTER TABLE `aut_userrol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +343,7 @@ CREATE TABLE `aut_validinreg` (
   `aut_validinreg_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `aut_validinreg_enddt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`aut_validinreg_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,6 +352,7 @@ CREATE TABLE `aut_validinreg` (
 
 LOCK TABLES `aut_validinreg` WRITE;
 /*!40000 ALTER TABLE `aut_validinreg` DISABLE KEYS */;
+INSERT INTO `aut_validinreg` VALUES (1,1,99999999,'y','2022-10-03 20:49:50','2022-10-03 20:49:50'),(4,4,101319886,'y','2022-10-04 16:56:08','2022-10-04 16:56:08');
 /*!40000 ALTER TABLE `aut_validinreg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,7 +463,7 @@ CREATE TABLE `geo_codpostal` (
   `geo_codpostal_numerebloc` varchar(128) NOT NULL,
   PRIMARY KEY (`geo_codpostal_id`),
   UNIQUE KEY `geo_codpostal_cod_unique` (`geo_codpostal_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -571,7 +579,7 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -638,7 +646,7 @@ CREATE TABLE `geo_zonajudet` (
   PRIMARY KEY (`geo_zonajudet_id`),
   UNIQUE KEY `geo_zonajudet_cod_unique` (`geo_zonajudet_cod`),
   UNIQUE KEY `geo_zonajudet_nume_unique` (`geo_zonajudet_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -676,7 +684,7 @@ CREATE TABLE `geo_zonalocalitate` (
   PRIMARY KEY (`geo_zonalocalitate_id`),
   UNIQUE KEY `geo_zonalocalitate_cod_unique` (`geo_zonalocalitate_cod`),
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -702,7 +710,7 @@ CREATE TABLE `geo_zonatara` (
   PRIMARY KEY (`geo_zonatara_id`),
   UNIQUE KEY `geo_zonatara_cod_unique` (`geo_zonatara_cod`),
   UNIQUE KEY `geo_zonatara_nume_unique` (`geo_zonatara_nume`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -755,7 +763,7 @@ CREATE TABLE `mem_grup` (
   PRIMARY KEY (`mem_grup_id`),
   UNIQUE KEY `mem_grup_codunic_unique` (`mem_grup_codunic`),
   UNIQUE KEY `mem_grup_nume_unique` (`mem_grup_nume`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -764,6 +772,7 @@ CREATE TABLE `mem_grup` (
 
 LOCK TABLES `mem_grup` WRITE;
 /*!40000 ALTER TABLE `mem_grup` DISABLE KEYS */;
+INSERT INTO `mem_grup` VALUES (1,'Gmara682252','marele alb',1,'Maaaa032075',1,'aaaaa',1,1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','y','2022-10-04 20:57:39',NULL);
 /*!40000 ALTER TABLE `mem_grup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -814,7 +823,7 @@ CREATE TABLE `mem_membru` (
   `mem_membru_suspended_yn` char(1) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`mem_membru_id`),
   UNIQUE KEY `mem_membru_codunique_unique` (`mem_membru_codunic`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -823,6 +832,7 @@ CREATE TABLE `mem_membru` (
 
 LOCK TABLES `mem_membru` WRITE;
 /*!40000 ALTER TABLE `mem_membru` DISABLE KEYS */;
+INSERT INTO `mem_membru` VALUES (1,'Mdddd291918',4,'ddddd',4,14,'SIMPATIZ',NULL,NULL,NULL,'n',1,'TR',3,'AG',0,'0',170,13935,0,'0',1063,13971,0,'0',0,0,0,'0','n','n','n','n','y','2022-10-04 17:07:30',NULL,'n'),(2,'Maaaa032075',1,'aaaaa',1,21,'SEFGRUP',1,'marele alb','Gmara682252','n',1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','n','n','n','y','2022-10-04 20:55:13',NULL,'n');
 /*!40000 ALTER TABLE `mem_membru` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -946,7 +956,7 @@ CREATE TABLE `mem_membrugrup` (
   `mem_membrugrup_startdt` datetime DEFAULT CURRENT_TIMESTAMP,
   `mem_membrugrup_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrugrup_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -955,6 +965,7 @@ CREATE TABLE `mem_membrugrup` (
 
 LOCK TABLES `mem_membrugrup` WRITE;
 /*!40000 ALTER TABLE `mem_membrugrup` DISABLE KEYS */;
+INSERT INTO `mem_membrugrup` VALUES (1,2,'Maaaa032075',1,'aaaaa',1,1,'marele alb','Gmara682252',1,'Maaaa032075',1,'aaaaa',1,1,'TR',5,'BH',365,27212,0,'0',0,'0',2143,27258,0,'0',0,0,0,'0','n','2022-10-04 20:57:39',NULL,NULL,NULL,NULL,'y','2022-10-04 20:57:39',NULL);
 /*!40000 ALTER TABLE `mem_membrugrup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1031,7 +1042,7 @@ CREATE TABLE `mem_membrurol` (
   `mem_membrurol_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membrurol_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrurol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1040,6 +1051,7 @@ CREATE TABLE `mem_membrurol` (
 
 LOCK TABLES `mem_membrurol` WRITE;
 /*!40000 ALTER TABLE `mem_membrurol` DISABLE KEYS */;
+INSERT INTO `mem_membrurol` VALUES (1,1,'Mdddd291918',4,'ddddd',4,14,'SIMPATIZ',1,'TOATE',NULL,1,'TR',3,'AG',0,'0',170,13935,0,'0',1063,13971,0,'0',0,0,0,'0','n','n','n','n','y','2022-10-04 17:07:31',NULL),(2,2,'Maaaa032075',1,'aaaaa',1,14,'SIMPATIZ',1,'TOATE',NULL,1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-04 20:55:14','2022-10-04 20:56:30'),(3,2,'Maaaa032075',1,'aaaaa',1,16,'MEMINCNFL',1,'TOATE',NULL,1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-04 20:56:30','2022-10-04 20:57:00'),(4,2,'Maaaa032075',1,'aaaaa',1,18,'MEMACTNFL',1,'TOATE',NULL,1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','n','n','n','n','2022-10-04 20:57:00','2022-10-04 20:57:39'),(5,2,'Maaaa032075',1,'aaaaa',1,21,'SEFGRUP',1,'TOATE',NULL,1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','n','n','n','y','2022-10-04 20:57:39',NULL);
 /*!40000 ALTER TABLE `mem_membrurol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1108,7 +1120,7 @@ CREATE TABLE `mem_membrutip` (
   `mem_membrutip_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_membrutip_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_membrutip_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1117,6 +1129,7 @@ CREATE TABLE `mem_membrutip` (
 
 LOCK TABLES `mem_membrutip` WRITE;
 /*!40000 ALTER TABLE `mem_membrutip` DISABLE KEYS */;
+INSERT INTO `mem_membrutip` VALUES (1,1,'Mdddd291918',4,'ddddd',4,14,'SIMPATIZ',1,'TR',3,'AG',0,'0',170,13935,0,'0',1063,13971,0,'0',0,0,0,'0','y','2022-10-04 17:07:30',NULL),(2,2,'Maaaa032075',1,'aaaaa',1,14,'SIMPATIZ',1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','2022-10-04 20:55:13','2022-10-04 20:56:30'),(3,2,'Maaaa032075',1,'aaaaa',1,16,'MEMINCNFL',1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','2022-10-04 20:56:30','2022-10-04 20:57:00'),(4,2,'Maaaa032075',1,'aaaaa',1,18,'MEMACTNFL',1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','n','2022-10-04 20:57:00','2022-10-04 20:57:39'),(5,2,'Maaaa032075',1,'aaaaa',1,21,'SEFGRUP',1,'TR',5,'BH',0,'0',365,27212,0,'0',2143,27258,0,'0',0,0,0,'0','y','2022-10-04 20:57:39',NULL);
 /*!40000 ALTER TABLE `mem_membrutip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1191,7 +1204,7 @@ CREATE TABLE `mem_sefgrup` (
   `mem_sefgrup_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mem_sefgrup_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mem_sefgrup_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1200,6 +1213,7 @@ CREATE TABLE `mem_sefgrup` (
 
 LOCK TABLES `mem_sefgrup` WRITE;
 /*!40000 ALTER TABLE `mem_sefgrup` DISABLE KEYS */;
+INSERT INTO `mem_sefgrup` VALUES (1,2,'Maaaa032075',1,'aaaaa',1,1,'marele alb','Gmara682252',1,'TR',5,'BH',365,27212,0,'0',0,'0',2143,27258,0,'0',0,0,0,'0','y','2022-10-04 20:57:39',NULL);
 /*!40000 ALTER TABLE `mem_sefgrup` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1361,7 +1375,7 @@ CREATE TABLE `mes_destinatar` (
   `mes_destinatar_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mes_destinatar_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mes_destinatar_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1370,6 +1384,7 @@ CREATE TABLE `mes_destinatar` (
 
 LOCK TABLES `mes_destinatar` WRITE;
 /*!40000 ALTER TABLE `mes_destinatar` DISABLE KEYS */;
+INSERT INTO `mes_destinatar` VALUES (1,1,'aaaaa',23,'SIMPATPEND','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 20:49:50','2022-10-04 20:55:10'),(4,4,'ddddd',23,'SIMPATPEND','n',1,'TR',3,'AG',170,13935,1063,13971,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 16:56:08','2022-10-04 17:07:28'),(5,4,'ddddd',14,'SIMPATIZ','n',1,'TR',3,'AG',170,13935,1063,13971,0,'0',0,'0',0,'0',0,0,0,'0','y','2022-10-04 17:07:28',NULL),(6,1,'aaaaa',14,'SIMPATIZ','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 20:55:10','2022-10-04 20:56:29'),(7,1,'aaaaa',16,'MEMINCNFL','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 20:56:29','2022-10-04 20:56:59'),(8,1,'aaaaa',18,'MEMACTNFL','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 20:56:59','2022-10-04 20:57:38'),(9,1,'aaaaa',21,'SEFGRUP','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','y','2022-10-04 20:57:38',NULL);
 /*!40000 ALTER TABLE `mes_destinatar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1442,7 +1457,7 @@ CREATE TABLE `mes_expeditor` (
   `mes_expeditor_startdt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mes_expeditor_enddt` datetime DEFAULT NULL,
   PRIMARY KEY (`mes_expeditor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1451,6 +1466,7 @@ CREATE TABLE `mes_expeditor` (
 
 LOCK TABLES `mes_expeditor` WRITE;
 /*!40000 ALTER TABLE `mes_expeditor` DISABLE KEYS */;
+INSERT INTO `mes_expeditor` VALUES (1,1,'aaaaa',23,'SIMPATPEND','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-03 20:49:50','2022-10-04 20:55:10'),(4,4,'ddddd',23,'SIMPATPEND','n',1,'TR',3,'AG',170,13935,1063,13971,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 16:56:08','2022-10-04 17:07:28'),(5,4,'ddddd',14,'SIMPATIZ','n',1,'TR',3,'AG',170,13935,1063,13971,0,'0',0,'0',0,'0',0,0,0,'0','y','2022-10-04 17:07:28',NULL),(6,1,'aaaaa',14,'SIMPATIZ','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 20:55:10','2022-10-04 20:56:29'),(7,1,'aaaaa',16,'MEMINCNFL','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 20:56:29','2022-10-04 20:56:59'),(8,1,'aaaaa',18,'MEMACTNFL','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','n','2022-10-04 20:56:59','2022-10-04 20:57:38'),(9,1,'aaaaa',21,'SEFGRUP','n',1,'TR',5,'BH',365,27212,2143,27258,0,'0',0,'0',0,'0',0,0,0,'0','y','2022-10-04 20:57:38',NULL);
 /*!40000 ALTER TABLE `mes_expeditor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1545,4 +1561,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-03 12:22:12
+-- Dump completed on 2022-10-05  3:44:23

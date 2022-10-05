@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/rolgrupactiuni"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-menu-button menuId="mainmenu"></ion-menu-button>
+      <!-- 
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    -->
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   
+     <ng-container *ngIf="crtsubactiuni">
+         <h3>{{crtactiune.autActiuneSubactiunidisplaynume}}</h3>
+         <ion-list>
+        
+          <ion-item button="true" detail *ngFor='let crtsubactiune of crtsubactiuni'>
+            <ion-label>
+              <h2>{{crtsubactiune.autActiuneDisplaynume}}</h2>
+               <p>{{crtsubactiune.autActiuneDisplaydescriere}}</p>
+            </ion-label>
+          </ion-item>
+         </ion-list>
+     </ng-container>
+     
+  <!-- List of Text Items -->
+      <!---
+         (click)="selectieSubactiune(crtgrupactiuni.autGrupactactiuneId)"
+      <ng-container *ngIf="crtgrupact">
+        <h3>Acțiuni Subacțiuni "{{crtgrupact.autGrupactiuniNume}}"</h3>
+        <ion-list>
+        
+          <ion-item button="true" detail *ngFor='let crtgrupactiuni of crtgrupact.actiunesubactiuni' 
+                                        (click)="selectieGrupactactiune(crtgrupactiuni.autGrupactactiuneId)">
+            <ion-label>
+              <h2>{{crtgrupactiuni.actiune.autActiuneDisplaynume}}</h2>
+               <p>{{crtgrupactiuni.actiune.autActiuneDisplaydescriere}}</p>
+            </ion-label>
+          </ion-item>
+        
+        
+          <button width="100%" ion-item *ngFor='let crtgrupact of crtrol.rolgrupact' > 
+              <h2>{{crtgrupact.grupactiuni.autGrupactiuniDisplayNume}}</h2>
+               <p>{{crtgrupact.grupactiuni.autGrupactiuniDisplaydescriere}}</p>
+               <br>
+          </button>
+      
+        </ion-list>
+     </ng-container>
+  
+    -->
+
+</ion-content>

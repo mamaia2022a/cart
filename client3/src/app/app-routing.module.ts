@@ -52,7 +52,10 @@ const routes: Routes = [
     path: 'aut/grupactactiuni',
     loadChildren: () => import('./pages/aut/grupactactiuni/grupactactiuni.module').then((m) => m.GrupActActiuniPageModule),
   },
-
+  {
+    path: 'aut/actiunesubactiuni',
+    loadChildren: () => import('./pages/aut/actiunesubactiuni/actiunesubactiuni.module').then((m) => m.ActiuneSubactiuniPageModule),
+  },
   //-----------------------------
   //  Creare Grup
   //-----------------------------

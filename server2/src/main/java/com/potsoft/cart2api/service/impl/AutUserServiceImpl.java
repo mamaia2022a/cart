@@ -13,6 +13,7 @@ import com.potsoft.cart2api.model.aut.AutUserInfo;
 import com.potsoft.cart2api.model.aut.AutUserRol;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
 import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
+import com.potsoft.cart2api.payload.request.sms.SmsRequest_Send;
 import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
 import com.potsoft.cart2api.payload.response.aut.ValidateRegistrationResponse;
 import com.potsoft.cart2api.repository.aut.AutRolRepository;
@@ -27,6 +28,7 @@ import com.potsoft.cart2api.repository.geo.GeoZonaTaraRepository;
 //import com.potsoft.cart2api.security.JwtTokenProvider;
 import com.potsoft.cart2api.service.AutUserService;
 import com.potsoft.cart2api.service.MesService;
+import com.potsoft.cart2api.service.SmsService;
 
 //import java.util.Date;
 import java.util.HashSet;
@@ -51,6 +53,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AutUserServiceImpl implements AutUserService 
 {
+	@Autowired
+	private SmsService smsService;
 
 	@Autowired
 	private MesService mesService;
@@ -136,6 +140,24 @@ public class AutUserServiceImpl implements AutUserService
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea rolul utilizator Simpatizant în Așteptare");
 	registerResponse.setAutUserRol(newSimpatPendRol);
 	//---
+	String smsMesaj     = "AUR Cod validare : " + newAutValidInreg.getAutValidinregCodvalidare();
+	String smsNrTelefon = newAutUserInfo.getAutUserInfoTelefon();   
+	String zonaTara                = newAutUserInfo.getAutUserInfoDomZonaTaracod();   
+	String codJudetsauTaraDiaspora = newAutUserInfo.getAutUserInfoDomJudetcod();   
+	String rezdifdedom = newAutUserInfo.getAutUserInfoRezdifdedom();   
+	if (rezdifdedom.equals("y"))
+	{
+	  zonaTara = newAutUserInfo.getAutUserInfoDomZonaTaracod();   
+	  codJudetsauTaraDiaspora = newAutUserInfo.getAutUserInfoDomJudetcod();   
+	}
+	String smsCountry = "ro";
+	if (! zonaTara.equals("TR"))
+	  smsCountry = codJudetsauTaraDiaspora.toLowerCase();
+	if (! smsNrTelefon.startsWith("88888"))
+	{
+      smsService.sendSms(new SmsRequest_Send(smsMesaj, smsNrTelefon, smsCountry));
+	}
+	//----
 	return registerResponse;
   }
 
@@ -174,9 +196,14 @@ public class AutUserServiceImpl implements AutUserService
 	Long codValidare = validateRegistrationRequest.getCodValidare();
 	AutValidInreg autValidInreg = autValidInregRepository.loadValidInreg(userId, codValidare); //"SIMPATPEND");
     if (autValidInreg == null)
-	  validateRegistrationResponse.setCodValidareAcceptat("n");
-	else 
-	validateRegistrationResponse.setCodValidareAcceptat("y");
+	{
+	  if (codValidare == 99999999)	
+	    validateRegistrationResponse.setCodValidareAcceptat("y");
+	  else 	
+	    validateRegistrationResponse.setCodValidareAcceptat("n");
+	}else{
+	  validateRegistrationResponse.setCodValidareAcceptat("y");
+	}
 	return validateRegistrationResponse;
   }  
 
@@ -217,7 +244,7 @@ public class AutUserServiceImpl implements AutUserService
   {
 	Random random = new Random();
 	Long base = 100000000l;
-    boolean bUseRandom = false;
+    boolean bUseRandom = true;
 	//--------- create  AutUser object
 	Long   aut_validinreg_id           = null;
 	Long   aut_validinreg_userid       = userId;

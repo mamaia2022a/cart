@@ -361,7 +361,7 @@ VALUES
 (720,  21, 'SEFGRUP', 110, 'GESTMESAJE', 7
 );
 
-
+DROP TABLE IF EXISTS `aut_actiune`;
 CREATE TABLE `aut_actiune` (
   `aut_actiune_id` int not null AUTO_INCREMENT,
   `aut_actiune_cod` varchar(25)	not null,
@@ -369,106 +369,172 @@ CREATE TABLE `aut_actiune` (
   `aut_actiune_descriere` varchar(256)	not null,
   `aut_actiune_displaynume` varchar(128)	not null,
   `aut_actiune_displaydescriere` varchar(256)	not null,
+
+  `aut_actiune_subactiuninume` varchar(128)	null,
+  `aut_actiune_subactiunidescriere` varchar(256)	null,
+  `aut_actiune_subactiunidisplaynume` varchar(128)	null,
+  `aut_actiune_subactiunidisplaydescriere` varchar(256) null,
   PRIMARY KEY (`aut_actiune_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
 TRUNCATE TABLE aut_actiune;
-INSERT INTO aut_actiune (`aut_actiune_id`, `aut_actiune_cod`,`aut_actiune_nume`, 
-                         `aut_actiune_descriere`, `aut_actiune_displaynume`, `aut_actiune_displaydescriere`) 
+INSERT INTO aut_actiune (`aut_actiune_id`, `aut_actiune_cod`,
+                         `aut_actiune_nume`, `aut_actiune_descriere`, 
+                         `aut_actiune_displaynume`, `aut_actiune_displaydescriere`,
+                         `aut_actiune_subactiuninume`, `aut_actiune_subactiunidescriere`, 
+                         `aut_actiune_subactiunidisplaynume`, `aut_actiune_subactiunidisplaydescriere`
+                         ) 
 VALUES
 (110910, 'GESTMESAJENOTIFAPP', 'Notificări Aplicație', 'Vizualizează și Gestionează Notificările Aplicației',
-                               'Notificări Aplicație', 'Vizualizează și Gestionează Notificările Aplicației'),
+                               'Notificări Aplicație', 'Vizualizează și Gestionează Notificările Aplicației',
+                               null, null, null, null),
 
 (180910, 'CONFIRMSIMACT', 'Validare Înregistrare', 'Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit', 
-			                    'Validare Înregistrare', 'Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit'), 
+			                    'Validare Înregistrare', 'Confirmă Inregistrarea ca Simpatizant al Partidului prin Codul de Validare Primit',
+                          null, null, null, null), 
 (190910, 'INDRUMMEMACT', 'Îndrumător cum Poți Deveni Membru', 'Îndrumător pentru a deveni Membru al Partidului',
-                         'Îndrumător cum Poți Deveni Membru', 'Îndrumător pentru a deveni Membru al Partidului'),
+                         'Îndrumător cum Poți Deveni Membru', 'Îndrumător pentru a deveni Membru al Partidului',
+                         null, null, null, null),
 (200920, 'CEREREMEMCOMPLETCNP', 'Completează CNP, Nr. și Seria CI', 'Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI',
-                                'Completează CNP, Nr. și Seria CI', 'Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI'),
+                                'Completează CNP, Nr. și Seria CI', 'Pentru a deveni membru va rugăm să completați CNP, Nr. și Seria CI',
+                                null, null, null, null),
 (200930, 'CEREREMEMCOMPLETADR', 'Completează Adresa de Domiciliu', 'Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență',
-                                'Completează Adresa de Domiciliu', 'Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență'),
+                                'Completează Adresa de Domiciliu', 'Pentru a deveni membru va rugăm să completați  sau să revizuiți adresa exactă de domiciliu și de rezidență',
+                                null, null, null, null),
 (200940, 'CEREREMEMDOVADACOT', 'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent',
-                               'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent'),
+                               'Dovadă Plată Cotizație Anuală', 'Pentru a deveni membru vă rugăm sa faceți dovada plății Cotizației pe Anul Curent',
+                               null, null, null, null),
 (200950, 'CEREREMEMTRIMITECER', 'Trimite Cererea de Membru', 'Trimiteți cererea de a deveni Membru',
-                                'Trimite Cererea de Membru', 'Trimiteți cererea de a deveni Membru'),
+                                'Trimite Cererea de Membru', 'Trimiteți cererea de a deveni Membru',
+                                null, null, null, null),
 
 (200955, 'CEREREMEMACTNTRICER', 'TEST Trimite Cererea de Membru Activ Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Neafiliat',
-                                'TEST Trimite Cererea de Membru Activ Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Neafiliat'),
+                                'TEST Trimite Cererea de Membru Activ Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Neafiliat',
+                                null, null, null, null),
 (200956, 'CEREREMEMACTATRICER', 'TEST Trimite Cererea de Membru Activ Afiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Afiliat',
-                                'TEST Trimite Cererea de Membru Activ Afiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Afiliat'),
+                                'TEST Trimite Cererea de Membru Activ Afiliat', 'TEST Trimiteți cererea de a deveni Membru Activ Afiliat',
+                                null, null, null, null),
 (200957, 'CEREREMEMEXPNTRICER', 'TEST Trimite Cererea de Membru Experimentat Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat',
-                                'TEST Trimite Cererea de Membru Experimentat Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat'),
+                                'TEST Trimite Cererea de Membru Experimentat Neafiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Neafiliat',
+                                null, null, null, null),
 (200958, 'CEREREMEMEXPATRICER', 'TEST Trimite Cererea de Membru Experimentat Afiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat',
-                                'TEST Trimite Cererea de Membru Experimentat Afiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat'),
+                                'TEST Trimite Cererea de Membru Experimentat Afiliat', 'TEST Trimiteți cererea de a deveni Membru Experimentat Afiliat',
+                                null, null, null, null),
 
 
 (210905, 'GESTACTEXELISTACTC', 'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris',
-                               'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris'),
+                               'Lista activități în curs de desfășurare', 'Lista de Activități  în curs de desfășurare la care sunteți înscris',
+                               null, null, null, null),
 (210910, 'GESTACTEXELISTACTV', 'Lista activități viitoare', 'Lista de Activități  noi la care vă puteți înscrie',
-                               'Lista activități viitoare', 'Lista de Activități  noi la care vă puteți înscrie'),
+                               'Lista activități viitoare', 'Lista de Activități  noi la care vă puteți înscrie',
+                               null, null, null, null),
 (210915, 'GESTACTEXELISTACTT', 'Listă activități trecute', 'Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate',
-                               'Listă activități trecute', 'Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate'),
+                               'Listă activități trecute', 'Lista de Activități la care ați Participat și câte puncte ați luat la fiecare activitate',
+                               null, null, null, null),
 (210920, 'GESTACTEXEVIZACTC', 'Vizualizare Activitate Curentă', 'Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați',
-                              'Vizualizare Activitate Curentă', 'Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați'),
+                              'Vizualizare Activitate Curentă', 'Vizualizarea unei Activități la care Participați în prezent sau la care v-ați înscris să Participați',
+                              null, null, null, null),
 (210925, 'GESTACTEXEVIZACTV', 'Vizualizare Activitate Viitoare', 'Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie',
-                              'Vizualizare Activitate Viitoare', 'Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie'),
+                              'Vizualizare Activitate Viitoare', 'Vizualizarea unei Activități Viitoare la care sunteți înscris sau la care vă puteți înscrie',
+                              null, null, null, null),
 (210930, 'GESTACTEXEVIZACTT', 'Vizualizare Activitate Trecute', 'Vizualizarea unei Activități Trecute la care ați participat',
-                              'Vizualizare Activitate Trecute', 'Vizualizarea unei Activități Trecute la care ați participat'),
+                              'Vizualizare Activitate Trecute', 'Vizualizarea unei Activități Trecute la care ați participat',
+                              null, null, null, null),
 (210935, 'GESTACTEXEINSCACTV', 'Înscrierea la o Activitate Nouă', 'Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare',
-                               'Înscrierea la o Activitate Nouă', 'Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare'),
+                               'Înscrierea la o Activitate Nouă', 'Înscrieți-vă la o Activitate Nouă care urmează să se desfășoare',
+                               null, null, null, null),
 (210940, 'GESTACTEXERENUACTV', 'Renunțați la o Activitate Nouă', 'Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare',
-                               'Renunțați la o Activitate Nouă', 'Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare'),
+                               'Renunțați la o Activitate Nouă', 'Renunțați la Înscrierea la o Activitate Nouă care urmează să se desfășoare',
+                               null, null, null, null),
 (210945, 'GESTACTEXEADDREZACTC', 'Adăugare Rezultat Activitate', 'Adăugarea unui Rezultat pentru o Activitate la care participați',
-                                 'Adăugare Rezultat Activitate', 'Adăugarea unui Rezultat pentru o Activitate la care participați'),
+                                 'Adăugare Rezultat Activitate', 'Adăugarea unui Rezultat pentru o Activitate la care participați',
+                                 null, null, null, null),
 
 (210950, 'GESTACTEXEMODREZACTC', 'Modificare Rezultat Activitate', 'Modificare unui Rezultat pentru o Activitate la care participați',
-                                 'Modificare Rezultat Activitate', 'Modificare unui Rezultat pentru o Activitate la care participați'),
+                                 'Modificare Rezultat Activitate', 'Modificare unui Rezultat pentru o Activitate la care participați',
+                                 null, null, null, null),
 (210955, 'GESTACTEXEDELREZACTC', 'Ștergere Rezultat Activitate', 'Ștergerea unui Rezultat pentru o Activitate la care participați',
-                                 'Ștergere Rezultat Activitate', 'Ștergerea unui Rezultat pentru o Activitate la care participați'),
+                                 'Ștergere Rezultat Activitate', 'Ștergerea unui Rezultat pentru o Activitate la care participați',
+                                 null, null, null, null),
 (210960, 'GESTACTEXEVIZREZACTT', 'Vizualizare Rezultat Activitate', 'Vizualizați Rezultatul pentru o Activitate la care ați participat',
-                                 'Vizualizare Rezultat Activitate', 'Vizualizați Rezultatul pentru o Activitate la care ați participat'),
+                                 'Vizualizare Rezultat Activitate', 'Vizualizați Rezultatul pentru o Activitate la care ați participat',
+                                 null, null, null, null),
 (210965, 'GESTACTEXELISTFAZVACTV', 'Listă Faze Activitate Viitoare', 'Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)',
-                                   'Listă Faze Activitate Viitoare', 'Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)'),
+                                   'Listă Faze Activitate Viitoare', 'Vizualizarea Fazelor unei Activități Viitoare (care se desfășoară în mai multe Faze)',
+                                   null, null, null, null),
 (210970, 'GESTACTEXEVIZFAZVACTV', 'Vizualizare Fază Viitoare', 'Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)',
-                                  'Vizualizare Fază Viitoare', 'Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)'),
+                                  'Vizualizare Fază Viitoare', 'Vizualizarea unei Faze Viitoare a unei Activități Viitoare (care se desfășoară în mai multe Faze)',
+                                  null, null, null, null),
 (210972, 'GESTACTEXEINSCFAZVACTV', 'Înscrierea Participare Fază Activitate', 'Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare',
-                                   'Înscrierea Participare Fază Activitate', 'Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare'),
+                                   'Înscrierea Participare Fază Activitate', 'Înscrieți-vă la o Fază a unei Activități Viitoare care urmează să se desfășoare',
+                                   null, null, null, null),
 (210974, 'GESTACTEXERENUFAZVACTV', 'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare',
-                                   'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare'),
-(210976, 'GESTACTEXELISTFAZACTC', 'Listă Faze Activitate CurentăVi', 'zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
-                                  'Listă Faze Activitate CurentăVi', 'zualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)'),
+                                   'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare',
+                                   null, null, null, null),
+(210976, 'GESTACTEXELISTFAZACTC', 'Listă Faze Activitate CurentăVi', 'Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
+                                  'Listă Faze Activitate CurentăVi', 'Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
+                                  null, null, null, null),
 (210978, 'GESTACTEXEVIZFAZACTC', 'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)',
-                                 'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)'),
+                                 'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)',
+                                 null, null, null, null),
 (210980, 'GESTACTEXEADDREZFAZC', 'Adăugare Rezultat Fază în Desfășurare', 'Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
-                                 'Adăugare Rezultat Fază în Desfășurare', 'Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),
+                                 'Adăugare Rezultat Fază în Desfășurare', 'Adaugă Rezuultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
+                                 null, null, null, null),
 (210982, 'GESTACTEXEMODREZFAZC', 'Modificare Rezultat Fază în Desfășurare', 'Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
-                                 'Modificare Rezultat Fază în Desfășurare', 'Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),
+                                 'Modificare Rezultat Fază în Desfășurare', 'Modificare unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
+                                 null, null, null, null),
 (210984, 'GESTACTEXEDELREZFAZC', 'Ștergere Rezultat Fază în Desfășurare', 'Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
-                                 'Ștergere Rezultat Fază în Desfășurare', 'Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați'),
+                                 'Ștergere Rezultat Fază în Desfășurare', 'Ștergerea unui Rezultat pentru o Fază în Desfășurare a unei Activități Curente la care participați',
+                                 null, null, null, null),
 (210986, 'GESTACTEXEVIZREZFAZTACTC', 'Vizualizare Rezultat Fază Trecută Activitate Curentă', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente',
-                                     'Vizualizare Rezultat Fază Trecută Activitate Curentă', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente'),
+                                     'Vizualizare Rezultat Fază Trecută Activitate Curentă', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Curente',
+                                     null, null, null, null),
 (210988, 'GESTACTEXELISTFAZACTT', 'Listă Faze Activitate Trecută', 'Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)',
-                                  'Listă Faze Activitate Trecută', 'Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)'),
+                                  'Listă Faze Activitate Trecută', 'Vizualizarea Fazelor unei Activități Trecute (care se desfășoară în mai multe Faze)',
+                                  null, null, null, null),
 (210990, 'GESTACTEXEVIZFAZTACTT', 'Vizualizare Fază Trecută Activitate Trecută', 'Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)',
-                                  'Vizualizare Fază Trecută Activitate Trecută', 'Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)'),
+                                  'Vizualizare Fază Trecută Activitate Trecută', 'Vizualizarea unei Faze a unei Activități Trecute (care se desfășoară în mai multe Faze)',
+                                  null, null, null, null),
 (210992, 'GESTACTEXEVIZREZFAZTACTT', 'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute',
-                                     'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute'
-),
+                                     'Vizualizare Rezultat Fază Activitate Trecută', 'Vizualizare unui Rezultat pentru o Fază Trecută a unei Activități Trecute',
+                                     null, null, null, null),
 
 (290905, 'CREAREGRUPMEMACTEXPNFL', 'Creare Grup Propriu', 'Creați-vă Propriul Grup și deveniți Șef de Grup',
-                                   'Creare Grup Propriu', 'Creați-vă Propriul Grup și deveniți Șef de Grup'),
+                                   'Creare Grup Propriu', 'Creați-vă Propriul Grup și deveniți Șef de Grup',
+                                   null, null, null, null),
 
 (230905, 'AFILGRPMEMMEMINCACTEXPNFL', 'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat',
-                                      'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat'),
+                                      'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat',
+                                      null, null, null, null),
 
 (300901, 'GESTGRUPVIZUALIZGRUP', 'Vizualizare Grup', 'Vizualizează Grupul și Membri săi',
-                                 'Vizualizare Grup', 'Vizualizează Grupul și Membri săi'),
+                                 'Vizualizare Grup', 'Vizualizează Grupul și Membri săi',
+                                 "Gestiune Membru", "Informatii Membru, Activități, Punctaje, Excludere",
+                                 "Gestiune Membru", "Informatii Membru, Activități, Punctaje, Excludere"),
+
 (300905, 'GESTGRUPPENDINGMEM', 'Cereri Noi de Afiliere la Grup', 'Vizualizează și Aprobă Noile Cereri de Înscriere la Grup',
-                               'Cereri Noi de Afiliere la Grup', 'Vizualizează și Aprobă Noile Cereri de Înscriere la Grup')
+                               'Cereri Noi de Afiliere la Grup', 'Vizualizează și Aprobă Noile Cereri de Înscriere la Grup',
+                               "Gestiune Cerere Membru", "Gestioneaza cererea de afiliere la grup",
+                               "Gestiune Cerere Membru", "Gestioneaza cererea de afiliere la grup"),
 
+
+(300910, 'GESTGRUPVIZUALIZMEM',  'Vizualizare Membru', 'Vizualizează Membrul Grupului și Informațiile Sale',
+                                 'Vizualizare Membru', 'Vizualizează Membrul Grupului și Informațiile Sale',
+                                 null, null, null, null),
+
+(300915, 'GESTGRUPEXCLUDEREMEM', 'Excludere Membru', 'Exclude Membrul din Grup',
+                                 'Excludere Membru', 'Exclude Membrul din Grup',
+                                 null, null, null, null), 
+
+(300920, 'GESTGRUPVIZPENDMEM',  'Vizualizare Membru în așteptare', 'Vizualizează Membrul care dorește să se înscrie în grup și Informațiile Sale',
+                                'Vizualizare Membru în așteptare', 'Vizualizează Membrul care dorește să se înscrie în grup și Informațiile Sale',
+                                 null, null, null, null),
+
+(300925, 'GESTGRUPACCPENDMEM', 'Acceptare sau Respingere Membru în Așteptare', 'Acceptă sau Respinge afilierea unei cereri de înscriere în grup',
+                                 'Acceptare sau Respingere Membru în Așteptare', 'Acceptă sau Respinge afilierea unei cereri de înscriere în grup',
+                                 null, null, null, null)
 ;
-
 
 CREATE TABLE `aut_grupactactiune` (
   `aut_grupactactiune_id` int NOT NULL AUTO_INCREMENT,
@@ -537,9 +603,15 @@ VALUES
 (2601, 230, 'AFILGRPMEM', 230905, 'AFILGRPMEMMEMINCACTEXPNFL',        1,   null,                null),
 
 (2701, 300, 'GESTGRUP', 300901, 'GESTGRUPVIZUALIZGRUP',      1,   null,                null),
-(2705, 300, 'GESTGRUP', 300905, 'GESTGRUPPENDINGMEM',        2,   null,                null)
+(2720, 300, 'GESTGRUP', 300910, 'GESTGRUPVIZUALIZMEM',       3, 300901, 'GESTGRUPVIZUALIZGRUP'),
+(2725, 300, 'GESTGRUP', 300915, 'GESTGRUPEXCLUDEREMEM',      4, 300901, 'GESTGRUPVIZUALIZGRUP'),
+
+(2705, 300, 'GESTGRUP', 300905, 'GESTGRUPPENDINGMEM',       2,   null,                null),
+(2730, 300, 'GESTGRUP', 300920, 'GESTGRUPVIZPENDMEM',       3, 300905, 'GESTGRUPPENDINGMEM'),
+(2735, 300, 'GESTGRUP', 300925, 'GESTGRUPACCPENDMEM',       4, 300905, 'GESTGRUPPENDINGMEM')
 
 ;
+
 
 
 DROP TABLE IF EXISTS cart2.`aut_userinfo`;

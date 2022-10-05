@@ -98,6 +98,15 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.ActiuneSubactiuni)
+  actiunesubactiuni(context: StateContext<AuthAction.Grupactactiuni>, action: AuthAction.ActiuneSubactiuni) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
   @Action(AuthAction.Actiune)
   actiune(context: StateContext<AuthAction.Actiune>, action: AuthAction.Actiune) {
     const state = context.getState();

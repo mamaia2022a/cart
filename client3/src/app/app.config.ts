@@ -18,7 +18,8 @@ export const appConfig = {
       logout: 'aut/logout',
       userroluri: 'aut/userroluri',
       rolgrupactiuni: 'aut/rolgrupactiuni',
-      grupactactiuni: 'aut/grupactactiuni'
+      grupactactiuni: 'aut/grupactactiuni',
+      actiunesubactiuni: 'aut/actiunesubactiuni'
     },
     commongrupact : {
       gestexeact : {

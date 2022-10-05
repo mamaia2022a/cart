@@ -60,7 +60,7 @@
       <ion-list>
         <ion-item>Componența:</ion-item>
         <ion-item button="true" detail *ngFor='let grupmembru of (grupmembri$|async); let idx=index;' 
-                                      (click)="selectieMembruGrup(grupmembru.memMembrugrupUserid)">
+                                      (click)="selectieMembruGrup(grupmembru.memMembrugrupId)">
           <ion-label>
             <h1>{{idx+1}}. {{grupmembru.userinfo.autUserInfoNume}} {{grupmembru.userinfo.autUserInfoPrenume}}</h1>
              <p>Nume utilizator: {{grupmembru.memMembrugrupUsernume}}</p>

@@ -49,21 +49,48 @@ public class AutActiune {
   private String autActiuneDisplaydescriere;
 
 
-	public AutActiune() 
+  @NotBlank
+  @Size(max = 128)
+  @Column(name = "aut_actiune_subactiuninume")
+  private String autActiuneSubactiuninume;
+
+  @Size(max = 256)
+  @Column(name = "aut_actiune_subactiunidescriere")
+  private String autActiuneSubactiunidescriere;
+
+
+  @NotBlank
+  @Size(max = 128)
+  @Column(name = "aut_actiune_subactiunidisplaynume")
+  private String autActiuneSubactiunidisplaynume;
+
+  @Size(max = 256)
+  @Column(name = "aut_actiune_subactiunidisplaydescriere")
+  private String autActiuneSubactiunidisplaydescriere;
+
+  public AutActiune() 
   {
 	}
 
 	public AutActiune( Long   aut_actiune_id, String aut_actiune_cod, 
                  String aut_actiune_nume, String aut_actiune_descriere, 
-                 String aut_actiune_displaynume, String aut_actiune_displaydescriere) 
+                 String aut_actiune_displaynume, String aut_actiune_displaydescriere,
+                 String aut_actiune_subactiuninume, String aut_actiune_subactiunidescriere, 
+                 String aut_actiune_subactiunidisplaynume, String aut_actiune_subactiunidisplaydescriere) 
   {
 		this.autActiuneId               = aut_actiune_id;
 		this.autActiuneCod              = aut_actiune_cod;
+
     this.autActiuneNume             = aut_actiune_nume;
     this.autActiuneDescriere        = aut_actiune_descriere;
 	  this.autActiuneDisplaynume      = aut_actiune_displaynume;
     this.autActiuneDisplaydescriere = aut_actiune_displaydescriere;
-	}
+
+    this.autActiuneSubactiuninume             = aut_actiune_subactiuninume;
+    this.autActiuneSubactiunidescriere        = aut_actiune_subactiunidescriere;
+	  this.autActiuneSubactiunidisplaynume      = aut_actiune_subactiunidisplaynume;
+    this.autActiuneSubactiunidisplaydescriere = aut_actiune_subactiunidisplaydescriere;
+  }
 
   public Long getAutActiuneId() 
   {
@@ -85,6 +112,52 @@ public class AutActiune {
   {
     this.autActiuneCod = aut_actiune_cod;
   }
+
+
+
+  public String getAutActiuneSubactiuninume() 
+  {
+    return this.autActiuneSubactiuninume;
+  }
+
+  public void setAutActiuneSubactiuninume(String aut_actiune_subactiuninume) 
+  {
+    this.autActiuneSubactiuninume = aut_actiune_subactiuninume;
+  }
+
+
+  public String getAutActiuneSubactiunidescriere() 
+  {
+    return this.autActiuneSubactiunidescriere;
+  }
+
+  public void setAutActiuneSubactiunidescriere(String aut_actiune_subactiunidescriere)
+  {
+    this.autActiuneSubactiunidescriere = aut_actiune_subactiunidescriere;
+  }
+
+
+  public String getAutActiuneSubactiunidisplaynume() 
+  {
+    return this.autActiuneSubactiunidisplaynume;
+  }
+
+  public void setAutActiuneSubactiunidisplaynume(String aut_actiune_subactiunidisplaynume) 
+  {
+    this.autActiuneSubactiunidisplaynume = aut_actiune_subactiunidisplaynume;
+  }
+
+
+  public String getAutActiuneSubactiunidisplaydescriere() 
+  {
+    return this.autActiuneSubactiunidisplaydescriere;
+  }
+
+  public void setAutActiuneSubactiunidisplaydescriere(String aut_actiune_subactiunidisplaydescriere)
+  {
+    this.autActiuneSubactiunidisplaydescriere = aut_actiune_subactiunidisplaydescriere;
+  }
+
 
 
   public String getAutActiuneNume() 
@@ -129,5 +202,4 @@ public class AutActiune {
   {
     this.autActiuneDisplaydescriere = aut_actiune_displaydescriere;
   }
-
 }

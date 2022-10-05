@@ -148,7 +148,7 @@ export class GetLatLongPage implements OnInit {
         //iframe.contentWindow.location.replace("https://www.google.com/maps/@?api=1&map_action=map&center=" + position.coords.latitude +
           //         "%2C" + position.coords.longitude + "&zoom=12&basemap=street&output=embed");
        this.framemapElement.nativeElement.src = "http://maps.google.com/maps?q="+ position.coords.latitude 
-                             + "%2C" + position.coords.longitude + "&z=17&output=embed";
+                             + "%2C" + position.coords.longitude + "&z=17&output=embed&t=h";
 
         this.showPosition(position);
       });

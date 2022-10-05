@@ -9,6 +9,7 @@ import { MemGrupRequest_Creare } from '../../payloads/mem/MemGrupRequest_Creare'
 import { MemGrupRequest_Vizualizare} from '../../payloads/mem/MemGrupRequest_Vizualizare';
 
 import { ValidateRegistrationRequest} from '../../payloads/aut/ValidateRegistrationRequest';
+import { ActiuneParametri} from '../../payloads/aut/ActiuneParametri';
 
 
 export namespace AuthAction {
@@ -58,6 +59,11 @@ export namespace AuthAction {
   export class Grupactactiuni {
     static readonly type = '[Grupactactiuni] Grup Act Actiunii';
     constructor(public rolgrupactid, public crtRol : any) {}
+  }
+
+  export class ActiuneSubactiuni {
+    static readonly type = '[ActiuneSubactiuni] Actiune Subactiuni';
+    constructor(public parentactiuneid, public grupactactiuneid, public crtGrupAct : any, actParams: ActiuneParametri) {}
   }
 
   export class Actiune {
