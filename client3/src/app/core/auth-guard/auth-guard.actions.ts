@@ -11,6 +11,9 @@ import { MemGrupRequest_Vizualizare} from '../../payloads/mem/MemGrupRequest_Viz
 import { ValidateRegistrationRequest} from '../../payloads/aut/ValidateRegistrationRequest';
 import { ActiuneParametri} from '../../payloads/aut/ActiuneParametri';
 
+import { MemMembruRequest_CerereAfiliere } from '../../payloads/mem/MemMembruRequest_CerereAfiliere';
+import { MemMembruRequest_Dezafiliere } from '../../payloads/mem/MemMembruRequest_Dezafiliere';
+
 
 export namespace AuthAction {
   export class Login {
@@ -39,6 +42,16 @@ export namespace AuthAction {
   export class MemMembruTipSchimbare {
     static readonly type = '[MemMembruTipSchimbare] Membru Tip Schimbare';
     constructor(public memMembruTipRequestSchimbare: MemMembruTipRequest_Schimbare, public token: string) {}
+  }
+
+  export class MemMembruCerereAfiliere {
+    static readonly type = '[MemMembruCerereAfiliere] Membru Membru Cerere Afiliere';
+    constructor(public memMembruRequestCerereAfiliere: MemMembruRequest_CerereAfiliere, public token: string) {}
+  }
+
+  export class MemMembruDezafiliere {
+    static readonly type = '[MemMembruDezafiliere] Membru Membru Dezafiliere';
+    constructor(public memMembruRequestDezafiliere: MemMembruRequest_Dezafiliere, public token: string) {}
   }
 
   export class MemGrupCreare {

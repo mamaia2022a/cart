@@ -29,6 +29,9 @@ export const appConfig = {
       },
       crearegrup : {
         memactexpnfl : "commongrupact/crearegrup/memactexpnfl",
+      },
+      afilmemgrp : {
+        memincactexpnfl : "commongrupact/afilmemgrp/memincactexpnfl",
       }
     },
     simpatpend : {

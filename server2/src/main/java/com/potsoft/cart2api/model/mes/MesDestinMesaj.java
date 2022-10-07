@@ -76,6 +76,10 @@ public class MesDestinMesaj {
   private String mesDestinmesajDataprimirii;
 
 
+ //@Where(clause = "aut_userrol_activ_yn = 'y'")
+ @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+ @JoinColumn(name = "mes_destinmesaj_mesajid", referencedColumnName = "mes_mesaj_id", insertable = false, updatable = false)
+ private MesMesaj mesaj;
 
 
 	public MesDestinMesaj() 
@@ -247,5 +251,15 @@ public class MesDestinMesaj {
     this.mesDestinmesajDataprimirii = mesMesajDataprimirii;
   }
 
- 
+
+  public MesMesaj getMesaj() 
+  {
+    return this.mesaj;
+  }
+
+  public void setMesaj(MesMesaj mesaj) 
+  {
+    this.mesaj = mesaj;
+  }
+
 }

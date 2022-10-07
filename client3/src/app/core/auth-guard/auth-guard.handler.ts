@@ -34,6 +34,9 @@ export class AuthHandler {
   private ApiURLMemGrupCreare: string                         = this.ApiBaseURL + "/api/mem/grup/creare";
   private ApiURLMemGrupVizualizare: string                    = this.ApiBaseURL + "/api/mem/grup/vizualizare";
   private ApiURLMemGrupPendingMembri: string                  = this.ApiBaseURL + "/api/mem/grup/pendingmembri";
+  //---------------- grup memmbru afiliere/dezafiliere
+  private ApiURLMemMembruCerereAfiliere: string               = this.ApiBaseURL + "/api/mem/grup/membru/cerere_afiliere";
+  private ApiURLMemMembruCerereDezafiliere: string            = this.ApiBaseURL + "/api/mem/grup/membru/cerere_dezafiliere";
   //---------------------------------- geo
   //zonetara/toate
   private ApiURLGeoZonetara: string                           = this.ApiBaseURL + "/api/geo/zonetara";
@@ -95,6 +98,32 @@ export class AuthHandler {
     
     //var token = storage.get("token");
     //storage.set("token", "TEST");
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemMembruCerereAfiliere)).subscribe(data2 => 
+      {
+        let actionMemMembruCerereAfiliere: AuthAction.MemMembruCerereAfiliere = data2;
+        console.log("Cerere Afiliere");
+        var memMembruRequestCerereAfiliere = actionMemMembruCerereAfiliere.memMembruRequestCerereAfiliere;
+        console.log( actionMemMembruCerereAfiliere);
+        return this.apiService.post(this.ApiURLMemMembruCerereAfiliere,
+                                    actionMemMembruCerereAfiliere.memMembruRequestCerereAfiliere,
+                                    {"Authorization" : `Bearer ${actionMemMembruCerereAfiliere.token}`}).subscribe(data  => {  
+          let response : ValidateRegistrationAnswer = data;
+          //console.log(data);
+          console.log(response);
+          toastService.default("Ați trimis cu succes cererea de Afiliere la Grup. Veți fi notificat când se va aproba.") ;
+          this.navController.navigateRoot(appConfig.routes.auth.login);
+          return;
+          //return of(true);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Cerere de Afiliere : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+  
+      });
 
     //__________________________________________________________________________
     //  Actiune - Subactiuni
@@ -167,6 +196,22 @@ export class AuthHandler {
       console.log("Actiune selected");
       console.log(selActiune);
       storage.set("crtactiune", selActiune);
+      //-----------------------
+      //  Cerere Dezafiliere Grup
+      //-----------------------
+      if (selActiune.autActiuneCod == "DAFLGRPMEMMEMINCACTEXPAFL")
+      {
+        //this.navController.navigateRoot(appConfig.routes.commongrupact.afilmemgrp.memincactexpnfl);
+        return ;
+      }
+      //-----------------------
+      //  Cerere Afiliere Grup
+      //-----------------------
+      if (selActiune.autActiuneCod == "AFILGRPMEMMEMINCACTEXPNFL")
+      {
+        this.navController.navigateRoot(appConfig.routes.commongrupact.afilmemgrp.memincactexpnfl);
+        return ;
+      }
       //-----------------------
       //  Vizualizare Grup
       //-----------------------

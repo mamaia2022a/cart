@@ -54,21 +54,41 @@
       </ion-row>
     </ion-grid>
   -->
-
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
     <ng-container *ngIf="grupmembri$">
       
-      <ion-list>
-        <ion-item>Componența:</ion-item>
-        <ion-item button="true" detail *ngFor='let grupmembru of (grupmembri$|async); let idx=index;' 
-                                      (click)="selectieMembruGrup(grupmembru.memMembrugrupId)">
-          <ion-label>
-            <h1>{{idx+1}}. {{grupmembru.userinfo.autUserInfoNume}} {{grupmembru.userinfo.autUserInfoPrenume}}</h1>
-             <p>Nume utilizator: {{grupmembru.memMembrugrupUsernume}}</p>
-          </ion-label>
+        <ng-container *ngIf="infogrup$">
+        <ion-item color="light" class="ion-no-inner-padding-end">
+          <ion-input type="text" value="Nume Grup: {{infogrup.grup.memGrupNume}}" [readonly]="true"></ion-input>
+          
         </ion-item>
-      </ion-list>
-   </ng-container>
+        <ion-item color="light" class="ion-no-inner-padding-end">
+          <ion-input type="text" value="Grup Cod Unic: {{infogrup.grup.memGrupCodunic}}" [readonly]="true"></ion-input>
+          
+        </ion-item>
+        <ion-item color="light" class="ion-no-inner-padding-end">
+          <ion-input type="text" value="Șef Grup: {{infogrup.sefGrup.userinfo.autUserInfoNume}} {{infogrup.sefGrup.userinfo.autUserInfoPrenume}}" [readonly]="true"></ion-input>
+          
+        </ion-item>
+      </ng-container>
+        <ion-list>
+          <ion-item>Componența:</ion-item>
+          <ion-item button="true" detail *ngFor='let grupmembru of (grupmembri$|async); let idx=index;' 
+                                        (click)="selectieMembruGrup(grupmembru.memMembrugrupId)">
+            <ion-label>
+              <h2>{{idx+1}}. {{grupmembru.userinfo.autUserInfoNume}} {{grupmembru.userinfo.autUserInfoPrenume}}</h2>
+              <p>Nume utilizator: {{grupmembru.memMembrugrupUsernume}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
 
+
+   </ng-container>
+</ion-col>
+</ion-row>
+</ion-grid>
    
     <!--
       <ng-container *ngIf="grupmembri$">

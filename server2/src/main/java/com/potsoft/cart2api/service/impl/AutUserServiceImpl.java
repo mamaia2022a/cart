@@ -16,6 +16,7 @@ import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
 import com.potsoft.cart2api.payload.request.sms.SmsRequest_Send;
 import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
 import com.potsoft.cart2api.payload.response.aut.ValidateRegistrationResponse;
+import com.potsoft.cart2api.payload.response.sms.SmsResponse_Send;
 import com.potsoft.cart2api.repository.aut.AutRolRepository;
 import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
@@ -140,22 +141,33 @@ public class AutUserServiceImpl implements AutUserService
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea rolul utilizator Simpatizant în Așteptare");
 	registerResponse.setAutUserRol(newSimpatPendRol);
 	//---
-	String smsMesaj     = "AUR Cod validare : " + newAutValidInreg.getAutValidinregCodvalidare();
 	String smsNrTelefon = newAutUserInfo.getAutUserInfoTelefon();   
-	String zonaTara                = newAutUserInfo.getAutUserInfoDomZonaTaracod();   
-	String codJudetsauTaraDiaspora = newAutUserInfo.getAutUserInfoDomJudetcod();   
-	String rezdifdedom = newAutUserInfo.getAutUserInfoRezdifdedom();   
-	if (rezdifdedom.equals("y"))
+	if (! smsNrTelefon.startsWith("8888"))
 	{
-	  zonaTara = newAutUserInfo.getAutUserInfoDomZonaTaracod();   
-	  codJudetsauTaraDiaspora = newAutUserInfo.getAutUserInfoDomJudetcod();   
-	}
-	String smsCountry = "ro";
-	if (! zonaTara.equals("TR"))
-	  smsCountry = codJudetsauTaraDiaspora.toLowerCase();
-	if (! smsNrTelefon.startsWith("88888"))
-	{
-      smsService.sendSms(new SmsRequest_Send(smsMesaj, smsNrTelefon, smsCountry));
+      if (smsNrTelefon.length() > 7)	
+	  {	
+		String smsMesaj     = "AUR Cod validare : " + newAutValidInreg.getAutValidinregCodvalidare();
+		String zonaTara                = newAutUserInfo.getAutUserInfoDomZonaTaracod();   
+		String codJudetsauTaraDiaspora = newAutUserInfo.getAutUserInfoDomJudetcod();   
+		String rezdifdedom = newAutUserInfo.getAutUserInfoRezdifdedom();   
+		if (rezdifdedom.equals("y"))
+		{
+		  zonaTara = newAutUserInfo.getAutUserInfoRezZonaTaracod();   
+		  codJudetsauTaraDiaspora = newAutUserInfo.getAutUserInfoRezJudetcod();   
+		}
+		String smsCountry = "ro";
+		if (! zonaTara.equals("TR")){
+		  smsCountry = codJudetsauTaraDiaspora.toLowerCase();
+		}
+		SmsResponse_Send smsResponse = smsService.sendSms(new SmsRequest_Send(smsMesaj, smsNrTelefon, smsCountry));
+		if (Boolean.TRUE.equals(smsResponse.getSmsEEroare()))
+		{
+		  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu se poate trimite sms-ul cu codul de validare. Număr de telefon posibil invalid");//smsResponse.getSmsRaspuns());
+		}
+	
+	  }else{
+
+	  }
 	}
 	//----
 	return registerResponse;

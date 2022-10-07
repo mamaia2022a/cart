@@ -82,6 +82,14 @@ const routes: Routes = [
 
 
   //-----------------------------
+  //  Afiliere Grup
+  //-----------------------------
+  {
+    path: 'commongrupact/afilmemgrp/memincactexpnfl',
+    loadChildren: () => import('./pages/commongrupact/afilmemgrp/memincactexpnfl/memincactexpnfl.module').then((m) => m.MemIncActExpNflPageModule),
+  },
+
+  //-----------------------------
   //  Simpatizant in Asteptare
   //-----------------------------
   {

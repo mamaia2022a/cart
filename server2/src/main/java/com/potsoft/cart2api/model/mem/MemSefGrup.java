@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.potsoft.cart2api.model.aut.AutUserInfo;
+
 
 @Entity
 @Table(name = "mem_sefgrup")
@@ -135,7 +137,12 @@ public class MemSefGrup{
   private String memSefgrupEnddt;
 
 
- 
+ //@Where(clause = "aut_userrol_activ_yn = 'y'")
+ @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+ //@JoinColumn(name = "mem_membrugrup_userid", referencedColumnName = "aut_userinfo_userid", insertable = false, updatable = false)
+ @JoinColumn(name = "mem_sefgrup_userinfoid", referencedColumnName = "aut_userinfo_id", insertable = false, updatable = false)
+ private AutUserInfo userinfo;
+
 
 	public MemSefGrup() 
   {
@@ -528,6 +535,17 @@ public class MemSefGrup{
   public void setMemSefgrupEnddt(String memSefgrupEnddt) 
   {
     this.memSefgrupEnddt = memSefgrupEnddt;
+  }
+
+
+  public AutUserInfo getUserinfo() 
+  {
+    return this.userinfo;
+  }
+
+  public void setUserinfo(AutUserInfo userinfo) 
+  {
+    this.userinfo = userinfo;
   }
 
 }

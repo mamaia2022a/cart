@@ -15,10 +15,12 @@ import com.potsoft.cart2api.payload.response.mes.MesExpSiDestResponse_SchimbareR
 import com.potsoft.cart2api.repository.aut.AutRolRepository;
 import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
+import com.potsoft.cart2api.repository.gen.GenAcoperireGeograficaRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinMesajRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinatarRepository;
 import com.potsoft.cart2api.repository.mes.MesExpeditorRepository;
 import com.potsoft.cart2api.repository.mes.MesMesajRepository;
+import com.potsoft.cart2api.repository.mes.MesTipMesajRepository;
 //import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 //import com.potsoft.cart2api.repository.aut.AutUserRepository;
 //import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
@@ -64,7 +66,11 @@ public class MesServiceImpl implements MesService
 	@Autowired
 	private MesDestinMesajRepository mesDestinMesajRepository;
 
+	@Autowired
+	private MesTipMesajRepository mesTipMesajRepository;
 
+	@Autowired
+	private GenAcoperireGeograficaRepository genAcoperireGeograficaRepository;
 	// -----------------------------------------------------------
 	@Override
 	public MesExpeditor creazaMesExpeditor(Long userId, String userRolcod)                        
@@ -330,7 +336,10 @@ public class MesServiceImpl implements MesService
                           MesExpeditor mesExpeditor, List<MesDestinatar> mesDestinari,
                           String genAcoperireGeograficCod)
 	{
-	  return null;
+	  MesTipMesaj  mesTipMesaj = mesTipMesajRepository.loadByMesTipmesajCod(mesTipMesajCod);
+	  GenAcoperireGeografica genAcoperireGeografica = 
+	                           genAcoperireGeograficaRepository.loadByGenAcoperiregeograficaCod(genAcoperireGeograficCod);
+	  return this.creazaMesMesaj(mesText, mesTipMesaj, mesExpeditor, mesDestinari, genAcoperireGeografica);
 	}
 
 
@@ -340,7 +349,17 @@ public class MesServiceImpl implements MesService
                                     MesExpeditor mesExpeditor, List<MesDestinatar> mesDestinari,
                                     String genAcoperireGeograficaCod)
 	{
-	  return null;
+	  /** 
+	  MesMesaj newMesMesaj  = this.creazaMesMesaj(mesText, mesTipMesajCod, 
+	                                                       mesExpeditor, mesDestinari,
+	                                                       genAcoperireGeograficaCod);
+	  mesMesajRepository.save(newMesMesaj);
+	  return newMesMesaj;
+	  */
+	  MesTipMesaj  mesTipMesaj = mesTipMesajRepository.loadByMesTipmesajCod(mesTipMesajCod);
+	  GenAcoperireGeografica genAcoperireGeografica = 
+	                           genAcoperireGeograficaRepository.loadByGenAcoperiregeograficaCod(genAcoperireGeograficaCod);
+	  return this.creazaSiSalveazaMesMesaj(mesText, mesTipMesaj, mesExpeditor, mesDestinari, genAcoperireGeografica);
 	}
 
 
@@ -354,15 +373,15 @@ public class MesServiceImpl implements MesService
 	{
 		Long mesMesajid             = null;
 
-		Long mesMesajTipmesajid     = null;
-		String mesMesajTipmesajcod  = null; 
-		String mesMesajReloginyn    = null;
+		Long mesMesajTipmesajid     = mesTipMesaj.getTipmesajId();
+		String mesMesajTipmesajcod  = mesTipMesaj.getTipmesajCod(); 
+		String mesMesajReloginyn    = mesTipMesaj.getTipmesajReloginyn();
 
-		Long mesMesajExpid          = null;
-		Long mesMesajExpuserid      = null;
-		String mesMesajExpusernume  = null;
-		Long mesMesajExprolid       = null;
-		String mesMesajExprolcod    = null;
+		Long mesMesajExpid          = mesExpeditor.getMesExpeditorId();
+		Long mesMesajExpuserid      = mesExpeditor.getMesExpeditorUserid();
+		String mesMesajExpusernume  = mesExpeditor.getMesExpeditorUsernume();
+		Long mesMesajExprolid       = mesExpeditor.getMesExpeditorRolid();
+		String mesMesajExprolcod    = mesExpeditor.getMesExpeditorRolcod();
 
 		Long mesMesajAcopgeoid      = genAcoperireGeografica.getGenAcoperiregeograficaId();
 		String mesMesajAcopgeocod   = genAcoperireGeografica.getGenAcoperiregeograficaCod();
@@ -393,7 +412,7 @@ public class MesServiceImpl implements MesService
 		Long mesMesajZi = 0l;
 		String mesMesajDatagenerarii = null;
 
-		String mesMesajText = null;
+		String mesMesajText = mesTipMesaj.getTipmesajDisplaynume();
 
 	    MesMesaj  newMesMesaj = new MesMesaj(  mesMesajid, 
                                                mesMesajTipmesajid, mesMesajTipmesajcod, 
@@ -513,7 +532,7 @@ public class MesServiceImpl implements MesService
 
 	// -----------------------------------------------------------
 	@Override
-	public MesMesaj creazaSiSalveazaMesaj(Long expUserId,  String expRolcod,
+	public MesMesaj creazaSiSalveazaMesajComplet(Long expUserId,  String expRolcod,
 	                                      Long destUserId, String destRolcod,
 								          String tipMesajCod)
 	{

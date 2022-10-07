@@ -29,7 +29,7 @@ public class MesTipMesaj {
 
   @NotBlank
   @Size(max = 1)
-  @Column(name = "mes_tipmesaj_reloginyn")
+  @Column(name = "mes_tipmesaj_relogin_yn")
   private String mesTipmesajReloginyn;
 
   @NotBlank

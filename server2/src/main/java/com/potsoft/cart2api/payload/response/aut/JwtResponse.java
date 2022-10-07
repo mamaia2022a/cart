@@ -3,6 +3,8 @@ package com.potsoft.cart2api.payload.response.aut;
 import java.util.List;
 
 import com.potsoft.cart2api.model.aut.AutUser;
+import com.potsoft.cart2api.model.mes.MesDestinMesaj;
+import com.potsoft.cart2api.payload.response.mes.MesMesajePrimiteResponse;
 
 public class JwtResponse {
   private String token;
@@ -11,13 +13,16 @@ public class JwtResponse {
   private String username;
   private List<String> roles;
   private AutUser autuser;
+  MesMesajePrimiteResponse mesaje;
 
-  public JwtResponse(String accessToken, Long id, String username, List<String> roles, AutUser autuser) {
+  public JwtResponse(String accessToken, Long id, String username, List<String> roles, 
+                     AutUser autuser, MesMesajePrimiteResponse mesaje) {
     this.token = accessToken;
     this.id = id;
     this.username = username;
     this.roles = roles;
     this.autuser = autuser;
+    this.mesaje = mesaje;
   }
 
   public String getAccessToken() {
@@ -60,4 +65,10 @@ public class JwtResponse {
   public AutUser getAutUser() {
     return autuser;
   }
+
+
+  public MesMesajePrimiteResponse getMesajeprimite() {
+    return mesaje;
+  }
+
 }

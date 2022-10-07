@@ -69,12 +69,6 @@ public class MesMesaj {
   @Column(name = "mes_mesaj_acopgeocod")
   private String mesMesajAcopgeocod;
 
-
-  @NotBlank
-  @Size(max = 1)
-  @Column(name = "mes_mesaj_adrrezidenta_yn")
-  private String mesMesajAdrrezidentayn;
-
   
   @Column(name = "mes_mesaj_zonataraid")
   private Long mesMesajZonataraid;
@@ -213,8 +207,6 @@ public class MesMesaj {
     this.mesMesajAcopgeoid          = mesMesajAcopgeoid;
     this.mesMesajAcopgeocod         = mesMesajAcopgeocod;
 
-    this.mesMesajAdrrezidentayn    = mesMesajAdrrezidentayn;
-
     this.mesMesajZonataraid        = mesMesajZonataraid;
     this.mesMesajZonataracod       = mesMesajZonataracod;
     this.mesMesajJudetid           = mesMesajJudetid;
@@ -276,6 +268,16 @@ public class MesMesaj {
     this.mesMesajTipmesajcod = mesMesajTipmesajcod;
   }
 
+
+  public String getMesMesajReloginyn() 
+  {
+    return this.mesMesajReloginyn;
+  }
+
+  public void setMesMesajReloginyn(String mesMesajReloginyn) 
+  {
+    this.mesMesajReloginyn = mesMesajReloginyn;
+  }
 
 
   public Long getMesMesajExpid() 
@@ -357,18 +359,6 @@ public class MesMesaj {
     this.mesMesajAcopgeocod = mesMesajAcopgeocod;
   }
 
-
-
-  public String getMesMesajAdrrezidentayn() 
-  {
-    return this.mesMesajAdrrezidentayn;
-  }
-
-  public void setMesMesajAdrrezidentayn(String mesMesajAdrrezidentayn) 
-  {
-    this.mesMesajAdrrezidentayn = mesMesajAdrrezidentayn;
-  }
- 
 
 
   public Long getMesMesajZonataraid() 

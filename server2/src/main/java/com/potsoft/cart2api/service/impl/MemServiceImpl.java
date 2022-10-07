@@ -394,7 +394,7 @@ public class MemServiceImpl implements MemService
 		//MemMembruGrup newMembruGrup = 
 		creazaSiSalveazaMemMembruGrup(memMembru, memGrup);
 		//---
-		mesService.creazaSiSalveazaMesaj( userid,  crtMemTipCod,
+		mesService.creazaSiSalveazaMesajComplet( userid,  crtMemTipCod,
 		                                  memGrup.getMemGrupSefgrupuserid(), "SEFGRUP",
 	                                      "CERAFLGRUP");
 		return resp;
@@ -431,7 +431,7 @@ public class MemServiceImpl implements MemService
 		//--
 		memMembruGrupRepository.acceptareAfiliere(memMembruUserid, acceptareyn);
         //---
-		mesService.creazaSiSalveazaMesaj( userid,  "SEFGRUP",
+		mesService.creazaSiSalveazaMesajComplet( userid,  "SEFGRUP",
 		                                  memMembruUserid,  crtMemTipCod,
 	                                      tipMesajCod);
 		return resp;

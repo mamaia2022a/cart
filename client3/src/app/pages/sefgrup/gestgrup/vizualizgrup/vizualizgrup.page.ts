@@ -28,8 +28,10 @@ export class VizualizGrupPage implements OnInit {
   token : string;
   grupmembri$ : Observable<any> = null;
   grupmembri  : any = null;
+  infogrup$ : Observable<any> = null;
   memGrupRequestVizualizare : MemGrupRequest_Vizualizare = new MemGrupRequest_Vizualizare();
-  
+  infogrup : any = null; //.gruinfogrupp infogrup.membriGrup infogrup.sefGrup infogrup.membru
+
   constructor(private store: Store, private navController: NavController, private platform: Platform, private storage: Storage)  
   {
     var self = this;
@@ -56,6 +58,8 @@ export class VizualizGrupPage implements OnInit {
                   data = await this.storage.get(storageResultKey);
                 //---
                 self.grupmembri = data.membriGrup;
+                self.infogrup   = data; 
+                self.infogrup$   = data; 
                 self.grupmembri$ = of(data.membriGrup);
           
                 var data = await this.storage.get("crtgrupact");

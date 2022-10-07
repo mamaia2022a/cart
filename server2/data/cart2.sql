@@ -508,6 +508,10 @@ VALUES
                                       'Afiliere la un Grup', 'Afiliați-vă la un Grup de Membri și deveniți Membru Afiliat',
                                       null, null, null, null),
 
+(270905, 'DAFLGRPMEMMEMINCACTEXPAFL','Dezafiliere de la Grup', 'Dezafiliați-vă de la Grupul din care faceți parte și deveniți Membru Neafiliat',
+                                      'Dezafiliere de la Grup', 'Dezafiliați-vă de la Grupul din care faceți parte și deveniți Membru Neafiliat',
+                                      null, null, null, null),
+
 (300901, 'GESTGRUPVIZUALIZGRUP', 'Vizualizare Grup', 'Vizualizează Grupul și Membri săi',
                                  'Vizualizare Grup', 'Vizualizează Grupul și Membri săi',
                                  "Gestiune Membru", "Informatii Membru, Activități, Punctaje, Excludere",
@@ -600,7 +604,8 @@ VALUES
 
 (2501, 290, 'CREAREGRUP', 290905, 'CREAREGRUPMEMACTEXPNFL',        1,   null,                null),
 
-(2601, 230, 'AFILGRPMEM', 230905, 'AFILGRPMEMMEMINCACTEXPNFL',        1,   null,                null),
+(2601, 230, 'AFILGRPMEM', 230905, 'AFILGRPMEMMEMINCACTEXPNFL',       1,   null,                null),
+(2611, 270, 'DAFLGRPMEM', 270905, 'DAFLGRPMEMMEMINCACTEXPAFL',       1,   null,                null),
 
 (2701, 300, 'GESTGRUP', 300901, 'GESTGRUPVIZUALIZGRUP',      1,   null,                null),
 (2720, 300, 'GESTGRUP', 300910, 'GESTGRUPVIZUALIZMEM',       3, 300901, 'GESTGRUPVIZUALIZGRUP'),
@@ -1927,7 +1932,7 @@ CREATE TABLE `mes_mesaj` (
   `mes_mesaj_an` int null,
   `mes_mesaj_luna` int null,
   `mes_mesaj_zi` int null,
-  `mes_mesaj_datagenerarii` datetime not null,	
+  `mes_mesaj_datagenerarii` datetime not null DEFAULT CURRENT_TIMESTAMP,	
   
   `mes_mesaj_text` varchar(1024)	null,	
   PRIMARY KEY (`mes_mesaj_id`)
@@ -1938,7 +1943,7 @@ CREATE TABLE `mes_mesaj` (
 DROP TABLE `mes_destinmesaj`;
 CREATE TABLE `mes_destinmesaj` (
   `mes_destinmesaj_id` int NOT NULL AUTO_INCREMENT,
-  `mes_destinmesaj_mesajid` datetime not null,
+  `mes_destinmesaj_mesajid` int not null,
 
   `mes_destinmesaj_destid` int not null null,
   `mes_destinmesaj_destuserid` int not null,
@@ -1951,6 +1956,6 @@ CREATE TABLE `mes_destinmesaj` (
   `mes_destinmesaj_an` int null,
   `mes_destinmesaj_luna` int null,
   `mes_destinmesaj_zi` int null,
-  `mes_destinmesaj_dataprimirii` datetime	not null,	
+  `mes_destinmesaj_dataprimirii` datetime	null,	
   PRIMARY KEY (`mes_destinmesaj_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;

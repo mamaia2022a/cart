@@ -41,9 +41,6 @@ public interface MesService {
                                     String genAcoperireGeograficaCod);
 
 
-	MesMesaj creazaSiSalveazaMesaj(Long expUserId,  String expRolcod,
-	                               Long destUserId, String destRolcod,
-								                 String tipMesajCod);
 
   MesMesaj creazaMesMesaj(String mesText, MesTipMesaj  mesTipMesaj, 
                           MesExpeditor mesExpeditor, List<MesDestinatar> mesDestinari,
@@ -58,6 +55,11 @@ public interface MesService {
 
   MesDestinMesaj creazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinatar);
   MesDestinMesaj creazaSiSalveazaMesDestinMesaj(MesMesaj  mesMesaj, MesDestinatar mesDestinatar);
+
+
+	MesMesaj creazaSiSalveazaMesajComplet(Long expUserId,  String expRolcod,
+	                               Long destUserId, String destRolcod,
+								                 String tipMesajCod);
 
 }
 

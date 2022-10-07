@@ -52,6 +52,26 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.MemMembruCerereAfiliere)
+  memMembruCerereAfiliere(context: StateContext<AuthAction.MemMembruCerereAfiliere>, action: AuthAction.MemMembruCerereAfiliere) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
+  @Action(AuthAction.MemMembruDezafiliere)
+  memMembruCerereDezafiliere(context: StateContext<AuthAction.MemMembruDezafiliere>, action: AuthAction.MemMembruDezafiliere) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
   @Action(AuthAction.MemMembruTipSchimbare)
   memMembruTipSchimbare(context: StateContext<AuthAction.MemMembruTipSchimbare>, action: AuthAction.MemMembruTipSchimbare) {
     const state = context.getState();

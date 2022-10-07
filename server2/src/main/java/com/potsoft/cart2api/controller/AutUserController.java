@@ -8,15 +8,16 @@ import com.potsoft.cart2api.service.MemService;
 //import com.potsoft.cart2api.exception.AppException;
 //import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
-
+import com.potsoft.cart2api.model.mes.MesDestinMesaj;
 //import com.potsoft.cart2api.model.aut.rol.AutRoleName;
 import com.potsoft.cart2api.payload.response.general.ApiResponse;
+import com.potsoft.cart2api.payload.response.mes.MesMesajePrimiteResponse;
 //import com.potsoft.cart2api.payload.response.aut.JwtAuthenticationResponse;
 import com.potsoft.cart2api.payload.request.aut.LoginRequest;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
 import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
-
+import com.potsoft.cart2api.repository.mes.MesDestinMesajRepository;
 import com.potsoft.cart2api.payload.response.aut.JwtResponse;
 import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
 import com.potsoft.cart2api.payload.response.aut.ValidateRegistrationResponse;
@@ -58,6 +59,9 @@ import java.util.List;
 @RequestMapping("/api/aut/user")
 public class AutUserController {
 	//private static final String USER_ROLE_NOT_SET = "User role not set";
+
+	@Autowired
+	private MesDestinMesajRepository mesDestinMesajRepository;
 
 	@Autowired
 	private AutUserService autUserService;
@@ -106,14 +110,20 @@ public class AutUserController {
 	  List<String> roles = userDetails.getAuthorities().stream()
 		  .map(item -> item.getAuthority())
 		  .collect(Collectors.toList());
-	  
+      //---
+	  MesMesajePrimiteResponse mesaje = new MesMesajePrimiteResponse();
+	  List<MesDestinMesaj> noimesajeprimite = mesDestinMesajRepository.loadListaMesajeNeprimiteDeUser(userDetails.getId());
+      mesaje.setNoiMesajePrimite(noimesajeprimite);
+	  //--------
       AutUser crtUser = autUserRepository.loadByAutUserId(userDetails.getId());
 	  crtUser.setAutUserParola("");
+
 	  return ResponseEntity.ok(new JwtResponse(jwt, 
 						   userDetails.getId(), 
 						   userDetails.getUsername(), 
 						   roles,
-						   crtUser));
+						   crtUser,
+						   mesaje));
 	}
 
     //-----------------------------------------------------------
