@@ -537,7 +537,13 @@ VALUES
 
 (300925, 'GESTGRUPACCPENDMEM', 'Acceptare sau Respingere Membru în Așteptare', 'Acceptă sau Respinge afilierea unei cereri de înscriere în grup',
                                  'Acceptare sau Respingere Membru în Așteptare', 'Acceptă sau Respinge afilierea unei cereri de înscriere în grup',
-                                 null, null, null, null)
+                                 null, null, null, null),
+
+(280901, 'VIZGRUPMEMVIZGRUP', 'Vizualizare Grup din care fac parte', 'Vizualizează Grupul Meu și Membri săi',
+                                 'Vizualizare Grup din care fac parte', 'Vizualizează Grupul Meu și Membri săi',
+                                 "Informații Membru", "Informatii Membru, Activități, Punctaje",
+                                 "Informații Membru", "Informatii Membru, Activități, Punctaje")
+
 ;
 
 CREATE TABLE `aut_grupactactiune` (
@@ -613,7 +619,9 @@ VALUES
 
 (2705, 300, 'GESTGRUP', 300905, 'GESTGRUPPENDINGMEM',       2,   null,                null),
 (2730, 300, 'GESTGRUP', 300920, 'GESTGRUPVIZPENDMEM',       3, 300905, 'GESTGRUPPENDINGMEM'),
-(2735, 300, 'GESTGRUP', 300925, 'GESTGRUPACCPENDMEM',       4, 300905, 'GESTGRUPPENDINGMEM')
+(2735, 300, 'GESTGRUP', 300925, 'GESTGRUPACCPENDMEM',       4, 300905, 'GESTGRUPPENDINGMEM'),
+
+(2745, 280, 'VIZGRUPMEM', 280901, 'VIZGRUPMEMVIZGRUP',     1, null, null)
 
 ;
 

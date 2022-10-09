@@ -22,12 +22,12 @@ public class MembruGrupRequest_AcceptareAfiliere
 	}
   
 
-	public Long getMembruId() 
+	public Long getMembruid() 
 	{
 	  return this.membruid;
 	}
   
-	public void setMembruId(Long membruid) 
+	public void setMembruid(Long membruid) 
 	{
 	  this.membruid = membruid;
 	}

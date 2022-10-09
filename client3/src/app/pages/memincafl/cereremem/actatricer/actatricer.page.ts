@@ -18,7 +18,7 @@ export class ActATriCerPage implements OnInit {
 
   frmActATriCererea: FormGroup = new FormGroup(
     {
-       mesaj: new FormControl('Trimite Confirmarea Cererii de a deveni Membru',[]),// [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+       mesaj: new FormControl('Trimite Confirmarea pentru a deveni Membru Activ Afiliat',[]),// [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     });
   crtactiune : any = null;
   loginResponse : any;

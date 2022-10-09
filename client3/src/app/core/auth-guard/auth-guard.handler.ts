@@ -30,12 +30,16 @@ export class AuthHandler {
   private ApiURLAutValidateRegistration: string               = this.ApiBaseURL + "/api/aut/user/validate_registration"
   //---------------------------------- mem
   private ApiURLMemMembruTipSchimbare: string                 = this.ApiBaseURL + "/api/mem/membru/tip/schimbare";
+  //---------------------------------- mem afiliat
+  private ApiURLMemMembruGrupulMeuVizualizare                 =  this.ApiBaseURL + "/api/mem/membru/grupulmeu_vizualizare";
   //---------------------------------- grup
   private ApiURLMemGrupCreare: string                         = this.ApiBaseURL + "/api/mem/grup/creare";
   private ApiURLMemGrupVizualizare: string                    = this.ApiBaseURL + "/api/mem/grup/vizualizare";
-  private ApiURLMemGrupPendingMembri: string                  = this.ApiBaseURL + "/api/mem/grup/pendingmembri";
+  private ApiURLMemGrupMembriInAsteptare: string              = this.ApiBaseURL + "/api/mem/grup/membriinasteptare";
   //---------------- grup memmbru afiliere/dezafiliere
   private ApiURLMemMembruCerereAfiliere: string               = this.ApiBaseURL + "/api/mem/grup/membru/cerere_afiliere";
+  private ApiURLMemSefGrupAcceptareAfiliere : string          = this.ApiBaseURL + "/api/mem/grup/sefgrup/acceptare_afiliere";
+
   private ApiURLMemMembruCerereDezafiliere: string            = this.ApiBaseURL + "/api/mem/grup/membru/cerere_dezafiliere";
   //---------------------------------- geo
   //zonetara/toate
@@ -100,6 +104,151 @@ export class AuthHandler {
     //storage.set("token", "TEST");
 
     //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemMembruGrupulMeuVizualizare)).subscribe(async data2 => 
+      {
+        let memGrupulMeuVizualizareAction : AuthAction.MemMembruGrupulMeuVizualizare = data2;
+        console.log("memGrupVizualizare");
+        var memMembruRequestVizualizare = memGrupulMeuVizualizareAction.memGrupRequestVizualizare;
+        var storageResultKey = memGrupulMeuVizualizareAction.storageResultKey;
+        console.log(memMembruRequestVizualizare);
+        return this.apiService.post(this.ApiURLMemMembruGrupulMeuVizualizare,
+                                    memGrupulMeuVizualizareAction.memGrupRequestVizualizare, 
+                                    {"Authorization" : `Bearer ${memGrupulMeuVizualizareAction.token}`}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Vizualizare Grup din care fac parte : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+      });
+
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemSefGrupAcceptareAfiliere)).subscribe(data2 => 
+      {
+        let actionMemSefGrupAcceptareAfiliere: AuthAction.MemSefGrupAcceptareAfiliere = data2;
+        console.log("Acceptare Afiliere");
+        var memMemSefGrupAcceptareAfiliere = actionMemSefGrupAcceptareAfiliere.memSefGrupRequestAcceptareAfiliere;
+        console.log(actionMemSefGrupAcceptareAfiliere);
+        return this.apiService.post(this.ApiURLMemSefGrupAcceptareAfiliere,
+                                    actionMemSefGrupAcceptareAfiliere.memSefGrupRequestAcceptareAfiliere,
+                                    {"Authorization" : `Bearer ${actionMemSefGrupAcceptareAfiliere.token}`}).subscribe(data  => {  
+          let response  = data;
+          //console.log(data);
+          this.storage.remove("grupmembri");
+          this.storage.remove("grupmembriinasteptare");
+          console.log(response);
+
+          toastService.default("Ați trimis cu succes Acceptul sau Refuzul Dvs. la Cererea de Afiliere la Grup.") ;
+          this.navController.navigateRoot(appConfig.routes.aut.grupactactiuni);
+          return;
+          //return of(true);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Cerere de Afiliere : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+  
+      });
+
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.MemGrupMembriInAsteptare)).subscribe(async data2 => 
+      {
+        let memGrupMembriInAsteptareAction : AuthAction.MemGrupMembriInAsteptare = data2;
+        console.log("memGrupMembriInAsteptare");
+        var memMembruRequestMembriInAsteptare = memGrupMembriInAsteptareAction.memGrupRequestMembriInAsteptare;
+        var storageResultKey = memGrupMembriInAsteptareAction.storageResultKey;
+        console.log(memMembruRequestMembriInAsteptare);
+        return this.apiService.post(this.ApiURLMemGrupMembriInAsteptare,
+                                    memGrupMembriInAsteptareAction.memGrupRequestMembriInAsteptare, 
+                                    {"Authorization" : `Bearer ${memGrupMembriInAsteptareAction.token}`}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Grup Vizualizare Membri In Asteptare: " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+      });
+
+
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.Subactiune)).subscribe(data2 => 
+    {
+      console.log("Handler Subactiune 5");
+      var crtActiune : AuthAction.Subactiune = data2;
+      var grupact : any = crtActiune.crtGrupAct;
+      var grupactactiuneid = crtActiune.subactiuneid ;
+      var crtGrupActActiune = null;
+      var selSubactiune = null;
+      console.log(grupact);
+      console.log(grupactactiuneid);
+      for (let idx in grupact.grupactactiunisec)
+      {
+        //console.log(grupact.grupactactiuni);
+        crtGrupActActiune = grupact.grupactactiunisec[idx];
+        //console.log(crtGrupActActiune);
+        //console.log(crtGrupActActiune.autGrupactactiuneId);
+        if (crtGrupActActiune.actiune.autActiuneId == crtActiune.subactiuneid)
+        {
+          selSubactiune = crtGrupActActiune.actiune;
+          break;
+        }
+      }
+      if (selSubactiune == null)
+      {
+        console.log("Cannot find Subactiune");
+        return;
+      }
+      console.log("Subactiune selected");
+      console.log(selSubactiune);
+      storage.set("crtsubactiune", selSubactiune);
+      //-----------------------
+      //  Gestiune Grup - Vizualizare membru
+      //-----------------------
+      if (selSubactiune.autActiuneCod == "GESTGRUPVIZUALIZMEM")
+      {
+        this.navController.navigateRoot(appConfig.routes.sefgrup.gestgrup.vizualizmem);
+        return ;
+      }
+      //-----------------------
+      //  Gestiune Grup - Excludere membru
+      //-----------------------
+      if (selSubactiune.autActiuneCod == "GESTGRUPEXCLUDEREMEM")
+      {
+        this.navController.navigateRoot(appConfig.routes.sefgrup.gestgrup.excluderemem);
+        return ;
+      }
+      //-----------------------
+      //  Gestiune Grup - Vizualizare membru in asteptare
+      //-----------------------
+      if (selSubactiune.autActiuneCod == "GESTGRUPVIZPENDMEM")
+      {
+        this.navController.navigateRoot(appConfig.routes.sefgrup.gestgrup.vizpendmem);
+        return ;
+      }
+      //-----------------------
+      //  Gestiune Grup - Acceptare sau Refuzare membru Nou
+      //-----------------------
+      if (selSubactiune.autActiuneCod == "GESTGRUPACCPENDMEM")
+      {
+        this.navController.navigateRoot(appConfig.routes.sefgrup.gestgrup.accpendmem);
+        return ;
+      }
+
+      
+    });
+
+    //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.MemMembruCerereAfiliere)).subscribe(data2 => 
       {
         let actionMemMembruCerereAfiliere: AuthAction.MemMembruCerereAfiliere = data2;
@@ -135,6 +284,8 @@ export class AuthHandler {
       var grupact : any = crtActiune.crtGrupAct;
       var grupactactiuneid = crtActiune.grupactactiuneid ;
       var parentactiuneid = crtActiune.parentactiuneid;
+      var subactiuniParams = crtActiune.subactiuniParams;
+      var backaction = crtActiune.backaction;
       var crtGrupActActiune = null;
       var selActiune = null;
       console.log(grupact);
@@ -160,6 +311,8 @@ export class AuthHandler {
       //console.log("Actiune selected");
       console.log(selSubactiuni);
       storage.set("crtsubactiuni", selSubactiuni);
+      storage.set("crtsubactiuniparams", subactiuniParams);
+      storage.set("backaction",backaction);  
       this.navController.navigateRoot(appConfig.routes.aut.actiunesubactiuni);
       return;
     });
@@ -221,6 +374,16 @@ export class AuthHandler {
         return ;
       }
       //-----------------------
+      //  Un Membru Vizualizare Grupul din care face parte
+      //-----------------------
+      if (selActiune.autActiuneCod == "VIZGRUPMEMVIZGRUP")
+      {
+        this.navController.navigateRoot(appConfig.routes.memafl.vizgrupmem.vizgrup);
+        return ;
+      }
+      
+
+      //-----------------------
       //  Sef Grup - Pending Membri
       //-----------------------
       if (selActiune.autActiuneCod == "GESTGRUPPENDINGMEM")
@@ -279,6 +442,7 @@ export class AuthHandler {
         this.navController.navigateRoot(appConfig.routes.memincnfl.cereremem.actntricer);
         return ;
       }
+
       //-----------------------
       // MEM INC AFL
       //-----------------------
@@ -287,6 +451,7 @@ export class AuthHandler {
         this.navController.navigateRoot(appConfig.routes.memincafl.cereremem.actatricer);
         return ;
       }
+      
       //-----------------------
       // MEM ACT NFL
       //-----------------------
@@ -545,7 +710,7 @@ export class AuthHandler {
         "password": "turda"
       };*/
       //return this.http.post(this.ApiURL, loginAction.loginRequest).subscribe(data  => {
-      return this.apiService.post(this.ApiURLAutLogin, loginAction.loginRequest).subscribe(data  => {  
+      return this.apiService.post(this.ApiURLAutLogin, loginAction.loginRequest).subscribe(async data  => {  
         let response : any = data;
         console.log(data);
         console.log(response.accessToken);

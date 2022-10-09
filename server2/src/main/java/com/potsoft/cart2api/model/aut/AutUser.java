@@ -1,17 +1,20 @@
 package com.potsoft.cart2api.model.aut;
 
+import java.util.ArrayList;
+
 //import com.potsoft.cart2api.model.aut.AutUserRol;
 
-import java.util.HashSet;
+//import java.util.HashSet;
+import java.util.List;
 //import java.util.List;
-import java.util.Set;
+//import java.util.Set;
 
 import javax.persistence.*;
 //import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Where;
+//import org.hibernate.annotations.Where;
 
 
 
@@ -56,17 +59,13 @@ public class AutUser {
   
   //@OneToMany(fetch = FetchType.EAGER)
 	//@JoinTable(name = "aut_userrol", joinColumns = @JoinColumn(name = "aut_userrol_userid", referencedColumnName = "aut_userrol_userid"))
-  @Where(clause = "aut_userrol_activ_yn = 'y'")
-  @OneToMany(mappedBy = "autUserrolUserid", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<AutUserRol> roles = new HashSet<>();
+  
+  //@Where(clause = "aut_userrol_activ_yn = 'y'")
+  //@OneToMany(fetch=FetchType.EAGER, mappedBy = "autUserrolUserid", cascade = CascadeType.ALL, orphanRemoval = true)
+	@Transient
+  private List<AutUserRol> roles = new ArrayList<AutUserRol>();
 
-  /**
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-	private List<Agency> agencys;
-
-	@OneToMany(mappedBy = "passenger", cascade = CascadeType.ALL)
-	private List<Ticket> tickets;
-  */
+  
 
 	public AutUser() 
   {
@@ -149,11 +148,11 @@ public class AutUser {
   }
 
  
-  public Set<AutUserRol> getRoles() {
+  public List<AutUserRol> getRoles() {
     return roles;
   }
 
-  public void setRoles(Set<AutUserRol> roles) {
+  public void setRoles(List<AutUserRol> roles) {
     this.roles = roles;
   }
   

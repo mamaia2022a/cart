@@ -27,6 +27,9 @@ public interface MemMembruGrupRepository extends JpaRepository<MemMembruGrup, Lo
     @Query("select m from MemMembruGrup m where (m.memMembrugrupActivyn='y') and (m.memMembrugrupGrupid = :grupid)" )
     List<MemMembruGrup> loadMembriGrup(@Param(value = "grupid") Long grupid);
 
+    @Query("select m from MemMembruGrup m where (m.memMembrugrupCerereyn='y') and (m.memMembrugrupAcceptareyn is null) and (m.memMembrugrupActivyn='n') and (m.memMembrugrupGrupid = :grupid)" )
+    List<MemMembruGrup> loadMembriInAsteptare(@Param(value = "grupid") Long grupid);
+
     //List<MemMembruGrup> findByMemMembrugrupGrupid(Long mem_membrugrup_userid);
 
     Optional<MemMembruGrup> findByMemMembrugrupUserid(@NotNull Long mem_membrugrup_userid);
@@ -42,19 +45,23 @@ public interface MemMembruGrupRepository extends JpaRepository<MemMembruGrup, Lo
 
 
     //memMembruGrupRepository.loadByMemMembrugrupUserid(userid);
-    @Modifying
-    @Query("update MemMembruGrup m set m.memMembrugrupAcceptareyn = :acceptareyn, m.memMembrugrupAcceptaredt = now() where m.memMembrugrupUserid = :userid")
-    void acceptareAfiliere(@Param(value = "userid") Long userid, @Param(value = "acceptareyn") String acceptareyn);
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'y', m.memMembrugrupStartdt = now(), m.memMembrugrupAcceptareyn = 'y', m.memMembrugrupAcceptaredt = now() where m.memMembrugrupUserid = :userid")
+    void acceptareAfiliere(@Param(value = "userid") Long userid);
 
-    @Modifying
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("update MemMembruGrup m set m.memMembrugrupAcceptareyn = 'n', m.memMembrugrupAcceptaredt = now() where m.memMembrugrupUserid = :userid")
+    void refuzAfiliere(@Param(value = "userid") Long userid);
+
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'y', m.memMembrugrupStartdt = now() where m.memMembrugrupUserid = :userid")
     void activare(@Param(value = "userid") Long userid);
 
-    @Modifying
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'n', m.memMembrugrupPlecareyn = 'y', m.memMembrugrupEnddt = now() where m.memMembrugrupUserid = :userid")
     void plecare(@Param(value = "userid") Long userid);
 
-    @Modifying
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("update MemMembruGrup m set m.memMembrugrupActivyn = 'n', m.memMembrugrupExcludereyn = 'y', m.memMembrugrupEnddt = now() where m.memMembrugrupUserid = :userid")
     void excludere(@Param(value = "userid") Long userid);
 

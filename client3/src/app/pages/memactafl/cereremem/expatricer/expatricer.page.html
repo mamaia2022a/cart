@@ -35,7 +35,7 @@
           <form [formGroup]="frmExpATriCererea" (ngSubmit)="onExpATriCererea()">
             <ion-card color="light" class="auth-card ion-margin">
               <ion-item color="light" class="ion-no-inner-padding-end">
-                <ion-input type="text" [readonly]="true" placeholder="Trimite Confirmarea pentru a deveni Membru Experimentat Afiat" formControlName="mesaj"></ion-input>
+                <ion-input type="text" [readonly]="true" placeholder="Trimite Confirmarea pentru a deveni Membru Experimentat Afiliat" formControlName="mesaj"></ion-input>
               </ion-item>
             </ion-card>
   
@@ -45,7 +45,7 @@
               type="submit"
               [disabled]="!frmExpATriCererea.valid"
             >
-              Confirmare Cerere Membru Experimentat
+               Trimite Cerere Membru Experimentat
             </ion-button>
             <span class="ion-margin"></span>
           </form>

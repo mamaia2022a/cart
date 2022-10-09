@@ -25,7 +25,7 @@
 <ion-content [fullscreen]="true">
   <!-- List of Text Items -->
 
-      <ng-container *ngIf="userroluri">
+      <ng-container *ngIf="userroluri$">
         <h3>Funcțiile dumneavoastră în Partid</h3>
         <ion-list>
           <ion-item button="true" detail *ngFor='let userrol of userroluri' (click)="selectieRol(userrol.autUserrolId)">

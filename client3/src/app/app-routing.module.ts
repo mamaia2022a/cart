@@ -156,6 +156,15 @@ const routes: Routes = [
 
 
   //-----------------------------
+  //  Membri Afiliati (Incepatori, Activi sau Experimentati)
+  //-----------------------------
+  {
+    path: 'memafl/vizgrupmem/vizgrup',
+    loadChildren: () => import('./pages/memafl/vizgrupmem/vizgrup/vizgrup.module').then((m) => m.VizGrupPageModule),
+  },
+
+
+  //-----------------------------
   //  Sef Grup
   //-----------------------------
   {
@@ -165,6 +174,22 @@ const routes: Routes = [
   {
     path: 'sefgrup/gestgrup/pendingmem',
     loadChildren: () => import('./pages/sefgrup/gestgrup/pendingmem/pendingmem.module').then((m) => m.PendingMemPageModule),
+  },
+  {
+    path: 'sefgrup/gestgrup/vizualizmem',
+    loadChildren: () => import('./pages/sefgrup/gestgrup/vizualizmem/vizualizmem.module').then((m) => m.VizualizMemPageModule),
+  },
+  {
+    path: 'sefgrup/gestgrup/excluderemem',
+    loadChildren: () => import('./pages/sefgrup/gestgrup/excluderemem/excluderemem.module').then((m) => m.ExcludereMemPageModule),
+  },
+  {
+    path: 'sefgrup/gestgrup/vizpendmem',
+    loadChildren: () => import('./pages/sefgrup/gestgrup/vizpendmem/vizpendmem.module').then((m) => m.VizPendMemPageModule),
+  },
+  {
+    path: 'sefgrup/gestgrup/accpendmem',
+    loadChildren: () => import('./pages/sefgrup/gestgrup/accpendmem/accpendmem.module').then((m) => m.AccPendMemPageModule),
   },
 
   //-----------------------------

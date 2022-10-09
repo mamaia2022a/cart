@@ -15,6 +15,7 @@ import com.potsoft.cart2api.model.mem.MemSefGrup;
 import com.potsoft.cart2api.model.mem.MemTip;
 import com.potsoft.cart2api.model.mem.MemTipRol;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_MembriInAsteptare;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembriGrupRequest_Vizualizare;
@@ -32,6 +33,7 @@ import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Activare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Excludere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_GrupulMeuVizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Vizualizare;
@@ -47,6 +49,7 @@ import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.SefGrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_MembriInAsteptare;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembriGrupResponse_Vizualizare;
@@ -64,6 +67,7 @@ import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Activare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_GrupulMeuVizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Plecare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Vizualizare;
@@ -121,17 +125,22 @@ public interface MemService {
   MembruGrupResponse_Creare      membruGrup_Creare     (Long userid, MembruGrupRequest_Creare   membruGrupRequestCreare);
   MembruGrupResponse_Stergere    membruGrup_Stergere   (Long userid, MembruGrupRequest_Stergere membruGrupRequestStergere);
   MembruGrupResponse_Vizualizare membruGrup_Vizualizare(Long userid, MembruGrupRequest_Vizualizare membruGrupRequestVizualizare);
+  MembruGrupResponse_GrupulMeuVizualizare membruGrup_GrupulMeuVizualizare(Long userid, 
+                                                    MembruGrupRequest_GrupulMeuVizualizare requestGrupulMeuVizualizare);
 
   SefGrupResponse_Creare         sefGrup_Creare     (Long userid, SefGrupRequest_Creare      sefGrupRequestCreare);
   SefGrupResponse_Stergere       sefGrup_Stergere   (Long userid, SefGrupRequest_Stergere    sefGrupRequestStergere);
   SefGrupResponse_Vizualizare    sefGrup_Vizualizare(Long userid, SefGrupRequest_Vizualizare sefGrupRequestVizualizare);
 
+  //used
   GrupResponse_Creare            grup_Creare     (Long userid, GrupRequest_Creare grupRequestCreare);
   GrupResponse_Stergere          grup_Stergere   (Long userid, GrupRequest_Stergere grupRequestStergere);
   GrupResponse_Vizualizare       grup_Vizualizare(Long userid, GrupRequest_Vizualizare grupRequestVizualizare);
+  GrupResponse_MembriInAsteptare grup_MembriInAsteptare(Long userid, GrupRequest_MembriInAsteptare grupRequestMembriInAsteptare);
 
-  MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare    grupRequestVizualizare);
 
+  
+  MembriGrupResponse_Vizualizare membriGrup_Vizualizare(Long userid, MembriGrupRequest_Vizualizare grupRequestVizualizare);
 
   MemMembru                    creazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);
   MemMembru                    creazaSiSalveazaMemMembru(AutUser autUser, AutUserInfo autUserInfo, MemTip memTip);

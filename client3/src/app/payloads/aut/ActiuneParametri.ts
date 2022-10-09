@@ -3,6 +3,7 @@ import { State } from "@ngxs/store";
 export class ActiuneParametri
 {
     params: any;
+    title : string;
 
     constructor(){
       this.params = null;

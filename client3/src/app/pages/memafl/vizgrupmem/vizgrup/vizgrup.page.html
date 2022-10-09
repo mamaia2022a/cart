@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/grupactactiuni"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   
+  <!-- List of Text Items -->
+      <ng-container *ngIf="crtactiune">
+        <h3>{{crtactiune.autActiuneDisplaynume}}</h3>
+     </ng-container>
+    <!-- 
+     <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+          <form [formGroup]="frmVizGruperea" (ngSubmit)="onVizGruperea()">
+            <ion-card color="light" class="auth-card ion-margin">
+              <ion-item color="light" class="ion-no-inner-padding-end">
+                <ion-input type="text" [readonly]="true" placeholder="Trimite Confirmarea pentru a deveni Membru Activ Neafiliat" formControlName="mesaj"></ion-input>
+              </ion-item>
+            </ion-card>
+  
+            <ion-button
+              expand="block"
+              class="ion-margin-start ion-margin-end ion-margin-bottom"
+              type="submit"
+              [disabled]="!frmVizGruperea.valid"
+            >
+              Confirmare Cerere Membru Activ
+            </ion-button>
+            <span class="ion-margin"></span>
+          </form>
+  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  -->
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+    <ng-container *ngIf="grupmembri$">
+      
+        <ng-container *ngIf="infogrup$">
+        <ion-item color="light" class="ion-no-inner-padding-end">
+          <ion-input type="text" value="Nume Grup: {{infogrup.grup.memGrupNume}}" [readonly]="true"></ion-input>
+          
+        </ion-item>
+        <ion-item color="light" class="ion-no-inner-padding-end">
+          <ion-input type="text" value="Grup Cod Unic: {{infogrup.grup.memGrupCodunic}}" [readonly]="true"></ion-input>
+          
+        </ion-item>
+        <ion-item color="light" class="ion-no-inner-padding-end">
+          <ion-input type="text" value="Șef Grup: {{infogrup.sefGrup.userinfo.autUserInfoNume}} {{infogrup.sefGrup.userinfo.autUserInfoPrenume}}" [readonly]="true"></ion-input>
+          
+        </ion-item>
+      </ng-container>
+        <ion-list>
+          <ion-item>Componența:</ion-item>
+          <ion-item button="true" detail *ngFor='let grupmembru of (grupmembri$|async); let idx=index;' 
+                                        (click)="selectieMembruGrup(grupmembru.memMembrugrupId)">
+            <ion-label>
+              <h2>{{idx+1}}. {{grupmembru.userinfo.autUserInfoNume}} {{grupmembru.userinfo.autUserInfoPrenume}}</h2>
+              <p>Nume utilizator: {{grupmembru.memMembrugrupUsernume}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+
+   </ng-container>
+</ion-col>
+</ion-row>
+</ion-grid>
+   
+    <!--
+      <ng-container *ngIf="grupmembri$">
+      <ion-select placeholder="Membri Grup" formControlName="selmembrigrup" (ionChange)="selectieMembruGrup($event)">
+         <ion-select-option value="{{grupmembru.memMembrugrupUserid}}" *ngFor='let grupmembru of (grupmembri$|async)'>{{grupmembru.memMembrugrupUsernume}}</ion-select-option>
+    </ion-select>
+    </ng-container>              
+  -->
+
+</ion-content>

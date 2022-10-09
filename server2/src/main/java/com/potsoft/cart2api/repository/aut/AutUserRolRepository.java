@@ -11,7 +11,9 @@ import com.potsoft.cart2api.exception.ResourceNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+import java.util.List;
 //import java.util.Date;
 import java.util.Optional;
 
@@ -19,12 +21,16 @@ import java.util.Optional;
 public interface AutUserRolRepository extends JpaRepository<AutUserRol, Long> 
 {
 
+	@Query("select m from AutUserRol m where (m.autUserrolActivyn ='y') and (m.autUserrolUserid = :userid)" )
+	List<AutUserRol> loadUserRoluriActive(@Param(value = "userid") @NotNull Long userid);
+  
 	Optional<AutUserRol> findByAutUserrolId(@NotBlank Long aut_userrol_id);
 	Optional<AutUserRol> findByAutUserrolUseridAndAutUserrolRolcod(@NotBlank Long aut_userrol_userid, 
                                                                    @NotBlank String aut_userrol_rolcod);
 
 	// str_to_date(:str_e, '%Y-%m-%d %T')
-    @Modifying
+    // @Modifying(clearAutomatically = true, flushAutomatically = true)
+	@Modifying
     @Query("update AutUserRol r set r.autUserrolActivyn = 'n', r.autUserrolEnddt = now() where (r.autUserrolUserid = :userid) and (r.autUserrolRolcod = :rolcod)")
     void dezactiveazaAutUserRol(@Param(value = "userid") Long userid, @Param(value = "rolcod") String rolcod);
 

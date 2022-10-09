@@ -58,7 +58,7 @@ export const appConfig = {
     },
     memincafl: {
       cereremem: {
-        actatricer : "memincnfl/cereremem/actatricer",
+        actatricer : "memincafl/cereremem/actatricer",
       },      
     },
     memactnfl: {
@@ -75,6 +75,15 @@ export const appConfig = {
       gestgrup: {
         vizualizgrup : "sefgrup/gestgrup/vizualizgrup",
         pendingmem   : "sefgrup/gestgrup/pendingmem",
+        vizualizmem  : "sefgrup/gestgrup/vizualizmem",
+        excluderemem : "sefgrup/gestgrup/excluderemem",
+        vizpendmem   : "sefgrup/gestgrup/vizpendmem",
+        accpendmem   : "sefgrup/gestgrup/accpendmem",
+      },      
+    },
+    memafl: {
+      vizgrupmem: {
+        vizgrup      : "memafl/vizgrupmem/vizgrup",
       },      
     },
     loc: {

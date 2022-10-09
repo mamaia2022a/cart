@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="dark">
         <ion-buttons slot="start">
-          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/rolgrupactiuni"></ion-back-button>
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="{{backaction}}"></ion-back-button>
         </ion-buttons>
     <ion-buttons slot="secondary">
       <ion-button>
@@ -26,12 +26,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-   
+  <ng-container *ngIf="crtsubactiuniparams">
      <ng-container *ngIf="crtsubactiuni">
-         <h3>{{crtactiune.autActiuneSubactiunidisplaynume}}</h3>
+         <h3>{{crtactiune.autActiuneSubactiunidisplaynume}} : {{crtsubactiuniparams.title}}</h3>
          <ion-list>
         
-          <ion-item button="true" detail *ngFor='let crtsubactiune of crtsubactiuni'>
+          <ion-item button="true" detail *ngFor='let crtsubactiune of crtsubactiuni'
+                                        (click)="selectieGrupactactiune(crtsubactiune.autActiuneId)">
             <ion-label>
               <h2>{{crtsubactiune.autActiuneDisplaynume}}</h2>
                <p>{{crtsubactiune.autActiuneDisplaydescriere}}</p>
@@ -39,7 +40,7 @@
           </ion-item>
          </ion-list>
      </ng-container>
-     
+  </ng-container>
   <!-- List of Text Items -->
       <!---
          (click)="selectieSubactiune(crtgrupactiuni.autGrupactactiuneId)"

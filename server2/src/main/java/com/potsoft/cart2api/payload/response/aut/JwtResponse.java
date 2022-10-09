@@ -3,7 +3,6 @@ package com.potsoft.cart2api.payload.response.aut;
 import java.util.List;
 
 import com.potsoft.cart2api.model.aut.AutUser;
-import com.potsoft.cart2api.model.mes.MesDestinMesaj;
 import com.potsoft.cart2api.payload.response.mes.MesMesajePrimiteResponse;
 
 public class JwtResponse {

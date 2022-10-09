@@ -7,6 +7,10 @@ import { RegisterRequest } from '../../payloads/aut/RegisterRequest';
 import { MemMembruTipRequest_Schimbare } from '../../payloads/mem/MemMembruTipRequest_Schimbare';
 import { MemGrupRequest_Creare } from '../../payloads/mem/MemGrupRequest_Creare';
 import { MemGrupRequest_Vizualizare} from '../../payloads/mem/MemGrupRequest_Vizualizare';
+import { MemGrupRequest_MembriInAsteptare} from '../../payloads/mem/MemGrupRequest_MembriInAsteptare';
+import { MemMembruRequest_AcceptareAfiliere} from '../../payloads/mem/MemMembruRequest_AcceptareAfiliere';
+
+import { MemMembruRequest_GrupulMeuVizualizare} from '../../payloads/mem/MemMembruRequest_GrupulMeuVizualizare';
 
 import { ValidateRegistrationRequest} from '../../payloads/aut/ValidateRegistrationRequest';
 import { ActiuneParametri} from '../../payloads/aut/ActiuneParametri';
@@ -45,8 +49,13 @@ export namespace AuthAction {
   }
 
   export class MemMembruCerereAfiliere {
-    static readonly type = '[MemMembruCerereAfiliere] Membru Membru Cerere Afiliere';
+    static readonly type = '[MemMembruCerereAfiliere] Membru Cerere Afiliere';
     constructor(public memMembruRequestCerereAfiliere: MemMembruRequest_CerereAfiliere, public token: string) {}
+  }
+
+  export class MemSefGrupAcceptareAfiliere {
+    static readonly type = '[MemSefGrupAcceptareAfiliere] Sef Grup Acceptare Afiliere';
+    constructor(public memSefGrupRequestAcceptareAfiliere: MemMembruRequest_AcceptareAfiliere, public token: string) {}
   }
 
   export class MemMembruDezafiliere {
@@ -64,6 +73,16 @@ export namespace AuthAction {
     constructor(public memGrupRequestVizualizare: MemGrupRequest_Vizualizare, public token: string, public storageResultKey: string) {}
   }
 
+  export class MemMembruGrupulMeuVizualizare {
+    static readonly type = '[MemMembruGrupulMeuVizualizare] Mem Membru Grupul Meu Vizualizare';
+    constructor(public memGrupRequestVizualizare: MemMembruRequest_GrupulMeuVizualizare, public token: string, public storageResultKey: string) {}
+  }
+
+  export class MemGrupMembriInAsteptare {
+    static readonly type = '[MemGrupMembriInAsteptare] Mem Grup Membri In Asteptare';
+    constructor(public memGrupRequestMembriInAsteptare: MemGrupRequest_MembriInAsteptare, public token: string, public storageResultKey: string) {}
+  }
+
   export class Rolgrupactiunii {
     static readonly type = '[Rolgrupactiunii] Rol Grup Actiunii';
     constructor(public userrolid, public loginAnswer : LoginAnswer) {}
@@ -76,12 +95,18 @@ export namespace AuthAction {
 
   export class ActiuneSubactiuni {
     static readonly type = '[ActiuneSubactiuni] Actiune Subactiuni';
-    constructor(public parentactiuneid, public grupactactiuneid, public crtGrupAct : any, actParams: ActiuneParametri) {}
+    constructor(public parentactiuneid, public grupactactiuneid, public crtGrupAct : any, 
+                public subactiuniParams: ActiuneParametri, public backaction : string) {}
   }
 
   export class Actiune {
     static readonly type = '[Actiune] Actiune';
     constructor(public grupactactiuneid, public crtGrupAct : any) {}
+  }
+
+  export class Subactiune {
+    static readonly type = '[Subactiune] Subactiune';
+    constructor(public subactiuneid, public crtGrupAct : any) {}
   }
 
   export class GeoZonetara {

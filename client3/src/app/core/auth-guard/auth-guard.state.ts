@@ -61,6 +61,15 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.MemSefGrupAcceptareAfiliere)
+  memMembruAcceptareAfiliere(context: StateContext<AuthAction.MemSefGrupAcceptareAfiliere>, action: AuthAction.MemSefGrupAcceptareAfiliere) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
 
   @Action(AuthAction.MemMembruDezafiliere)
   memMembruCerereDezafiliere(context: StateContext<AuthAction.MemMembruDezafiliere>, action: AuthAction.MemMembruDezafiliere) {
@@ -100,6 +109,27 @@ export class AuthGuardState {
     });
   }
 
+  @Action(AuthAction.MemMembruGrupulMeuVizualizare)
+  memMembruGrupulMeuVizualizare(context: StateContext<AuthAction.MemMembruGrupulMeuVizualizare>, 
+                                       action: AuthAction.MemMembruGrupulMeuVizualizare) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
+  @Action(AuthAction.MemGrupMembriInAsteptare)
+  memGrupMembriInAsteptare(context: StateContext<AuthAction.MemGrupMembriInAsteptare>, action: AuthAction.MemGrupMembriInAsteptare) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+  
+  
   @Action(AuthAction.Rolgrupactiunii)
   rolgrupactiunii(context: StateContext<AuthAction.Rolgrupactiunii>, action: AuthAction.Rolgrupactiunii) {
     const state = context.getState();
@@ -129,6 +159,15 @@ export class AuthGuardState {
 
   @Action(AuthAction.Actiune)
   actiune(context: StateContext<AuthAction.Actiune>, action: AuthAction.Actiune) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+  @Action(AuthAction.Subactiune)
+  subactiune(context: StateContext<AuthAction.Actiune>, action: AuthAction.Subactiune) {
     const state = context.getState();
     context.setState({
       ...state,

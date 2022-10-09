@@ -1,6 +1,6 @@
 package com.potsoft.cart2api.controller;
 
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
 import com.potsoft.cart2api.security.UserDetailsImpl;
 import com.potsoft.cart2api.service.AutUserService;
@@ -8,15 +8,19 @@ import com.potsoft.cart2api.service.MemService;
 //import com.potsoft.cart2api.exception.AppException;
 //import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
+import com.potsoft.cart2api.model.aut.AutUserRol;
 import com.potsoft.cart2api.model.mes.MesDestinMesaj;
 //import com.potsoft.cart2api.model.aut.rol.AutRoleName;
 import com.potsoft.cart2api.payload.response.general.ApiResponse;
+//import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Activare;
 import com.potsoft.cart2api.payload.response.mes.MesMesajePrimiteResponse;
 //import com.potsoft.cart2api.payload.response.aut.JwtAuthenticationResponse;
 import com.potsoft.cart2api.payload.request.aut.LoginRequest;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
 import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
+//import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Activare;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
+import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinMesajRepository;
 import com.potsoft.cart2api.payload.response.aut.JwtResponse;
 import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
@@ -75,6 +79,9 @@ public class AutUserController {
 	@Autowired
 	private AutUserRepository autUserRepository;
 
+	@Autowired
+	private AutUserRolRepository autUserRolRepository;
+
 	//@Autowired
 	//private PasswordEncoder passwordEncoder;
 
@@ -85,6 +92,7 @@ public class AutUserController {
 	//------------------------------------------------
 	@CrossOrigin(origins = "*")
 	@PostMapping("/logout")
+	@Transactional(rollbackFor = { SQLException.class })
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) 
 	{  
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();  
@@ -97,6 +105,7 @@ public class AutUserController {
 	//------------------------------------------------
 	@CrossOrigin(origins = "*")
 	@PostMapping("/login")
+	@Transactional(rollbackFor = { SQLException.class })
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
   
 	  Authentication authentication = authenticationManager.authenticate(
@@ -107,22 +116,40 @@ public class AutUserController {
 	  String jwt = jwtTokenProvider.generateToken(authentication);
 
 	  UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();    
-	  List<String> roles = userDetails.getAuthorities().stream()
+	  /**
+	   * List<String> roles = userDetails.getAuthorities().stream()
 		  .map(item -> item.getAuthority())
 		  .collect(Collectors.toList());
+		  */
+	  Long userId = userDetails.getId();
+	  String username = userDetails.getUsername();
+	  AutUser newUser = autUserRepository.loadByAutUserId(userId);
+	  //--------
+      //AutUser crtUser = autUserRepository.loadByAutUserId(userId);
       //---
 	  MesMesajePrimiteResponse mesaje = new MesMesajePrimiteResponse();
-	  List<MesDestinMesaj> noimesajeprimite = mesDestinMesajRepository.loadListaMesajeNeprimiteDeUser(userDetails.getId());
+	  List<MesDestinMesaj> noimesajeprimite = mesDestinMesajRepository.loadListaMesajeNeprimiteDeUser(userId);
       mesaje.setNoiMesajePrimite(noimesajeprimite);
-	  //--------
-      AutUser crtUser = autUserRepository.loadByAutUserId(userDetails.getId());
-	  crtUser.setAutUserParola("");
+	  if (mesaje.getAcceptatingrup())
+	  {
+		//MembruGrupRequest_Activare membruGrupRequestActivare = new MembruGrupRequest_Activare();
+		//MembruGrupResponse_Activare respActivare = memService.membruGrup_Activare(userId, membruGrupRequestActivare);
+		//autUserService.changeAutUserRol(userId, respActivare.getCrtrol(),respActivare.getNewrol());
+		
+	  }
+	  mesDestinMesajRepository.seteazaMesajeleNoiCaPrimite(userId);
 
+	  
+	  ///autUserRepository.refresh();
+	  //crtUser.setAutUserParola("");
+
+	  List<AutUserRol> userrolList = autUserRolRepository.loadUserRoluriActive(userId);
+	  newUser.setRoles(userrolList);
 	  return ResponseEntity.ok(new JwtResponse(jwt, 
-						   userDetails.getId(), 
-						   userDetails.getUsername(), 
-						   roles,
-						   crtUser,
+	                       userId, 
+						   username, 
+						   null,
+						   newUser,
 						   mesaje));
 	}
 

@@ -2,20 +2,24 @@ package com.potsoft.cart2api.controller;
 
 
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Creare;
+import com.potsoft.cart2api.payload.request.mem.GrupRequest_MembriInAsteptare;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Stergere;
 import com.potsoft.cart2api.payload.request.mem.GrupRequest_Vizualizare;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Creare;
+import com.potsoft.cart2api.payload.response.mem.GrupResponse_MembriInAsteptare;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.GrupResponse_Vizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_CerereAfiliere;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Excludere;
+import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_GrupulMeuVizualizare;
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
+import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_GrupulMeuVizualizare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Plecare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
@@ -118,7 +122,40 @@ public class MemController {
 	  //---
 	  return ResponseEntity.ok(memGrupResponseVizualizare);
 	}
+
+	//-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/membru/grupulmeu_vizualizare")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<MembruGrupResponse_GrupulMeuVizualizare> membru_GrupulMeuVizualizare(
+									@Valid @RequestBody MembruGrupRequest_GrupulMeuVizualizare requestGrupulMeuVizualizare,
+									@CurrentUser UserDetails currentUser) 
+	{
+		UserDetailsImpl crtuser = (UserDetailsImpl) currentUser; 
+		//--
+		//--
+		MembruGrupResponse_GrupulMeuVizualizare respGrupulMeuVizualizare 
+								= memService.membruGrup_GrupulMeuVizualizare(crtuser.getId(), requestGrupulMeuVizualizare);
+		//---
+		return ResponseEntity.ok(respGrupulMeuVizualizare );
+	}
 	
+	
+    //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/grup/membriinasteptare")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<GrupResponse_MembriInAsteptare> grupMembriInAsteptare(
+		                                               @Valid @RequestBody GrupRequest_MembriInAsteptare memGrupRequestMembriInAsteptare,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+      UserDetailsImpl crtuser = (UserDetailsImpl) currentUser; 
+	  //--
+	  //--
+      GrupResponse_MembriInAsteptare memGrupResponseMembriInAsteptare = memService.grup_MembriInAsteptare(crtuser.getId(), memGrupRequestMembriInAsteptare);
+	  //---
+	  return ResponseEntity.ok(memGrupResponseMembriInAsteptare);
+	}
 
 	//-----------------------------------------------------------
 	@CrossOrigin(origins = "*")
@@ -153,7 +190,7 @@ public class MemController {
 
     //-----------------------------------------------------------
 	@CrossOrigin(origins = "*")
-	@PostMapping("/grup/membru/acceptare_afiliere")
+	@PostMapping("/grup/sefgrup/acceptare_afiliere")
 	@Transactional(rollbackFor = { SQLException.class })
 	public ResponseEntity<MembruGrupResponse_AcceptareAfiliere> acceptareAfiliereMembru(
 		                                    @Valid @RequestBody MembruGrupRequest_AcceptareAfiliere memGrupRequestCerereAfiliere,

@@ -11,6 +11,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import org.springframework.data.jpa.repository.Modifying;
+
 
 @Repository
 public interface MesDestinMesajRepository extends JpaRepository<MesDestinMesaj, Long> 
@@ -20,5 +22,10 @@ public interface MesDestinMesajRepository extends JpaRepository<MesDestinMesaj, 
                                                                                  
   @Query("select m from MesDestinMesaj m where (m.mesDestinmesajPrimityn ='n') and (m.mesDestinmesajDestuserid = :destuserid) order by mesDestinmesajDataprimirii" )
   List<MesDestinMesaj> loadListaMesajeNeprimiteDeUser(@Param(value = "destuserid") @NotNull Long destuserid);
+
+  @Modifying
+  @Query("update MesDestinMesaj m set m.mesDestinmesajPrimityn = 'y', m.mesDestinmesajDataprimirii = now() where (m.mesDestinmesajDestuserid = :userid)")
+  void seteazaMesajeleNoiCaPrimite(@Param(value = "userid") Long userid);
+
 
 }

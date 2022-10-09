@@ -108,10 +108,15 @@ export class VizualizGrupPage implements OnInit {
     //this.selDomZonataraid  = event.detail.value; //this.register.get("domzonatara").value;
     var parentactiuneid : number = this.crtactiune.autActiuneId;
     var grupactactiuniid : number = this.crtgrupact.autGrupactiuniId;
-    var actiuneParams = new ActiuneParametri();
+    var subactiuniParams = new ActiuneParametri();
     var memMembruGrup = this.getSelectedMembruGrup(memMembrugrupId, this.grupmembri);
-    actiuneParams.setData(memMembruGrup);
-    this.store.dispatch(new AuthAction.ActiuneSubactiuni(parentactiuneid, grupactactiuniid, this.crtgrupact, actiuneParams));
+    subactiuniParams.setData(memMembruGrup);
+    subactiuniParams.title = memMembruGrup.userinfo.autUserInfoNume + " " + memMembruGrup.userinfo.autUserInfoPrenume;
+    //this.storage.set("crtsubactiuniparams", subactiuniParams);
+    //this.storage.set("backaction","/sefgrup/gestgrup/vizualizgrup");
+    var backaction = "/sefgrup/gestgrup/vizualizgrup";
+    this.store.dispatch(new AuthAction.ActiuneSubactiuni(parentactiuneid, grupactactiuniid, this.crtgrupact, 
+                        subactiuniParams, backaction));
   }
 
 

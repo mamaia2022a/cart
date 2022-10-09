@@ -32,9 +32,9 @@ import com.potsoft.cart2api.service.MesService;
 import com.potsoft.cart2api.service.SmsService;
 
 //import java.util.Date;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
+//import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -233,8 +233,8 @@ public class AutUserServiceImpl implements AutUserService
 	String aut_user_enddt    = null;
 	AutUser newAutUser = new AutUser(aut_user_id, aut_user_nume, aut_user_parola, 
 								aut_user_activ_yn, aut_user_startdt, aut_user_enddt);
-	Set<AutUserRol> roles = new HashSet<>();
-	newAutUser.setRoles(roles);
+	//List<AutUserRol> roles = new ArrayList<AutUserRoles>();
+	//newAutUser.setRoles(roles);
 	return newAutUser ;							
   }
 

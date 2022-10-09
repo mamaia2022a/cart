@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/actiunesubactiuni"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ng-container *ngIf="crtsubactiune$">
+    <h3>{{crtsubactiune.autActiuneDisplaynume}}</h3>
+  </ng-container>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+
+     </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size-md="6" size-lg="5" size-xs="12">
+        <ng-container *ngIf="crtsubactiuniparams$">
+        
+          <ion-item color="light" class="ion-no-inner-padding-end">
+            <ion-input type="text" value="Nume: {{membru.userinfo.autUserInfoNume}}" [readonly]="true"></ion-input>
+          </ion-item>
+          <ion-item color="light" class="ion-no-inner-padding-end">
+            <ion-input type="text" value="Prenume: {{membru.userinfo.autUserInfoPrenume}}" [readonly]="true"></ion-input>
+          </ion-item>
+        </ng-container>
+
+          <form [formGroup]="frmExcludereMembru" (ngSubmit)="onExcludereMembru()">
+            <!--
+            <ion-card color="light" class="auth-card ion-margin">
+              <ion-item color="light" class="ion-no-inner-padding-end">
+                <ion-input type="text" [readonly]="true" placeholder="Confirmați că doriți excluderea acestui Membru din Grup" formControlName="mesaj"></ion-input>
+              </ion-item>
+            </ion-card>
+            -->
+              <ion-button
+              expand="block"
+              class="ion-margin-start ion-margin-end ion-margin-bottom"
+              type="submit"
+              [disabled]="!frmExcludereMembru.valid"
+            >
+              Excludeți Membrul din grup
+            </ion-button>
+          
+            <span class="ion-margin"></span>
+          </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

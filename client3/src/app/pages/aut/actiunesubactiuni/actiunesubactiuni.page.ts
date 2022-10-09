@@ -19,6 +19,9 @@ export class ActiuneSubactiuniPage implements OnInit {
   crtactiune : any; 
   crtsubactiuni$ : Observable<any>
   crtsubactiuni : any;
+  backaction : string;
+  crtsubactiuniparams$ : Observable<any>
+  crtsubactiuniparams  : any;
 
   constructor(private storage: Storage, private store: Store)  
   {
@@ -46,6 +49,19 @@ export class ActiuneSubactiuniPage implements OnInit {
                   self.crtsubactiuni = data3;
                   self.crtsubactiuni$ = of(data3);
 
+
+                  var data4 = await this.storage.get("backaction");
+                  while (data4 == null) 
+                    data4 = await this.storage.get("backaction");
+                  self.backaction = data4;
+
+                  var data5 = await this.storage.get("crtsubactiuniparams");
+                  while (data5 == null) 
+                    data5 = await this.storage.get("crtsubactiuniparams");
+                  //---
+                  self.crtsubactiuniparams = data5;
+                  self.crtsubactiuniparams$ = of(data5);
+
             })
   }
 
@@ -69,9 +85,9 @@ export class ActiuneSubactiuniPage implements OnInit {
     }
   }
 
-  selectieGrupactactiune(grupactactiuneid : number) {
-      console.log("selectie grupactactiuneid : " + grupactactiuneid);
-      this.store.dispatch(new AuthAction.Actiune(grupactactiuneid, this.crtgrupact));
+  selectieGrupactactiune(subactiuneid : number) {
+      console.log("selectie grupactactiuneid : " + subactiuneid);
+      this.store.dispatch(new AuthAction.Subactiune(subactiuneid, this.crtgrupact));
   }
 
   ngOnInit(){
