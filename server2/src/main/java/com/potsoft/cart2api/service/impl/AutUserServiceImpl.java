@@ -166,7 +166,7 @@ public class AutUserServiceImpl implements AutUserService
 		}
 	
 	  }else{
-
+		throw new CartapiException(HttpStatus.BAD_REQUEST, "Număr de telefon invalid.");
 	  }
 	}
 	//----

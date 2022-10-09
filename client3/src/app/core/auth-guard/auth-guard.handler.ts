@@ -262,7 +262,7 @@ export class AuthHandler {
           //console.log(data);
           console.log(response);
           toastService.default("Ați trimis cu succes cererea de Afiliere la Grup. Veți fi notificat când se va aproba.") ;
-          this.navController.navigateRoot(appConfig.routes.auth.login);
+          //this.navController.navigateRoot(appConfig.routes.auth.login);
           return;
           //return of(true);
         },
