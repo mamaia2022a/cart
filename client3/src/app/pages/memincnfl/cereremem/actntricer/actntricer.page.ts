@@ -18,7 +18,7 @@ export class ActNTriCerPage implements OnInit {
 
   frmActNTriCererea: FormGroup = new FormGroup(
     {
-       mesaj: new FormControl('Confirmarea pentru Membru Experimentat Afiliat',[]),// [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+       mesaj: new FormControl('Confirmare pentru Membru Activ Neafiliat',[]),// [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     });
   crtactiune : any = null;
   loginResponse : any;

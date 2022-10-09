@@ -35,7 +35,7 @@ export class PendingMemPage implements OnInit {
   constructor(private store: Store, private navController: NavController, private platform: Platform, private storage: Storage)  
   {
     var self = this;
-
+    this.storage.remove("grupmembriinasteptare");
     //this.confirmsimact = null;
     var self = this;
     this.getLocalStorageData()
