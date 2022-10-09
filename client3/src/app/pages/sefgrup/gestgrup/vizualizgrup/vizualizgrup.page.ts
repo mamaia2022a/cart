@@ -35,6 +35,7 @@ export class VizualizGrupPage implements OnInit {
   constructor(private store: Store, private navController: NavController, private platform: Platform, private storage: Storage)  
   {
     var self = this;
+    //this.storage.remove("grupmembri");
 
     //this.confirmsimact = null;
     var self = this;
