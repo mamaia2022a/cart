@@ -28,7 +28,7 @@ export class RegisterPage implements OnInit {
        nume: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        prenume: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        telefon: new FormControl('', [Validators.required, Validators.maxLength(150)]),
-       email: new FormControl('', [Validators.maxLength(150)]),
+       email: new FormControl('', [Validators.required, Validators.maxLength(150)]),
        datanasterii: new FormControl('', [Validators.maxLength(150)]),
        sex: new FormControl('', [Validators.maxLength(150)]),
        domzonatara: new FormControl('', [Validators.required, Validators.maxLength(150)]),
