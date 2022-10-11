@@ -472,8 +472,8 @@ VALUES
 (210974, 'GESTACTEXERENUFAZVACTV', 'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare',
                                    'Renunțare Participare Fază Activitate', 'Renunțați la Înscrierea la o Fază a unei Activități Viitoare care urmează să se desfășoare',
                                    null, null, null, null),
-(210976, 'GESTACTEXELISTFAZACTC', 'Listă Faze Activitate CurentăVi', 'Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
-                                  'Listă Faze Activitate CurentăVi', 'Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
+(210976, 'GESTACTEXELISTFAZACTC', 'Listă Faze Activitate Curentă', 'Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
+                                  'Listă Faze Activitate Curentă', 'Vizualizarea Fazelor unei Activități Curente (care se desfășoară în mai multe Faze)',
                                   null, null, null, null),
 (210978, 'GESTACTEXEVIZFAZACTC', 'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)',
                                  'Vizualizare Fază Activitate Curentă', 'Vizualizarea unei Faze a unei Activități Curente (care se desfășoară în mai multe Faze)',
@@ -542,7 +542,59 @@ VALUES
 (280901, 'VIZGRUPMEMVIZGRUP', 'Vizualizare Grup din care fac parte', 'Vizualizează Grupul Meu și Membri săi',
                                  'Vizualizare Grup din care fac parte', 'Vizualizează Grupul Meu și Membri săi',
                                  "Informații Membru", "Informatii Membru, Activități, Punctaje",
-                                 "Informații Membru", "Informatii Membru, Activități, Punctaje")
+                                 "Informații Membru", "Informatii Membru, Activități, Punctaje"),
+
+-- ===============================================================
+--   GESTIUNE ADMINISTRATORI 
+-- ===============================================================
+(10905, 'GESTADMINVIZLISTADM', 'Vizualizare Lista de Administratori', 'Vizualizează Lista de Administratori',
+                                'Vizualizare Lista de Administratori', 'Vizualizează Lista de Administratori',
+                                "Informații Administrator", "Informatii despre Administrator",
+                                "Informații Administrator", "Informatii despre Administrator"),
+(10910, 'GESTADMINVIZADMIN',  'Vizualizare Administrator', 'Vizualizează Administratorul și Informațiile sale',
+                               'Vizualizare Administrator', 'Vizualizează Adminsitratorul și Informațiile sale',
+                               null, null, null, null),
+(10915, 'GESTADMINEXCLUDADMIN', 'Excludere Administrator', 'Excludeți Administratorul din Lista de Administratori',
+                                 'Excludere Administrator', 'Excludeți Administratorul din Lista de Administratori',
+                                 null, null, null, null), 
+
+(10920, 'GESTADMININVITADM', 'Invitație Administrator', 'Invitați o Persoană pentru a deveni Administrator',
+                              'Invitație Administrator', 'Invitați o Persoană pentru a deveni Administrator',
+                              null, null, null, null), 
+
+(10925, 'GESTADMINPENDLISTADM', 'Vizualizare Lista Invitați Administratori', 'Vizualizează Lista de Persoane Invitate pentru rolul de Administrator',
+                                'Vizualizare Lista Invitați Administratori', 'Vizualizează Lista de Persoane Invitate pentru rolul de Administrator',
+                                "Persoană Invitată pentrul rolul de Administrator", "Informatii despre persoana invitată pentru rolul de Administrator",
+                                "Persoană Invitată pentrul rolul de Administrator", "Informatii despre persoana invitată pentru rolul de Administrator"),
+(10930, 'GESTADMINVIZPENDADM', 'Vizualizare Invitat Administrator', 'Vizualizează Informații despre Persoana invitată pentru rolul de Administrator',
+                                'Vizualizare Invitat Administrator', 'Vizualizează Informații despre Persoana invitată pentru rolul de Administrator',
+                                null, null, null, null),
+
+(10935, 'GESTADMINREFUZLISTADM', 'Vizualizare Lista Refuzuri Administratori', 'Vizualizează Lista de Persoane care au refuzat rolul de Administrator',
+                                 'Vizualizare Lista Refuzuri Administratori', 'Vizualizează Lista de Persoane care au refuzat rolul de Administrator',
+                                "Persoană Invitată pentrul rolul de Administrator", "Informatii despre persoana care a refuzat rolul de Administrator",
+                                "Persoană Invitată pentrul rolul de Administrator", "Informatii despre persoana care a refuzat rolul de Administrator"),
+(10940, 'GESTADMINVIZREFUZMEM', 'Vizualizare Refuz Administrator', 'Vizualizează Informații despre Persoana care a refuzat rolul de Administrator',
+                             'Vizualizare Refuz Administrator', 'Vizualizează Informații despre Persoana care a refuzat rolul de Administrator',
+                                null, null, null, null),
+
+
+(10945, 'GESTADMINEXCLUSLISTADM', 'Vizualizare Lista Administratori Excluși', 'Vizualizează Lista de Persoane care au fost excluși din rolul de Administrator',
+                                  'Vizualizare Lista Administratori Excluși', 'Vizualizează Lista de Persoane care au fost excluși din rolul de Administrator',
+                                "Persoană Exclusă din rolul de Administrator", "Informații despre persoana exclusă din rolul de Administrator",
+                                "Persoană Exclusă din rolul de Administrator", "Informații despre persoana exclusă din rolul de Administrator"),
+(10950, 'GESTADMINVIZEXCLUSMEM', 'Vizualizare Administrator Exclus', 'Vizualizează Informații despre Persoana care a fost exclusă din rolul de Administrator',
+                                 'Vizualizare Administrator Exclus',  'Vizualizează Informații despre Persoana care a fost exclusă din rolul de Administrator',
+                                null, null, null, null),
+
+
+(10955, 'GESTADMINPLECATLISTADM', 'Vizualizare Lista Administratori Plecați', 'Vizualizează Lista de Persoane care au fost excluși din rolul de Administrator',
+                                  'Vizualizare Lista Administratori Plecați', 'Vizualizează Lista de Persoane care au fost excluși din rolul de Administrator',
+                                "Persoana Plecată din rolul de Administrator", "Informații despre persoana exclusă din rolul de Administrator",
+                                "Persoană Plecată din rolul de Administrator", "Informații despre persoana exclusă din rolul de Administrator"),
+(10960, 'GESTADMINVIZPLECATMEM', 'Vizualizare Administrator Plecat', 'Vizualizează Informații despre Persoana care a plecat din rolul de Administrator',
+                                'Vizualizare Administrator Plecat',  'Vizualizează Informații despre Persoana care a plecat din rolul de Administrator',
+                                null, null, null, null)
 
 ;
 
@@ -621,8 +673,29 @@ VALUES
 (2730, 300, 'GESTGRUP', 300920, 'GESTGRUPVIZPENDMEM',       3, 300905, 'GESTGRUPPENDINGMEM'),
 (2735, 300, 'GESTGRUP', 300925, 'GESTGRUPACCPENDMEM',       4, 300905, 'GESTGRUPPENDINGMEM'),
 
-(2745, 280, 'VIZGRUPMEM', 280901, 'VIZGRUPMEMVIZGRUP',     1, null, null)
+(2745, 280, 'VIZGRUPMEM', 280901, 'VIZGRUPMEMVIZGRUP',     1, null, null),
 
+
+-- ===============================================================
+--   GESTIUNE ADMINISTRATORI 
+-- ===============================================================
+(2801, 10, 'GESTADMIN', 10905, 'GESTADMINVIZLISTADM',      1,   null,                null),
+(2810, 10, 'GESTADMIN', 10910, 'GESTADMINVIZADMIN',        10, 10905, 'GESTADMINVIZLISTADM'),
+(2815, 10, 'GESTADMIN', 10915, 'GESTADMINEXCLUDADMIN',     11, 10910, 'GESTADMINVIZLISTADM'),
+
+(2820, 10, 'GESTADMIN', 10920, 'GESTADMININVITADM',        2,   null,                null),
+
+(2825, 10, 'GESTADMIN', 10925, 'GESTADMINPENDLISTADM',      3,   null,                null),
+(2830, 10, 'GESTADMIN', 10930, 'GESTADMINVIZPENDADM',       31, 10925, 'GESTADMINPENDLISTADM'),
+
+(2835, 10, 'GESTADMIN', 10935, 'GESTADMINREFUZLISTADM',    6,   null,                null),
+(2840, 10, 'GESTADMIN', 10940, 'GESTADMINVIZREFUZMEM',     61, 10955, 'GESTADMINREFUZLISTADM'),
+
+(2845, 10, 'GESTADMIN', 10945, 'GESTADMINEXCLUSLISTADM',    4,   null,                null),
+(2850, 10, 'GESTADMIN', 10950, 'GESTADMINVIZEXCLUSMEM',     41, 10935, 'GESTADMINEXCLUSLISTADM'),
+
+(2855, 10, 'GESTADMIN', 10955, 'GESTADMINPLECATLISTADM',    5,   null,                null),
+(2860, 10, 'GESTADMIN', 10960, 'GESTADMINVIZPLECATMEM',     51, 10945, 'GESTADMINPLECATLISTADM')
 ;
 
 
@@ -1172,7 +1245,7 @@ CREATE TABLE `geo_zonalocalitate` (
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
- 
+ /**
 CREATE TABLE `geo_sectievotare` (
    `geo_sectievotare_id`	int not null AUTO_INCREMENT,  
    `geo_sectievotare_zonataraid`	int	not null, 
@@ -1199,6 +1272,119 @@ CREATE TABLE `geo_sectievotare` (
   primary key (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
+*/
+
+CREATE TABLE `geo_sectievotare` (
+  `geo_sectievotare_id` int NOT NULL AUTO_INCREMENT,
+  `geo_sectievotare_zonataraid` int NOT NULL,
+  `geo_sectievotare_zonataracod` varchar(2) NOT NULL,
+  `geo_sectievotare_zonataranume` varchar(10) NOT NULL,
+  `geo_sectievotare_judetid` int NOT NULL,
+  `geo_sectievotare_judetcod` varchar(2) DEFAULT NULL,
+  `geo_sectievotare_judetnume` varchar(32) DEFAULT NULL,
+  `geo_sectievotare_zonajudetid` int DEFAULT NULL,
+  `geo_sectievotare_zonajudetcod` varchar(9) DEFAULT NULL,
+  `geo_sectievotare_zonajudetnume` varchar(32) DEFAULT NULL,
+  `geo_sectievotare_localitateid` int DEFAULT NULL,
+  `geo_sectievotare_localitatecod` int DEFAULT NULL,
+  `geo_sectievotare_localitatenume` varchar(32) DEFAULT NULL,
+  `geo_sectievotare_zonalocalitateid` int DEFAULT NULL,
+  `geo_sectievotare_zonalocalitatecod` varchar(9) DEFAULT NULL,
+  `geo_sectievotare_zonalocalitatenume` varchar(32) DEFAULT NULL,
+  `geo_sectievotare_nr` int NOT NULL,
+  `geo_sectievotare_sediu` varchar(128) NOT NULL,
+  `geo_sectievotare_nrbe` int NOT NULL,
+  `geo_sectievotare_codsiruta` int NOT NULL,
+  `geo_sectievotare_uatcod` int DEFAULT NULL,
+  `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
+  `geo_sectievotare_tmp_judet` varchar(2) DEFAULT NULL,
+  `geo_sectievotare_tmp_uat` varchar(64) DEFAULT NULL,
+  `geo_sectievotare_tmp_cod_siruta` int DEFAULT NULL,
+  `geo_sectievotare_nr_birou` int DEFAULT NULL,
+  `geo_sectievotare_nr_sv` int DEFAULT NULL,
+  `geo_sectievotare_sediu_sv` varchar(256) DEFAULT NULL,
+  `geo_sectievotare_adresa_sv` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`geo_sectievotare_id`),
+  UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+update sectii a  join sectii b on a.sectie_id = b.sectie_id + 1
+   set a.nr_sv     = b.nr_sv,
+       a.sediu_sv  = b.sediu_sv,
+       a.adresa_sv = b.adresa_sv
+   where (a.nr_sv = 0) and (b.nr_sv > 0) ;
+
+update sectii a  join sectii b on a.sectie_id = b.sectie_id + 1
+   set a.localitate_sat     = b.localitate_sat
+   where (a.localitate_sat = '') and (b.localitate_sat <> '') ;
+
+TRUNCATE TABLE cart2.geo_sectievotare;
+INSERT INTO cart2.geo_sectievotare(
+  `geo_sectievotare_id`,
+  `geo_sectievotare_zonataraid`,
+  `geo_sectievotare_zonataracod`,
+  `geo_sectievotare_zonataranume`,
+  `geo_sectievotare_judetid`,
+  `geo_sectievotare_judetcod`,
+  `geo_sectievotare_judetnume`,
+  `geo_sectievotare_zonajudetid`,
+  `geo_sectievotare_zonajudetcod`,
+  `geo_sectievotare_zonajudetnume`,
+  `geo_sectievotare_localitateid`,
+  `geo_sectievotare_localitatecod`,
+  `geo_sectievotare_localitatenume`,
+  `geo_sectievotare_zonalocalitateid`,
+  `geo_sectievotare_zonalocalitatecod`,
+  `geo_sectievotare_zonalocalitatenume`,
+  `geo_sectievotare_nr`,
+  `geo_sectievotare_sediu`,
+  `geo_sectievotare_nrbe`,
+  `geo_sectievotare_codsiruta`,
+  `geo_sectievotare_uatcod`,
+  `geo_sectievotare_uatnume`,
+  `geo_sectievotare_tmp_judet`,
+  `geo_sectievotare_tmp_uat`,
+  `geo_sectievotare_tmp_cod_siruta`,
+  `geo_sectievotare_nr_birou`,
+  `geo_sectievotare_nr_sv`,
+  `geo_sectievotare_sediu_sv`,
+  `geo_sectievotare_adresa_sv`
+  )
+  SELECT
+     null, -- `geo_sectievotare_id`,
+     0, -- `geo_sectievotare_zonataraid`,
+     0, -- `geo_sectievotare_zonataracod`,
+     0, -- `geo_sectievotare_zonataranume`,
+     0, -- `geo_sectievotare_judetid`,
+     0, -- `geo_sectievotare_judetcod`,
+     0, -- `geo_sectievotare_judetnume`,
+     0, -- `geo_sectievotare_zonajudetid`,
+     0, -- `geo_sectievotare_zonajudetcod`,
+     0, -- `geo_sectievotare_zonajudetnume`,
+     0, -- `geo_sectievotare_localitateid`,
+     0, -- `geo_sectievotare_localitatecod`,
+     0, -- `geo_sectievotare_localitatenume`,
+     0, -- `geo_sectievotare_zonalocalitateid`,
+     0, -- `geo_sectievotare_zonalocalitatecod`,
+     0, -- `geo_sectievotare_zonalocalitatenume`,
+     nr_birou * 100000 + nr_sv, -- `geo_sectievotare_nr`,
+     0, -- `geo_sectievotare_sediu`,
+     0, -- `geo_sectievotare_nrbe`,
+     0, -- `geo_sectievotare_codsiruta`,
+     0, -- `geo_sectievotare_uatcod`,
+     0, -- `geo_sectievotare_uatnume`,
+     judet, -- `geo_sectievotare_tmp_judet`,
+     uat, -- `geo_sectievotare_tmp_uat`,
+     cod_siruta, -- `geo_sectievotare_tmp_cod_siruta`,
+     nr_birou, -- `geo_sectievotare_nr_birou`,
+     nr_sv, -- `geo_sectievotare_nr_sv`,
+     sediu_sv, -- `geo_sectievotare_sediu_sv`,
+     adresa_sv -- `geo_sectievotare_adresa_sv`,
+	     FROM 
+         (SELECT distinct judet, uat, cod_siruta, nr_birou, nr_sv, sediu_sv, adresa_sv FROM localitati.sectii) as s
+          WHERE nr_birou * 10000 + nr_sv is not null;
+
 
 
 CREATE TABLE `geo_codpostal` (

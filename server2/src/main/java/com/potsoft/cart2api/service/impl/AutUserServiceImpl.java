@@ -104,6 +104,7 @@ public class AutUserServiceImpl implements AutUserService
 	}
 	if (Boolean.TRUE.equals(autUserInfoRepository.existsByAutUserInfoTelefon(registerRequest.getUsername()))) 
 	{
+	  //throw new CartapiException(HttpStatus.BAD_REQUEST, "Acest numar de telefon este deja inregistrat.");
 	}
 	if (Boolean.TRUE.equals(autUserInfoRepository.existsByAutUserInfoEmail(registerRequest.getEmail()))) 
 	{
@@ -117,7 +118,7 @@ public class AutUserServiceImpl implements AutUserService
 	registerResponse.setAutUser(user);
     //---
 	Long newuserid       = user.getAutUserId();
-	String aut_user_nume = user.getAutUserNume();
+	//String aut_user_nume = user.getAutUserNume();
 	//---
 	AutValidInreg newAutValidInreg = creazaSiSalveazaAutValidInreg(newuserid);
 	if (newAutValidInreg == null)
@@ -129,12 +130,14 @@ public class AutUserServiceImpl implements AutUserService
 	  throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea AutUserInfo");
 	registerResponse.setAutUserInfo(newAutUserInfo);
 	//---
+	/** 
 	AutUserRol newTestRol = createTestUserRoles(newuserid, aut_user_nume);
 	if (newTestRol != null) //created for test
 	{
 	  registerResponse.setAutUserRol(newTestRol);
 	  return registerResponse;
 	}  
+	*/
 	//---
 	AutUserRol newSimpatPendRol = this.creazaSiSalveazaAutUserRol(newuserid, "SIMPATPEND", true);
 	if (newSimpatPendRol == null)
@@ -394,7 +397,7 @@ public class AutUserServiceImpl implements AutUserService
   }
 
 
-
+  /** 
   private AutUserRol createTestUserRoles(Long userId, String username)
   {
 	//---
@@ -500,6 +503,7 @@ public class AutUserServiceImpl implements AutUserService
 	}
 	return null;
   }
+  */
 }
 
 

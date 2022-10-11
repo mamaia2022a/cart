@@ -5,6 +5,7 @@ package com.potsoft.cart2api.controller;
 import com.potsoft.cart2api.security.UserDetailsImpl;
 import com.potsoft.cart2api.service.AutUserService;
 import com.potsoft.cart2api.service.MemService;
+import com.potsoft.cart2api.exception.CartapiException;
 //import com.potsoft.cart2api.exception.AppException;
 //import com.potsoft.cart2api.exception.CartapiException;
 import com.potsoft.cart2api.model.aut.AutUser;
@@ -29,6 +30,7 @@ import com.potsoft.cart2api.security.CurrentUser;
 //import com.potsoft.cart2api.security.CurrentUser;
 import com.potsoft.cart2api.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 //import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -36,6 +38,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,6 +88,9 @@ public class AutUserController {
 	//@Autowired
 	//private PasswordEncoder passwordEncoder;
 
+	//@Autowired
+	//private PasswordDecoder passwordDecoder;
+
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
 
@@ -121,6 +127,7 @@ public class AutUserController {
 		  .map(item -> item.getAuthority())
 		  .collect(Collectors.toList());
 		  */
+		 ///passwordEncoder. "$2a$10$kWdnlFGDvqV6UzqY7M3leeJXZ4nnGy6VU2ufmyZca";
 	  Long userId = userDetails.getId();
 	  String username = userDetails.getUsername();
 	  AutUser newUser = autUserRepository.loadByAutUserId(userId);
@@ -186,8 +193,20 @@ public class AutUserController {
 		                                                                                validateRegistrationRequest);
 	  if (validateRegistrationResponse.getCodValidareAcceptat() == "y")
 	  {
+		Long userid = crtuser.getId();
+		String username = crtuser.getUsername();
 		autUserService.changeAutUserRol(crtuser.getId(), "SIMPATPEND", "SIMPATIZ");
 		memService.membru_Creare(crtuser.getId(), "SIMPATIZ");
+			//----
+		if (username.equals("superadmin"))
+		{
+		  AutUserRol newSuperadminRol = autUserService.creazaSiSalveazaAutUserRol(userid, "SUPERADMIN", 
+		                                                                                  true);
+		  if (newSuperadminRol == null)
+			throw new CartapiException(HttpStatus.BAD_REQUEST, "[User Registration] Nu se poate crea rolul utilizator Superadmin");
+		  //registerResponse.setAutUserRol(newSuperadminRol);	
+		}
+
 	  }
 	  //---
 	  return ResponseEntity.ok(validateRegistrationResponse);
