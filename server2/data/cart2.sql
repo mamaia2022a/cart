@@ -977,6 +977,27 @@ CREATE TABLE cart2.`geo_uat` (
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
 
+CREATE TABLE `geo_uat` (
+  `geo_uat_id` int NOT NULL AUTO_INCREMENT,
+  `geo_uat_zonataraid` int NOT NULL,
+  `geo_uat_zonataracod` varchar(2) COLLATE utf8mb4_romanian_ci NOT NULL,
+  `geo_uat_zonataranume` varchar(10) COLLATE utf8mb4_romanian_ci NOT NULL,
+  `geo_uat_judetid` int NOT NULL,
+  `geo_uat_judetcod` varchar(2) COLLATE utf8mb4_romanian_ci NOT NULL,
+  `geo_uat_judetnume` varchar(64) COLLATE utf8mb4_romanian_ci NOT NULL,
+  `geo_uat_cod` int NOT NULL,
+  `geo_uat_nume` varchar(64) COLLATE utf8mb4_romanian_ci NOT NULL,
+  `geo_uat_longitudine` decimal(18,16) DEFAULT NULL,
+  `geo_uat_latitudine` decimal(18,16) DEFAULT NULL,
+  `geo_uat_regiuneid` int DEFAULT NULL,
+  `geo_uat_zonajudetid` int DEFAULT '0',
+  `geo_uat_zonajudetcod` varchar(9) COLLATE utf8mb4_romanian_ci DEFAULT '',
+  `geo_uat_zonajudetnume` varchar(64) COLLATE utf8mb4_romanian_ci DEFAULT '',
+  PRIMARY KEY (`geo_uat_id`),
+  UNIQUE KEY `geo_uat_unique` (`geo_uat_cod`)
+) ENGINE=InnoDB AUTO_INCREMENT=7887 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_romanian_ci;
+
+
 INSERT INTO cart2.geo_uat
 (
   geo_uat_id,	
@@ -1245,35 +1266,64 @@ CREATE TABLE `geo_zonalocalitate` (
   UNIQUE KEY `geo_zonalocalitate_nume_unique` (`geo_zonalocalitate_nume`)
 ) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
 
- /**
-CREATE TABLE `geo_sectievotare` (
-   `geo_sectievotare_id`	int not null AUTO_INCREMENT,  
-   `geo_sectievotare_zonataraid`	int	not null, 
-   `geo_sectievotare_zonataracod`	varchar(2) not null, 
-   `geo_sectievotare_zonataranume`	varchar(10)	not null, 
-   `geo_sectievotare_judetid`	int	not null, 
-   `geo_sectievotare_judetcod`	varchar(2),
-   `geo_sectievotare_judetnume`	varchar(32),	
-   `geo_sectievotare_zonajudetid`	int,
-   `geo_sectievotare_zonajudetcod`	varchar(9),
-   `geo_sectievotare_zonajudetnume`	varchar(32),
-   `geo_sectievotare_localitateid`	int,
-   `geo_sectievotare_localitatecod`	int,
-   `geo_sectievotare_localitatenume`	varchar(32),
-   `geo_sectievotare_zonalocalitateid`	int,
-   `geo_sectievotare_zonalocalitatecod`	varchar(9),
-   `geo_sectievotare_zonalocalitatenume`	varchar(32),
-   `geo_sectievotare_nr`	int not null,
-   `geo_sectievotare_sediu`	varchar(128) not null,	
-   `geo_sectievotare_nrbe`	int	not null,
-   `geo_sectievotare_codsiruta`	int	not null,
-   `geo_sectievotare_uatcod`	varchar(2),
-   `geo_sectievotare_uatnume`	varchar(128),	
-  primary key (`geo_sectievotare_id`),
-  UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
-) engine=innodb default charset=utf8mb4 collate=utf8mb4_romanian_ci;
-*/
+ 
 
+CREATE TABLE `sectii` (
+  `sectie_id` int NOT NULL AUTO_INCREMENT,
+  `judet` varchar(2) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `uat` varchar(128) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `cod_siruta` int DEFAULT NULL,
+  `nr_birou` int DEFAULT NULL,
+  `nr_sv` int DEFAULT NULL,
+  `sediu_sv` varchar(256) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `adresa_sv` varchar(256) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `localitate_sat` varchar(256) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `cod_artera` varchar(32) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `artera` varchar(512) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `numar_imobil` varchar(512) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `observatii` varchar(512) COLLATE utf8mb4_roman_ci DEFAULT NULL,
+  `minsectieid` int DEFAULT NULL,
+  `idx` int DEFAULT NULL,
+  `codunic_artera` int DEFAULT NULL,
+  PRIMARY KEY (`sectie_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=131071 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+-- se repeta de n-ori --
+update sectii a  join sectii b on a.sectie_id = b.sectie_id + 1
+   set a.nr_sv     = b.nr_sv,
+       a.sediu_sv  = b.sediu_sv,
+       a.adresa_sv = b.adresa_sv
+   where (a.nr_sv = 0) and (b.nr_sv > 0) ;
+
+-- se repeta de n-ori --
+update sectii a  join sectii b on a.sectie_id = b.sectie_id + 1
+   set a.localitate_sat     = b.localitate_sat
+   where (a.localitate_sat = '') and (b.localitate_sat <> '') ;
+
+
+UPDATE localitati.sectii 
+  SET cod_artera = 900000 + sectie_id,
+	  artera = concat(localitate_sat, " - Strada Principală")
+    where cod_artera=0;
+
+
+UPDATE sectii a 
+  JOIN (select min(sectie_id) min, nr_sv, nr_birou from sectii group by nr_sv, nr_birou) b
+    ON 	 (a.nr_sv  = b.nr_sv)
+	 and (a.nr_birou = b.nr_birou)   
+   SET a.minsectieid = b.min
+       ;
+
+UPDATE localitati.sectii 
+  SET idx  = sectie_id - minsectieid;
+
+
+UPDATE localitati.sectii 
+  SET codunic_artera = nr_birou * 10000000 + nr_sv*1000 + idx;
+
+
+DROP TABLE IF EXISTS `geo_sectievotare`;
 CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_id` int NOT NULL AUTO_INCREMENT,
   `geo_sectievotare_zonataraid` int NOT NULL,
@@ -1285,9 +1335,15 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_zonajudetid` int DEFAULT NULL,
   `geo_sectievotare_zonajudetcod` varchar(9) DEFAULT NULL,
   `geo_sectievotare_zonajudetnume` varchar(32) DEFAULT NULL,
+  `geo_sectievotare_uatid` int DEFAULT NULL,
+  `geo_sectievotare_uatcod` int DEFAULT NULL,
+  `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
+  `geo_sectievotare_zonauatid` int DEFAULT NULL,
+  `geo_sectievotare_zonauatcod` varchar(9) DEFAULT NULL,
+  `geo_sectievotare_zonauatnume` varchar(32) DEFAULT NULL,
   `geo_sectievotare_localitateid` int DEFAULT NULL,
   `geo_sectievotare_localitatecod` int DEFAULT NULL,
-  `geo_sectievotare_localitatenume` varchar(32) DEFAULT NULL,
+  `geo_sectievotare_localitatenume` varchar(128) DEFAULT NULL,
   `geo_sectievotare_zonalocalitateid` int DEFAULT NULL,
   `geo_sectievotare_zonalocalitatecod` varchar(9) DEFAULT NULL,
   `geo_sectievotare_zonalocalitatenume` varchar(32) DEFAULT NULL,
@@ -1295,8 +1351,6 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_sediu` varchar(128) NOT NULL,
   `geo_sectievotare_nrbe` int NOT NULL,
   `geo_sectievotare_codsiruta` int NOT NULL,
-  `geo_sectievotare_uatcod` int DEFAULT NULL,
-  `geo_sectievotare_uatnume` varchar(128) DEFAULT NULL,
   `geo_sectievotare_tmp_judet` varchar(2) DEFAULT NULL,
   `geo_sectievotare_tmp_uat` varchar(64) DEFAULT NULL,
   `geo_sectievotare_tmp_cod_siruta` int DEFAULT NULL,
@@ -1304,20 +1358,15 @@ CREATE TABLE `geo_sectievotare` (
   `geo_sectievotare_nr_sv` int DEFAULT NULL,
   `geo_sectievotare_sediu_sv` varchar(256) DEFAULT NULL,
   `geo_sectievotare_adresa_sv` varchar(256) DEFAULT NULL,
+  `geo_sectievotare_sirutalevel2_yn` varchar(1) DEFAULT NULL,
+  `geo_sectievotare_sirutalevel3_yn` varchar(1) DEFAULT NULL,
+  `geo_sectievotare_partedinsv_yn` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`geo_sectievotare_id`),
   UNIQUE KEY `geo_sectievotare_nr_unique` (`geo_sectievotare_nr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
-update sectii a  join sectii b on a.sectie_id = b.sectie_id + 1
-   set a.nr_sv     = b.nr_sv,
-       a.sediu_sv  = b.sediu_sv,
-       a.adresa_sv = b.adresa_sv
-   where (a.nr_sv = 0) and (b.nr_sv > 0) ;
 
-update sectii a  join sectii b on a.sectie_id = b.sectie_id + 1
-   set a.localitate_sat     = b.localitate_sat
-   where (a.localitate_sat = '') and (b.localitate_sat <> '') ;
 
 TRUNCATE TABLE cart2.geo_sectievotare;
 INSERT INTO cart2.geo_sectievotare(
@@ -1331,6 +1380,12 @@ INSERT INTO cart2.geo_sectievotare(
   `geo_sectievotare_zonajudetid`,
   `geo_sectievotare_zonajudetcod`,
   `geo_sectievotare_zonajudetnume`,
+  `geo_sectievotare_uatid`,
+  `geo_sectievotare_uatcod`,
+  `geo_sectievotare_uatnume`,
+  `geo_sectievotare_zonauatid`,
+  `geo_sectievotare_zonauatcod`,
+  `geo_sectievotare_zonauatnume`,
   `geo_sectievotare_localitateid`,
   `geo_sectievotare_localitatecod`,
   `geo_sectievotare_localitatenume`,
@@ -1341,15 +1396,16 @@ INSERT INTO cart2.geo_sectievotare(
   `geo_sectievotare_sediu`,
   `geo_sectievotare_nrbe`,
   `geo_sectievotare_codsiruta`,
-  `geo_sectievotare_uatcod`,
-  `geo_sectievotare_uatnume`,
   `geo_sectievotare_tmp_judet`,
   `geo_sectievotare_tmp_uat`,
   `geo_sectievotare_tmp_cod_siruta`,
   `geo_sectievotare_nr_birou`,
   `geo_sectievotare_nr_sv`,
   `geo_sectievotare_sediu_sv`,
-  `geo_sectievotare_adresa_sv`
+  `geo_sectievotare_adresa_sv`,
+  `geo_sectievotare_sirutalevel2_yn`,
+  `geo_sectievotare_sirutalevel3_yn`,
+  `geo_sectievotare_partedinsv_yn`
   )
   SELECT
      null, -- `geo_sectievotare_id`,
@@ -1362,6 +1418,12 @@ INSERT INTO cart2.geo_sectievotare(
      0, -- `geo_sectievotare_zonajudetid`,
      0, -- `geo_sectievotare_zonajudetcod`,
      0, -- `geo_sectievotare_zonajudetnume`,
+     0, -- `geo_sectievotare_uatid`,
+     0, -- `geo_sectievotare_uatcod`,
+     0, -- `geo_sectievotare_uatnume`,
+     0, -- `geo_sectievotare_zonauatid`,
+     0, -- `geo_sectievotare_zonauatcod`,
+     0, -- `geo_sectievotare_zonauatnume`,
      0, -- `geo_sectievotare_localitateid`,
      0, -- `geo_sectievotare_localitatecod`,
      0, -- `geo_sectievotare_localitatenume`,
@@ -1372,21 +1434,270 @@ INSERT INTO cart2.geo_sectievotare(
      0, -- `geo_sectievotare_sediu`,
      0, -- `geo_sectievotare_nrbe`,
      0, -- `geo_sectievotare_codsiruta`,
-     0, -- `geo_sectievotare_uatcod`,
-     0, -- `geo_sectievotare_uatnume`,
      judet, -- `geo_sectievotare_tmp_judet`,
      uat, -- `geo_sectievotare_tmp_uat`,
      cod_siruta, -- `geo_sectievotare_tmp_cod_siruta`,
      nr_birou, -- `geo_sectievotare_nr_birou`,
      nr_sv, -- `geo_sectievotare_nr_sv`,
      sediu_sv, -- `geo_sectievotare_sediu_sv`,
-     adresa_sv -- `geo_sectievotare_adresa_sv`,
+     adresa_sv, -- `geo_sectievotare_adresa_sv`,
+     null, -- `geo_sectievotare_sirutalevel2_yn`,
+     null, -- `geo_sectievotare_sirutalevel3_yn`,
+     null -- `geo_sectievotare_partedinsv_yn`
 	     FROM 
          (SELECT distinct judet, uat, cod_siruta, nr_birou, nr_sv, sediu_sv, adresa_sv FROM localitati.sectii) as s
           WHERE nr_birou * 10000 + nr_sv is not null;
 
 
+update geo_sectievotare a join geo_uat b on a.geo_sectievotare_tmp_cod_siruta = b.geo_uat_cod
+   set 
+      `geo_sectievotare_zonataraid`         =  `geo_uat_zonataraid`,
+      `geo_sectievotare_zonataracod`        =  `geo_uat_zonataracod`,
+      `geo_sectievotare_zonataranume`       =  `geo_uat_zonataranume`,
+      `geo_sectievotare_judetid`            =  `geo_uat_judetid`,
+      `geo_sectievotare_judetcod`           =  `geo_uat_judetcod`,
+      `geo_sectievotare_judetnume`          =  `geo_uat_judetnume`,
+      `geo_sectievotare_zonajudetid`        =  `geo_uat_zonajudetid`,
+      `geo_sectievotare_zonajudetcod`       =  `geo_uat_zonajudetcod`,
+      `geo_sectievotare_zonajudetnume`      =  `geo_uat_zonajudetnume`,
+      `geo_sectievotare_uatid`              =  `geo_uat_id`,
+      `geo_sectievotare_uatcod`             =  `geo_uat_cod`,
+      `geo_sectievotare_uatnume`            =  `geo_uat_nume`,
+      `geo_sectievotare_zonauatid`          =  0,
+      `geo_sectievotare_zonauatcod`         =  0,
+      `geo_sectievotare_zonauatnume`        =  '',
+      `geo_sectievotare_localitateid`       = 0,
+      `geo_sectievotare_localitatecod`      = 0,
+      `geo_sectievotare_localitatenume`     = '',
+      `geo_sectievotare_zonalocalitateid`   = 0,
+      `geo_sectievotare_zonalocalitatecod`  = 0,
+      `geo_sectievotare_zonalocalitatenume` = '',
+      `geo_sectievotare_sirutalevel2_yn`    = 'y',
+      `geo_sectievotare_sirutalevel3_yn`    = 'n',
+      `geo_sectievotare_partedinsv_yn`      = 'n'
+     ;
 
+update geo_sectievotare a join geo_localitate b on a.geo_sectievotare_tmp_cod_siruta = b.geo_localitate_cod
+   set 
+      `geo_sectievotare_zonataraid`         =  `geo_localitate_zonataraid`,
+      `geo_sectievotare_zonataracod`        =  `geo_localitate_zonataracod`,
+      `geo_sectievotare_zonataranume`       =  `geo_localitate_zonataranume`,
+      `geo_sectievotare_judetid`            =  `geo_localitate_judetid`,
+      `geo_sectievotare_judetcod`           =  `geo_localitate_judetcod`,
+      `geo_sectievotare_judetnume`          =  `geo_localitate_judetnume`,
+      `geo_sectievotare_zonajudetid`        =  0, -- `geo_localitate_zonajudetid`,
+      `geo_sectievotare_zonajudetcod`       =  0, -- `geo_localitate_zonajudetcod`,
+      `geo_sectievotare_zonajudetnume`      =  '',-- `geo_localitate_zonajudetnume`,
+      `geo_sectievotare_uatid`              =  `geo_localitate_uatid`,
+      `geo_sectievotare_uatcod`             =  `geo_localitate_uatcod`,
+      `geo_sectievotare_uatnume`            =  `geo_localitate_uatnume`,
+      `geo_sectievotare_zonauatid`          =  0,
+      `geo_sectievotare_zonauatcod`         =  0,
+      `geo_sectievotare_zonauatnume`        =  '',
+      `geo_sectievotare_localitateid`       = `geo_localitate_id`,
+      `geo_sectievotare_localitatecod`      = `geo_localitate_cod`,
+      `geo_sectievotare_localitatenume`     = `geo_localitate_nume`,
+      `geo_sectievotare_zonalocalitateid`   = 0,
+      `geo_sectievotare_zonalocalitatecod`  = 0,
+      `geo_sectievotare_zonalocalitatenume` = '',
+      `geo_sectievotare_sirutalevel2_yn`    = 'n',
+      `geo_sectievotare_sirutalevel3_yn`    = 'y',
+      `geo_sectievotare_partedinsv_yn`      = 'n'
+     ;
+
+
+
+DROP TABLE IF EXISTS `geo_strada`;
+CREATE TABLE `geo_strada` (
+  `geo_strada_id` int NOT NULL AUTO_INCREMENT,
+  `geo_strada_zonataraid` int NOT NULL,
+  `geo_strada_zonataracod` varchar(2) NOT NULL,
+  `geo_strada_zonataranume` varchar(10) NOT NULL,
+  `geo_strada_judetid` int NOT NULL,
+  `geo_strada_judetcod` varchar(2) DEFAULT NULL,
+  `geo_strada_judetnume` varchar(32) DEFAULT NULL,
+  `geo_strada_zonajudetid` int DEFAULT NULL,
+  `geo_strada_zonajudetcod` varchar(9) DEFAULT NULL,
+  `geo_strada_zonajudetnume` varchar(32) DEFAULT NULL,
+  `geo_strada_uatid` int DEFAULT NULL,
+  `geo_strada_uatcod` int DEFAULT NULL,
+  `geo_strada_uatnume` varchar(128) DEFAULT NULL,
+  `geo_strada_zonauatid` int DEFAULT NULL,
+  `geo_strada_zonauatcod` varchar(9) DEFAULT NULL,
+  `geo_strada_zonauatnume` varchar(32) DEFAULT NULL,
+  `geo_strada_sectievotareid` int DEFAULT NULL,
+  `geo_strada_sectievotarecod` int DEFAULT NULL,
+  `geo_strada_sectievotarenume` varchar(128) DEFAULT NULL,
+  `geo_strada_localitateid` int DEFAULT NULL,
+  `geo_strada_localitatecod` int DEFAULT NULL,
+  `geo_strada_localitatenume` varchar(128) DEFAULT NULL,
+  `geo_strada_zonalocalitateid` int DEFAULT NULL,
+  `geo_strada_zonalocalitatecod` varchar(9) DEFAULT NULL,
+  `geo_strada_zonalocalitatenume` varchar(32) DEFAULT NULL,
+  `geo_strada_cod` int NOT NULL,
+  `geo_strada_tip` varchar(16) NOT NULL,
+  `geo_strada_nume` varchar(256) NOT NULL,
+  `geo_strada_numecomplet` varchar(1024) NOT NULL,
+  `geo_strada_numere` varchar(512) NOT NULL,
+  `geo_strada_tmp_judet` varchar(2) DEFAULT NULL,
+  `geo_strada_tmp_uat` varchar(64) DEFAULT NULL,
+  `geo_strada_tmp_cod_siruta` int DEFAULT NULL,
+  `geo_strada_tmp_nr` int DEFAULT NULL,
+  `geo_strada_tmp_nrbe` int DEFAULT NULL,
+  `geo_strada_tmp_nrsv` int DEFAULT NULL,
+  `geo_strada_tmp_sediusv` varchar(256) DEFAULT NULL,
+  `geo_strada_tmp_adresasv` varchar(256) DEFAULT NULL,
+  `geo_strada_tmp_sirutalevel2_yn` varchar(1) DEFAULT NULL,
+  `geo_strada_tmp_sirutalevel3_yn` varchar(1) DEFAULT NULL,
+  `geo_strada_tmp_localitate` varchar(128) DEFAULT NULL,
+  `geo_strada_tmp_codartera` int DEFAULT NULL,
+  `geo_strada_tmp_artera` varchar(256) DEFAULT NULL,
+  `geo_strada_tmp_numere` varchar(512) NOT NULL,
+  `geo_strada_tmp_observatii` varchar(512) NOT NULL, 
+  PRIMARY KEY (`geo_strada_id`),
+  UNIQUE KEY `geo_strada_cod_unique` (`geo_strada_cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+TRUNCATE TABLE cart2.geo_strada;
+INSERT INTO cart2.geo_strada(
+  `geo_strada_id`,
+  `geo_strada_zonataraid`,
+  `geo_strada_zonataracod`,
+  `geo_strada_zonataranume`,
+  `geo_strada_judetid`,
+  `geo_strada_judetcod`,
+  `geo_strada_judetnume`,
+  `geo_strada_zonajudetid`,
+  `geo_strada_zonajudetcod`,
+  `geo_strada_zonajudetnume`,
+  `geo_strada_uatid`,
+  `geo_strada_uatcod`,
+  `geo_strada_uatnume`,
+  `geo_strada_zonauatid`,
+  `geo_strada_zonauatcod`,
+  `geo_strada_zonauatnume`,
+  `geo_strada_sectievotareid`,
+  `geo_strada_sectievotarecod`,
+  `geo_strada_sectievotarenume`,  
+  `geo_strada_localitateid`,
+  `geo_strada_localitatecod`,
+  `geo_strada_localitatenume`,
+  `geo_strada_zonalocalitateid`,
+  `geo_strada_zonalocalitatecod`,
+  `geo_strada_zonalocalitatenume`,
+  `geo_strada_cod`,
+  `geo_strada_tip`,
+  `geo_strada_nume`,
+  `geo_strada_numecomplet`,
+  `geo_strada_numere`,
+  `geo_strada_tmp_judet`,
+  `geo_strada_tmp_uat`,
+  `geo_strada_tmp_cod_siruta`,
+  `geo_strada_tmp_nr`,
+  `geo_strada_tmp_nrbe`,
+  `geo_strada_tmp_nrsv`,
+  `geo_strada_tmp_sediusv`,
+  `geo_strada_tmp_adresasv`,
+  `geo_strada_tmp_sirutalevel2_yn`,
+  `geo_strada_tmp_sirutalevel3_yn`,
+  `geo_strada_tmp_localitate`,
+  `geo_strada_tmp_codartera`,
+  `geo_strada_tmp_artera`,
+  `geo_strada_tmp_numere`,
+  `geo_strada_tmp_observatii` 
+  )
+  SELECT
+     null, -- `geo_sectievotare_id`,
+     0, -- `geo_sectievotare_zonataraid`,
+     0, -- `geo_sectievotare_zonataracod`,
+     0, -- `geo_sectievotare_zonataranume`,
+     0, -- `geo_sectievotare_judetid`,
+     0, -- `geo_sectievotare_judetcod`,
+     0, -- `geo_sectievotare_judetnume`,
+     0, -- `geo_sectievotare_zonajudetid`,
+     0, -- `geo_sectievotare_zonajudetcod`,
+     0, -- `geo_sectievotare_zonajudetnume`,
+     0, -- `geo_sectievotare_uatid`,
+     0, -- `geo_sectievotare_uatcod`,
+     0, -- `geo_sectievotare_uatnume`,
+     0, -- `geo_sectievotare_zonauatid`,
+     0, -- `geo_sectievotare_zonauatcod`,
+     0, -- `geo_sectievotare_zonauatnume`,
+     0, -- `geo_strada_sectievotareid`,
+     0, -- `geo_strada_sectievotarecod`,
+     0, -- `geo_strada_sectievotarenume`,  
+     0, -- `geo_sectievotare_localitateid`,
+     0, -- `geo_sectievotare_localitatecod`,
+     0, -- `geo_sectievotare_localitatenume`,
+     0, -- `geo_sectievotare_zonalocalitateid`,
+     0, -- `geo_sectievotare_zonalocalitatecod`,
+     0, -- `geo_sectievotare_zonalocalitatenume`,
+
+    codunic_artera,                    -- `geo_strada_cod`,
+    '',                                 -- `geo_strada_tip`,
+    artera,                            -- `geo_strada_nume`,
+    concat(artera, ' ', numar_imobil), -- `geo_strada_numecomplet`,
+    numar_imobil,                       -- `geo_strada_numere`,
+    judet,                              -- `geo_strada_tmp_judet`,
+    uat,                                -- `geo_strada_tmp_uat`,
+    cod_siruta,                          -- `geo_strada_tmp_cod_siruta`,
+    nr_birou * 100000 + nr_sv,           -- `geo_strada_tmp_nr`,
+    nr_birou,                            -- `geo_strada_tmp_nrbe`,
+    nr_sv,                               --  `geo_strada_tmp_nrsv`,
+    sediu_sv,                            --  `geo_strada_tmp_sediusv`,
+    adresa_sv,                           --  `geo_strada_tmp_adresasv`,
+    null,                                -- `geo_strada_tmp_sirutalevel2_yn`,
+    null,                                -- `geo_strada_tmp_sirutalevel3_yn`,
+    localitate_sat,                      -- `geo_strada_tmp_localitate`,
+    cod_artera,                          -- `geo_strada_tmp_codartera`,
+    artera, -- `geo_strada_tmp_artera`,
+    numar_imobil, -- `geo_strada_tmp_numere`,
+    observatii -- `geo_strada_tmp_observatii` 
+
+	     FROM 
+         (SELECT judet, uat, cod_siruta, nr_birou, nr_sv, 
+                          sediu_sv, adresa_sv, localitate_sat, cod_artera, artera, numar_imobil, observatii, codunic_artera
+          FROM localitati.sectii) as s
+          WHERE nr_birou * 10000 + nr_sv is not null;
+
+
+
+update geo_strada a join geo_sectievotare b on a.geo_strada_tmp_nr = b.geo_sectievotare_nr
+   set 
+      `geo_strada_zonataraid`         =  `geo_sectievotare_zonataraid`,
+      `geo_strada_zonataracod`        =  `geo_sectievotare_zonataracod`,
+      `geo_strada_zonataranume`       =  `geo_sectievotare_zonataranume`,
+      `geo_strada_judetid`            =  `geo_sectievotare_judetid`,
+      `geo_strada_judetcod`           =  `geo_sectievotare_judetcod`,
+      `geo_strada_judetnume`          =  `geo_sectievotare_judetnume`,
+      `geo_strada_zonajudetid`        =  `geo_sectievotare_zonajudetid`,
+      `geo_strada_zonajudetcod`       =  `geo_sectievotare_zonajudetcod`,
+      `geo_strada_zonajudetnume`      =  `geo_sectievotare_zonajudetnume`,
+      `geo_strada_uatid`              =  `geo_sectievotare_uatid`,
+      `geo_strada_uatcod`             =  `geo_sectievotare_uatcod`,
+      `geo_strada_uatnume`            =  `geo_sectievotare_uatnume`,
+      `geo_strada_zonauatid`          =  `geo_sectievotare_zonauatid`,
+      `geo_strada_zonauatcod`         =  `geo_sectievotare_zonauatcod`,
+      `geo_strada_zonauatnume`        =  `geo_sectievotare_zonauatnume`,
+      `geo_strada_localitateid`       =  `geo_sectievotare_localitateid`,
+      `geo_strada_localitatecod`      =  `geo_sectievotare_localitatecod`,
+      `geo_strada_localitatenume`     =  `geo_sectievotare_localitatenume`,
+      `geo_strada_zonalocalitateid`   =  `geo_sectievotare_zonalocalitateid`,
+      `geo_strada_zonalocalitatecod`  =  `geo_sectievotare_zonalocalitatecod`,
+      `geo_strada_zonalocalitatenume` =  `geo_sectievotare_zonalocalitatenume`,
+      `geo_strada_sectievotareid`     =  `geo_sectievotare_id`,
+      `geo_strada_sectievotarecod`    =  `geo_sectievotare_nr`,
+      `geo_strada_sectievotarenume`   =  `geo_sectievotare_sediu`
+      ;
+
+
+
+tip_artera	denumire_artera	numar_codpostal	sector	oficiu_distribuire siruta sector	niv	sirsup
+
+
+TRUNCATE TABLE IF EXISTS geo_codpostal;
 CREATE TABLE `geo_codpostal` (
   `geo_codpostal_id` int not null AUTO_INCREMENT,  
   `geo_codpostal_zonataraid` int	not null, 	
@@ -1419,7 +1730,9 @@ CREATE TABLE `geo_codpostal` (
 
 
 
-
+-- ===============================================================
+--   MEM
+-- ===============================================================
 
 DROP TABLE `mem_tiprol`;
 CREATE TABLE `mem_tiprol` (
