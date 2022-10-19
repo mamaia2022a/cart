@@ -1,0 +1,2 @@
+(self.webpackChunkcart2=self.webpackChunkcart2||[]).push([[8962],{78962:function(e,s,c){"use strict";c.r(s),c.d(s,{SplashScreenWeb:function(){return a}});var n=c(68384);class a extends n.Uw{async show(e){}async hide(e){}}}}]);
+//# sourceMappingURL=8962-es2015.js.map

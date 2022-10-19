@@ -1,0 +1,2 @@
+(self.webpackChunkcart2=self.webpackChunkcart2||[]).push([[9072],{29072:function(t,o,r){"use strict";r.r(o),r.d(o,{ion_text:function(){return e}});var s=r(23150),c=r(97585),n=r(61269);const e=class{constructor(t){(0,s.r)(this,t)}render(){const t=(0,c.b)(this);return(0,s.h)(s.H,{class:(0,n.c)(this.color,{[t]:!0})},(0,s.h)("slot",null))}};e.style=":host(.ion-color){color:var(--ion-color-base)}"}}]);
+//# sourceMappingURL=9072-es2015.js.map
