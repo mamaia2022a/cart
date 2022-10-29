@@ -45,4 +45,50 @@ public class PagedResponse<T> {
 	public boolean isLast() {
 		return last;
 	}
+
+
+  public int getPage() 
+  {
+		return this.page;
+	}
+
+	public void setPage(int page)
+  {
+    this.page = page;
+	}
+
+
+  public int getSize() 
+  {
+		return this.size;
+	}
+
+	public void setSize(int size)
+  {
+    this.size = size;
+	}
+
+
+  public long getTotalElements() 
+  {
+		return this.totalElements;
+	}
+
+	public void setTotalElements(long totalElements)
+  {
+    this.totalElements = totalElements;
+	}
+
+
+  public int getTotalPages() 
+  {
+		return this.totalPages;
+	}
+
+	public void setTotalPages(int totalPages)
+  {
+    this.totalPages = totalPages;
+	}
+
+
 }

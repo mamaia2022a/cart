@@ -1,0 +1,2 @@
+DROP SCHEMA IF EXISTS `localitati`;
+CREATE SCHEMA `localitati` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;

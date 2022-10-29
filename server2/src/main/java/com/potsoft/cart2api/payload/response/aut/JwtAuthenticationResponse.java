@@ -11,4 +11,25 @@ public class JwtAuthenticationResponse {
 		this.accessToken = accessToken;
 	}
 
+  public String getAccessToken() 
+  {
+		return this.accessToken;
+	}
+
+	public final void setAccessToken(String accessToken)
+  {
+    this.accessToken = accessToken;
+	}
+
+
+  public String getTokenType() 
+  {
+		return this.tokenType;
+	}
+
+	public final void setTokenType(String tokenType)
+  {
+    this.tokenType = tokenType;
+	}
+  
 }

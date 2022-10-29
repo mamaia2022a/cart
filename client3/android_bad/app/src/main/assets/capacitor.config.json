@@ -1,0 +1,13 @@
+{
+	"appId": "com.potsoft",
+	"appName": "cart2",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "www",
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": false,
+			"launchShowDuration": 0
+		}
+	}
+}

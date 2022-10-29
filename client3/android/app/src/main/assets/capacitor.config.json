@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "app",
+	"appId": "com.potsoft.cart2",
+	"appName": "cart2",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
 	"webDir": "www",

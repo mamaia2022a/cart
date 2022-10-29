@@ -35,4 +35,38 @@ public class ExceptionResponse {
 		}
 	}
 
+
+  public Integer getStatus() 
+  {
+		return this.status;
+	}
+
+	public final void setStatus(Integer status)
+  {
+    this.status = status;
+	}
+
+
+  public Instant getTimestamp() 
+  {
+		return this.timestamp;
+	}
+
+	public final void setTimestamp(Instant timestamp)
+  {
+    this.timestamp = timestamp;
+	}
+
+
+  public String getError() 
+  {
+		return this.error;
+	}
+
+	public final void setError(String error)
+  {
+    this.error = error;
+	}
+
+
 }

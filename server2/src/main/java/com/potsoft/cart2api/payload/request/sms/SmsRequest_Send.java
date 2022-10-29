@@ -15,7 +15,7 @@ public class SmsRequest_Send
 	private String smsUnicode;
 	private String smsSenderIdValue;
 	private String smsCountry;
-	String smsSenderId;
+	private String smsSenderId;
 
 	public SmsRequest_Send(String smsText, String smsNrTelefon, String smsCountry)
 	{
@@ -65,15 +65,59 @@ public class SmsRequest_Send
 	}
 
 
-	public String getSmsSenderid() 
+	public String getSmsSenderId() 
 	{
 	  return this.smsSenderId;
 	}
   
-	public void setSmsSenderid(String smsSenderId) 
+	public void setSmsSenderId(String smsSenderId) 
 	{
 	  this.smsSenderId = smsSenderId;
 	}
   
+
+	public String getSmsSenderIdValue() 
+	{
+	  return this.smsSenderIdValue;
+	}
+  
+	public void setSmsSenderIdValue(String smsSenderIdValue) 
+	{
+	  this.smsSenderIdValue = smsSenderIdValue;
+	}
+
+  
+  public String getSmsApplicationId() 
+	{
+	  return this.smsApplicationId;
+	}
+  
+	public void setSmsApplicationId(String smsApplicationId) 
+	{
+	  this.smsApplicationId = smsApplicationId;
+	}
+  
+
+  public String getSmsApplicationToken() 
+	{
+	  return this.smsApplicationToken;
+	}
+  
+	public void setSmsApplicationToken(String smsApplicationToken) 
+	{
+	  this.smsApplicationToken = smsApplicationToken;
+	}
+
+
+  public String getSmsUnicode() 
+	{
+	  return this.smsUnicode;
+	}
+  
+	public void setSmsUnicode(String smsUnicode) 
+	{
+	  this.smsUnicode = smsUnicode;
+	}
+
 }
 
