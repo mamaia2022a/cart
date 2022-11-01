@@ -22,7 +22,7 @@ import { MemMembruTipResponse_Schimbare } from '../../payloads/mem/MemMembruTipR
 @Injectable({ providedIn: 'root' })
 export class AuthHandler {
 
-  private ApiBaseURL: string = "http://185.3.95.113:8080";//"http://localhost:8089"; //;"http://185.3.95.113:8080"; //"http://www.fluierul.ro:8080";
+  private ApiBaseURL: string = "https://appaur.ro:8444" ; //"http://185.3.95.113:8080";//"http://localhost:8089"; //;"http://185.3.95.113:8080"; //"http://www.fluierul.ro:8080";
 
   //---------------------------------- out
   private ApiURLAutLogin: string                              = this.ApiBaseURL + "/api/aut/user/login";
