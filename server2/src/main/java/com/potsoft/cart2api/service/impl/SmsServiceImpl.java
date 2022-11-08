@@ -26,36 +26,110 @@ import org.springframework.stereotype.Service;
 @Service
 public class SmsServiceImpl implements SmsService 
 {
-	private static String DEFAULT_SMS_PROVIDER_BASE_URL = "https://portal.bulkgate.com/api/1.0/simple/transactional";
-    private static String DEFAULT_APPLICATION_ID        =  "28297";
-	private static String DEFAULT_APPLICATION_TOKEN     =  "PZGQC2SvyYB8VNFXUdJwScSSsNrRe0nd0v0V61Pl0HYwRfB755";
-	private static String DEFAULT_UNICODE               =  "yes";
-	private static String DEFAULT_SENDER_ID             =  "gText";
-	private static String DEFAULT_SENDER_ID_VALUE       =  "BulkGate";
-	private static String DEFAULT_COUNTRY               =  "ro";
+	private static String   BULKGATE_DEFAULT_SMS_PROVIDER_BASE_URL = "https://portal.bulkgate.com/api/1.0/simple/transactional";
+  private static String   BULKGATE_DEFAULT_APPLICATION_ID        =  "28297";
+	private static String   BULKGATE_DEFAULT_APPLICATION_TOKEN     =  "PZGQC2SvyYB8VNFXUdJwScSSsNrRe0nd0v0V61Pl0HYwRfB755";
+	private static String   BULKGATE_DEFAULT_UNICODE               =  "yes";
+	private static String   BULKGATE_DEFAULT_SENDER_ID             =  "gText";
+	private static String   BULKGATE_DEFAULT_SENDER_ID_VALUE       =  "BulkGate";
+	private static String   BULKGATE_DEFAULT_COUNTRY               =  "ro";
 
-	@Override
-	public SmsResponse_Send sendSms(SmsRequest_Send smsSendRequest)
+  //https://www.clickphone.ro/api/sms?user=secretariatgeneral@partidulaur.ro&parola=4nRMeC9FY2NA5X&telefon=0723906431&text=text
+	private static String   CLICKPHONE_DEFAULT_SMS_PROVIDER_BASE_URL = "https://www.clickphone.ro/api/sms";
+	private static String   CLICKPHONE_DEFAULT_SMS_USER   = "580986";//"secretariatgeneral@partidulaur.ro";
+	private static String   CLICKPHONE_DEFAULT_SMS_PAROLA = "0d3a9ba5224b06281397db0db86ec429";//"4nRMeC9FY2NA5X";
+	
+  @Override
+  public SmsResponse_Send sendSms(SmsRequest_Send smsSendRequest)
 	{
-       String application_id = smsSendRequest.getSmsApplicationId();
+    if (smsSendRequest.getSmsProvider().equals(SmsRequest_Send.SMS_PROVIDER_BULKGATE))
+      return sendSms_usingBulkgate(smsSendRequest);
+    else if (smsSendRequest.getSmsProvider().equals(SmsRequest_Send.SMS_PROVIDER_CLICKPHONE))
+      return sendSms_usingClickPhone(smsSendRequest);
+    SmsResponse_Send smsResponseSend = new SmsResponse_Send();     
+    smsResponseSend.setSmsEEroare(true); 
+    return smsResponseSend;
+  }
+
+
+  //============================================
+	public SmsResponse_Send sendSms_usingClickPhone(SmsRequest_Send smsSendRequest)
+	{
+	   String application_user = smsSendRequest.getSmsUser();
+	   if (application_user == null)
+	   {
+	     application_user = CLICKPHONE_DEFAULT_SMS_USER;
+	   }
+	   String application_parola = smsSendRequest.getSmsParola();
+	   if (application_parola == null)
+	   {
+	     application_parola = CLICKPHONE_DEFAULT_SMS_PAROLA ;
+	   }
+	   String text            = smsSendRequest.getSmsText();
+	   String number          = smsSendRequest.getSmsNrTelefon();
+
+     //---
+	   Map<String, String> parameters = new HashMap<>();
+	   parameters.put("user",   application_user);
+	   parameters.put("parola", application_parola);
+	   parameters.put("telefon", number);
+	   parameters.put("text", text);
+
+	   SmsResponse_Send smsResponseSend = new SmsResponse_Send();
+
+     try{
+	     URL url = new URL(CLICKPHONE_DEFAULT_SMS_PROVIDER_BASE_URL);
+	     HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	     con.setRequestMethod("POST"); //"GET");
+	     con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+	     con.setDoOutput(true);
+
+	     DataOutputStream out = new DataOutputStream(con.getOutputStream());
+	     String strParameters = getParamsString(parameters); //
+		   out.writeBytes(strParameters);
+	     out.flush();
+     	 out.close();
+
+	     int status = con.getResponseCode();
+		 String resp = getFullResponse(con);
+       System.out.println(resp);
+		 if (status == 200){
+        if (resp.contains("<result>success</result>"))      
+		      smsResponseSend.setSmsEEroare(false);
+        else
+          smsResponseSend.setSmsEEroare(true);
+     }else  
+		   smsResponseSend.setSmsEEroare(true);
+		 smsResponseSend.setSmsRaspuns(resp);  
+       }catch(Exception e){
+		 smsResponseSend.setSmsEEroare(true);
+	   }
+	   return smsResponseSend;
+
+    }
+
+  //============================================
+	public SmsResponse_Send sendSms_usingBulkgate(SmsRequest_Send smsSendRequest)
+	{
+     String application_id = smsSendRequest.getSmsApplicationId();
 	   if (application_id == null)
 	   {
-	     application_id = DEFAULT_APPLICATION_ID;
+	     application_id = BULKGATE_DEFAULT_APPLICATION_ID;
 	   }
 	   String application_token = smsSendRequest.getSmsApplicationToken();
 	   if (application_token == null)
 	   {
-	     application_token = DEFAULT_APPLICATION_TOKEN;
+	     application_token = BULKGATE_DEFAULT_APPLICATION_TOKEN;
 	   }
 	   String text            = smsSendRequest.getSmsText();
 	   String number          = smsSendRequest.getSmsNrTelefon();
-	   String unicode         = DEFAULT_UNICODE;
-	   String sender_id       = DEFAULT_SENDER_ID;
-	   String sender_id_value = DEFAULT_SENDER_ID_VALUE;
+	   String unicode         = BULKGATE_DEFAULT_UNICODE;
+	   String sender_id       = BULKGATE_DEFAULT_SENDER_ID;
+	   String sender_id_value = BULKGATE_DEFAULT_SENDER_ID_VALUE;
 	   String country = smsSendRequest.getSmsCountry();
 	   if (country == null)
 	   {
-	     country = DEFAULT_COUNTRY;
+	     country = BULKGATE_DEFAULT_COUNTRY;
 	   }
 	   //---
 	   Map<String, String> parameters = new HashMap<>();
@@ -73,7 +147,7 @@ public class SmsServiceImpl implements SmsService
        // number=0723906431&text=%22Am%20pus%20direct%20in%20browser%20ca%20nu%20pot%20instala%20curl%20-%20nu%20ma%20lasa%20antivirusul%22&unicode=yes&sender_id=gText&sender_id_value=BulkGate&country=ro
 	   //"https://portal.bulkgate.com/api/1.0/simple/transactional?application_id=28297&application_token=PZGQC2SvyYB8VNFXUdJwScSSsNrRe0nd0v0V61Pl0HYwRfB755&number=0723906431&text=%22Am%20pus%20direct%20in%20browser%20ca%20nu%20pot%20instala%20curl%20-%20nu%20ma%20lasa%20antivirusul%22&unicode=yes&sender_id=gText&sender_id_value=BulkGate&country=ro
        try{
-	     URL url = new URL(DEFAULT_SMS_PROVIDER_BASE_URL);
+	     URL url = new URL(BULKGATE_DEFAULT_SMS_PROVIDER_BASE_URL);
 	     HttpURLConnection con = (HttpURLConnection) url.openConnection();
 	     con.setRequestMethod("GET"); //"POST");
 	     //con.setRequestProperty("Content-Type", "application/json");

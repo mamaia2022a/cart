@@ -17,6 +17,8 @@ import { ActiuneParametri} from '../../payloads/aut/ActiuneParametri';
 
 import { MemMembruRequest_CerereAfiliere } from '../../payloads/mem/MemMembruRequest_CerereAfiliere';
 import { MemMembruRequest_Dezafiliere } from '../../payloads/mem/MemMembruRequest_Dezafiliere';
+import { PayDataRequest_Creare } from '../../payloads/pay/PayDataRequest_Creare';
+import { PayDataResponse_Creare } from '../../payloads/pay/PayDataResponse_Creare';
 
 
 export namespace AuthAction {
@@ -130,6 +132,20 @@ export namespace AuthAction {
     constructor(public zonataraid: number, public judetid: number, public  uatid: number, public storageResultKey) {}
   }
 
+
+  export class PlataCotizatie {
+    static readonly type = '[PlataCotizatie] Plata Cotizatie';
+    constructor(public payDataRequestCreare: PayDataRequest_Creare, public token: string, public storageResultKey: string) {}
+  }
+
+
+  export class PlataOnLine {
+    static readonly type = '[PlataOnLine] Plata On Line';
+    constructor(public payDataResponseCreare: PayDataResponse_Creare, public token: string, public storageResultKey: string) {}
+  }
+
+
+  
 }
 
 

@@ -1947,25 +1947,89 @@ CREATE TABLE `mem_membruci` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 
-DROP TABLE IF EXISTS `mem_membrucotizatie`;
-CREATE TABLE `mem_membrucotizatie` (
+DROP TABLE IF EXISTS cart2.`mem_membrucotizatie`;
+CREATE TABLE cart2.`mem_membrucotizatie` (
   `mem_membrucotizatie_id` int NOT NULL AUTO_INCREMENT,
   `mem_membrucotizatie_membruid` int	not null,
   `mem_membrucotizatie_membrucodunic` varchar(16) not null,
   `mem_membrucotizatie_userid` int	not null,
   `mem_membrucotizatie_usernume` varchar(20)	not null,
   `mem_membrucotizatie_userinfoid` int	not null,
-  `mem_membrucotizatie_activ_yn` char(1) not null,
-  `mem_membrucotizatie_anul` varchar(16)	not null,
-  `mem_membrucotizatie_lunastart` int(2)	not null,
-  `mem_membrucotizatie_lunaend` int(2)	not null,
-  `mem_membrucotizatie_refplatasaudoc_12` varchar(64),		
+  `mem_membrucotizatie_tipcotizatie` varchar(10) not null, -- 100, 500, 1000
+  `mem_membrucotizatie_anul`    int	not null,
+  `mem_membrucotizatie_ancomplet_yn` char(1) not null,
+  `mem_membrucotizatie_ian_yn`  char(1)	not null,
+  `mem_membrucotizatie_feb_yn`  char(1)	not null,
+  `mem_membrucotizatie_mar_yn`  char(1)	not null,
+  `mem_membrucotizatie_apr_yn`  char(1)	not null,
+  `mem_membrucotizatie_mai_yn`  char(1)	not null,
+  `mem_membrucotizatie_iun_yn`  char(1)	not null,
+  `mem_membrucotizatie_iul_yn`  char(1)	not null,
+  `mem_membrucotizatie_aug_yn`  char(1)	not null,
+  `mem_membrucotizatie_sep_yn`  char(1)	not null,
+  `mem_membrucotizatie_oct_yn`  char(1)	not null,
+  `mem_membrucotizatie_nov_yn`  char(1)	not null,
+  `mem_membrucotizatie_dec_yn`  char(1)	not null,
+  `mem_membrucotizatie_transsaurefplatasaudoc_123` varchar(1),	
+  `mem_membrucotizatie_paytransactionid` int,	
   `mem_membrucotizatie_refplata` varchar(64),		
   `mem_membrucotizatie_docurl` varchar(512),	
   `mem_membrucotizatie_doclocalpath` varchar(512),	
   PRIMARY KEY (`mem_membrucotizatie_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+
+DROP TABLE IF EXISTS cart2.pay_transaction;
+CREATE TABLE cart2.pay_transaction (
+  `pay_transaction_id`        int NOT NULL AUTO_INCREMENT,
+  `pay_transaction_userid`    int	not null,
+  `pay_transaction_usernume`  varchar(20)	not null,  
+  `pay_transaction_userinfoid` int	not null,
+  `pay_transaction_succes_yn` varchar(1) NULL,
+  `pay_transaction_date`      datetime  NULL DEFAULT CURRENT_TIMESTAMP,
+  `pay_transaction_amount`         float not null,  	     -- Numeric	1-12	Order total amount in float format with decimal point (thousand separator not allowed). Ex: 1234.56
+  `pay_transaction_curr`           varchar(3)	not null,    -- String	3	Order currency: 3-character currency code (RON, USD, EUR)
+  `pay_transaction_orderdesc`      varchar(128)	not null,	   -- String	1-127	Order description
+  `pay_transaction_merchid`        varchar(20)	not null,	  -- String	8-50	Merchant ID assigned by EuPlatesc.ro
+  `pay_transaction_YYYYMMDDHHmmSSreq` varchar(14)	null,	   -- YYYYMMDDHHmmSS	14	Current timestamp in GMT: 20221106203255
+  `pay_transaction_noncereq`       varchar(64)	not null,   --	16-64	Merchant nonce. Must be filled with unpredictable random bytes in hexadecimal format
+  `pay_transaction_fphashreq`      varchar(256)	not null,  --	1-256	Merchant MAC in hexadecimal form
+  `pay_transaction_nonceresp`       varchar(64)	 null,   --	16-64	Merchant nonce. Must be filled with unpredictable random bytes in hexadecimal format
+  `pay_transaction_fphashresp`      varchar(256) null,  --	1-256	Merchant MAC in hexadecimal form
+  `pay_transaction_epidresp`        varchar(40) null,  -- String	40	Gateway unique id for each transaction
+  `pay_transaction_messageresp`     varchar(6)	 null,  -- String	6	Response code text message
+  `pay_transaction_approvalresp`    varchar(6)	 null,  --	String	6	Client bank’s approval code. Can be empty if not provided by gateway
+  `pay_transaction_YYYYMMDDHHmmSSresp` varchar(14)	null,	 -- timestamp	YYYYMMDD HHmmSS	14	Merchant transaction timestamp in GMT: 20221107143859
+  PRIMARY KEY (`pay_transaction_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+
+
+/**
+amount	     -- Numeric	1-12	Echo from the request
+curr	       -- String	3	Echo from the request
+invoice_id	 -- String	1-27	Echo from the request
+ep_id	       -- String	40	Gateway unique id for each transaction
+merch_id	String	8-50	Echo from the request
+action	Numeric	1	If 0 – transaction approved else transaction failed
+message	String	6	Response code text message
+approval	String	6	Client bank’s approval code. Can be empty if not provided by gateway
+timestamp	YYYYMMDD HHmmSS	14	Merchant transaction timestamp in GMT: 20221107143859
+nonce	String	16-64	Merchant nonce. Must be filled with unpredictable random bytes in hexadecimal format
+fp_hash	String	1-256	Merchant MAC in hexadecimal form
+
+@RequestParam String amount,
+                                  @RequestParam String curr,
+                                  @RequestParam String invoice_id,
+                                  @RequestParam String ep_id,
+                                  @RequestParam String merch_id,
+                                  @RequestParam String action,
+                                  @RequestParam String message,
+                                  @RequestParam String approval,
+                                  @RequestParam String timestamp,
+                                  @RequestParam String nonce,
+                                  @RequestParam String fp_hash
+*/
 
 -- --------------------------
 --   table skills-uri

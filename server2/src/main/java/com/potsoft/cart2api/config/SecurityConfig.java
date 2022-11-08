@@ -52,13 +52,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/api/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/aut/user/**").permitAll()
-        .antMatchers(HttpMethod.POST, "/api/pay/**").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/pay/ipn/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/users/checkUsernameAvailability", "/api/users/checkEmailAvailability").permitAll()
 				.anyRequest().authenticated();
 
 		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
+
+          //.antMatchers(HttpMethod.POST, "/api/pay/ipn/**").permitAll()
+        //.antMatchers(HttpMethod.POST, "/api/pay/transaction/**").permitAll()
 
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder.userDetailsService(customUserDetailsService)

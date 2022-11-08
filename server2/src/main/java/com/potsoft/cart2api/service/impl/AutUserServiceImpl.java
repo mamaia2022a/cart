@@ -162,7 +162,8 @@ public class AutUserServiceImpl implements AutUserService
 		if (! zonaTara.equals("TR")){
 		  smsCountry = codJudetsauTaraDiaspora.toLowerCase();
 		}
-		SmsResponse_Send smsResponse = smsService.sendSms(new SmsRequest_Send(smsMesaj, smsNrTelefon, smsCountry));
+		SmsResponse_Send smsResponse = smsService.sendSms(
+                            new SmsRequest_Send(SmsRequest_Send.SMS_PROVIDER_CLICKPHONE, smsMesaj, smsNrTelefon, smsCountry));
 		if (Boolean.TRUE.equals(smsResponse.getSmsEEroare()))
 		{
 		  throw new CartapiException(HttpStatus.BAD_REQUEST, "Nu se poate trimite sms-ul cu codul de validare. Număr de telefon posibil invalid");//smsResponse.getSmsRaspuns());

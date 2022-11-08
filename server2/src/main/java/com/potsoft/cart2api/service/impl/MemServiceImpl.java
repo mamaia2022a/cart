@@ -160,7 +160,7 @@ public class MemServiceImpl implements MemService
 	@Autowired
 	private MemSefGrupRepository memSefGrupRepository;
 
-    @Autowired
+  @Autowired
 	private MemGrupRepository memGrupRepository;
 
 	

@@ -22,7 +22,7 @@ import { MemMembruTipResponse_Schimbare } from '../../payloads/mem/MemMembruTipR
 @Injectable({ providedIn: 'root' })
 export class AuthHandler {
 
-  private ApiBaseURL: string = "https://appaur.ro:8444" ; //"http://185.3.95.113:8080";//"http://localhost:8089"; //;"http://185.3.95.113:8080"; //"http://www.fluierul.ro:8080";
+  private ApiBaseURL: string = "http://localhost:8089";//"https://appaur.ro:8444" ; //"http://localhost:8089";//"https://appaur.ro:8444" ; //"http://185.3.95.113:8080";//"http://localhost:8089"; //;"http://185.3.95.113:8080"; //"http://www.fluierul.ro:8080";
 
   //---------------------------------- out
   private ApiURLAutLogin: string                              = this.ApiBaseURL + "/api/aut/user/login";
@@ -41,6 +41,8 @@ export class AuthHandler {
   private ApiURLMemSefGrupAcceptareAfiliere : string          = this.ApiBaseURL + "/api/mem/grup/sefgrup/acceptare_afiliere";
 
   private ApiURLMemMembruCerereDezafiliere: string            = this.ApiBaseURL + "/api/mem/grup/membru/cerere_dezafiliere";
+  //---------------------------------- pay
+  private ApiURLPayTransactionCreareDate : string             = this.ApiBaseURL + "/api/pay/transaction/crearedate";
   //---------------------------------- geo
   //zonetara/toate
   private ApiURLGeoZonetara: string                           = this.ApiBaseURL + "/api/geo/zonetara";
@@ -103,6 +105,32 @@ export class AuthHandler {
     //var token = storage.get("token");
     //storage.set("token", "TEST");
 
+    //__________________________________________________________________________
+    this.actions$.pipe(ofActionDispatched(AuthAction.PlataCotizatie)).subscribe(async data2 => 
+      {
+        let payPlataCotizatieAction : AuthAction.PlataCotizatie = data2;
+        console.log("payPlataCotizatieAction");
+        var payDataRequestCreare = payPlataCotizatieAction.payDataRequestCreare;
+        var storageResultKey = payPlataCotizatieAction.storageResultKey;
+        console.log();payDataRequestCreare
+        return this.apiService.post(this.ApiURLPayTransactionCreareDate,
+                                    payPlataCotizatieAction.payDataRequestCreare, 
+                                    {"Authorization" : `Bearer ${payPlataCotizatieAction.token}`}).subscribe(data  => {  
+          let response : any = data;
+          console.log(response);
+          storage.set(storageResultKey, response);
+          this.navController.navigateRoot(appConfig.routes.simpatiz.cereremem.plataonline);
+          return;
+          //return of(response);
+        },
+        (error) => {
+          console.log("Error" + error);
+          toastService.default("Eroare Pay Transaction Creare Date : " + error.error.message);// + error.error.trace);//"Nume utilizator sau Parola sunt Incorete! Vă rugăm reîncercați.");
+          //return this.navController.navigateRoot(appConfig.routes.auth.login);
+        })
+      });
+
+      
     //__________________________________________________________________________
     this.actions$.pipe(ofActionDispatched(AuthAction.MemMembruGrupulMeuVizualizare)).subscribe(async data2 => 
       {

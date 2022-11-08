@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="dark">
+        <ion-buttons slot="start">
+          <ion-back-button [text]="'backButtonTitle' | translate" defaultHref="/aut/grupactactiuni"></ion-back-button>
+        </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <!-- 
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      -->
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bine Ai Venit ! &nbsp; &nbsp; &nbsp; </ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+   
+      <ng-container *ngIf="crtactiune">
+        <h3>{{crtactiune.autActiuneDisplaynume}}</h3>
+     </ng-container>
+  
+     <h3>Plătește online cu Cardul: </h3>
+
+     <ng-container *ngIf="paydata$">
+       <!--
+      {{paydata.amount}}
+      {{paydata.curr}}
+      {{paydata.invoice_id}}
+      {{paydata.order_desc}}
+      {{paydata.merch_id}}
+      {{paydata.timestamp}}
+      {{paydata.nonce}}
+      {{paydata.fp_hash}}
+       -->
+      <!-- <iframe [src]="url | safe"></iframe> -->
+       
+      <!-- <iframe [src]="url | safe"  height="500" width="100%" title="Iframe Card"></iframe> -->
+ 
+     </ng-container>
+
+ 
+     <iframe #framemap id="framemapid" style="width:100%;height:550px"
+     src=""></iframe>
+
+    </ion-content>
+
+
+
+
+
+
+
+

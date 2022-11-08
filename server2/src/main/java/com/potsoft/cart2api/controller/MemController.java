@@ -16,6 +16,7 @@ import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_GrupulMeuVizua
 import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Plecare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Creare;
 import com.potsoft.cart2api.payload.request.mem.MembruTipRequest_Schimbare;
+import com.potsoft.cart2api.payload.request.pay.PayDataRequest_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_AcceptareAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_CerereAfiliere;
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Excludere;
@@ -23,10 +24,12 @@ import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_GrupulMeuViz
 import com.potsoft.cart2api.payload.response.mem.MembruGrupResponse_Plecare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Schimbare;
+import com.potsoft.cart2api.payload.response.pay.PayDataResponse_Creare;
 import com.potsoft.cart2api.security.CurrentUser;
 import com.potsoft.cart2api.security.UserDetailsImpl;
 import com.potsoft.cart2api.service.AutUserService;
 import com.potsoft.cart2api.service.MemService;
+import com.potsoft.cart2api.service.PayService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,6 +55,9 @@ import java.sql.SQLException;
 public class MemController {
 
 	@Autowired
+	private PayService payService;
+
+  @Autowired
 	private AutUserService autUserService;
 
 	@Autowired
@@ -86,6 +92,21 @@ public class MemController {
 		                                                                             memTipRequestSchimbare);
 	  //---
 	  return ResponseEntity.ok(memTipResponseSchimbare);
+	}
+
+  //-----------------------------------------------------------
+	@CrossOrigin(origins = "*")
+	@PostMapping("/schimbare2")
+	@Transactional(rollbackFor = { SQLException.class })
+	public ResponseEntity<PayDataResponse_Creare> validateRegistration2(
+		                                               @Valid @RequestBody PayDataRequest_Creare payDataRequestCreare,
+		                                               @CurrentUser UserDetails currentUser) 
+    {
+      UserDetailsImpl crtuser = (UserDetailsImpl) currentUser;   
+      PayDataResponse_Creare resp = payService.createTransactionData(crtuser.getId(), payDataRequestCreare);
+
+	  //---
+	  return ResponseEntity.ok(resp);
 	}
 
     //-----------------------------------------------------------
@@ -238,5 +259,6 @@ public class MemController {
 		return ResponseEntity.ok(membruGrupResponseExcludere);
 	}
 	
+
 
 }

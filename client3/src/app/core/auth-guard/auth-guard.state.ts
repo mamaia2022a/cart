@@ -205,4 +205,24 @@ export class AuthGuardState {
     });
   }
 
+
+  @Action(AuthAction.PlataCotizatie)
+  platacotizatie(context: StateContext<AuthAction.PlataCotizatie>, action: AuthAction.PlataCotizatie) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
+
+  @Action(AuthAction.PlataOnLine)
+  plataonline(context: StateContext<AuthAction.PlataOnLine>, action: AuthAction.PlataOnLine) {
+    const state = context.getState();
+    context.setState({
+      ...state,
+      ...action,
+    });
+  }
+
 }

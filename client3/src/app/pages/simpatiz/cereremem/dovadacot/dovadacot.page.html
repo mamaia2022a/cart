@@ -24,11 +24,77 @@
 
 <ion-content [fullscreen]="true">
    
-  <!-- List of Text Items -->
       <ng-container *ngIf="crtactiune">
         <h3>{{crtactiune.autActiuneDisplaynume}}</h3>
      </ng-container>
   
+     <h3>Pachetele anuale de susținere a partidului sunt de trei tipuri: </h3>
+     <ion-list>
+      <ion-item button="true" detail ion-item  (click)="selectiePlata('0')"> 
+        <ion-label>
+          <h2>Am Plătit Deja un Pachetul Anual</h2>
+          <p>Plăți externe: </p>
+          <p>- am plătit cu un Voucher</p>
+          <p>- am plătit anterior online</p>
+        </ion-label>
+      </ion-item>
+
+        <ion-item button="true" detail ion-item  (click)="selectiePlata('100')"> 
+          <ion-label>
+            <h2>Plătește cu Cardul Pachetul Anual Standard – 100 RON/AN</h2>
+            <p>Beneficii: </p>
+            <p>- card plastic standard</p>
+            <p>- 10% reducere magazin AUR</p>
+            <p>- tur organizat la Parlamentul României</p>
+            <p>- steag tricolor cadou</p>
+          </ion-label>
+        </ion-item>
+      
+        <ion-item button="true" detail ion-item  (click)="selectiePlata('1000')"> 
+          <ion-label>
+            <h2>Pachet Anual Argint – 1000 RON/AN</h2>
+            <p>Beneficii: </p>
+            <p>- card metal argintiu</p>
+            <p>- pachet cadou cărți de referință</p>
+            <p>- 15% reducere magazin AUR</p>
+            <p>- tur organizat la Parlamentul României</p>
+            <p>- Steag+tricou POLO </p>
+            <p>- acces prioritar conferințe tematice și evenimentele liderilor AUR</p>          
+          </ion-label>
+        </ion-item>
+
+        <ion-item button="true" detail (click)="selectiePlata('5000')"> 
+          <ion-label>
+            <h2>Pachet Anual Aur – 5000 RON/AN</h2>
+            <p>Beneficii: </p>
+            <p>- card metal auriu</p>
+            <p>- pachet cadou cărți de referință</p>
+            <p>- 20% reducere magazin AUR</p>
+            <p>- tur organizat la Parlamentul României</p>
+            <p>- steag + tricou POLO + insignă suporter AUR</p>
+            <p>- o întâlnire „one to one” cu președintele partidului sau alți membrii din BNC</p>          
+          </ion-label>
+        </ion-item>
+
+    </ion-list>
+
+    <h3>Reguli:</h3>
+    <p>- un Membru isi poate prelungi oricând pachetul </p>
+    <p>- în situația în care se apropie de termenul de expirare al pachetului de susținere, 
+                 va fi notificat automat inainte cu o luna si inainte cu 2 saptamani 
+                 si inainte cu 2 zile privind expirarea valabilității cardului și posibilitatea prelungirii lui</p>
+    <p>- plata pachetului se face online cu cardul sau prin introducerea unui cod voucher 
+                                     care se achizitioneaza de la punctele de contact AUR</p>
+    <p> - tuturor suporterilor li se vor emite carduri fizice</p>
+    <p>- cei cu carduri standard le pot ridica de la punctele de contact, 
+               iar celor cu pachete argint/aur le vor fi trimise prin curier la adresă</p>
+
+  </ion-content>
 
 
-</ion-content>
+
+
+
+
+
+

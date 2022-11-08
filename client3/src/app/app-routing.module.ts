@@ -122,6 +122,10 @@ const routes: Routes = [
     path: 'simpatiz/cereremem/trimitecer',
     loadChildren: () => import('./pages/simpatiz/cereremem/trimitecer/trimitecer.module').then((m) => m.TrimiteCerPageModule),
   },
+  {
+    path: 'simpatiz/cereremem/plataonline',
+    loadChildren: () => import('./pages/simpatiz/cereremem/plataonline/plataonline.module').then((m) => m.PlataOnlinePageModule),
+  },
   
   //-----------------------------
   //  Membru Incepator Neafiliat

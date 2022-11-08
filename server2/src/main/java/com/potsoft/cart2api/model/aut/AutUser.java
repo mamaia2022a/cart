@@ -14,7 +14,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-//import org.hibernate.annotations.Where;
+import org.hibernate.annotations.Where;
 
 
 
@@ -60,9 +60,9 @@ public class AutUser {
   //@OneToMany(fetch = FetchType.EAGER)
 	//@JoinTable(name = "aut_userrol", joinColumns = @JoinColumn(name = "aut_userrol_userid", referencedColumnName = "aut_userrol_userid"))
   
-  //@Where(clause = "aut_userrol_activ_yn = 'y'")
-  //@OneToMany(fetch=FetchType.EAGER, mappedBy = "autUserrolUserid", cascade = CascadeType.ALL, orphanRemoval = true)
-	@Transient
+  @Where(clause = "aut_userrol_activ_yn = 'y'")
+  @OneToMany(fetch=FetchType.EAGER, mappedBy = "autUserrolUserid", cascade = CascadeType.ALL, orphanRemoval = true)
+	//@Transient
   private List<AutUserRol> roles = new ArrayList<AutUserRol>();
 
   

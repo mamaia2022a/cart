@@ -6,20 +6,31 @@ import lombok.Data;
 @Data
 public class SmsRequest_Send
 {
+  public static String SMS_PROVIDER_BULKGATE   = "bulkgate";
+  public static String SMS_PROVIDER_CLICKPHONE = "clickphone";
+
 	private String smsText;
 	private String smsNrTelefon;
 
 	private String smsApplicationId;
-    private String smsApplicationToken;
+  private String smsApplicationToken;
 
 	private String smsUnicode;
 	private String smsSenderIdValue;
 	private String smsCountry;
 	private String smsSenderId;
 
-	public SmsRequest_Send(String smsText, String smsNrTelefon, String smsCountry)
+	private String smsUser;
+	private String smsParola;
+
+  private String smsProvider;
+	
+
+	public SmsRequest_Send(String smsProvider, String smsText, String smsNrTelefon, String smsCountry)
 	{
-      this.smsText             = smsText;
+    this.smsProvider         = smsProvider;
+
+    this.smsText             = smsText;
 	  this.smsNrTelefon        = smsNrTelefon;
 
 	  this.smsApplicationId    = null;
@@ -29,6 +40,10 @@ public class SmsRequest_Send
 	  this.smsSenderId       = null;
 	  this.smsSenderIdValue  = null;
 	  this.smsCountry        = smsCountry;
+
+    this.smsUser           = null;
+	  this.smsParola         = null;
+
 	}
 
 
@@ -117,6 +132,39 @@ public class SmsRequest_Send
 	public void setSmsUnicode(String smsUnicode) 
 	{
 	  this.smsUnicode = smsUnicode;
+	}
+
+
+  public String getSmsUser() 
+	{
+	  return this.smsUser;
+	}
+  
+	public void setSmsUser(String smsUser) 
+	{
+	  this.smsUser = smsUser;
+	}
+
+
+  public String getSmsParola() 
+	{
+	  return this.smsParola;
+	}
+  
+	public void setSmsParola(String smsParola) 
+	{
+	  this.smsParola = smsParola;
+	}
+
+
+  public String getSmsProvider() 
+	{
+	  return this.smsProvider;
+	}
+  
+	public void setSmsProvider(String smsProvider) 
+	{
+	  this.smsProvider = smsProvider;
 	}
 
 }

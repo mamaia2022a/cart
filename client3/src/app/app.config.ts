@@ -44,10 +44,12 @@ export const appConfig = {
         imdrummemact : "simpatiz/indrummem/indrummemact"
       },
       cereremem: {
-        completadr : "simpatiz/cereremem/completadr",
-        completcnp : "simpatiz/cereremem/completcnp",
-        dovadacot  : "simpatiz/cereremem/dovadacot",
-        trimitecer : "simpatiz/cereremem/trimitecer",
+        completadr   : "simpatiz/cereremem/completadr",
+        completcnp   : "simpatiz/cereremem/completcnp",
+        dovadacot    : "simpatiz/cereremem/dovadacot",
+        trimitecer   : "simpatiz/cereremem/trimitecer",
+        plataonline  : "simpatiz/cereremem/plataonline",
+
       },      
     },
 

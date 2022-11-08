@@ -31,16 +31,21 @@ public class UserDetailsImpl implements UserDetails {
   @JsonIgnore
   private String enddt;
 
+  @JsonIgnore
+  private AutUser autUser;
+
   private Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String usernume, String parola,
                          String activ_yn, String startdt, String enddt,
-      Collection<? extends GrantedAuthority> authorities) {
+      Collection<? extends GrantedAuthority> authorities,
+      AutUser autUser) {
     this.id          = id;
     this.usernume    = usernume;
     this.parola      = parola;
     this.activ_yn    = activ_yn;
     this.authorities = authorities;
+    this.autUser = autUser;
   }
 
   public static UserDetailsImpl build(AutUser user) {
@@ -55,12 +60,17 @@ public class UserDetailsImpl implements UserDetails {
         user.getAutUserActivyn(),
         user.getAutUserStartdt(),
         user.getAutUserEnddt(), 
-        authorities);
+        authorities,
+        user);
   }
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return authorities;
+  }
+
+  public AutUser getAutUser() {
+    return autUser;
   }
 
   public Long getId() {

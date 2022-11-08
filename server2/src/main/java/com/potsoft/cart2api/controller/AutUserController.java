@@ -20,8 +20,8 @@ import com.potsoft.cart2api.payload.request.aut.LoginRequest;
 import com.potsoft.cart2api.payload.request.aut.RegisterRequest;
 import com.potsoft.cart2api.payload.request.aut.ValidateRegistrationRequest;
 //import com.potsoft.cart2api.payload.request.mem.MembruGrupRequest_Activare;
-import com.potsoft.cart2api.repository.aut.AutUserRepository;
-import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
+//import com.potsoft.cart2api.repository.aut.AutUserRepository;
+//import com.potsoft.cart2api.repository.aut.AutUserRolRepository;
 import com.potsoft.cart2api.repository.mes.MesDestinMesajRepository;
 import com.potsoft.cart2api.payload.response.aut.JwtResponse;
 import com.potsoft.cart2api.payload.response.aut.RegisterResponse;
@@ -60,6 +60,7 @@ import java.util.List;
 //import java.util.Optional;
 //import java.util.HashSet;
 //import java.util.Set;
+//import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/aut/user")
@@ -78,11 +79,11 @@ public class AutUserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	@Autowired
-	private AutUserRepository autUserRepository;
+	//@Autowired
+	//private AutUserRepository autUserRepository;
 
-	@Autowired
-	private AutUserRolRepository autUserRolRepository;
+	//@Autowired
+	//private AutUserRolRepository autUserRolRepository;
 
 	//@Autowired
 	//private PasswordEncoder passwordEncoder;
@@ -129,7 +130,8 @@ public class AutUserController {
 		 ///passwordEncoder. "$2a$10$kWdnlFGDvqV6UzqY7M3leeJXZ4nnGy6VU2ufmyZca";
 	  Long userId = userDetails.getId();
 	  String username = userDetails.getUsername();
-	  AutUser newUser = autUserRepository.loadByAutUserId(userId);
+	  AutUser newUser = userDetails.getAutUser();///autUserRepository.loadByAutUserId(userId);
+
 	  //--------
       //AutUser crtUser = autUserRepository.loadByAutUserId(userId);
       //---
@@ -149,8 +151,8 @@ public class AutUserController {
 	  ///autUserRepository.refresh();
 	  //crtUser.setAutUserParola("");
 
-	  List<AutUserRol> userrolList = autUserRolRepository.loadUserRoluriActive(userId);
-	  newUser.setRoles(userrolList);
+	  //List<AutUserRol> userrolList = autUserRolRepository.loadUserRoluriActive(userId);
+	  //newUser.setRoles(userrolList);
 	  return ResponseEntity.ok(new JwtResponse(jwt, 
 	                       userId, 
 						   username, 

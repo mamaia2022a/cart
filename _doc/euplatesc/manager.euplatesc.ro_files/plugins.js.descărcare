@@ -1,0 +1,255 @@
+(function($) {
+  $.fn.button = function(action) {
+    if (action === 'loading' && this.data('loading-text')) {
+      this.data('original-text', this.html()).html(this.data('loading-text')).prop('disabled', true);
+    }
+    if (action === 'reset' && this.data('original-text')) {
+      this.html(this.data('original-text')).prop('disabled', false);
+    }
+  };
+}(jQuery));	
+
+
+function new_alert(title,content,color,callback,size){
+	color = (color === undefined) ? 'green' : color;
+	callback = (callback === undefined) ? function(){} : callback;
+	size = (size === undefined) ? 'small' : size;
+    $.alert({
+		animation: 'scale',
+		closeAnimation: 'scale',
+        title: title,
+        content: content,
+		type: color,
+		backgroundDismiss: true,
+		typeAnimated: false,
+		animateFromElement: false,
+		onClose: callback,
+		columnClass: size
+    });
+}
+
+function exec_copy(text){
+	document.getElementById('hidden-copy').value=text;
+	document.getElementById('hidden-copy').select();
+	document.getElementById('hidden-copy').setSelectionRange(0, 99999);
+	document.execCommand('copy');
+}
+
+var loading_status=false;
+
+function load_page(page,button,options){
+	
+	$('[data-toggle="tooltip"]').tooltip('hide');
+	$('.notification-panel').addClass('d-none');
+
+	if(loading_status){
+		return false;
+	}
+	
+	$('.menu-container').addClass('mcinvi')
+
+	if(button!=undefined){
+		if($(button).hasClass('menu')){
+			$(".menu.active").removeClass("active");
+			$(button).addClass("active");
+		}else if($(button).hasClass('submenu-item')){
+			$(".menu.active").removeClass("active");
+			$(button).closest(".menu").addClass("active");
+		}
+	}
+	
+	//window.history.pushState("", "", page);
+	
+	$("#warning-timeout").hide();
+    var warningTimeoutId = 0;
+	
+	loading_status=true;
+	show_loading();
+	
+    warningTimeoutId = window.setTimeout(function () {
+         $("#warning-timeout").fadeIn(1000);
+    }, 10000); 
+
+	var params=''
+	if(options!=undefined){
+		params=$.param(options);
+		if(params.length>0)params="&"+params;
+	}
+	
+    $.ajax({
+		url: "index.php?page="+page+params,
+        timeout: 30000, 
+        success: function(data){
+            window.clearTimeout(warningTimeoutId);
+			$("#warning-timeout").fadeOut(500);
+			if(data.startsWith('{"')){
+				handle_json(data);
+			}else{
+				$("#container").html(data);
+			}
+			loading_status=false;
+        },
+		error: function(){
+			window.clearTimeout(warningTimeoutId);
+			$("#container").html("Error processing the request");//to do
+			$("#warning-timeout").fadeOut(500);
+			loading_status=false;
+		}
+    });
+	
+}
+
+
+function make_request(page, method,options,successf,failf,doloading){
+	method = (method === undefined) ? 'GET' : method;
+	doloading = (doloading === undefined) ? true : doloading;
+	if(loading_status){
+		return false;
+	}
+	
+	$("#warning-timeout").hide();
+    var warningTimeoutId = 0;
+	
+	loading_status=true;
+	if(doloading)show_loading();
+	
+    warningTimeoutId = window.setTimeout(function () {
+         $("#warning-timeout").fadeIn(1000);
+    }, 10000); 
+
+	if(method=="GET"){
+		var params=''
+		if(options!=undefined){
+			params=$.param(options);
+			if(params.length>0)params="&"+params;
+		}
+	
+		$.ajax({
+			url: "index.php?page="+page+params,
+			timeout: 30000, 
+			success: function(data){
+				window.clearTimeout(warningTimeoutId);
+				$("#warning-timeout").fadeOut(500);
+				successf(data);
+				handle_json(data);
+				loading_status=false;
+			},
+			error: function(){
+				window.clearTimeout(warningTimeoutId);
+				$("#warning-timeout").fadeOut(500);
+				failf();
+				loading_status=false;
+			}
+		});
+	}else if(method=="POST"){	
+		$.ajax({
+			url: "index.php?page="+page,
+			timeout: 30000, 
+			method: "POST",
+			data: options,
+			success: function(data){
+				window.clearTimeout(warningTimeoutId);
+				$("#warning-timeout").fadeOut(500);
+				successf(data);
+				handle_json(data);
+				loading_status=false;
+			},
+			error: function(){
+				window.clearTimeout(warningTimeoutId);
+				$("#warning-timeout").fadeOut(500);
+				failf();
+				loading_status=false;
+			}
+		});
+	}
+	
+}
+
+
+function handle_json(data){
+	try{
+		var obj = JSON.parse(data);
+		if(obj.redirect!=undefined){
+			window.location=obj.redirect;
+		}
+	}catch (e) {
+		console.log("Handle JSON failed");
+	}
+}
+
+Math.modul=function(n){
+	if(n<0)return n*-1;
+	return n;
+}
+
+function show_loading(){
+	var loading="<div class='spin'><div class='r1'></div><div class='r2'></div><div class='r3'></div><div class='r4'></div><div class='r5'></div></div>";
+	$("#container").html(loading);
+}
+
+$(window).scroll(function (event) {
+	if($(window).width()<992)return;
+    if($(window).scrollTop()>70){
+		$("#main-menu").addClass("fixed-top");
+	}else{
+		$("#main-menu").removeClass("fixed-top");
+	}
+	
+});
+
+function popup_display(text){
+	text = atob(text);
+	$.confirm({
+		animation: 'scale',
+		closeAnimation: 'scale',
+		closeIcon: true,
+		closeIconClass: 'fa fa-times',
+		backgroundDismiss: true,
+		typeAnimated: false,
+		animateFromElement: false,
+		columnClass: 'medium',
+		title: "",
+		content: text,
+		buttons: {
+			ok: {
+				text: '',
+				btnClass: 'd-none',
+			}
+		}
+	});
+}
+
+function language_dialog(){
+	var content="<div style='padding:25px 0px;' class='text-center'><img src='view/images/lang/ro.png' style='height:40px;' onclick='change_lang(\"RO\")' class='mpc ml-2'/><img src='view/images/lang/en.png' style='height:40px;' onclick='change_lang(\"EN\")' class='mpc ml-2'/><img src='view/images/lang/fr.png' style='height:40px;' onclick='change_lang(\"FR\")' class='mpc ml-2'/></div>";
+	$('.menu-container').addClass('mcinvi');
+	$.confirm({
+		animation: 'scale',
+		closeAnimation: 'scale',
+		closeIcon: true,
+		closeIconClass: 'fa fa-times',
+		backgroundDismiss: true,
+		typeAnimated: false,
+		animateFromElement: false,
+		columnClass: 'small',
+		title: "",
+		content: content,
+		buttons: {ok: {	text: '',btnClass: 'd-none',}}
+	});
+}
+
+function change_lang(l){
+	$.post( "index.php?action=change-lang",{ lang: l })
+	.done(function(data) {
+		//window.location="index.php";
+		location.reload();
+	})
+	.fail(function() {
+		new_alert("Ups","{$lang.fail_ajax}","red");
+	});
+}
+		
+		
+jQuery.loadCSS = function(url) {
+    if (!$('link[href="' + url + '"]').length)
+        $('head').append('<link rel="stylesheet" type="text/css" href="' + url + '">');
+}
