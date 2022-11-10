@@ -10,6 +10,11 @@ export class PayDataResponse_Creare
   nonce      : string;  //	16-64	Merchant nonce. Must be filled with unpredictable random bytes in hexadecimal format
   fp_hash    : string;  //	1-256	Merchant MAC in hexadecimal form
 
+  ipnurl         : string;
+  backtositeurl  : string;
+  successurl     : string;
+  failedurl      : string;
+
   constructor()
   {
   }

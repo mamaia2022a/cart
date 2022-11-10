@@ -16,6 +16,11 @@ public class PayDataResponse_Creare
   public String nonce;      //	16-64	Merchant nonce. Must be filled with unpredictable random bytes in hexadecimal format
   public String fp_hash;    //	1-256	Merchant MAC in hexadecimal form
 
+  public String ipnurl;
+  public String backtositeurl;
+  public String successurl;
+  public String failedurl;
+
 
 	public double getAmount() 
 	{
@@ -103,6 +108,53 @@ public class PayDataResponse_Creare
 	{
 	  this.fp_hash  = fp_hash;
 	}
+
+
+  public String getIpnUrl()
+	{
+	  return this.ipnurl;
+	}
+  
+	public void setIpnUrl(String ipnurl) 
+	{
+	  this.ipnurl  = ipnurl;
+	}
+
+
+  public String getBacktositeUrl()
+	{
+	  return this.backtositeurl;
+	}
+  
+	public void setBacktositeUrl(String backtositeurl) 
+	{
+	  this.backtositeurl = backtositeurl;
+	}
+
+
+  public String getSuccessUrl()
+	{
+	  return this.successurl;
+	}
+  
+	public void setSuccessUrl(String successurl) 
+	{
+	  this.successurl = successurl;
+	}
+
+
+
+  public String getFailedUrl()
+	{
+	  return this.failedurl;
+	}
+  
+  public void setFailedUrl(String failedurl) 
+	{
+	  this.failedurl = failedurl;
+	}
+
+
 
 }
 

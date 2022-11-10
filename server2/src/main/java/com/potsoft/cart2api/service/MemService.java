@@ -82,6 +82,7 @@ import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Vizualizare;
+import com.potsoft.cart2api.payload.response.pay.PayDataResponse_Creare;
 
 //import java.util.List;
 
@@ -165,8 +166,8 @@ public interface MemService {
   MemMembruCI   creazaMemMembruCI(MemMembru memMembru, MembruCIRequest_Creare membruCIRequestCreare);
   MemMembruCI   creazaSiSalveazaMemMembruCI(MemMembru memMembru, MembruCIRequest_Creare membruCIRequestCreare);
 
-  MemMembruCotizatie  creazaMemMembruCotizatie(MemMembru memMembru, MembruCotizatieRequest_Creare membruCIRequestCreare);
-  MemMembruCotizatie  creazaSiSalveazaMemMembruCotizatie(MemMembru memMembru, MembruCotizatieRequest_Creare membruCIRequestCreare);
+  MemMembruCotizatie  creazaMemMembruCotizatie(MemMembru memMembru, PayDataResponse_Creare payDataResponseCreare);
+  MemMembruCotizatie  creazaSiSalveazaMemMembruCotizatie(MemMembru memMembru, PayDataResponse_Creare payDataResponseCreare);
 
 }
 

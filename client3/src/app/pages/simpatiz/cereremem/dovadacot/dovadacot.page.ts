@@ -86,17 +86,17 @@ export class DovadaCotPage implements OnInit {
     if (tipplata == "100")
     {
       payDataRequestCreare.amount = 100.00; 
-      payDataRequestCreare.order_desc = "Plată Pachet Standard 100"; 
-
-    }else if (tipplata == "500")
-    {
-      payDataRequestCreare.amount = 500.00;
-      payDataRequestCreare.order_desc = "Plată Pachet Standard 500"; 
+      payDataRequestCreare.order_desc = "PlataPachetStandard100"; 
 
     }else if (tipplata == "1000")
     {
-      payDataRequestCreare.amount = 1000.00; 
-      payDataRequestCreare.order_desc = "Plată Pachet Standard 1000"; 
+      payDataRequestCreare.amount = 1000.00;
+      payDataRequestCreare.order_desc = "PlataPachetStandard1000"; 
+
+    }else if (tipplata == "5000")
+    {
+      payDataRequestCreare.amount = 5000.00; 
+      payDataRequestCreare.order_desc = "PlataPachetStandard5000"; 
     }else{
       return ; //to do : am platit deja 
     }

@@ -11,6 +11,7 @@ import com.potsoft.cart2api.repository.pay.PayTransactionRepository;
 import com.potsoft.cart2api.service.PayService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.*;
@@ -24,7 +25,20 @@ import java.util.ArrayList;
 public class PayServiceImpl implements PayService 
 {
 
-	@Autowired
+  @Value("${plataonline.ipnurl}")
+  private String ipnurl;
+
+  @Value("${plataonline.backtositeurl}")
+  private String backtositeurl;
+
+  @Value("${plataonline.successurl}")
+  private String successurl;
+
+  @Value("${plataonline.failedurl}")
+  private String failedurl;
+
+
+  @Autowired
 	private PayTransactionRepository payTransactionRepository;
 
 	@Autowired
@@ -42,6 +56,7 @@ public class PayServiceImpl implements PayService
     
     PayDataResponse_Creare payDataResponse = new PayDataResponse_Creare();
 
+    
     String mid       = EUPLATESC_MERCHANT_ID;   //"testaccount";
     String key       = EUPLATESC_MERCHANT_KEY;  //"00112233445566778899AABBCCDDEEFF";
 
@@ -49,7 +64,7 @@ public class PayServiceImpl implements PayService
     double amount    = payDataRequest.getAmount();
     String strAmount = "" + amount;
     String curr      = payDataRequest.getCurr();
-    String orderdesc = "TEST";//payDataRequest.getOrderDesc();
+    String orderdesc = payDataRequest.getOrderDesc();
     //---------------------------
     Date date = new Date();
     String dateString = new SimpleDateFormat("yyyyMMddHHmmss").format(date);
@@ -76,6 +91,11 @@ public class PayServiceImpl implements PayService
     payDataResponse.setNonce(nonce);
     payDataResponse.setNonce("ABCDEF0123456789");
     payDataResponse.setFpHash(fphash);
+    //--
+    payDataResponse.setIpnUrl(this.ipnurl);
+    payDataResponse.setBacktositeUrl(this.backtositeurl);
+    payDataResponse.setSuccessUrl(this.successurl);
+    payDataResponse.setFailedUrl(this.failedurl);
     //--------------------------------
     AutUser     autUser     = autUserRepository.loadByAutUserId(userid);
 	  AutUserInfo autUserInfo = autUserInfoRepository.loadByAutUserInfoUserid(userid);

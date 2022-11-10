@@ -83,6 +83,7 @@ import com.potsoft.cart2api.payload.response.mem.MembruTipResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Creare;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Stergere;
 import com.potsoft.cart2api.payload.response.mem.SefGrupResponse_Vizualizare;
+import com.potsoft.cart2api.payload.response.pay.PayDataResponse_Creare;
 import com.potsoft.cart2api.repository.mem.MemMembruRepository;
 import com.potsoft.cart2api.repository.aut.AutUserInfoRepository;
 import com.potsoft.cart2api.repository.aut.AutUserRepository;
@@ -1364,22 +1365,62 @@ public class MemServiceImpl implements MemService
 	}
 	  
 	
-	
+
 	// -----------------------------------------------------------
 	@Override
-	public MemMembruCotizatie creazaMemMembruCotizatie(MemMembru memMembru,
-	                                                   MembruCotizatieRequest_Creare membruCotizatieRequestCreare)
-    {
-	  return null;
+	public MemMembruCotizatie creazaMemMembruCotizatie(MemMembru memMembru, 
+                                                     PayDataResponse_Creare payDataResponseCreare)
+  {
+	  Long memMembruCotizatieId                 = null;
+    Long memMembruCotizatieMembruid           = memMembru.getMemMembruId();
+    String memMembruCotizatieMembrucodunic    = memMembru.getMemMembruCodunic();
+    Long memMembruCotizatieUserid             = memMembru.getMemMembruUserid();
+    String memMembruCotizatieUsernume         = memMembru.getMemMembruUsernume();
+    Long memMembruCotizatieUserinfoid         = memMembru.getMemMembruUserinfoid();
+    String memMembruCotizatieTipcotizatie     = null;//memMembru.getMemMembruTipcotizatie();
+    Long memMembruCotizatieAn                 = 0l;
+    String memMembruCotizatieAncompletyn      = "y";
+    String memMembruCotizatieIanyn            = "y";
+    String memMembruCotizatieFebyn            = "y";
+    String memMembruCotizatieMaryn            = "y";
+    String memMembruCotizatieApryn            = "y";
+    String memMembruCotizatieMaiyn            = "y";
+    String memMembruCotizatieIunyn            = "y";
+    String memMembruCotizatieIulyn            = "y";
+    String memMembruCotizatieAugyn            = "y";
+    String memMembruCotizatieSepyn            = "y";
+    String memMembruCotizatieOctyn            = "y"; 
+    String memMembruCotizatieNovyn            = "y";
+    String memMembruCotizatieDecyn            = "y";
+    String memMembrucotizatiePlataonlinesauvouchersaudocplata123  = null;
+    String memMembrucotizatiePaytransactionid  = null;
+    String memMembrucotizatieVoucherserienr    = null;
+    String memMembrucotizatieDocplataurl       = null;
+    String memMembrucotizatieDocplatalocalpath = null;
+
+    MemMembruCotizatie memMembruCotizatie = new MemMembruCotizatie( memMembruCotizatieId, 
+                                                memMembruCotizatieMembruid,  memMembruCotizatieMembrucodunic,
+                                                memMembruCotizatieUserid, memMembruCotizatieUsernume, memMembruCotizatieUserinfoid,
+                                                memMembruCotizatieTipcotizatie, memMembruCotizatieAn, memMembruCotizatieAncompletyn,
+                                                memMembruCotizatieIanyn, memMembruCotizatieFebyn, memMembruCotizatieMaryn,
+                                                memMembruCotizatieApryn, memMembruCotizatieMaiyn, memMembruCotizatieIunyn,
+                                                memMembruCotizatieIulyn, memMembruCotizatieAugyn, memMembruCotizatieSepyn,
+                                                memMembruCotizatieOctyn, memMembruCotizatieNovyn, memMembruCotizatieDecyn,
+                                                memMembrucotizatiePlataonlinesauvouchersaudocplata123,
+                                                memMembrucotizatiePaytransactionid,
+                                                memMembrucotizatieVoucherserienr,
+                                                memMembrucotizatieDocplataurl,memMembrucotizatieDocplatalocalpath);
+    return memMembruCotizatie;
+
 	}
 
 	  
 	// -----------------------------------------------------------
 	@Override
-	public MemMembruCotizatie  creazaSiSalveazaMemMembruCotizatie(MemMembru memMembru, 
-	                                                              MembruCotizatieRequest_Creare membruCotizatieRequestCreare)
+	public MemMembruCotizatie creazaSiSalveazaMemMembruCotizatie(MemMembru memMembru, 
+                                                              PayDataResponse_Creare payDataResponseCreare)
 	{
-	  MemMembruCotizatie newMemMembruCotizatie  = this.creazaMemMembruCotizatie(memMembru, membruCotizatieRequestCreare);
+	  MemMembruCotizatie newMemMembruCotizatie  = this.creazaMemMembruCotizatie(memMembru, payDataResponseCreare);
 	  memMembruCotizatieRepository.save(newMemMembruCotizatie);
 	  return newMemMembruCotizatie;
 	}

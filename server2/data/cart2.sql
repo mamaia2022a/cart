@@ -1955,7 +1955,7 @@ CREATE TABLE cart2.`mem_membrucotizatie` (
   `mem_membrucotizatie_userid` int	not null,
   `mem_membrucotizatie_usernume` varchar(20)	not null,
   `mem_membrucotizatie_userinfoid` int	not null,
-  `mem_membrucotizatie_tipcotizatie` varchar(10) not null, -- 100, 500, 1000
+  `mem_membrucotizatie_tipcotizatie` varchar(10) not null, -- 100, 1000, 5000
   `mem_membrucotizatie_anul`    int	not null,
   `mem_membrucotizatie_ancomplet_yn` char(1) not null,
   `mem_membrucotizatie_ian_yn`  char(1)	not null,

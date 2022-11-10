@@ -46,7 +46,9 @@ export class PlataOnlinePage implements AfterViewInit {
                    "&timestamp="  + self.paydata.timestamp   +
                    "&nonce="      + self.paydata.nonce       +
                    "&fp_hash="    + self.paydata.fp_hash     +
-                   "&ExtraData[silenturl]=http://turda.hopto.org:8089/api/pay/ipn";
+                   "&ExtraData[silenturl]="  + self.paydata.ipnurl +
+                   "&ExtraData[backtosite]=" + self.paydata.backtositeurl ;
+                   //"&ExtraData[silenturl]=http://turda.hopto.org:8089/api/pay/ipn&ExtraData[backtosite]=http://www.appaur.ro/";
                    //&ExtraData[successurl]=http://www.appaur.ro& ExtraData[failedurl]=http://www.appaur.ro/&ExtraData[ep_target]=self&ExtraData[backtosite]=http://www.appaur.ro/";
         self.paydata$  = of(data);
         self.framemapElement.nativeElement.src = self.url;

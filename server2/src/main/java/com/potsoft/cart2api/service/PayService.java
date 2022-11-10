@@ -11,8 +11,10 @@ public interface PayService {
   PayDataResponse_Creare createTransactionData(Long userid, PayDataRequest_Creare payDataRequest);
 
   
-  PayTransaction creazaPayTransaction(AutUser autUser, AutUserInfo autUserInfo, PayDataResponse_Creare payDataResponse);
-  PayTransaction creazaSiSalveazaPayTransaction(AutUser autUser, AutUserInfo autUserInfo, PayDataResponse_Creare payDataResponse);
+  PayTransaction creazaPayTransaction(AutUser autUser, AutUserInfo autUserInfo, 
+                                  PayDataResponse_Creare payDataResponseCreare);
+  PayTransaction creazaSiSalveazaPayTransaction(AutUser autUser, AutUserInfo autUserInfo, 
+                                                PayDataResponse_Creare payDataResponseCreare);
 
 
 }
